@@ -1,0 +1,45 @@
+body {
+  height: 100%;
+  margin: 0;
+  font-family: sans-serif;
+  background-color:#333;
+  color:azure;
+  text-align: center;
+}
+a:link {
+  color:azure;
+}
+a:visited {
+  color:azure; 
+}
+a:active {
+  color: lightsteelblue; 
+}
+a:hover {
+  color:lightseagreen;
+}
+#header {
+  color:lightseagreen;
+}
+#navigation {
+  padding: 10px;
+}
+#main {
+  height: 100%;
+  width: 100%;
+}
+#main select {
+  font-size: 1rem;
+}
+#main input {
+  font-size: 1rem;
+}
+img {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  max-width: 40%;
+  height: auto;
+  padding: 10px;
+}
+
