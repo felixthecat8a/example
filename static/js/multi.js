@@ -1,5 +1,5 @@
 const url = `https://api.thecatapi.com/v1/images/search?limit=9`;
-const api_key = config.CAT_API_KEY;
+const api_key = DEMO-API-KEY || config.CAT_API_KEY;
 
  fetch(url,{headers: {
       'x-api-key': api_key
