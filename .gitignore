@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 node_modules
 config.js
 server.js
 .env
+=======
+.env
+server.js
+node_modules
+>>>>>>> Stashed changes

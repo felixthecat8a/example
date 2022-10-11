@@ -1,5 +1,9 @@
 const url = `https://api.thecatapi.com/v1/images/search?limit=9`;
+<<<<<<< Updated upstream
 const api_key = 'DEMO-API-KEY' || config.CAT_API_KEY;
+=======
+const api_key = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
+>>>>>>> Stashed changes
 
  fetch(url,{headers: {
       'x-api-key': api_key
