@@ -23,8 +23,7 @@ function createBreedList (data) {
         document.getElementById('breed_selector').appendChild(option);
     }
 }
-function showBreedImage(index)
-{ 
+function showBreedImage(index) { 
   document.getElementById("breed_image").src= storedBreeds[index].image.url;
   document.getElementById("breed_name").textContent= storedBreeds[index].name;
   document.getElementById("breed_description").textContent= storedBreeds[index].description;
