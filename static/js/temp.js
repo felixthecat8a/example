@@ -1,14 +1,13 @@
-var celciusInput = document.getElementById("celciusInput")
-var fahrenheitDisplay = document.getElementById("fahrenheitDisplay")
-var fahrenheitInput = document.getElementById('fahrenheitInput')
-var celciusDisplay = document.getElementById("celciusDisplay")
+const celciusInput = document.getElementById("celciusInput")
+const fahrenheitDisplay = document.getElementById("fahrenheitDisplay")
+const fahrenheitInput = document.getElementById('fahrenheitInput')
+const celciusDisplay = document.getElementById("celciusDisplay")
 
 celciusInput.addEventListener("input", displayFunctionC)
 
 function displayFunctionC() {
     if (celciusInput.value) {
-        var fahrenheitOutput = convertCtoF(celciusInput)
-        //console.log(fahrenheitOutput)
+        let fahrenheitOutput = convertCtoF(celciusInput)
         fahrenheitDisplay.innerText = "The temperature is " + fahrenheitOutput.toFixed(2) + "\xB0 Fahrenheit."
     } else {
         fahrenheitDisplay.innerText = "The temperature in \xB0F will display here."
@@ -19,7 +18,7 @@ fahrenheitInput.addEventListener("input", displayFunctionF)
 
 function displayFunctionF() {
     if (fahrenheitInput.value) {
-        var celciusOutput = convertFtoC(fahrenheitInput)
+        let celciusOutput = convertFtoC(fahrenheitInput)
         celciusDisplay.innerText = "The temperature is " + celciusOutput.toFixed(2) + "\xB0 Celcius."
     } else {
         celciusDisplay.innerText = "The temperature in \xB0C will display here."
