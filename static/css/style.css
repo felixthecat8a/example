@@ -13,13 +13,13 @@ a:visited {
   color:azure; 
 }
 a:active {
-  color: lightseagreen; 
+  color: mediumseagreen; 
 }
 a:hover {
-  color:lightseagreen;
+  color:mediumseagreen;
 }
 #header h1 {
-  color:lightseagreen;
+  color:mediumseagreen;
 }
 #navigation {
   padding: 10px;
@@ -29,7 +29,7 @@ a:hover {
   width: 100%;
 }
 #main h2 {
-  color: lightsteelblue;
+  color: lightseagreen;
 }
 #main select {
   font-size: 1rem;
