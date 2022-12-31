@@ -1,3 +1,6 @@
+var celciusVal = (document.getElementById("celciusVal"))
+var fahrenheitVal = (document.getElementById('fahrenheitVal'))
+
 celciusVal.addEventListener("input", toFahrenheit)
 function toFahrenheit() {
     if (celciusVal.value) {
