@@ -1,3 +1,20 @@
+celciusVal.addEventListener("input", toFahrenheit)
+function toFahrenheit() {
+    if (celciusVal.value) {
+        var fahrenheitOutput = (celciusVal.value) * 1.8 + 32
+        fahrenheitVal.value = fahrenheitOutput.toFixed(2)
+    } else {fahrenheitVal.value = ''}
+}
+fahrenheitVal.addEventListener("input", toCelcius)
+function toCelcius() {
+    if (fahrenheitVal.value) {
+        var celciusOutput = (fahrenheitVal.value - 32) / 1.8
+        celciusVal.value = celciusOutput.toFixed(2)
+    } else {celciusVal.value = ''}
+}
+
+
+/*
 const celciusInput = document.getElementById("celciusInput")
 const fahrenheitDisplay = document.getElementById("fahrenheitDisplay")
 const fahrenheitInput = document.getElementById('fahrenheitInput')
@@ -32,3 +49,4 @@ function convertCtoF(x) {
 function convertFtoC(y) {
     return (parseFloat(y.value) - 32) / 1.8
 }
+*/
