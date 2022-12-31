@@ -39,9 +39,9 @@ a:hover {
     box-sizing: border-box;
     border-radius: 0.5rem;
     text-align: center;
-    font-size: medium;
+    font-size: 1.1rem;
     font-weight: bold;
-    padding: 5px;
+    padding: 3px;
 }
 #main input:focus {
     outline: 3px solid mediumslateblue;
