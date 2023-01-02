@@ -1,13 +1,15 @@
 var celciusVal = (document.getElementById("celciusVal"))
 var fahrenheitVal = (document.getElementById('fahrenheitVal'))
+const convert = (document.getElementById("convert"))
 
-celciusVal.addEventListener("input", toFahrenheit)
+convert.addEventListener("click", toFahrenheit)
 function toFahrenheit() {
     if (celciusVal.value) {
         var fahrenheitOutput = convertCtoF(celciusVal)
         fahrenheitVal.value = fahrenheitOutput.toFixed(2)
     } else {fahrenheitVal.value = ''}
 }
+
 fahrenheitVal.addEventListener("input", toCelcius)
 function toCelcius() {
     if (fahrenheitVal.value) {
