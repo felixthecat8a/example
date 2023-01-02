@@ -35,15 +35,18 @@ a:hover {
   font-size: 1rem;
 }
 #main input[type=number] {
-    flex: 1 1 auto;
-    box-sizing: border-box;
-    border-radius: 0.5rem;
-    text-align: center;
-    font-size: 1rem;
-    padding: 5px;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 200px;
+  padding: 5px;
 }
 #main input:focus {
-    outline: 3px solid seagreen;
+  outline: 3px solid seagreen;
+  background-color: lightblue;
 }
 #main img {
   display:block;
@@ -54,16 +57,15 @@ a:hover {
   padding: 10px;
 }
 #main button {
-    background-color: darkcyan;
-    color: azure;
-    border: none;
-    border-radius: 8px;
-    padding: 6px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-left: 5px;
+  background-color: darkcyan;
+  color: azure;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 5px;
 }
-#celciusVal {width: 150px !important;}
-
+#celciusVal {width: 120px !important;}
