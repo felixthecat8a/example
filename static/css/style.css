@@ -55,7 +55,7 @@ input[type=number] {
 }
 input:focus {
   outline: 3px solid seagreen;
-  background-color: lightblue;
+  background-color: honeydew;
 }
 button {
   background-color: darkcyan;
