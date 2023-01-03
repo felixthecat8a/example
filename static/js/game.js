@@ -22,7 +22,6 @@ function playGame() {
     const guess = document.getElementById("guess")
     const result = document.getElementById("result")
     const attempt = document.getElementById("attempt")
-    //const reset = document.getElementById("reset")
     let randomNumber = (Math.floor(Math.random() * 100) + 1)
     console.log(randomNumber)
     let attempts = 0
@@ -40,21 +39,6 @@ function playGame() {
         } else {
             result.innerHTML = "<div style='color:gold'>You guessed it right!</div>"
             attempt.innerHTML = `<h3>It only took you ${attempts} tries.</h3>`
-            //reset.innerHTML = "<h3><a href=''> Click to play again.</a></h3>"
-            //reset.innerHTML = "<button onclick='resetGame()'>Play Again?</button>"
             game.innerText = "Play Again?"
         }
     }
-
-    /*function resetGame() {
-        result.innerText = "Guess the number."
-        attempt.innerText = ""
-        reset.innerText = ""
-        randomNumber = (Math.floor(Math.random() * 100) + 1)
-        console.log(randomNumber)
-        attempts = 0
-        guess.value = ""
-    }*/
-    
-}
-
