@@ -42,3 +42,4 @@ function playGame() {
             game.innerText = "Play Again?"
         }
     }
+}
