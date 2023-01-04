@@ -13,7 +13,9 @@ function playGame() {
     play.innerHTML = (`
     <form>
         <h2 style='color:lightseagreen'>Guess the number between 1 and 100.</h2>
-        <input type="number" id="guess"><button id="check" type="button" >Check</button>
+        <div id="final">
+            <input type="number" id="guess"><button id="check" type="button" >Check</button>
+        <div>
         <h3 id="result">Guess the number.</h3>
         <div id="attempt"></div>
         <div id="reset"></div>
@@ -47,6 +49,7 @@ function playGame() {
             result.innerHTML = "<div style='color:gold'>You guessed it right!</div>"
             attempt.innerHTML = `<h3>It only took you ${attempts} tries.</h3>`
             game.innerText = "Play Again?"
+            document.getElementById("final").innerHTML = `<h3>The number is ${guess.value}!</h3>`
         }
     }
 }
