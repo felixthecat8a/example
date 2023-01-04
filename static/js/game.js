@@ -11,11 +11,14 @@ game.addEventListener("click", playGame)
 
 function playGame() {
     play.innerHTML = (`
-    <h2 style='color:lightseagreen'>Guess the number between 1 and 100.</h2>
-    <input type="number" id="guess"><button id="check" type="button" >Check</button>
-    <h3 id="result">Guess the number.</h3>
-    <div id="attempt"></div>
-    <div id="reset"></div>
+    <form>
+        <h2 style='color:lightseagreen'>Guess the number between 1 and 100.</h2>
+        <input type="number" id="guess"><button id="check" type="button" >Check</button>
+        <button type='reset' style='background-color:crimson;color:azure;border-color:crimson'>Clear</button>
+        <h3 id="result">Guess the number.</h3>
+        <div id="attempt"></div>
+        <div id="reset"></div>
+    </form>
     `)
   
     const check = document.getElementById("check")
