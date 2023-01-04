@@ -15,7 +15,7 @@ function playGame() {
         <h2 style='color:lightseagreen'>Guess the number between 1 and 100.</h2>
         <div id="final">
             <input type="number" id="guess"><button id="check" type="button" >Check</button>
-        <div>
+        </div>
         <h3 id="result">Guess the number.</h3>
         <div id="attempt"></div>
         <div id="reset"></div>
