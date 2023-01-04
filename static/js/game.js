@@ -26,8 +26,13 @@ function playGame() {
     console.log(randomNumber)
     let attempts = 0
 
+    guess.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault()
+        check.click()
+    }});
+    
     check.addEventListener("click", guessNumber)
-
     function guessNumber() {
         attempts++
         if (guess.value < randomNumber) {
