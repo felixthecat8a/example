@@ -1,7 +1,7 @@
 const weatherwidget = document.getElementById("weatherwidget")
 weatherwidget.innerHTML = (`
 <style>
-    #weather{
+    #weatherwidget{
         margin:5px;
         padding:5px;
         border-style:solid;
