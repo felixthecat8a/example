@@ -39,8 +39,11 @@ a:hover {
   height: auto;
   padding: 10px;
 }
+#main select {
+  text-align: center;
+}
 #footer {
-  padding 10px;
+  padding: 10px;
 }
 input[type=number] {
   flex: 1 1 auto;
