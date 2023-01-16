@@ -9,6 +9,13 @@ celciusVal.addEventListener("keypress", function(event) {
     }
 });
 
+fahrenheitVal.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      convert.click()
+    }
+});
+
 convert.addEventListener("click", toFahrenheit)
 function toFahrenheit() {
     if (celciusVal.value) {
