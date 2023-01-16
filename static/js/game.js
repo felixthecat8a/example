@@ -18,7 +18,6 @@ function playGame() {
         </div>
         <h3 id="result">Guess the number.</h3>
         <div id="attempt"></div>
-        <div id="reset"></div>
     </form>
     `)
   
@@ -47,10 +46,10 @@ function playGame() {
             result.innerHTML = "<div style='color:palevioletred'>Your number is too high. Try again.</div>"
             attempt.innerHTML = `<h3>Attempt number ${attempts}.</h3>`
         } else {
+            document.getElementById("final").innerHTML = `<h3>The number is ${guess.value}!</h3>`
             result.innerHTML = "<div style='color:gold'>You guessed it right!</div>"
             attempt.innerHTML = `<h3>It only took you ${attempts} ${attemptsMessage()}.</h3>`
             game.innerText = "Play Again?"
-            document.getElementById("final").innerHTML = `<h3>The number is ${guess.value}!</h3>`
         }
     }
     
