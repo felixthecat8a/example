@@ -39,8 +39,11 @@ a:hover {
   height: auto;
   padding: 10px;
 }
-main select {
+#main select {
   font-size: 1rem;
+}
+#footer {
+  padding 10px;
 }
 input[type=number] {
   flex: 1 1 auto;
