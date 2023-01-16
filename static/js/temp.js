@@ -7,6 +7,8 @@ function toFahrenheit() {
     if (celciusVal.value) {
         var fahrenheitOutput = convertCtoF(celciusVal)
         fahrenheitVal.value = fahrenheitOutput.toFixed(2)
+        let kelvin = convertCtoK(celciusVal)
+        console.log('Temperature in Kelvin: ',kelvin.toFixed(2),'K')
     } else {fahrenheitVal.value = ''}
 }
 
@@ -24,4 +26,8 @@ function convertCtoF(x) {
 
 function convertFtoC(y) {
     return ((parseFloat(y.value) - 32) / 1.8)
+}
+
+function convertCtoK(z) {
+    return  (parseFloat(z.value) + 273.15)
 }
