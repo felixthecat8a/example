@@ -40,10 +40,12 @@ a:hover {
   padding: 10px;
 }
 #main select {
+  font-size: 1rem;
   text-align: center;
 }
 #footer {
   padding: 10px;
+  margin: 10px;
 }
 input[type=number] {
   flex: 1 1 auto;
