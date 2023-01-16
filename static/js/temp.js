@@ -2,6 +2,13 @@ var celciusVal = (document.getElementById("celciusVal"))
 var fahrenheitVal = (document.getElementById('fahrenheitVal'))
 const convert = (document.getElementById("convert"))
 
+celciusVal.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      convert.click()
+    }
+});
+
 convert.addEventListener("click", toFahrenheit)
 function toFahrenheit() {
     if (celciusVal.value) {
