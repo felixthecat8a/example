@@ -48,7 +48,7 @@ function playGame() {
         } else {
             document.getElementById("final").innerHTML = `<h3>The number is ${guess.value}!</h3>`
             result.innerHTML = "<div style='color:gold'>You guessed it right!</div>"
-            attempt.innerHTML = `<h3>It only took you ${attempts} ${attemptsMessage()}.</h3>`
+            attempt.innerHTML = `<h3>It only took ${attempts} ${attemptsMessage()}.</h3>`
             game.innerText = "Play Again?"
         }
     }
