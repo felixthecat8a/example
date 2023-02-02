@@ -51,7 +51,7 @@ function playGame() {
             attempt.innerHTML = `<h3>It only took ${attempts} ${attemptsMessage()}.</h3>`
             game.innerText = "Play Again?"
         }
-        if (attempts >= 10) {
+        if (attempts > 10) {
             reachedLimit()
         }
     }
@@ -66,9 +66,9 @@ function playGame() {
     
     function reachedLimit() {
         document.getElementById("final").innerHTML = ""
-        result.innerHTML = "<div style='color:mediumorchid'>Sorry, you've reached the limit of attempts.</div>"
+        result.innerHTML = "<div style='color:mediumorchid'>Sorry, you've reached the limit.</div>"
         attempt.innerHTML = `<h3>The number was ${randomNumber}.</h3>`
-        reset.innerHTML = "<button id='game' type='button' onclick='playGame()'>Play Again?</button>"
+        game.innerText = "Play Again?"
     }
     
 }
