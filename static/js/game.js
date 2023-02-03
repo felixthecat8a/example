@@ -12,7 +12,7 @@ game.addEventListener("click", playGame)
 function playGame() {
     play.innerHTML = (`
     <form>
-        <h2 style='color:lightseagreen'>Guess the number between 1 and 100 in less than ten attempts.</h2>
+        <h2 style='color:lightseagreen'>Guess the number between 1 and 100 in ten tries or less.</h2>
         <div id="final">
             <input type="number" id="guess"><button id="check" type="button" >Check</button>
         </div>
