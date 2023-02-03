@@ -47,8 +47,8 @@ function playGame() {
             result.innerHTML = "<div style='color:palevioletred'>Your number is too high. Try again.</div>"
             attempt.innerHTML = `<h3>Attempts: ${attempts}</h3>`
         } else if (guess.value != randomNumber && attempts >= 10) {
-			document.getElementById("final").innerHTML = `<h3>The number was ${randomNumber}.</h3>`
-			result.innerHTML = "<div style='color:violet'>Sorry, you've reached the attempt limit.</div>"
+	    document.getElementById("final").innerHTML = `<h3>The number was ${randomNumber}.</h3>`
+	    result.innerHTML = "<div style='color:violet'>Sorry, you've reached the attempt limit.</div>"
             attempt.innerHTML = `<h3>Attempts: ${attempts}</h3>`
         } else {
             document.getElementById("final").innerHTML = `<h3>The number is ${guess.value}!</h3>`
