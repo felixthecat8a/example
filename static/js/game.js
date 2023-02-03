@@ -20,7 +20,9 @@ function playGame() {
         <div id="attempt"></div>
     </form>
     `)
-  
+	
+    game.innerText = 'Play Again?'
+	
     const check = document.getElementById("check")
     const guess = document.getElementById("guess")
     const result = document.getElementById("result")
