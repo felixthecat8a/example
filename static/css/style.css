@@ -80,7 +80,6 @@ button {
 }
 button:hover {
   background-color:lightseagreen;
-  border: 1px solid lightseagreen;
 }
 button:active {
   opacity: 60%;
