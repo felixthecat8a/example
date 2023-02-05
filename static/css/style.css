@@ -79,7 +79,8 @@ button {
   box-shadow: 2px 2px #999;
 }
 button:hover {
-  opacity: 0.9;
+  background-color:lightseagreen;
+  border: 1px solid lightseagreen;
 }
 button:active {
   opacity: 60%;
