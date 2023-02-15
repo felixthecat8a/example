@@ -88,3 +88,10 @@ button:active {
   box-shadow: 1px 1px #666;
 }
 #celciusVal {width: 120px !important;}
+#felix {
+    will-change: filter;
+    transition: filter 300ms;
+}
+#felix:hover {
+    filter: drop-shadow(0 0 1em #2e8b57ee);
+}
