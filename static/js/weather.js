@@ -19,7 +19,7 @@ async function displayWeather() {
         const weatherApp = document.getElementById("weatherApp")
         weatherApp.innerHTML = (`
         <h2 style='color:darkseagreen;' title='${detailedForecast}'>
-            Alton, Tx: ${temperature}&degF, ${shortForecast}<br>Wind: ${windSpeed} ${windDirection}
+            Edinburg, Tx: ${temperature}&degF, ${shortForecast}<br>Wind: ${windSpeed} ${windDirection}
         </h2>
         `)
     } catch (error) {console.log("Failed to get weather data")}
