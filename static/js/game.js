@@ -12,7 +12,7 @@ game.addEventListener("click", playGame)
 function playGame() {
     play.innerHTML = (`
     <form>
-        <h2 style='color:lightseagreen'>Guess the number between 1 and 100 in ten tries or less.</h2>
+        <h2 style='color:lightseagreen'>Guess the number between 1 and 100 in 7 tries or less.</h2>
         <div id="final">
             <input type="number" id="guess"><button id="check" type="button" >Check</button>
         </div>
@@ -42,13 +42,13 @@ function playGame() {
     check.addEventListener("click", guessNumber)
     function guessNumber() {
         attempts++
-        if (guess.value < randomNumber && attempts != 10) {
+        if (guess.value < randomNumber && attempts != 7) {
             result.innerHTML = "<div style='color:cornflowerblue'>Your number is too low. Try again.</div>"
             attempt.innerHTML = `<h3>Attempts: ${attempts}</h3>`
-        } else if (guess.value > randomNumber && attempts != 10) {
+        } else if (guess.value > randomNumber && attempts != 7) {
             result.innerHTML = "<div style='color:palevioletred'>Your number is too high. Try again.</div>"
             attempt.innerHTML = `<h3>Attempts: ${attempts}</h3>`
-        } else if (guess.value != randomNumber && attempts >= 10) {
+        } else if (guess.value != randomNumber && attempts >= 7) {
 	    document.getElementById("final").innerHTML = `<h3>The number was ${randomNumber}.</h3>`
 	    result.innerHTML = "<div style='color:violet'>Sorry, you've reached the attempt limit.</div>"
             attempt.innerHTML = `<h3>Attempts: ${attempts}</h3>`
