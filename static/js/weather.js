@@ -2,7 +2,7 @@
 const office = 'BRO';
 const grid_X = '53';
 const grid_Y = '23';
-const endpoint = `https://api.weather.gov/gridpoints/${office}/${grid_X},${grid_Y}/forecast`;
+const endpoint = `https://api.weather.gov/gridpoints/${office}/${grid_X},${grid_Y}/forecast/hourly`;
 
 async function displayWeather() {
     try {
@@ -14,11 +14,10 @@ async function displayWeather() {
         const windSpeed = data.properties.periods[index].windSpeed;
         const windDirection = data.properties.periods[index].windDirection;
         const shortForecast = data.properties.periods[index].shortForecast;
-        const detailedForecast = data.properties.periods[index].detailedForecast;
     
         const weatherApp = document.getElementById("weatherApp")
         weatherApp.innerHTML = (`
-        <h2 style='color:darkseagreen;' title='${detailedForecast}'>
+        <h2 style='color:darkseagreen;'>
             Edinburg, Tx: ${shortForecast}<br>Temperature: ${temperature}&degF<br>Wind: ${windSpeed} ${windDirection}
         </h2>
         `)
