@@ -49,7 +49,7 @@ a:hover {
   color: lightseagreen;
   font-size: large;
 }
-main fieldset:hover {
+#main fieldset:hover {
     box-shadow: 0 5px 10px #20b2aaee;
 }
 #main img {
