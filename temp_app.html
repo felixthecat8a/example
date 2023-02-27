@@ -9,20 +9,24 @@
 </head>
 <body>
     <div id="header">
-        <h1>Mr. Ochoa's Temperature Conversion App</h1>
+        <h1>Mr. Ochoa's JavaScript Examples</h1>
     </div>
     <div id="navigation">
         <hr><a href="index.html"><u>Home</u></a><hr>
     </div>
     <div id="main">
-        <h2>Temperature in &degC: </h2>
-        <input type="number" id="celciusVal" placeholder="Celcius" /><button id="convert" type="button">Convert</button>
-        <p>Enter the temperature in this box, and click the convert button. The conversion will appear in the other box.</p>
-        <br>
-        <h2>Temperature in &degF: </h2>
-        <input type="number" id="fahrenheitVal" placeholder="Fahrenheit" />
-        <p>Enter the temperature in this box, and the conversion will appear in the other box automatically.</p>
-        <br>
+        <form>
+            <fieldset>
+                <legend><h2>Temperature Conversion App</h2></legend>
+                <label for="celciusVal">Temperature in &degC: </label>
+                <input type="number" id="celciusVal" placeholder="Celcius" /><button id="convert" type="button">Convert</button>
+                <p>Enter the temperature in this box, and click the convert button. The conversion will appear in the other box.</p>
+                <br>
+                <label fahrenheitVal>Temperature in &degF: </label>
+                <input type="number" id="fahrenheitVal" placeholder="Fahrenheit" />
+                <p>Enter the temperature in this box, and the conversion will appear in the other box automatically.</p>
+            </fieldset>
+        </form>
         <script src="./static/js/temp.js"></script>
     </div>
     <div id="weatherApp"></div><script src="./static/js/weather.js"></script>
