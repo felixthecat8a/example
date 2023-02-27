@@ -6,10 +6,6 @@ body {
   text-align: center;
   margin: 0;
 }
-a {
-  will-change: filter;
-  transition: filter 300ms;
-}
 a:link {
   color:azure;
   text-decoration: none;
@@ -22,7 +18,6 @@ a:active {
 }
 a:hover {
   color:mediumseagreen;
-  filter: drop-shadow(0 0 1em #66cc33ee);
 }
 #header h1 {
   color:mediumseagreen;
