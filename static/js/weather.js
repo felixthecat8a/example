@@ -15,11 +15,17 @@ async function displayWeather() {
         const windDirection = data.properties.periods[index].windDirection;
         const shortForecast = data.properties.periods[index].shortForecast;
     
+        const weatherLocation = "Edinburg, TX"
+        const temperatureDisplay = `Temperature: ${temperature}&degF`;
+        const windDisplay = `Wind: ${windSpeed} ${windDirection}`;
+
         const weatherApp = document.getElementById("weatherApp")
         weatherApp.innerHTML = (`
-        <h2 style='color:darkseagreen;'>
-            Edinburg, Tx: ${shortForecast}<br>Temperature: ${temperature}&degF<br>Wind: ${windSpeed} ${windDirection}
-        </h2>
+        <div>
+            <h3 style='color:darkseagreen;'>${weatherLocation}: ${shortForecast}</h3>
+            <h4>${temperatureDisplay}</h4>
+            <h4>${windDisplay}</h4>
+        </div>
         `)
     } catch (error) {console.log("Failed to get weather data")}
 }
