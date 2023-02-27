@@ -76,7 +76,7 @@ input[type=number] {
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
-  width: 200px;
+  width: 190px;
   padding: 5px;
 }
 input:focus {
@@ -107,7 +107,7 @@ button:active {
   transform: translateX(1px);
   box-shadow: 1px 1px #666;
 }
-#celciusVal {width: 120px !important;}
+#celciusVal {width: 110px !important;}
 
 #weatherApp {
     border: solid thin darkseagreen;
