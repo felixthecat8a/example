@@ -46,8 +46,11 @@ a:hover {
   padding: none;
 }
 #main label {
-  color: teal;
+  color: lightseagreen;
   font-size: large;
+}
+main fieldset:hover {
+    box-shadow: 0 5px 10px #20b2aaee;
 }
 #main img {
   display:block;
