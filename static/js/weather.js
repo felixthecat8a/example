@@ -21,8 +21,10 @@ async function displayWeather() {
 
         const weatherApp = document.getElementById("weatherApp")
         weatherApp.innerHTML = (`
-        <div>
-            <h3 style='color:darkseagreen;'>${weatherLocation}: ${shortForecast}</h3>
+        <div id='weatherTitle'>
+            <h3>${weatherLocation}:<br> ${shortForecast}</h3>
+        </div>
+        <div id='weatherContent'>
             <h4>${temperatureDisplay}</h4>
             <h4>${windDisplay}</h4>
         </div>
