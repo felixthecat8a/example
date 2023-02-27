@@ -6,6 +6,10 @@ body {
   text-align: center;
   margin: 0;
 }
+h1, h2, h3, h4, h5, h6 {
+    padding: 5px;
+    margin: 5px;
+}
 a:link {
   color:azure;
   text-decoration: none;
