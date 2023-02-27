@@ -47,7 +47,7 @@ a:hover {
 }
 #main label {
   color: lightseagreen;
-  font-size: large;
+  font-size: larger;
 }
 #main fieldset:hover {
     box-shadow: 0 5px 10px #20b2aaee;
