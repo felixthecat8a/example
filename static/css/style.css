@@ -88,10 +88,26 @@ button:active {
   box-shadow: 1px 1px #666;
 }
 #celciusVal {width: 120px !important;}
+
 #weatherApp {
     border: solid thin darkseagreen;
     display:block;
     width: fit-content;
     margin:auto;
-    padding: 0px 50px;
+    overflow: hidden;
 }
+#weatherApp:hover {
+    outline: solid thin darkseagreen;
+    box-shadow:0 0 1em #8fbc8fee;
+}
+#weatherTitle {
+    color: mediumseagreen;
+    width: fit-content;
+    float:left;
+}
+#weatherContent {
+    background-color: seagreen;
+    width: fit-content;
+    float:right;
+}
+
