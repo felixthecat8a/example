@@ -36,6 +36,19 @@ a:hover {
 #main h2 {
   color: lightseagreen;
 }
+#main form {
+  width: fit-content;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: none;
+  margin-bottom: 10px;
+  padding: none;
+}
+#main label {
+  color: teal;
+  font-size: large;
+}
 #main img {
   display:block;
   margin-left:auto;
