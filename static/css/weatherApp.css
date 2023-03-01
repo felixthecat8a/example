@@ -3,7 +3,6 @@
     display:block;
     box-sizing: border-box;
     width: fit-content;
-    height: 90px;
     margin:auto;
     padding: none;
     overflow: hidden;
@@ -16,14 +15,14 @@
     text-align: center;
     box-sizing: border-box;
     width: fit-content;
-    height: 90px;
+    height: 100px;
     float:left;
 }
 #weatherContent {
     background-color: seagreen;
     box-sizing: border-box;
     width: fit-content;
-    height: 90px;
+    height: 100px;
     float:right;
 }
 #nwsTitle {
