@@ -9,7 +9,6 @@
     overflow: hidden;
 }
 #weatherApp:hover {
-    outline: solid thin darkseagreen;
     box-shadow:0 10px 1em #3cb371aa;
 }
 #weatherTitle {
