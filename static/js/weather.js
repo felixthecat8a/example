@@ -29,7 +29,7 @@ async function displayWeather() {
 
     } catch (error) {console.log("Failed to get weather data")}
 }
-displayWeather()*/
+displayWeather()
 
 function getLocation(locationData) {
     const city = locationData.properties.relativeLocation.properties.city;
