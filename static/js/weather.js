@@ -2,24 +2,25 @@
 navigator.geolocation.getCurrentPosition(displayWeather)
 
 async function displayWeather(position) {
+    //const pointsURL = 'https://api.weather.gov/points/26.3085,-98.1031'
     const point0 = position.coords.longitude;
     const point1 = position.coords.latitude;
-
-//async function displayWeather() {
-    //const pointsURL = 'https://api.weather.gov/points/26.3085,-98.1031'
-    //const point0 = '-98.1031';
-    //const point1 = '26.3085';
-
+    const pointsURL = `https://api.weather.gov/points/${point1},${point0}`;
     try {
-        const pointsURL = `https://api.weather.gov/points/${point1},${point0}`;
-
         const locationData = await (await fetch(`${pointsURL}`)).json();
         const endpoint = locationData.properties.forecast;
         const location = getLocation(locationData);
-        console.log(`${location}: ${endpoint}`)
-
-        //const endpoint = 'https://api.weather.gov/gridpoints/BRO/54,24/forecast'
-        //const location = "JEHS"
+        console.log(`${location}: ${endpoint}`);
+        const response = await fetch(`${endpoint}`);
+        const data = await response.json();
+        createWeatherDisplay(data,location);
+    } catch (error) {console.log("Failed to get weather data")}
+}
+/*
+async function displayWeather() {
+    try {
+        const endpoint = 'https://api.weather.gov/gridpoints/BRO/54,24/forecast'
+        const location = "JEHS"
 
         const response = await fetch(`${endpoint}`);
         const data = await response.json();
@@ -28,7 +29,7 @@ async function displayWeather(position) {
 
     } catch (error) {console.log("Failed to get weather data")}
 }
-displayWeather()
+displayWeather()*/
 
 function getLocation(locationData) {
     const city = locationData.properties.relativeLocation.properties.city;
