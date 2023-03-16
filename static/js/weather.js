@@ -1,4 +1,4 @@
-
+/*
 navigator.geolocation.getCurrentPosition(displayWeather)
 
 async function displayWeather(position) {
@@ -16,7 +16,7 @@ async function displayWeather(position) {
         createWeatherDisplay(data,location);
     } catch (error) {console.log("Failed to get weather data")}
 }
-/*
+*/
 async function displayWeather() {
     try {
         const endpoint = 'https://api.weather.gov/gridpoints/BRO/54,24/forecast'
