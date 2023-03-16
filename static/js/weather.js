@@ -30,14 +30,21 @@ function getForecastData(data,index) {
     const windSpeed = data.properties.periods[index].windSpeed;
     const windDirection = data.properties.periods[index].windDirection;
     const shortForecast = data.properties.periods[index].shortForecast;
-    const rain = data.properties.periods[index].probabilityOfPrecipitation.value;
+    const rain = () => {
+        let chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value;
+        if (chanceOfRain == null) {
+            return "0"
+        } else {
+            return chanceOfRain
+        }
+    }
     const humidity = data.properties.periods[index].relativeHumidity.value;
 
     const location = "Edinburg, TX"
     const temperatureDisplay = `Temperature: ${temperature}&degF`;
     const windDisplay = `Wind: ${windSpeed} ${windDirection}`;
     const humidityDisplay = `Humidity: ${humidity}%`
-    const rainDisplay = `Chance of Rain: ${rain}%`
+    const rainDisplay = `Chance of Rain: ${rain()}%`
 
     const forecastData = 
     `
