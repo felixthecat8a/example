@@ -1,32 +1,58 @@
 #weatherApp {
     border: solid thin darkseagreen;
-    display:block;
-    box-sizing: border-box;
-    width: fit-content;
-    margin:auto;
-    padding: none;
+    display: block;
+    width: 330px;
+    height: 110px;
+    margin: auto;
     overflow: hidden;
 }
 #weatherApp:hover {
-    box-shadow:0 10px 1em #3cb371aa;
+    outline: solid thin darkseagreen;
+    box-shadow: 0 5px 10px rgba(51, 153, 51, 0.9333333333);
 }
+
 #weatherTitle {
+    background-color: #333;
     color: mediumseagreen;
     text-align: center;
-    box-sizing: border-box;
-    width: fit-content;
-    height: 100px;
-    float:left;
+    float: left;
+    width: 40%;
+    height: 100%;
+    word-break: keep-all;
 }
+
 #weatherContent {
     background-color: seagreen;
-    box-sizing: border-box;
-    width: fit-content;
-    height: 100px;
-    float:right;
+    color: honeydew;
+    text-align: center;
+    float: right;
+    width: 60%;
+    height: 100%;
+    display: block;
 }
+
 #nwsTitle {
-    color:darkseagreen;
-    padding: none;
-    margin: none;
+    color: darkseagreen;
+}
+
+#forecast {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 2px;
+    max-width: 330px;
+    height: fit-content;
+}
+#forecast h5, #forecast h6 {
+    padding: 1px;
+    margin: 0;
+}
+
+#dayForecast {
+    flex: 1;
+    border: solid thin darkseagreen;
+}
+#dayForecast:hover {
+    outline: solid thin darkseagreen;
+    box-shadow: 0 5px 10px rgba(51, 153, 51, 0.9333333333);
 }
