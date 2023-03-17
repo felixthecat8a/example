@@ -100,13 +100,15 @@ function createForecast(data) {
         const temperatureHigh = data.properties.periods[index].temperature;
         const temperatureLow = data.properties.periods[index+1].temperature;
         const detailedForecast = data.properties.periods[index].detailedForecast;
+        const icon = data.properties.periods[index].icon;
 
         const forecastDisplay = `
-        <h5 style="color:lightgreen" title="${detailedForecast}">${name.substring(0,3)}</h5>
+        <h5 style="color:lightgreen">${name.substring(0,3)}</h5>
         <h6>
             <span style="color:lightblue">${temperatureHigh}&degF</span><br>
             <span style="color:lightcoral">${temperatureLow}&degF</span><br>
         </h6>
+        <img src="${icon}" alt="icon" height="50px" width="auto" title="${detailedForecast}">
         `;
 
         const dayTime = data.properties.periods[index].isDaytime;
