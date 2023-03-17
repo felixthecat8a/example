@@ -108,7 +108,7 @@ function createForecast(data) {
             <span style="color:lightblue">${temperatureHigh}&degF</span><br>
             <span style="color:lightcoral">${temperatureLow}&degF</span><br>
         </h6>
-        <img src="${icon}" alt="icon" height="60px" width="auto" title="${detailedForecast}" style="padding:0;">
+        <img src="${icon}" alt="icon" height="auto" width="90%" title="${detailedForecast}">
         `;
 
         const dayTime = data.properties.periods[index].isDaytime;
