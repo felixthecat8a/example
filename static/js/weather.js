@@ -101,12 +101,21 @@ function createForecast(data) {
         const temperatureLow = data.properties.periods[index+1].temperature;
         const detailedForecast = data.properties.periods[index].detailedForecast;
         const icon = data.properties.periods[index].icon;
-
+        const rain = () => {
+            let chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value;
+            if (chanceOfRain == null) {
+                return "0"
+            } else {
+                return chanceOfRain
+            }
+        }
+        
         const forecastDisplay = `
         <h5 style="color:lightgreen">${name.substring(0,3)}</h5>
         <h6>
             <span style="color:lightblue">${temperatureHigh}&degF</span><br>
             <span style="color:lightcoral">${temperatureLow}&degF</span><br>
+            <span title="Chance of Rain">${rain()}%</span>
         </h6>
         <img src="${icon}" alt="icon" height="auto" width="90%" title="${detailedForecast}">
         `;
