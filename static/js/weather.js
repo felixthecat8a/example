@@ -63,7 +63,7 @@ function getWeatherData(data,index) {
     const weatherData = 
     `
     <div id='weatherTitle'>
-        <h3>${name}</h3>
+        <h4>${name}</h4>
         <img src="${icon}" alt="icon" height="70px" width="auto" title="${shortForecast}" style="border: solid thin darkseagreen;margin:auto;padding:0;">
     </div>
     <div id='weatherContent'>
