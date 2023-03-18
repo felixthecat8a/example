@@ -1,21 +1,29 @@
-/*
-navigator.geolocation.getCurrentPosition(displayWeather)
+displayWeather()
 
-async function displayWeather(position) {
-    //const pointsURL = 'https://api.weather.gov/points/26.3085,-98.1031'
-    const point0 = position.coords.longitude;
-    const point1 = position.coords.latitude;
-    const pointsURL = `https://api.weather.gov/points/${point1},${point0}`;
+let selectLocation = document.getElementById('selectLocation')
+selectLocation.addEventListener("change", function(event) {
+    const weatherLocation = event.target.value;
+    switch (weatherLocation) {
+        case 'geolocation':
+            navigator.geolocation.getCurrentPosition(displayGeoWeather)
+            break;
+        default:
+            displayWeather()
+            break;
+    }
+})
+/****************************************************************************************************/
+async function displayGeoWeather(position) {
+    const geoLat = position.coords.latitude;
+    const geoLong = position.coords.longitude;
+    const pointsURL = `https://api.weather.gov/points/${geoLat},${geoLong}`;
     try {
         const locationData = await (await fetch(`${pointsURL}`)).json();
         const endpoint = locationData.properties.forecast;
         const location = getLocation(locationData);
         console.log(`${location}: ${endpoint}`);
 
-        const response = await fetch(`${endpoint}`);
-        const data = await response.json();
-
-        createWeatherDisplay(data,location);
+        createWeatherDisplay(endpoint,location);
     } catch (error) {console.log("Failed to get weather data")}
 }
 
@@ -25,27 +33,17 @@ function getLocation(locationData) {
     const location = `${city}, ${state}`;
     return location
 }
-*/
-async function displayWeather() {
+/****************************************************************************************************/
+function displayWeather() {
     try {
         const endpoint = 'https://api.weather.gov/gridpoints/BRO/54,24/forecast'
         const location = "JEHS"
         console.log(`${location}: ${endpoint}`)
 
-        const response = await fetch(`${endpoint}`)
-        const data = await response.json()
-    
-        const weatherData = getWeatherData(data,location)
-        console.log(weatherData)
-    
-        const weatherApp = document.getElementById("weatherApp")
-        weatherApp.innerHTML = (`${weatherData}`)
-
-        createForecast(data)
+        createWeatherDisplay(endpoint,location);
 
     } catch (error) {console.log("Failed to get weather data")}
 }
-displayWeather()
 
 function getWeatherData(data,location) {
     const index = 0
@@ -88,6 +86,17 @@ function getWeatherData(data,location) {
     return weatherData
 }
 
+async function createWeatherDisplay(endpoint,location) {
+    const response = await fetch(`${endpoint}`)
+    const data = await response.json()
+
+    const weatherData = getWeatherData(data,location)
+
+    const weatherApp = document.getElementById("weatherApp")
+    weatherApp.innerHTML = (`${weatherData}`)
+
+    createForecast(data)
+}
 /****************************************************************************************************/
 function createForecast(data) {
     const forecastDIV = document.getElementById("forecastDIV");
@@ -114,7 +123,7 @@ function createForecast(data) {
             <span style="color:lightcoral">${temperatureLow}&degF</span><br>
             <span title="Chance of Rain">${rain()}%</span>
         </h6>
-        <img src="${icon}" alt="icon" height="auto" width="90%" title="${detailedForecast}">
+        <img src="${icon}" alt="icon"  width="90%" height="auto" title="${detailedForecast}">
         `;
 
         const dayTime = data.properties.periods[index].isDaytime;
