@@ -11,25 +11,13 @@ async function displayWeather(position) {
         const endpoint = locationData.properties.forecast;
         const location = getLocation(locationData);
         console.log(`${location}: ${endpoint}`);
-        const response = await fetch(`${endpoint}`);
-        const data = await response.json();
-        createWeatherDisplay(data,location);
-    } catch (error) {console.log("Failed to get weather data")}
-}
-*/
-async function displayWeather() {
-    try {
-        const endpoint = 'https://api.weather.gov/gridpoints/BRO/54,24/forecast'
-        const location = "JEHS"
 
         const response = await fetch(`${endpoint}`);
         const data = await response.json();
 
         createWeatherDisplay(data,location);
-
     } catch (error) {console.log("Failed to get weather data")}
 }
-displayWeather()
 
 function getLocation(locationData) {
     const city = locationData.properties.relativeLocation.properties.city;
@@ -37,17 +25,40 @@ function getLocation(locationData) {
     const location = `${city}, ${state}`;
     return location
 }
+*/
+async function displayWeather() {
+    try {
+        const endpoint = 'https://api.weather.gov/gridpoints/BRO/54,24/forecast'
+        const location = "JEHS"
+        console.log(`${location}: ${endpoint}`)
 
-function getWeatherData(data,index) {
+        const response = await fetch(`${endpoint}`)
+        const data = await response.json()
+    
+        const weatherData = getWeatherData(data,location)
+        console.log(weatherData)
+    
+        const weatherApp = document.getElementById("weatherApp")
+        weatherApp.innerHTML = (`${weatherData}`)
+
+        createForecast(data)
+
+    } catch (error) {console.log("Failed to get weather data")}
+}
+displayWeather()
+
+function getWeatherData(data,location) {
+    const index = 0
     const name = data.properties.periods[index].name;
-    const temperature = data.properties.periods[index].temperature;
-    const windSpeed = data.properties.periods[index].windSpeed;
-    const windDirection = data.properties.periods[index].windDirection;
-    const shortForecast = data.properties.periods[index].shortForecast;
-    const humidity = data.properties.periods[index].relativeHumidity.value;
-    const icon = data.properties.periods[index].icon;
+    const temperature = data.properties.periods[index].temperature
+    const windSpeed = data.properties.periods[index].windSpeed
+    const windDirection = data.properties.periods[index].windDirection
+    const shortForecast = data.properties.periods[index].shortForecast
+    const detailedForecast = data.properties.periods[index].detailedForecast
+    const humidity = data.properties.periods[index].relativeHumidity.value
+    const icon = data.properties.periods[index].icon
     const rain = () => {
-        let chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value;
+        let chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value
         if (chanceOfRain == null) {
             return "0"
         } else {
@@ -55,16 +66,16 @@ function getWeatherData(data,index) {
         }
     }
 
-    const temperatureDisplay = `Temperature: ${temperature}&degF`;
-    const windDisplay = `Wind: ${windSpeed} ${windDirection}`;
+    const temperatureDisplay = `Temperature: ${temperature}&degF`
+    const windDisplay = `Wind: ${windSpeed} ${windDirection}`
     const humidityDisplay = `Humidity: ${humidity}%`
-    const rainDisplay = `Chance of Rain: ${rain()}%`;
+    const rainDisplay = `Chance of Rain: ${rain()}%`
 
     const weatherData = 
-    `
+    (`
     <div id="weatherDiv">
         <div id='weatherTitle'>
-            <h4>${location}:<br>${name}</h4>
+            <h4>${location}<br>${name}</h4>
             <img src="${icon}" alt="icon" height="50px" width="auto" title="${detailedForecast}">
         </div>
         <div id='weatherContent'>
@@ -73,25 +84,13 @@ function getWeatherData(data,index) {
         </div>
     </div>
     <div id='forecastDIV'></div>
-    `
+    `)
     return weatherData
-}
-
-function createWeatherDisplay(data,location) {
-    const index = 0;
-    const weatherData = getWeatherData(data,index);
-
-    const weatherApp = document.getElementById("weatherApp");
-    weatherApp.innerHTML = (`${weatherData}`);
-
-    const forecast = createForecast(data);
-    weatherApp.insertAdjacentElement('afterend', forecast);
 }
 
 /****************************************************************************************************/
 function createForecast(data) {
-    const forecast = document.createElement('div');
-    forecast.setAttribute('id',"forecast");
+    const forecastDIV = document.getElementById("forecastDIV");
 
     for (let index = 1; index < 13; index++) {
         const name = data.properties.periods[index].name;
@@ -125,8 +124,7 @@ function createForecast(data) {
             const forecastDays = document.createElement('div');
             forecastDays.setAttribute('id',"dayForecast");
             forecastDays.innerHTML = forecastDisplay;
-            forecast.appendChild(forecastDays);
+            forecastDIV.appendChild(forecastDays);
         }
     }
-    return forecast;
 }
