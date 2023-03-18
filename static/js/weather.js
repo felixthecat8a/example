@@ -2,14 +2,27 @@ displayWeather()
 
 let selectLocation = document.getElementById('selectLocation')
 selectLocation.addEventListener("change", function(event) {
+    let status = document.getElementById('status')
     const weatherLocation = event.target.value;
     switch (weatherLocation) {
         case 'geolocation':
-            navigator.geolocation.getCurrentPosition(displayGeoWeather)
-            break;
+            success = (position) => {
+                status.innerText = "";
+                displayGeoWeather(position)
+              }
+            error = () => {
+                status.innerText = "Unable to retrieve your location";
+            }
+            if (!navigator.geolocation) {
+                status.innerText = "Geolocation is not supported by your browser";
+            } else {
+                status.innerText = "Locating…";
+                navigator.geolocation.getCurrentPosition(success, error);
+            }
+            break
         default:
             displayWeather()
-            break;
+            break
     }
 })
 /****************************************************************************************************/
