@@ -1,4 +1,4 @@
-#weatherApp {
+#weatherDiv {
     border: solid thin darkseagreen;
     display: block;
     width: 330px;
@@ -6,7 +6,7 @@
     margin: auto;
     overflow: hidden;
 }
-#weatherApp:hover {
+#weatherDiv:hover {
     outline: solid thin darkseagreen;
     box-shadow: 0 5px 10px rgba(51, 153, 51, 0.9333333333);
 }
@@ -20,7 +20,10 @@
     height: 100%;
     word-break: keep-all;
 }
-
+#weatherTitle img {
+    border: solid thin darkseagreen;
+    margin: auto;
+}
 #weatherContent {
     background-color: seagreen;
     color: honeydew;
