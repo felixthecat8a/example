@@ -2,7 +2,7 @@
     border: solid thin darkseagreen;
     display: block;
     width: 330px;
-    height: 110px;
+    height: fit-content;
     margin: auto;
     overflow: hidden;
 }
@@ -23,6 +23,7 @@
 #weatherTitle img {
     border: solid thin darkseagreen;
     margin: auto;
+    padding: 0;
 }
 #weatherContent {
     background-color: seagreen;
@@ -38,17 +39,13 @@
     color: darkseagreen;
 }
 
-#forecast {
+#forecastDIV {
     display: flex;
     justify-content: space-between;
     margin: auto;
     padding: 2px;
     max-width: 330px;
     height: fit-content;
-}
-#forecast h5, #forecast h6 {
-    padding: 1px;
-    margin: 0;
 }
 
 #dayForecast {
