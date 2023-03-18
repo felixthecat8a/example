@@ -62,13 +62,17 @@ function getWeatherData(data,index) {
 
     const weatherData = 
     `
-    <div id='weatherTitle'>
-        <h4>${name}</h4>
-        <img src="${icon}" alt="icon" height="50px" width="auto" title="${shortForecast}" style="border: solid thin darkseagreen;margin:auto;padding:0;">
+    <div id="weatherDiv">
+        <div id='weatherTitle'>
+            <h4>${name}</h4>
+            <img src="${icon}" alt="icon" height="70px" width="auto" title="${detailedForecast}">
+        </div>
+        <div id='weatherContent'>
+            <h4>${temperatureDisplay}<br>${windDisplay}<br>${humidityDisplay}<br>${rainDisplay}</h4>
+            <h5>${shortForecast}</h5>
+        </div>
     </div>
-    <div id='weatherContent'>
-        <h4>${temperatureDisplay}<br>${windDisplay}<br>${humidityDisplay}<br>${rainDisplay}</h4>
-    </div>
+    <div id='forecastDIV'></div>
     `
     return weatherData
 }
@@ -79,12 +83,6 @@ function createWeatherDisplay(data,location) {
 
     const weatherApp = document.getElementById("weatherApp");
     weatherApp.innerHTML = (`${weatherData}`);
-
-    const nwsTitle = document.createElement('h3');
-    nwsTitle.setAttribute('id','nwsTitle');
-    const nwsText = document.createTextNode(`National Weather Service API: ${location}`);
-    nwsTitle.appendChild(nwsText);
-    weatherApp.insertAdjacentElement('beforebegin',nwsTitle);
 
     const forecast = createForecast(data);
     weatherApp.insertAdjacentElement('afterend', forecast);
