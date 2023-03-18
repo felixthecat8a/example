@@ -52,6 +52,10 @@
     flex: 1;
     border: solid thin darkseagreen;
 }
+#dayForecast h5, #dayForecast h6 {
+    padding: 2px 0;
+    margin: 2px 0;
+}
 #dayForecast img {
     width: 90%;
     height:auto;
