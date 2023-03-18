@@ -66,7 +66,6 @@ function getWeatherData(data,location) {
     const windDirection = data.properties.periods[index].windDirection
     const shortForecast = data.properties.periods[index].shortForecast
     const detailedForecast = data.properties.periods[index].detailedForecast
-    const humidity = data.properties.periods[index].relativeHumidity.value
     const icon = data.properties.periods[index].icon
     const rain = () => {
         let chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value
@@ -79,18 +78,18 @@ function getWeatherData(data,location) {
 
     const temperatureDisplay = `Temperature: ${temperature}&degF`
     const windDisplay = `Wind: ${windSpeed} ${windDirection}`
-    const humidityDisplay = `Humidity: ${humidity}%`
     const rainDisplay = `Chance of Rain: ${rain()}%`
 
     const weatherData = 
     (`
+    <h3 id='nwsTitle'>${location}</h3>
     <div id="weatherDiv">
         <div id='weatherTitle'>
-            <h4>${location}<br>${name}</h4>
+            <h4>${name}</h4>
             <img src="${icon}" alt="icon" height="50px" width="auto" title="${detailedForecast}">
         </div>
         <div id='weatherContent'>
-            <h4>${temperatureDisplay}<br>${windDisplay}<br>${humidityDisplay}<br>${rainDisplay}</h4>
+            <h4>${temperatureDisplay}<br>${windDisplay}<br>${rainDisplay}</h4>
             <h5>${shortForecast}</h5>
         </div>
     </div>
