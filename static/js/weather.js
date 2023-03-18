@@ -64,8 +64,8 @@ function getWeatherData(data,index) {
     `
     <div id="weatherDiv">
         <div id='weatherTitle'>
-            <h4>${name}</h4>
-            <img src="${icon}" alt="icon" height="70px" width="auto" title="${detailedForecast}">
+            <h4>${location}:<br>${name}</h4>
+            <img src="${icon}" alt="icon" height="50px" width="auto" title="${detailedForecast}">
         </div>
         <div id='weatherContent'>
             <h4>${temperatureDisplay}<br>${windDisplay}<br>${humidityDisplay}<br>${rainDisplay}</h4>
