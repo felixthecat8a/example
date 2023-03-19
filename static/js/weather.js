@@ -163,7 +163,7 @@ async function displayCat() {
         const data = await response.json()
         const catImage = data[0].url;
         const weatherData = `<img src="${catImage}" alt="cat" height="auto" width="350">`;
-        const weatherDisplay = document.getElementById("weatherDisplay");
+        const weatherDisplay = document.getElementById("weatherApp");
         weatherDisplay.innerHTML = (`${weatherData}`);
     } catch (error) {console.log("There was a problem fetching the breed list.")}
 }
