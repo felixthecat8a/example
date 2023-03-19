@@ -20,6 +20,9 @@ selectLocation.addEventListener("change", function(event) {
                 navigator.geolocation.getCurrentPosition(success, error);
             }
             break
+        case 'showCat':
+            displayCat();
+            break;
         default:
             displayWeather()
             break
@@ -150,4 +153,17 @@ function createForecast(data) {
             forecastDIV.appendChild(forecastDays);
         }
     }
+}
+/****************************************************************************************************/
+async function displayCat() {
+    const api_key = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
+    const url = `https://api.thecatapi.com/v1/images/search?limit=9&${api_key}`;
+    try {
+        const response = await (await fetch(url))
+        const data = await response.json()
+        const catImage = data[0].url;
+        const weatherData = `<img src="${catImage}" alt="cat" height="auto" width="350">`;
+        const weatherDisplay = <HTMLDivElement>document.getElementById("weatherDisplay");
+        weatherDisplay.innerHTML = (`${weatherData}`);
+    } catch (error) {console.log("There was a problem fetching the breed list.")}
 }
