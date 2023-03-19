@@ -156,10 +156,10 @@ function createForecast(data) {
 }
 /****************************************************************************************************/
 async function displayCat() {
-    const api_key = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
-    const url = `https://api.thecatapi.com/v1/images/search?limit=9&${api_key}`;
+    const kitty = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
+    const cat = `https://api.thecatapi.com/v1/images/search?limit=9&${kitty}`;
     try {
-        const response = await (await fetch(url))
+        const response = await (await fetch(cat))
         const data = await response.json()
         const catImage = data[0].url;
         const weatherData = `<img src="${catImage}" alt="cat" height="auto" width="350">`;
