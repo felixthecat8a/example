@@ -1,0 +1,67 @@
+#weatherDiv {
+    border: solid thin darkseagreen;
+    display: block;
+    width: 330px;
+    height: fit-content;
+    margin: auto;
+    overflow: hidden;
+}
+#weatherDiv:hover {
+    outline: solid thin darkseagreen;
+    box-shadow: 0 5px 10px rgba(51, 153, 51, 0.9333333333);
+}
+
+#weatherTitle {
+    background-color: #333;
+    color: mediumseagreen;
+    text-align: center;
+    float: left;
+    width: 40%;
+    height: 100%;
+    word-break: keep-all;
+}
+#weatherTitle img {
+    border: solid thin darkseagreen;
+    margin: auto;
+    padding: 0;
+}
+#weatherContent {
+    background-color: seagreen;
+    color: honeydew;
+    text-align: center;
+    float: right;
+    width: 60%;
+    height: 100%;
+    display: block;
+}
+
+#nwsTitle {
+    color: darkseagreen;
+}
+
+#forecastDIV {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 2px;
+    max-width: 330px;
+    height: fit-content;
+}
+
+#dayForecast {
+    flex: 1;
+    border: solid thin darkseagreen;
+}
+#dayForecast h5, #dayForecast h6 {
+    padding: 2px 0;
+    margin: 2px 0;
+}
+#dayForecast img {
+    width: 90%;
+    height:auto;
+    padding: 0;
+}
+#dayForecast:hover {
+    outline: solid thin darkseagreen;
+    box-shadow: 0 5px 10px rgba(51, 153, 51, 0.9333333333);
+}

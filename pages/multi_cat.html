@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Multiple Cats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="font-sans h-full text-gray-50 bg-zinc-800 text-center">
+    <div id="header"><h1 class="text-3xl text-teal-500 font-semibold p-5 m-1">Multiple Cats API <br>with Alpine.js and TailwindCSS</h1></div>
+    <div id="navigation">
+        <hr><ul class="text-base list-none p-1 m-1 overflow-hidden">
+            <li class="px-2.5 inline-block visited:text-gray-50 hover:text-teal-500">
+                <a href="../index.html"><u>Home</u></a>
+            </li>
+        </ul><hr>
+    </div>
+    <div id="main">
+        <div class="grid grid-cols-3 gap-2" x-data="{images:[]}" 
+        x-init="images = await (await fetch(`https://api.thecatapi.com/v1/images/search?limit=9&api_key=live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh`)).json()">
+            <template x-for="image in images">
+                <img class="w-full h-auto" x-bind:src="image.url">
+            </template>
+        </div>
+    </div>
+    <div id="footer"  class="text-xl font-bold m-5 p-5">
+        <h3>by <a href="https://github.com/felixthecat8a/JS-examples" target="_blank"><span style="color:seagreen">Felix</span></a></h3>
+        <h3>API from <a href="https://thecatapi.com/" target="_blank" class='visited:text-gray-50 hover:text-teal-500'>The Cat API</a></h3>
+    </div>
+</body>
+</html>

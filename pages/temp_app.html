@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/weatherApp.css">
+</head>
+<body>
+    <div id="header">
+        <h1>Mr. Ochoa's JavaScript Examples</h1>
+    </div>
+    <div id="navigation">
+        <hr><a href="../index.html"><u>Home</u></a><hr>
+    </div>
+    <div id="main">
+        <form>
+            <fieldset>
+                <legend><h2>Temperature Conversion App</h2></legend>
+                <label for="celsiusVal">&degCelsius: </label>
+                <input type="number" id="celsiusVal" placeholder="Celsius" /><button id="convert" type="button">Convert</button>
+                <p>Enter the temperature in this box, and click the convert button. The conversion will appear in the other box.</p>
+                <br>
+                <label fahrenheitVal>&degFahrenheit: </label>
+                <input type="number" id="fahrenheitVal" placeholder="Fahrenheit" />
+                <p>Enter the temperature in this box, and the conversion will appear in the other box automatically.</p>
+            </fieldset>
+        </form>
+        <script src="../js/temp.js"></script>
+        <br>
+        <section>
+            <h3 id='nwsTitle'>National Weather Service API</h3>
+            <label style="color: darkseagreen;">
+                <b>Select Location: </b>
+                <select id="selectLocation">
+                    <option value="">JEHS</option>
+                    <option value="geolocation">Use GeoLocation</option>
+                    <option value="showCat">Show a Cat</option>
+                </select>
+            </label>
+            <div id="weatherApp"></div>
+            <div id="status"></div>
+            <script src="../js/weather.js"></script>
+        </section>
+    </div>
+    <div id="footer">
+        <h3>by <a href="https://github.com/felixthecat8a/JS-examples" target="_blank"><span style="color:seagreen">felixthecat8a</span></a>&#128008;</h3>
+    </div>
+</body>
+</html>
