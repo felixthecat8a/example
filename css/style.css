@@ -111,6 +111,7 @@ input[type=number]:focus {
 }
 
 select {
+  font-family: inherit;
   border: none;
   outline: none;
   padding: 3px;
@@ -140,9 +141,6 @@ button:active {
 abbr[title] {
   text-decoration: none !important;
 }
-
-/* Temperature Converter & Weather App Styles*/
-#celciusVal {width: 110px !important;}
 
 /* Cat Image View Styles*/
 #breed_image {

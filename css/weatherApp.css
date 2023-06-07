@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 450px;
-    height: 145px;
+    height: 150px;
     margin: auto;
 }
 #weatherDiv img {
@@ -61,10 +61,6 @@
     box-shadow: 0 5px 10px rgba(60, 179, 113, 0.9333333333);
 }
 
-#dayForecast h5, #dayForecast h6 {
-    padding: 2px 0;
-    margin: 2px 0;
-}
 #dayForecast img {
     width: 90%;
     height:auto;
