@@ -83,20 +83,21 @@ function getWeatherData(data,location) {
     const temperatureDisplay = `Temperature: ${temperature}&degF`
     const windDisplay = `Wind: ${windSpeed} ${windDirection}`
     const humidityDisplay = `Humidity: ${humidity}%`
-    const rainDisplay = `Chance of Rain: ${rain()}%`
+    const rainDisplay = `Percipitation: ${rain()}%`
 
     const weatherData = 
     (`
-    <h3 id='nwsTitle'>${location}</h3>
     <div id="weatherDiv">
-        <div id='weatherTitle'>
+        <section id='weatherTitle'>
             <h4>${name}</h4>
             <img src="${icon}" alt="icon" height="75px" width="auto" title="${detailedForecast}">
-        </div>
-        <div id='weatherContent'>
-            <h4>${temperatureDisplay}<br>${windDisplay}<br>${humidityDisplay}<br>${rainDisplay}</h4>
+        </section>
+        <section id='weatherContent'>
+            <h3>${location}</h3>
+            <h4>${temperatureDisplay}<br>${windDisplay}</h4>
+            <h5>${humidityDisplay}<br>${rainDisplay}</h5>
             <h5>${shortForecast}</h5>
-        </div>
+        </section>
     </div>
     <div id='forecastDIV'></div>
     `)
@@ -135,8 +136,8 @@ function createForecast(data) {
         
         const forecastDisplay = (`
         <span style="color:lightgreen">${name.substring(0,3)}: </span><span title="Chance of Rain">${rain()}%</span><br>
-        <span style="color:lightblue">High: ${temperatureHigh}&degF</span><br>
-        <span style="color:lightcoral">Low: ${temperatureLow}&degF</span><br>
+        <span style="color:lightcoral">${temperatureHigh}&degF</span><br>
+        <span style="color:lightblue">${temperatureLow}&degF</span><br>
         <img src="${icon}" alt="icon"  width="90%" height="auto" title="${detailedForecast}">
         `);
 
