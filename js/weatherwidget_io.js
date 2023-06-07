@@ -9,10 +9,6 @@ weatherwidget.innerHTML = (`
         border-color:lightseagreen;
         border-radius:0.3rem;
     }
-    #weatherwidget:hover {
-        outline: solid thin lightseagreen;
-        box-shadow:0 0 1em #20b2aaee;
-    }
 </style>
 <a class="weatherwidget-io" href="https://forecast7.com/en/26d30n98d16/edinburg/?unit=us" data-label_1="EDINBURG, TX" data-label_2="WEATHER" data-icons="Climacons" data-theme="gray" data-basecolor="#333333" data-highcolor="#ffb2b2" data-lowcolor="#a5c9ff" data-suncolor="#ecff5a" >EDINBURG WEATHER</a>
 <!--script>
