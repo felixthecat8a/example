@@ -91,7 +91,7 @@ function getWeatherData(data,location) {
     <div id="weatherDiv">
         <div id='weatherTitle'>
             <h4>${name}</h4>
-            <img src="${icon}" alt="icon" height="50px" width="auto" title="${detailedForecast}">
+            <img src="${icon}" alt="icon" height="75px" width="auto" title="${detailedForecast}">
         </div>
         <div id='weatherContent'>
             <h4>${temperatureDisplay}<br>${windDisplay}<br>${humidityDisplay}<br>${rainDisplay}</h4>
@@ -133,15 +133,12 @@ function createForecast(data) {
             }
         }
         
-        const forecastDisplay = `
-        <h5 style="color:lightgreen">${name.substring(0,3)}</h5>
-        <h6>
-            <span style="color:lightblue">${temperatureHigh}&degF</span><br>
-            <span style="color:lightcoral">${temperatureLow}&degF</span><br>
-            <span title="Chance of Rain">${rain()}%</span>
-        </h6>
+        const forecastDisplay = (`
+        <span style="color:lightgreen">${name.substring(0,3)}: </span><span title="Chance of Rain">${rain()}%</span><br>
+        <span style="color:lightblue">High: ${temperatureHigh}&degF</span><br>
+        <span style="color:lightcoral">Low: ${temperatureLow}&degF</span><br>
         <img src="${icon}" alt="icon"  width="90%" height="auto" title="${detailedForecast}">
-        `;
+        `);
 
         const dayTime = data.properties.periods[index].isDaytime;
         if (!dayTime) {
