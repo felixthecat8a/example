@@ -6,7 +6,6 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>Simple JavaScript Examples</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/weatherApp.css">
 </head>
 <body>
     <header>
@@ -30,20 +29,23 @@
         </form>
         <script src="../js/temp.js"></script>
         <br>
-        <section>
-            <h3 id='nwsTitle'>National Weather Service API</h3>
+        <article id="weatherApp">
+            <h2 id='nwsHeading'><a href="https://www.weather.gov" target="_blank">National Weather Service API</a></h2>
             <label style="color: darkseagreen;">
                 <b>Select Location: </b>
                 <select id="selectLocation">
-                    <option value="">JEHS</option>
-                    <option value="geolocation">Use GeoLocation</option>
-                    <option value="showCat">Show a Cat</option>
+                    <optgroup label="Fixed Location">
+                        <option value="work">JEHS</option>
+                    <optgroup label="Geo Location">
+                        <option value="geolocation">Use GeoLocation</option>
+                    <optgroup label="Cat">
+                        <option value="showCat">Show a Cat</option>
                 </select>
             </label>
-            <div id="weatherApp"></div>
-            <div id="status"></div>
+            <div id="weatherDisplay"></div>
+            <div id="weatherStatus"></div>
             <script src="../js/weather.js"></script>
-        </section>
+        </article>
     </main>
     <footer>
         <style>.githubName {color: mediumseagreen} .githubName:hover {color: seagreen}</style>
