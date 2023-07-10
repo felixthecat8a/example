@@ -8,24 +8,34 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div id="header">
+    <header>
       <h1>Cat Image View<br>with Breed Selector</h1>
-      <div id="navigation">
+      <nav>
         <a href="../index.html"><u>Home</u></a>
-      </div><hr>
-    </div>
-    <div id="main">
-      <select onchange="showBreedImage(value)" name="breed_selector" id="breed_selector"></select>
-      <br>
-      <h2><div id="breed_name"></div></h2>
-      <!--div id="breed_origin"></div-->
-      <img id="breed_image"></img>
-      <br>
-      <div id="breed_description"></div>
-    </div>
-    <div id="footer">
+      </nav><hr>
+    </header>
+    <main>
+      <section id="cat_container">
+        <label style="color: orange;">
+            <b>Select Cat Breed: </b>
+            <select id="catSelect">
+                <optgroup label="Random Cat">
+                    <option value="showCat">Show a Random Cat</option>
+                </optgroup>
+                <optgroup label="Cat by Breed">
+                    <option value="catBreed" id="catBreed" hidden>Choose a Cat Breed</option>
+                </optgroup>
+            </select>
+        </label>
+        <div id="catDisplay"></div>
+      </section>
+      <script src="../js/main.js"></script>
+    </main>
+    <footer>
       <h3>API from <a href="https://thecatapi.com/" target="_blank" style="color:#d24515;">The Cat API</a></h3>
-    </div>
-    <script src="../js/main.js"></script>
+      <h5><a href="http://github.com/felixthecat8a" target="_blank">
+        <span class="felix">FelixTheCat8a&#x1F408;</span>
+      </a></h5><br>
+    </footer>
 </body>
 </html>

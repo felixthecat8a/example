@@ -1,31 +1,82 @@
-const url = `https://api.thecatapi.com/v1/breeds`;
-const api_key = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
-let storedBreeds = []
-
-async function start() {
+displayRandomCat();
+const catSelect = document.getElementById('catSelect');
+createCatBreedOptions();
+catSelect.addEventListener("change", function (event) {
+    const catBreed = event.target.value;
+    switch (catBreed) {
+        case 'showCat':
+            displayRandomCat();
+            break;
+        case 'catBreed':
+            displayCatBreed(catBreed);
+            break;
+        default:
+            break;
+    }
+});
+async function createCatBreedOptions() {
+    const URL = `https://api.thecatapi.com/v1/breeds`;
     try {
-        const response = await (await fetch(url,{headers: {'x-api-key':api_key}}))
-        const data = await response.json()
-        createBreedList(data)
-        showBreedImage(0)
-    } catch (error) {console.log("There was a problem fetching the breed list.")}
-}
-start()
-
-function createBreedList (data) {
-    storedBreeds = data.filter(img=> img.image?.url!=null);
-    for (let i = 0; i < storedBreeds.length; i++) {
-        const breed = storedBreeds[i];
-        let option = document.createElement('option');
-        if(!breed.image)continue; //skip any breeds that don't have an image
-        option.value = i; //use the current array index
-        option.innerHTML = `${breed.name}`;
-        document.getElementById('breed_selector').appendChild(option);
+        const response = await fetch(URL);
+        const data = await response.json();
+        for (let i = 0; i < data.length; i++) {
+            const catOption = document.createElement('option');
+            catOption.value = data[i].id;
+            catOption.textContent = data[i].name;
+            catSelect.appendChild(catOption);
+        }
+        catSelect.setAttribute('onchange', "displayCatBreed(this.value)");
+    }
+    catch (e) {
+        console.log("There was a problem fetching the breed list.");
     }
 }
-function showBreedImage(index) { 
-  document.getElementById("breed_image").src= storedBreeds[index].image.url;
-  document.getElementById("breed_name").textContent= storedBreeds[index].name;
-  document.getElementById("breed_description").textContent= storedBreeds[index].description;
-  document.getElementById("breed_origin").textContent= storedBreeds[index].origin;
+async function displayRandomCat() {
+    console.log('showing random cat');
+    const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
+    const CAT_URL = `https://api.thecatapi.com/v1/images/search?limit=1&${API_KEY}`;
+    try {
+        const response = await (await fetch(CAT_URL));
+        const data = await response.json();
+        const catImage = data[0].url;
+        const catImg = `<img src="${catImage}" alt="cat" height="300px" width="auto">`;
+        const catDiv = document.getElementById("catDisplay");
+        catDiv.innerHTML = (`${catImg}`);
+    }
+    catch (error) {
+        console.log("There was a problem fetching a cat image.");
+    }
+}
+async function displayCatBreed(breedId) {
+    console.log(`showing ${breedId}`);
+    const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
+    const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}&${API_KEY}`;
+    try {
+        const response = await fetch(BREED_URL);
+        const data = await response.json();
+        const catImages = data.map((cat) => cat.url);
+        if (catImages.length === 0) {
+            console.log(`No images found for breed ${breedId}`);
+            return;
+        }
+        const catDiv = document.getElementById("catDisplay");
+        if (catDiv) {
+            const catImg = (`
+            <div class="catRow">
+                <div class="catColumn">
+                    <img src="${catImages[0]}" alt="${breedId}" height="250px" width="auto">
+                    <img src="${catImages[1]}" alt="${breedId}" height="250px" width="auto">
+                </div>
+                <div class="catColumn">
+                    <img src="${catImages[2]}" alt="${breedId}" height="250px" width="auto">
+                    <img src="${catImages[3]}" alt="${breedId}" height="250px" width="auto">
+                <div>
+            </div>
+            `);
+            catDiv.innerHTML = catImg;
+        }
+    }
+    catch (error) {
+        console.log(`There was a problem fetching ${breedId} cat images.`);
+    }
 }
