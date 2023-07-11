@@ -78,7 +78,7 @@ class WeatherDisplay {
                 <span style="color:lightgreen">${name.substring(0, 3)}:</span> ${rain}%<br>
                 <span style="color:lightcoral">${temperatureHigh}&degF</span><br>
                 <span style="color:lightblue">${temperatureLow}&degF</span><br>
-                <img src="${icon}" alt="icon" height="auto" width="75%" hidden>
+                <img src="${icon}" alt="icon" height="auto" width="75%" >
             </div>`);
             const dayTime = data.properties.periods[index].isDaytime;
             if (!dayTime) {
