@@ -278,6 +278,12 @@ abbr[title] {
     font-weight: bolder;
     font-style: normal;
 }
+@media screen and (max-width: 500px) {
+    #gameApp {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
 
 /* WEATHER */
 #weatherApp {
