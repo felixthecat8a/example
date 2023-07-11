@@ -6,12 +6,6 @@ html, body {
     height: 100%;
 }
 
-@media screen and (max-width: 600px) {
-    header main footer {
-        flex: 100%;
-        max-width: 100%;
-    }
-}
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
