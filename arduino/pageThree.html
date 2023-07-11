@@ -10,10 +10,13 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         h2 {color:mediumseagreen}
-        header, main, footer {
-            min-width: 800px;
-            padding: 10px;
-            margin-left: 20px;
+        @media all and (max-width: 600px) {
+            body {
+                font-size: 0.8rem;
+            }
+        }
+        main {
+            padding-left: 30px;
         }
         .powershell {color:white;background-color:#012456;}
         .powershell span {color:yellow;}

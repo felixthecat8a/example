@@ -9,20 +9,16 @@
     <link rel="stylesheet" href="../css/style.css">
     <style>
         h2 {color:mediumseagreen}
-        header, main, footer {
-            min-width: 800px;
-            padding: 10px;
-            margin-left: 20px;
+        @media all and (max-width: 600px) {
+            body {
+                font-size: 0.8rem;
+            }
+        }
+        main {
+            padding-left: 30px;
         }
         .powershell {color:white;background-color:#012456;}
         .powershell span {color:yellow;}
-        #links {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: start;
-            align-items: baseline;
-        }
         li {margin-top: 0.5rem;}
         .sg {color: mediumseagreen}
         .bl {color: royalblue}
