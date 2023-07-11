@@ -21,7 +21,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-    width: 100%;
     text-align: center;
 }
 header h1 {
@@ -101,7 +100,6 @@ main a:hover, main a:active {
 }
 
 footer {
-    width: 100%;
     text-align: center;
 }
 footer a {
