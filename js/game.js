@@ -1,69 +1,74 @@
-/* In the HTML file:
-<div id="play"></div>
-<button id="game" type="button">JavaScript Number Guessing Game</button>
-<script src="./js/game.js"></script>
-*/
-
-const game = document.getElementById("game")
-const play = document.getElementById("play")
-
-game.addEventListener("click", playGame)
-
+const game = document.getElementById("game");
+const gameButton = '<button type="button" onclick="playGame()">Number Guessing Game</button>';
+game.innerHTML = gameButton;
 function playGame() {
-    play.innerHTML = (`
-    <form>
-        <h2 style='color:lightseagreen'>Guess the number between 1 and 100 in 7 tries or less.</h2>
-        <div id="final">
-            <input type="number" id="guess"><button id="check" type="button" >Check</button>
-        </div>
-        <h3 id="result">Guess the number.</h3>
-        <div id="attempt"></div>
-    </form>
-    `)
-	
-    game.innerText = 'Play Again?'
-	
-    const check = document.getElementById("check")
-    const guess = document.getElementById("guess")
-    const result = document.getElementById("result")
-    const attempt = document.getElementById("attempt")
-    
-    let randomNumber = (Math.floor(Math.random() * 100) + 1)
-    console.log(randomNumber)
-    let attempts = 0
+    const gameHTML = (`<form id="gameApp">
+        <h3 style="color:mediumaquamarine">Guess the number between 1 & 100<br> in 7 tries or less.</h3>
+        <div id="reveal"><input type="number" id="guess"><button type="button" id="check">Check</button></div>
+        <h4 id="result">Guess the number.</h4>
+        <label id="attempt" for="attemptMeter">Attempts: 0 </label><br>
+        <meter id="attemptMeter" value="0" min="0" high="5" max="7"></meter><br>
+        <button id="play" type="button" >Play Again?</button><button id="close" type="button" >Close</button>
+    </form>`);
+    game.innerHTML = gameHTML;
+    const check = document.getElementById("check");
+    const guess = document.getElementById("guess");
+    const reveal = document.getElementById("reveal");
+    const result = document.getElementById("result");
+    const attempt = document.getElementById("attempt");
+    const attemptMeter = document.getElementById("attemptMeter");
+    const play = document.getElementById("play");
+    const close = document.getElementById("close");
+    const randomNumber = (Math.floor(Math.random() * 100) + 1);
+    console.log(`Answer:${randomNumber}`);
+    let attempts = 0;
 
-    guess.addEventListener("keypress", function(event) {
+    play.onclick = function () {
+        attemptMeter.setAttribute('value', '0');
+        attempts = 0;
+        playGame();
+    };
+    guess.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
-            event.preventDefault()
-            check.click()
+            event.preventDefault();
+            check.click();
         }
     });
-    
-    check.addEventListener("click", guessNumber)
-    function guessNumber() {
-        attempts++
-        if (guess.value < randomNumber && attempts != 7) {
-            result.innerHTML = "<div style='color:cornflowerblue'>Your number is too low. Try again.</div>"
-            attempt.innerHTML = `<h3>Attempts: ${attempts}</h3>`
-        } else if (guess.value > randomNumber && attempts != 7) {
-            result.innerHTML = "<div style='color:palevioletred'>Your number is too high. Try again.</div>"
-            attempt.innerHTML = `<h3>Attempts: ${attempts}</h3>`
-        } else if (guess.value != randomNumber && attempts >= 7) {
-	    document.getElementById("final").innerHTML = `<h3>The number was ${randomNumber}.</h3>`
-	    result.innerHTML = "<div style='color:violet'>Sorry, you've reached the attempt limit.</div>"
-            attempt.innerHTML = `<h3>Attempts: ${attempts}</h3>`
+    check.addEventListener("click", function () {
+        let currentNumber = guess.value;
+        const maxAttempts = 7;
+        attempts++;
+        attemptMeter.setAttribute('value', `${attempts}`);
+        if (attempts < maxAttempts || currentNumber == randomNumber) {
+            if (currentNumber < randomNumber) {
+                result.innerText = "Your number is too low. Try again."
+                result.style.color = 'cornflowerblue'
+                attempt.innerText = `Attempts: ${attempts}`
+            }
+            else if (currentNumber > randomNumber) {
+                result.innerText = "Your number is too high. Try again."
+                result.style.color = 'palevioletred'
+                attempt.innerText = `Attempts: ${attempts}`
+            }
+            else {
+                reveal.innerHTML = `<h4>The number is ${randomNumber}!</h4>`
+                reveal.style.color = 'orange'
+                result.innerText = "You guessed it right!"
+                result.style.color = 'gold'
+                const tries = (attempts === 1) ? "try" : "tries"
+                attempt.innerText = `It only took ${attempts} ${tries}.`
+            }
         } else {
-            document.getElementById("final").innerHTML = `<h3>The number is ${guess.value}!</h3>`
-            result.innerHTML = "<div style='color:gold'>You guessed it right!</div>"
-            attempt.innerHTML = `<h3>It only took ${attempts} ${tries()}.</h3>`
+            reveal.innerHTML = `<h4>The number was ${randomNumber}.</h4>`
+            reveal.style.color = 'violet'
+            result.innerText = "Sorry, you've reached the limit."
+            result.style.color = 'orchid'
+            attempt.innerText = `Attempts: ${attempts}`
         }
-    }
-    
-    function tries() {
-        if (attempts === 1) {
-            return "try"
-        } else {
-            return "tries"
-        }
-    }
+    });
+    close.addEventListener("click", function () {
+        attemptMeter.setAttribute('value', '0');
+        attempts = 0;
+        game.innerHTML = gameButton;
+    });
 }

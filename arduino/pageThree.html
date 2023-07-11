@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8"><meta name="author" content="felixthecat8a"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>Arduino/Sockets.IO &#x1F408;</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        h2 {color:mediumseagreen}
+        .powershell {color:white;background-color:#012456;}
+        .powershell span {color:yellow;}
+        li {margin-top: 0.5rem;}
+        .sg {color: mediumseagreen}
+        .bl {color: royalblue}
+        .rd {color: salmon}
+        .lt {color: skyblue}
+        .gd {color: goldenrod}
+        .gn {color: limegreen}
+        .vt {color: orchid}
+        .gr {color: gray}
+    </style>
+</head>
+<body>
+    <header>
+    <h1>Part 3: Controling an RGB LED<br>Using Arduino and Socket.io</h1>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="">RGB/Arduino</a></li>
+            <li><a href="./pageTwo.html">RGB/Node.js</a></li>
+            <li><a href="./pageThree.html">RGB/Sockets.io</a></li>
+        </ul>
+    </nav><br>
+    </header>
+    <hr>
+    <main>
+        <article>
+            <section>
+                <h2>Setting up the Project Directory for a Web App</h2>
+                <p>We will now create a webpage and a server file to control the LED using Express and Socket.io.</p>
+                <ol>
+                    <li>Create an HTML file, a CSS file and a JavaScript file in the project directory.</li>
+                    <ul>
+                        <li><code class="powershell"><span>New-Item</span> -Path .\public\index.html -ItemType File</code></li>
+                        <li><code class="powershell"><span>New-Item</span> -Path .\public\style.css -ItemType File</code></li>
+                        <li><code class="powershell"><span>New-Item</span> -Path .\public\code.js -ItemType File</code></li>
+                    </ul>
+                    <li>Create another JavaScript file in a new directory.</li>
+                    <ul>
+                        <li><code class="powershell"><span>New-Item</span> -Path .\server\server.js -ItemType File</code></li>
+                    </ul>
+                    <li>Install the modules for Express & Socket.IO..</li>
+                    <ul>
+                        <li><code class="powershell"><span>yarn</span> add express</code></li>
+                        <li><code class="powershell"><span>yarn</span> add socket.io</code></li>
+                        <li>A <code>package.json</code> file and a <code>yarn.lock</code> file will generated.</li>
+                        <li>A <code>node_modules</code> folder will also be generated in the project directory.</li>
+                    </ul>
+                    <li>Install the modules for Johnny-Five & SerialPort</li>
+                    <ul><li><code class="powershell"><span>yarn</span> add johnny-five serialport</code></li></ul>
+                </ol>
+                <p>The file directory should look like the file directory map shown.</p>
+                <pre style="background-color: #191919; width:max-content; padding-inline: 50px;">
+                    <code>
+Project/
+├── node_modules/ (created in page two)
+├── public/
+│   ├── code.js
+│   ├── index.html
+│   └── style.css
+├── server/
+│   └── server.js
+├── rgbLED.js (from page two)
+├── package.json (created in page two)
+└── yarn.lock (created in page two)
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Setting Up the HTML File</h2>
+                <p>The index.html file will serve as the interface for the controlling the RGB LED.</p>
+                <ul>
+                    <li>Open the HTML file and type <code>"!"</code> then <code>"tab"</code>.</li>
+                    <li>This will inject boilerplate template for a web page.</li>
+                    <li>Add the link to the stylesheet under the title.</li>
+                    <ul>
+                        <li><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></li>
+                    </ul>
+                    <li>Add the link to the JavaScript code between the script tags in the body.</li>
+                    <ul>
+                        <li><code>&lt;script src="code.js"&gt;&lt;/script&gt;</code></li>
+                    </ul>
+                    <li>Comments can be added to HTML using <code>&lt;!-- comment --&gt;</code>.</li>
+                    <li>CSS styles can be embeded between the <code>&lt;style&gt;</code> tags.</li>
+                    <li>Comments can be added to a CSS file using <code>/* comment */</code>.</li>
+                    <li>JavaScript code can be embeded between the <code>&lt;script&gt;</code> tags.</li>
+                    <li>Comments can be added to a JavaScript file using <code>/* comment */</code> or <code>// comment</code>.</li>
+                </ul>
+                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                    <code>
+&lt;!<span class="bl">DOCTYPE</span> <span class="lt">html</span>&gt;
+&lt;<span class="bl">html</span> <span class="lt">lang</span>=<span class="lt">"en"</span>&gt;
+    &lt;<span class="bl">head</span>&gt;
+        &lt;<span class="bl">meta</span> <span class="lt">charset</span>=<span class="rd">"UTF-8"</span>&gt;
+        &lt;<span class="bl">meta</span> <span class="lt">name</span>=<span class="rd">"viewport"</span> <span class="lt">content</span>=<span class="rd">"width=device-width, initial-scale=1.0"</span>&gt;
+        &lt;<span class="bl">title</span>&gt;Document&lt;<span class="bl">/title</span>&gt;
+        &lt;<span class="bl">link</span> <span class="lt">rel</span>=<span class="rd">"stylesheet"</span> <span class="lt">href</span>=<span class="rd">"style.css"</span>&gt;
+        &lt;<span class="bl">style</span>&gt;
+            <span class="gn">/* CSS Styles */</span>
+        &lt;<span class="bl">/style</span>&gt;
+    &lt;<span class="bl">/head</span>&gt;
+    &lt;<span class="bl">body</span>&gt;
+        <span class="gn">&lt;!-- HTML Template --&gt;</span>
+        &lt;<span class="bl">script</span> <span class="lt">src</span>=<span class="rd">"code.js"</span>&gt;&lt;<span class="bl">/script</span>&gt;
+        &lt;<span class="bl">script</span>&gt;
+            <span class="gn">// JavaScript Code</span>
+        &lt;<span class="bl">/script</span>&gt;
+    &lt;<span class="bl">/body</span>&gt;
+&lt;<span class="bl">/html</span>&gt;
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Adding the HTML template</h2>
+                <p>Add the HTML template shown to the index.html file between the <code>&lt;body&gt;</code> tags.</p>
+                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                    <code>
+<span class="gn">&lt;!-- HTML Template --&gt;</span>
+&lt;<span class="bl">form</span>&gt;
+    &lt;<span class="bl">fieldset</span>&gt;
+        &lt;<span class="bl">legend</span>&gt;RGB Control&lt;<span class="bl">/legend</span>&gt;
+        &lt;<span class="bl">label</span> <span class="lt">for</span>=<span class="rd">"redRange"</span> <span class="lt">id</span>=<span class="rd">"redLabel"</span>&gt;Red:&lt;<span class="bl">/label</span>&gt;
+        &lt;<span class="bl">input</span> <span class="lt">type</span>=<span class="rd">"range"</span> <span class="lt">id</span>=<span class="rd">"redRange"</span> <span class="lt">min</span>=<span class="rd">"0"</span> <span class="lt">max</span>=<span class="rd">"255"</span> <span class="lt">value</span>=<span class="rd">"0"</span>&gt;&lt;<span class="bl">br</span>&gt;
+        &lt;<span class="bl">label</span> <span class="lt">for</span>=<span class="rd">"greenRange"</span> <span class="lt">id</span>=<span class="rd">"greenLabel"</span>&gt;Green:&lt;<span class="bl">/label</span>&gt;
+        &lt;<span class="bl">input</span> <span class="lt">type</span>=<span class="rd">"range"</span> <span class="lt">id</span>=<span class="rd">"greenRange"</span> <span class="lt">min</span>=<span class="rd">"0"</span> <span class="lt">max</span>=<span class="rd">"255"</span> <span class="lt">value</span>=<span class="rd">"0"</span>&gt;&lt;<span class="bl">br</span>&gt;
+        &lt;<span class="bl">label</span> <span class="lt">for</span>=<span class="rd">"blueRange"</span> <span class="lt">id</span>=<span class="rd">"blueLabel"</span>&gt;Blue:&lt;<span class="bl">/label</span>&gt;
+        &lt;<span class="bl">input</span> <span class="lt">type</span>=<span class="rd">"range"</span> <span class="lt">id</span>=<span class="rd">"blueRange"</span> <span class="lt">min</span>=<span class="rd">"0"</span> <span class="lt">max</span>=<span class="rd">"255"</span> <span class="lt">value</span>=<span class="rd">"0"</span>&gt;&lt;<span class="bl">br</span>&gt;
+        &lt;<span class="bl">br</span>&gt;
+        &lt;<span class="bl">div</span> <span class="lt">id</span>=<span class="rd">"rgbValue"</span>&gt;rgb(0, 0, 0)&lt;<span class="bl">/div</span>&gt;
+        &lt;<span class="bl">div</span> <span class="lt">id</span>=<span class="rd">"colorBox"</span>&gt;&lt;<span class="bl">/div</span>&gt;
+    &lt;<span class="bl">/fieldset</span>&gt;
+&lt;<span class="bl">/form</span>&gt;
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Adding the CSS Style Code</h2>
+                <p>Open the file <code>styles.css</code> and insert the CSS style code shown.</p>
+                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                    <code>
+<span class="gn">/* style.css */</span>
+<span class="gn">/* CSS Styles */</span>
+<span class="gd">body {</span>
+    <span class="lt">font-family: </span><span class="rd">Arial, Helvetica, sans-serif</span>;
+    <span class="lt">font-size: </span>1rem;
+    <span class="lt">font-weight: </span><span class="rd">bold</span>;
+    <span class="lt">background-color: </span><span class="rd">lightgray</span>;
+    <span class="lt">color: </span><span class="rd">seagreen</span>;
+<span class="gd">}</span>
+<span class="gd">fieldset {</span>
+    <span class="lt">text-align: </span><span class="rd">center</span>;
+    <span class="lt">width: </span><span class="rd">max-content</span>;
+    <span class="lt">margin-left: </span><span class="rd">auto</span>;
+    <span class="lt">margin-right: </span><span class="rd">auto</span>;
+<span class="gd">}</span>
+<span class="gd">legend {</span>
+    <span class="lt">text-align: </span><span class="rd">left</span>;
+    <span class="lt">font-size: </span><span class="rd">large</span>;
+<span class="gd">}</span>
+<span class="gd">#colorBox {</span>
+    <span class="lt">width: </span>100px;
+    <span class="lt">height: </span>100px;
+    <span class="lt">margin-left: </span><span class="rd">auto</span>;
+    <span class="lt">margin-right: </span><span class="rd">auto</span>;
+    <span class="lt">margin-top: </span>10px;
+    <span class="lt">border: 2px </span><span class="rd">solid darkgrey</span>;
+    <span class="lt">border-radius: </span>50%;
+<span class="gd">}</span>
+<span class="gd">#redLabel {</span>
+    <span class="lt">color: </span><span class="rd">red</span>;
+<span class="gd">}</span>
+<span class="gd">#greenLabel {</span>
+    <span class="lt">color: </span><span class="rd">green</span>;
+<span class="gd">}</span>
+<span class="gd">#blueLabel {</span>
+    <span class="lt">color: </span><span class="rd">blue</span>;
+<span class="gd">}</span>
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Adding the JavaScript Code</h2>
+                <p>Open the file <code>code.js</code> and insert the JavaScript code shown.</p>
+                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                    <code>
+<span class="gn">/* code.js */</span>
+<span class="gn">/* JavaScript Code */</span>
+<span class="bl">const</span> <span class="lt">redRange</span> = document.getElementById(<span class="rd">"redRange"</span>);
+<span class="bl">const</span> <span class="lt">greenRange</span> = document.getElementById(<span class="rd">"greenRange"</span>);
+<span class="bl">const</span> <span class="lt">blueRange</span> = document.getElementById(<span class="rd">"blueRange"</span>);
+<span class="bl">const</span> <span class="lt">rgbValue</span> = document.getElementById(<span class="rd">"rgbValue"</span>);
+<span class="bl">const</span> <span class="lt">colorBox</span> = document.getElementById(<span class="rd">"colorBox"</span>);
+
+<span class="bl">const</span> <span class="lt">socket</span> = io();</span>
+<span class="bl">function</span> updateColor() {
+    <span class="bl">const</span> <span class="lt">red</span> = <span class="lt">redRange</span>.value;
+    <span class="bl">const</span> <span class="lt">green</span> = <span class="lt">greenRange</span>.value;
+    <span class="bl">const</span> <span class="lt">blue</span> = <span class="lt">blueRange</span>.value;
+    <span class="bl">const</span> <span class="lt">rgb</span> = <span class="rd">`rgb(<span class="lt">${red}</span>, <span class="lt">${green}</span>, <span class="lt">${blue}</span>)`</span>;
+    <span class="lt">colorBox</span>.style.backgroundColor = <span class="lt">rgb</span>;
+    <span class="lt">rgbValue</span>.textContent = <span class="lt">rgb</span>;
+    <span class="lt">socket</span>.emit(<span class="rd">'colorChange'</span>, { red:<span class="lt">red</span>, green:<span class="lt">green</span>, blue:<span class="lt">blue</span> });
+}
+
+<span class="lt">redRange</span>.addEventListener(<span class="rd">"input"</span>, updateColor);
+<span class="lt">greenRange</span>.addEventListener(<span class="rd">"input"</span>, updateColor);
+<span class="lt">blueRange</span>.addEventListener(<span class="rd">"input"</span>, updateColor);
+                    </code>
+                </pre>
+                <p>To check if the button works, open a web browser and drag & drop the html file into a new tab.</p>
+                <p>Note: Remove the comment tags ("//") after testing the page on the browser.</p>
+            </section>
+            <section style="display: block; background-color: lightgrey; color:#303030; width: 250px; text-align: center;">
+                <h3>RGB Control</h3>
+                <div x-data="{ red: 0, green: 0, blue: 0 }">
+                <label style="color: red;">Red:<input type="range" min="0" max="255" step="1" x-model="red"></label><br>
+                <label style="color: green;">Green:<input type="range" min="0" max="255" step="1" x-model="green"></label><br>
+                <label style="color: blue;">Blue:<input type="range" min="0" max="255" step="1" x-model="blue"></label><br>
+                <h4>rgb(<span x-text="red"></span>,<span x-text="green"></span>,<span x-text="blue"></span>)</h4>
+                <style>.color-preview {width: 50px; height: 50px; border-radius: 50%; margin-inline: auto; margin-bottom: 10px;}</style>
+                <div class="color-preview" x-bind:style="'background-color:rgb('+red+','+green+','+blue+')'"></div>
+                </div>
+                <br>
+            </section>
+            <section>
+                <h2>Editing the Server File</h2>
+                <p>Add the JavaScript code shown to the server.js file.</p>
+                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                    <code>
+<span class="gn">/* server.js */</span>
+<span class="bl">const</span> express = require(<span class="rd">'express'</span>);
+<span class="bl">const</span> <span class="lt">app</span> = express();
+<span class="bl">const</span> <span class="sg">http</span> = require(<span class="rd">'http'</span>);
+<span class="bl">const</span> <span class="lt">server</span> = <span class="sg">http</span>.createServer(<span class="lt">app</span>);
+<span class="bl">const</span> { <span class="sg">Server</span> } = require(<span class="rd">"socket.io"</span>);
+<span class="bl">const</span> <span class="lt">io</span> = <span class="bl">new</span> <span class="sg">Server</span>(<span class="lt">server</span>);
+<span class="bl">const</span> <span class="lt">PORT</span> = <span class="rd">'3000'</span>;
+<span class="bl">const</span> { <span class="sg">Board</span>, <span class="sg">Led</span> } = require(<span class="rd">'johnny-five'</span>);
+
+<span class="bl">const</span> <span class="lt">path</span> = require(<span class="rd">'path'</span>);
+<span class="lt">app</span>.use(express.static(<span class="lt">path</span>.join(<span class="lt">__dirname</span>, <span class="rd">'public'</span>)));
+<span class="lt">app</span>.get(<span class="rd">'/'</span>, (<span class="lt">req</span>, <span class="lt">res</span>)<span class="bl"> => </span>{
+    <span class="lt">res</span>.sendFile(<span class="lt">__dirname</span> + <span class="rd">'index.html'</span>);
+});
+
+<span class="bl">const</span> <span class="lt">board</span> = <span class="bl">new</span> <span class="sg">Board</span>({
+    port: <span class="rd">'COM3'</span>,
+    repl: <span class="bl">false</span>,
+    debug: <span class="bl">false</span>,
+    timeout: 1e5,
+    useFirmata: <span class="bl">true</span>,
+});
+<span class="gn">// Requires pins that support PWM (denoted by ~)</span>
+<span class="lt">board</span>.on(<span class="rd">'ready'</span>, ()<span class="bl"> => </span>{
+    <span class="lt">console</span>.log(<span class="rd">'Board is ready!'</span>);
+    <span class="bl">const</span> <span class="lt">redPin</span> = 11;
+    <span class="bl">const</span> <span class="lt">greenPin</span> = 10;
+    <span class="bl">const</span> <span class="lt">bluePin</span> = 9;
+    <span class="bl">const</span> <span class="lt">rgb</span> = <span class="bl">new</span> <span class="sg">Led</span>.<span class="sg">RGB</span>({
+        pins:{
+            red:<span class="lt">redPin</span>,
+            green:<span class="lt">greenPin</span>,
+            blue:<span class="lt">bluePin</span>
+        },
+        isAnode: <span class="bl">true</span>
+    });
+    <span class="lt">io</span>.on(<span class="rd">'connection'</span>, <span class="bl">function</span>(<span class="lt">socket</span>) {
+        <span class="lt">console</span>.log(<span class="rd">'connected!'</span>);
+        <span class="lt">socket</span>.on(<span class="rd">'colorChange'</span>, <span class="bl">function</span>(<span class="lt">data</span>) {
+            <span class="lt">console</span>.log(<span class="lt">data</span>);
+            <span class="bl">const</span> { <span class="lt">red</span>, <span class="lt">green</span>, <span class="lt">blue</span> } = <span class="lt">data</span>;
+            <span class="bl">const</span> <span class="lt">rgbColor</span> = [<span class="lt">red</span> , <span class="lt">green</span>, <span class="lt">blue</span>];
+            <span class="lt">rgb</span>.color(<span class="lt">rgbColor</span>);
+        });
+        <span class="lt">socket</span>.on(<span class="rd">'disconnect'</span>, () <span class="bl">=></span> {
+            <span class="lt">console</span>.log(<span class="rd">'disconnected'</span>);
+        });
+    });
+});
+<span class="lt">server</span>.listen(<span class="lt">PORT</span>, ()<span class="bl"> => </span>{
+    <span class="lt">console</span>.log(<span class="rd">'Server started at http://localhost:'</span> + <span class="lt">PORT</span>)
+});
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Set up the RGB LED Circuit</h2>
+                <img src="./screenshots/rgbBuild.png" alt="Arduino RGB LED Circuit" width="auto" height="200px" style="margin-left: 30px;">
+                <h2>Uploading the Firmata sketch using Arduino IDE</h2>
+                <p>The <strong>Firmata</strong> sketch allows an Arduino board to interpret JavaScript code.</p>
+                <ol>
+                <li>Open the Arduino IDE</li>
+                <li>Connect your Arduino Uno board to the USB port.</li>
+                <li>Go to "<b>File</b>", then "<b>Examples</b>", then "<b>Firmata</b>" and select "<b></b>StandardFirmata".</li>
+                <li>Go to "<b>Tools</b>", then "<b>Board</b>", and select "<b>Arduino Uno</b>".</li>
+                <li>Go to "<b>Tools</b>", then "<b>Port</b>", and select "<b>COM#:Arduino Uno</b>".</li>
+                <li>Go to "<b>Sketch</b>", and select "<b>Upload</b>" or click the arrow button.</li>
+                <li>You can close the Arduino IDE after you upload Firmata.</li>
+                </ol>
+            </section>
+            <section>
+                <h2>Running the Node.js Express Server</h2>
+                <ul>
+                    <li>Connect the Arduino Board with the RGB LED circuit to the computer. </li>
+                    <li>Upload the Firmata sketch to the board using Arduino IDE.</li>
+                    <li>Run the Node.js Express server.</li>
+                    <ul>
+                        <li><code class="powershell"><span>node</span> server/server.js</code></li>
+                        <li>Use <code>"ctrl"+"c"</code> to stop the running the server.</li>
+                    </ul>
+                    <li>The console should display <code class="powershell">Server started at http://localhost:3000</code>.</li>
+                    <li>Open a web browser and go to http://localhost:3000 to view the page.</li>
+                    <ul>
+                        <li>Interact with the Arduino RGB LED circuit using the sliders.</li>
+                    </ul>
+                    <li>In the <code>package.json</code> file, edit the scripts section as shown.</li>
+                    <li>Start the server using <code class="powershell"><span>yarn</span> start</code>.</li>
+                </ul>
+                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                    <code>
+<span class="lt">"scripts"</span>: {
+    <span class="lt">"start"</span>: <span class="rd">"node server/server.js"</span>,
+    <span class="lt">"flash"</span>: <span class="rd">"node rgbLED.js"</span>
+}
+                    </code>
+                </pre>
+                <br>
+            </section>
+        </article>
+    </main>
+    <footer style="background-color: #00979d;">
+    <h5><a href="http://github.com/felixthecat8a" target="_blank">&#x1F408;
+        <span>&copy;FelixTheCat8a&#128008;</span>
+    </a></h5><br>
+    </footer>
+</body>
+</html>
