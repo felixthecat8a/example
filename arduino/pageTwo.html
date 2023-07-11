@@ -63,8 +63,8 @@
                 <h2>Installing the Software for the Project</h2>
                 <p>&nbsp;&nbsp;For this project, we will be using Visual Studio Code with Node.js installed. <b>Node.js</b> is<br>
                     an open-source, server-side JavaScript runtime environment built on the Chrome V8 JavaScript<br>
-                    engine. <strong>NPM</strong> comes bundled with Node.js installation. NPM is a package manager used for managing and<br>
-                    distributing open-source JavaScript packages and libraries. 
+                    engine. <strong>NPM</strong> comes bundled with Node.js installation. NPM is a package manager used for<br>
+                    managing anddistributing open-source JavaScript packages and libraries. 
                 </p><br>
                 <p>
                     &nbsp;&nbsp;An alternative to NPM is Yarn. <strong>Yarn</strong> is a package manager developed by Facebook<br>
@@ -113,13 +113,22 @@
                 <ul>
                     <li>Install the <b><a href="http://johnny-five.io/" target="_blank">Johnny-Five</a></b> package.</li>
                     <ul>
-                        <li><code class="powershell"><span>yarn</span> add johnny-five</code> or <code class="powershell"><span>npm</span> install johnny-five</code></li>
+                        <li><code class="powershell"><span>yarn</span> add johnny-five</code><li>
+                        <ul>
+                            <li>or <code class="powershell"><span>npm</span> install johnny-five</code></li>
+                        </ul>
                     </ul>
                     <li>Install the <b><a href="https://serialport.io/" target="_blank">SerialPort</a></b> package.</li>
                     <ul>
-                        <li><code class="powershell"><span>yarn</span> add serialport</code> or <code class="powershell"><span>npm</span> install serialport</code></li>
+                        <li><code class="powershell"><span>yarn</span> add serialport</code></li>
+                        <ul>
+                            <li>or <code class="powershell"><span>npm</span> install serialport</code></li>
+                        </ul>
                     </ul>
-                    <li>Installing packages creates a <code>package.json</code> file and a <code>yarn.lock</code> or <code>package-lock.json</code> file.</li>
+                    <li>Installing packages creates a <code>package.json</code> file and a <code>yarn.lock</code>.</li>
+                    <ul>
+                        <li>or <code>package-lock.json</code> file</li>
+                    </ul>
                 </ul>
                 <p>The file directory should look like the file directory map shown.</p>
                 <pre class="codeBox">
