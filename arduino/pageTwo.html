@@ -19,6 +19,12 @@
         }
         .powershell {color:white;background-color:#012456;}
         .powershell span {color:yellow;}
+        .codeBox {
+            color: white;
+            background-color: #191919;
+            width: max-content;
+            padding-inline: 20px;
+        }
         li {margin-top: 0.5rem;}
         .sg {color: mediumseagreen}
         .bl {color: royalblue}
@@ -107,7 +113,7 @@
                     <li>Installing packages creates a <code>package.json</code> file and a <code>yarn.lock</code> or <code>package-lock.json</code> file.</li>
                 </ul>
                 <p>The file directory should look like the file directory map shown.</p>
-                <pre style="background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 Project/
 ├── node_modules/
@@ -122,7 +128,7 @@ Project/
                 <ul>
                     <li>Open the file rgbLED.js and add the JavaScript code as shown.</li>
                 </ul>
-                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 <span class="gn">/* rgbLED.js */</span>
 <span class="bl">const</span> { <span class="sg">Board</span>, <span class="sg">Led</span> } = require(<span class="rd">'johnny-five'</span>);
@@ -205,7 +211,7 @@ Project/
                         <li><code class="powershell"><span>npm</span> run flash</code> or <code class="powershell"><span>npx</span> flash</code></li>
                     </ul>
                 </ul>
-                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 <span class="lt">"scripts"</span>: {
     <span class="lt">"flash"</span>: <span class="rd">"node rgbLED.js"</span>

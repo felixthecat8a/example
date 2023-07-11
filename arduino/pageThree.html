@@ -20,6 +20,12 @@
         }
         .powershell {color:white;background-color:#012456;}
         .powershell span {color:yellow;}
+        .codeBox {
+            color: white;
+            background-color: #191919;
+            width: max-content;
+            padding-inline: 20px;
+        }
         li {margin-top: 0.5rem;}
         .sg {color: mediumseagreen}
         .bl {color: royalblue}
@@ -70,7 +76,7 @@
                     <ul><li><code class="powershell"><span>yarn</span> add johnny-five serialport</code></li></ul>
                 </ol>
                 <p>The file directory should look like the file directory map shown.</p>
-                <pre style="background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 Project/
 ├── node_modules/ (created in page two)
@@ -106,7 +112,7 @@ Project/
                     <li>JavaScript code can be embeded between the <code>&lt;script&gt;</code> tags.</li>
                     <li>Comments can be added to a JavaScript file using <code>/* comment */</code> or <code>// comment</code>.</li>
                 </ul>
-                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 &lt;!<span class="bl">DOCTYPE</span> <span class="lt">html</span>&gt;
 &lt;<span class="bl">html</span> <span class="lt">lang</span>=<span class="lt">"en"</span>&gt;
@@ -133,7 +139,7 @@ Project/
             <section>
                 <h2>Adding the HTML template</h2>
                 <p>Add the HTML template shown to the index.html file between the <code>&lt;body&gt;</code> tags.</p>
-                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 <span class="gn">&lt;!-- HTML Template --&gt;</span>
 &lt;<span class="bl">form</span>&gt;
@@ -156,7 +162,7 @@ Project/
             <section>
                 <h2>Adding the CSS Style Code</h2>
                 <p>Open the file <code>styles.css</code> and insert the CSS style code shown.</p>
-                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 <span class="gn">/* style.css */</span>
 <span class="gn">/* CSS Styles */</span>
@@ -201,7 +207,7 @@ Project/
             <section>
                 <h2>Adding the JavaScript Code</h2>
                 <p>Open the file <code>code.js</code> and insert the JavaScript code shown.</p>
-                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 <span class="gn">/* code.js */</span>
 <span class="gn">/* JavaScript Code */</span>
@@ -245,7 +251,7 @@ Project/
             <section>
                 <h2>Editing the Server File</h2>
                 <p>Add the JavaScript code shown to the server.js file.</p>
-                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 <span class="gn">/* server.js */</span>
 <span class="bl">const</span> express = require(<span class="rd">'express'</span>);
@@ -336,7 +342,7 @@ Project/
                     <li>In the <code>package.json</code> file, edit the scripts section as shown.</li>
                     <li>Start the server using <code class="powershell"><span>yarn</span> start</code>.</li>
                 </ul>
-                <pre style="color: white; background-color: #191919; width:max-content; padding-inline: 50px;">
+                <pre class="codeBox">
                     <code>
 <span class="lt">"scripts"</span>: {
     <span class="lt">"start"</span>: <span class="rd">"node server/server.js"</span>,
