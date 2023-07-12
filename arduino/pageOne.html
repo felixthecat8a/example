@@ -68,7 +68,8 @@
                     is a programming environment used to write, compile, and upload code to the<br>
                     Arduino board. It uses a programming language based on C/C++ code to write<br>
                     sketches. Arduino <b>Sketches</b> are the program files with the <b>.ino</b> extension that<br>
-                    contain Arduino code.
+                    contain Arduino code. Arduino code is written with <b>C/C++</b> language syntax and<br>
+                    structure and uses distinct methods and functions.<br>
                 </p>
                 <ul>
                     <li>The Arduino IDE can be downloaded at <a href="https://www.arduino.cc/en/software" target="_blank">https://www.arduino.cc/en/software</a>.</li>
@@ -84,7 +85,7 @@
                     <li>Create a Tinkercad account at <a href="https://www.tinkercad.com" target="_blank">https://www.tinkercad.com</a>.</li>
                 </ul>
                 <figure>
-                    <img src="./screenshots/rgbLED.png" alt="Arduino RGB LED Circuit" width="auto" height="190px">
+                    <img src="./screenshots/ExampleRGB.png" alt="Arduino RGB LED Circuit" width="auto" height="190px">
                     <figcaption>Screenshot of Arduino UNO R3 Board with RGB LED Circuit</figcaption>
                 </figure>            
             </section>
@@ -94,7 +95,7 @@
                     This circuit will require an Arduino Uno R3 board, an RGB LED, three 220&Omega; resistors, a breadboard, and jumper wires.
                 </p>
                 <figure>
-                    <img src="./screenshots/rgbBuild.png" alt="RGB LED Circuit" width="auto" height="190px">
+                    <img src="./screenshots/rgbBuild.png" alt="RGB LED Circuit" width="auto" height="150px">
                     <figcaption>The RGB LED Circuit</figcaption>
                 </figure>
                 <h4>Using Tinkercad</h4>
@@ -102,14 +103,18 @@
                     <li>If using Tinkercad, click on "Create" and select "Circuit" from the drop-down menu.</li>
                     <li>This will open a new workspace so that you can drag-and-drop the components needed.</li>
                 </ul>
-                <h2>Insert the Arduino Code</h2>
-                <p>
-                    Arduino code is written with <b>C/C++</b> language syntax and structure and uses distinct methods and functions.<br>
-                </p>
+                <h2>Create an Arduino Sketch</h2>
+                <p>Open the Arduino IDE and insert the code that is shown.</p>
+                <h4>Using Tinkercad</h4>
+                <ul>
+                    <li>If using Tinkercad, click on "Code" button on the top right area of the screen.</li>
+                    <li>Change the Edit Mode from "Blocks" to "Text" by clicking on the selector.</li>
+                </ul>
                 <pre class="codeBox">
                     <code>
 <span class="gr">/* rgbLED.ino */</span>
 <span class="gr">//#define COMMON_ANODE // uncomment common anode</span>
+<span class="gr">/* Requires pins that support PWM (denoted by ~) */</span>
 <span class="bl">const int</span> redPin = 11, greenPin = 10, bluePin = 9;
 <span class="bl">void</span> <span class="sg">setup</span>() {
     <span class="yl">pinMode</span>(redPin, <span class="bl">OUTPUT</span>);
@@ -140,7 +145,20 @@
 }
                     </code>
                 </pre>
-                <p>*************** Under Construction ***************</p>
+                <h3>Uploading the Sketch to the Board</h3>
+                <br>
+                 <div>********** UNDER CONSTRUCTION **********</div>
+                <div>********** UNDER CONSTRUCTION **********</div>
+                <h1>instructions on uploading code to arduino board go here</h1>
+                <a href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-uploading-a-sketch"> or go here</a>
+                <div>********** UNDER CONSTRUCTION **********</div>
+                <div>********** UNDER CONSTRUCTION **********</div>
+                <br>
+                <h4>Using Tinkercad</h4>
+                <ul>
+                    <li>If using Tinkercad, click on "Start Simulation" button on the top right area of the screen.</li>
+                    <li>If the code has any errors, the code will not run and the errors will be highlighted in red.</li>
+                </ul>
             </section>
         </article>
     </main>
