@@ -60,7 +60,87 @@
     <main>
         <article>
             <section>
-                <p>Under Construction</p>
+                <h2>Arduino & Arduino <abbr title="Integrated Development Environment">IDE</abbr></h2>
+                <p>
+                    <b>Arduino</b> is an open-source electronics platform that consists of both hardware<br>
+                    and software components. Arduino includes a series of microcontroller boards<br>
+                    that are equipped with various input and output pins. The <b>Arduino IDE</b><br>
+                    is a programming environment used to write, compile, and upload code to the<br>
+                    Arduino board. It uses a programming language based on C/C++ code to write<br>
+                    sketches. Arduino <b>Sketches</b> are the program files with the <b>.ino</b> extension that<br>
+                    contain Arduino code.
+                </p>
+                <ul>
+                    <li>The Arduino IDE can be downloaded at <a href="https://www.arduino.cc/en/software" target="_blank">https://www.arduino.cc/en/software</a>.</li>
+                </ul>
+                <h2>Tinkercad</h2>
+                <p>
+                    Tinkercad can be used to program and simulate a virtual Arduino microcontroller<br>
+                    circuit online. <b>Tinkercad</b> is an online platform that allows users to design and<br>
+                    simulate 3D models. Tinkercad includes a circuit simulation feature that allows<br>
+                    users to design and simulate electronic circuits.
+                </p>
+                <ul>
+                    <li>Create a Tinkercad account at <a href="https://www.tinkercad.com" target="_blank">https://www.tinkercad.com</a>.</li>
+                </ul>
+                <figure>
+                    <img src="./screenshots/rgbLED.png" alt="Arduino RGB LED Circuit" width="auto" height="190px">
+                    <figcaption>Screenshot of Arduino UNO R3 Board with RGB LED Circuit</figcaption>
+                </figure>            
+            </section>
+            <section>
+                <h2>Build the Circuit</h2>
+                <p>
+                    This circuit will require an Arduino Uno R3 board, an RGB LED, three 220&Omega; resistors, a breadboard, and jumper wires.
+                </p>
+                <figure>
+                    <img src="./screenshots/rgbBuild.png" alt="RGB LED Circuit" width="auto" height="190px">
+                    <figcaption>The RGB LED Circuit</figcaption>
+                </figure>
+                <h4>Using Tinkercad</h4>
+                <ul>
+                    <li>If using Tinkercad, click on "Create" and select "Circuit" from the drop-down menu.</li>
+                    <li>This will open a new workspace so that you can drag-and-drop the components needed.</li>
+                </ul>
+                <h2>Insert the Arduino Code</h2>
+                <p>
+                    Arduino code is written with <b>C/C++</b> language syntax and structure and uses distinct methods and functions.<br>
+                </p>
+                <pre class="codeBox">
+                    <code>
+<span class="gr">/* rgbLED.ino */</span>
+<span class="gr">//#define COMMON_ANODE // uncomment common anode</span>
+<span class="bl">const int</span> redPin = 11, greenPin = 10, bluePin = 9;
+<span class="bl">void</span> <span class="sg">setup</span>() {
+    <span class="yl">pinMode</span>(redPin, <span class="bl">OUTPUT</span>);
+    <span class="yl">pinMode</span>(bluePin, <span class="bl">OUTPUT</span>);
+    <span class="yl">pinMode</span>(greenPin, <span class="bl">OUTPUT</span>);
+}
+<span class="bl">void</span> <span class="sg">loop</span>() {
+    setColor(255, 0, 0); <span class="gr">// Red</span>
+    <span class="yl">delay</span>(1000); <span class="gr">// every 1 sec (1000 ms)</span>
+    setColor(255, 255, 0); <span class="gr">// Yellow</span>
+    <span class="yl">delay</span>(1000);
+    setColor(0, 255, 0); <span class="gr">// Green</span>
+    <span class="yl">delay</span>(1000);
+    setColor(0, 0, 255); <span class="gr">// Blue</span>
+    <span class="yl">delay</span>(1000);
+    setColor(255, 0, 255); <span class="gr">// Violet</span>
+    <span class="yl">delay</span>(1000);
+}
+<span class="bl">void</span> setColor(<span class="bl">int</span> redValue, <span class="bl">int</span> greenValue, <span class="bl">int</span> blueValue) {
+    <span class="sg">#ifdef</span> COMMON_ANODE
+        redValue = 255 - redValue;
+        greenValue = 255 - greenValue;
+        blueValue = 255 - blueValue;
+    <span class="sg">#endif</span>
+    <span class="yl">analogWrite</span>(redPin, redValue);
+    <span class="yl">analogWrite</span>(greenPin, greenValue);
+    <span class="yl">analogWrite</span>(bluePin, blueValue);
+}
+                    </code>
+                </pre>
+                <p>*************** Under Construction ***************</p>
             </section>
         </article>
     </main>
