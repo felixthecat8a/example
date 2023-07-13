@@ -62,40 +62,45 @@
         <article>
             <section>
                 <h2>Installing the Software for the Project</h2>
-                <p>&nbsp;&nbsp;For this project, we will be using Visual Studio Code with Node.js installed.
-                    <strong>Node.js</strong> is an open-source, server-side JavaScript runtime environment built on the
-                    Chrome V8 JavaScriptengine. <strong>NPM</strong> comes bundled with Node.js installation.
-                    NPM is a package manager used for managing anddistributing open-source JavaScript packages
-                    and libraries.<br>
+                <p>
+                    &nbsp;For this project, we will be using Visual Studio Code with Node.js installed.
+                    VS Code displays a code editor and a file explorer usually on the left.
+                    You can use the buttons on top of the file explorer to create new files and folders.
                 </p><br>
                 <p>
-                    &nbsp;&nbsp;An alternative to NPM is Yarn. <strong>Yarn</strong> is a package manager developed
+                    &nbsp;<strong>Node.js</strong> is an open-source, server-side JavaScript runtime environment built on the Chrome V8 JavaScript engine.
+                    <strong>NPM</strong> comes bundled with Node.js installation.
+                    NPM is a package manager used for managing and distributing open-source JavaScript packages and libraries.
+                </p><br>
+                <p>
+                    &nbsp;An alternative to NPM is Yarn. <strong>Yarn</strong> is a package manager developed
                     by Facebook in collaboration with other companies and the open-source community to address
                     some limitations of existing package managers.<br>
                 </p>
                 <ul>
                     <li><b>Visual Studio Code</b> can be downloaded at <a href="http://code.visualstudio.com/" target="_blank">http://code.visualstudio.com/</a>.</li>
                     <li><b>Node.js</b> can be downloaded at <a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a>.</li>
-                    <li><b>Yarn</b> can br downloaded using a PowerShell terminal command.</li>
+                    <li><b>Yarn</b> can br downloaded using a terminal command.</li>
                         <ul>
+                            <li>Open a terminal window with <b>Terminal > New Terminal</b> or <b>View > Terminal</b>.</li>
                             <li><code class="powershell"><span>npm</span> install yarn</code></li>
                         </ul>
                 </ul>
             </section>
             <section>
-                <h2>Creating a Project Directory using a PowerShell Terminal</h2>
-                <p>Create a project folder by using the "New Folder" button located above the directory map. Then, use
-                    the "New File" button to create a new JavaScript.Name the file "rgbLED.js".<br>
+                <h2>Creating a Project Directory</h2>
+                <p>
+                    Create a new project folder or directory. Then, create a new JavaScript file inside the directory.
+                    Name the file "rgbLED.js".
                 </p>
                 <ul>
-                    <li>Open a new <b>PowerShell</b> terminal by selecting "<b>Terminal</b>" then selecting "<b>New Terminal</b>".</li>
                     <li>You can also create a project folder and file using PowerShell commands.</li>
                     <ul>
                         <li><code class="powershell"><span>New-Item</span> -Path .\Project -ItemType Directory</code></li>
                         <li><code class="powershell"><span>New-Item</span> -Path .\Project\rgbLED.js -ItemType File</code></li>
                     </ul>
                 </ul>
-                <p>Enter the project directory & initiate a project. </p>
+                <p>Enter the project directory & initiate a project using the command terminal.</p>
                 <ul>
                     <li><code class="powershell"><span>cd</span> Project</code></li>
                     <ul>
@@ -108,7 +113,7 @@
                         <li>Adding <code>--yes</code> or <code>-y</code> to the command bypasses the prompt questions.</li>
                         <li>If using NPM, the command is <code class="powershell"><span>npm</span> init <span style="color:gray">--yes</span></code></li>
                     </ul>
-                    <li>A <code>package.json</code> file will be generated in the Project directory.</li>
+                    <li>A <b>package.json</b> file will be generated in the Project directory.</li>
                 </ul>
                 <p>Install the necessary packages. </p>
                 <ul>
@@ -126,9 +131,9 @@
                             <li>or <code class="powershell"><span>npm</span> install serialport</code></li>
                         </ul>
                     </ul>
-                    <li>Installing packages creates a <code>package.json</code> file and a <code>yarn.lock</code>.</li>
+                    <li>Installing packages creates a <b>package.json</b> file and a <b>yarn.lock</b>.</li>
                     <ul>
-                        <li>or <code>package-lock.json</code> file</li>
+                        <li>or <b>package-lock.json</b> file</li>
                     </ul>
                 </ul>
                 <p>The file directory should look like the file directory map shown.</p>

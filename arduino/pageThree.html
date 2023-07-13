@@ -65,13 +65,18 @@
         <h2>Setting up the Project Directory for a Web App</h2>
         <p>We will now create a webpage and a server file to control the LED using Express and Socket.io.</p>
         <ol>
-          <li>Create an HTML file, a CSS file and a JavaScript file in the project directory.</li>
+          <li>Create a new project directory and enter the new project directory.</li>
+          <ul>
+              <li><code class="powershell"><span>New-Item</span> -Path .\Project -ItemType Directory</code></li>
+              <li><code class="powershell"><span>cd</span> Project</code></li>
+          </ul>
+          <li>Create an HTML file, a CSS file and a JavaScript file in a new folder inside the directory.</li>
           <ul>
             <li><code class="powershell"><span>New-Item</span> -Path .\public\index.html -ItemType File</code></li>
             <li><code class="powershell"><span>New-Item</span> -Path .\public\style.css -ItemType File</code></li>
             <li><code class="powershell"><span>New-Item</span> -Path .\public\code.js -ItemType File</code></li>
           </ul>
-          <li>Create another JavaScript file in a new directory.</li>
+          <li>Create another JavaScript file in another new directory.</li>
           <ul>
             <li><code class="powershell"><span>New-Item</span> -Path .\server\server.js -ItemType File</code></li>
           </ul>
@@ -79,8 +84,8 @@
           <ul>
             <li><code class="powershell"><span>yarn</span> add express</code></li>
             <li><code class="powershell"><span>yarn</span> add socket.io</code></li>
-            <li>A <code>package.json</code> file and a <code>yarn.lock</code> file will generated.</li>
-            <li>A <code>node_modules</code> folder will also be generated in the project directory.</li>
+            <li>A <b>package.json</b> file and a <b>yarn.lock</b> file will generated.</li>
+            <li>A <b>node_modules</b> folder will also be generated in the project directory.</li>
           </ul>
           <li>Install the modules for Johnny-Five & SerialPort</li>
           <ul>
@@ -91,16 +96,15 @@
         <pre class="codeBox">
           <code>
 Project/
-├── node_modules/ (created in page two)
+├── node_modules/
 ├── public/
 │   ├── code.js
 │   ├── index.html
 │   └── style.css
 ├── server/
 │   └── server.js
-├── rgbLED.js (from page two)
-├── package.json (created in page two)
-└── yarn.lock (created in page two)
+├── package.json 
+└── yarn.lock 
           </code>
         </pre>
       </section>
@@ -357,8 +361,7 @@ Project/
         <pre class="codeBox">
           <code>
 <span class="lt">"scripts"</span>: {
-  <span class="lt">"start"</span>: <span class="rd">"node server/server.js"</span>,
-  <span class="lt">"flash"</span>: <span class="rd">"node rgbLED.js"</span>
+  <span class="lt">"start"</span>: <span class="rd">"node server/server.js"</span>
 }
           </code>
         </pre>
