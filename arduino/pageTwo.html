@@ -192,7 +192,7 @@ Project/
 
     <span class="bl">let</span> <span class="lt">index</span> = 0;
     <span class="lt">board</span>.loop(1000, () <span class="bl">=></span> { <span class="gn">// every 1 sec (1000 ms)</span>
-    <span class="lt">rgb</span>.color(<span class="lt">colorWheel</span>[<span class="lt">index</span>++]);
+        <span class="lt">rgb</span>.color(<span class="lt">colorWheel</span>[<span class="lt">index</span>++]);
         <span class="vt">if</span> (<span class="lt">index</span> === <span class="lt">colorWheel</span>.length) {
             <span class="lt">index</span> = 0;
         }
@@ -227,19 +227,29 @@ Project/
                     <li>Run the script using the command <code class="powershell"><span>node</span> rgbLED.js</code>.</li>
                     <ul>
                         <li>The LED should start flacking different colors.</li>
-                        <li>Use <code>"ctrl"+"c"</code> to stop the running the script.</li>
+                        <li>Use <code>"ctrl"+"c"</code> twice to stop the running the script.</li>
                     </ul>
                     <li>Edit the <code>package.json</code> file script section as shown.</li>
                     <li>Start the rgbLED.js script using <code class="powershell"><span>yarn</span> flash</code>.</li>
                     <li>If using NPM, you have some options.</li>
                     <ul>
-                        <li><code class="powershell"><span>npm</span> run flash</code> or <code class="powershell"><span>npx</span> flash</code></li>
+                        <li><code class="powershell"><span>npm</span> run flash</code></li>
                     </ul>
                 </ul>
                 <pre class="codeBox">
                     <code>
-<span class="lt">"scripts"</span>: {
-    <span class="lt">"flash"</span>: <span class="rd">"node rgbLED.js"</span>
+{
+    <span class="lt">"name"</span>: <span class="rd">"project"</span>,
+    <span class="lt">"version"</span>: <span class="rd">"1.0.0"</span>,
+    <span class="lt">"main"</span>: <span class="rd">"index.js"</span>,
+    <span class="lt">"license"</span>: <span class="rd">"MIT"</span>,
+    <span class="lt">"dependencies"</span>: {
+        <span class="lt">"johnny-five"</span>: <span class="rd">"^2.1.0"</span>,
+        <span class="lt">"serialport"</span>: <span class="rd">"^11.0.0"</span>
+    },
+    <span class="lt">"scripts"</span>: {
+        <span class="lt">"flash"</span>: <span class="rd">"node rgbLED.js"</span>
+    }
 }
                     </code>
                 </pre>

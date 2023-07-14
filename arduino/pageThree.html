@@ -114,7 +114,7 @@ Project/
         <ul>
           <li>Open the HTML file and type <code>"!"</code> then <code>"tab"</code>.</li>
           <li>This will inject boilerplate template for a web page.</li>
-          <li>Add the link to the stylesheet under the title.</li>
+          <li>Add the link to the stylesheet under the title  within the <code>&lt;head&gt;</code> tags.</li>
           <ul>
             <li><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></li>
           </ul>
@@ -127,6 +127,10 @@ Project/
           <li>Comments can be added to a CSS file using <code>/* comment */</code>.</li>
           <li>JavaScript code can be embeded between the <code>&lt;script&gt;</code> tags.</li>
           <li>Comments can be added to a JavaScript file using <code>/* comment */</code> or <code>// comment</code>.</li>
+          <li>Add the script tag with the link to the Socket.IO module under the title.</li>
+          <ul>
+            <li><code>&lt;script src="/socket.io/socket.io.js"&gt;&lt;/script&gt;</code></li>
+          </ul>
         </ul>
         <pre class="codeBox">
           <code>
@@ -136,6 +140,7 @@ Project/
   &lt;<span class="bl">meta</span> <span class="lt">charset</span>=<span class="rd">"UTF-8"</span>&gt;
   &lt;<span class="bl">meta</span> <span class="lt">name</span>=<span class="rd">"viewport"</span> <span class="lt">content</span>=<span class="rd">"width=device-width, initial-scale=1.0"</span>&gt;
   &lt;<span class="bl">title</span>&gt;Document&lt;<span class="bl">/title</span>&gt;
+  &lt;<span class="bl">script</span> <span class="lt">src</span>=<span class="rd">"/socket.io/socket.io.js"</span>&gt;&lt;<span class="bl">/script</span>&gt;
   &lt;<span class="bl">link</span> <span class="lt">rel</span>=<span class="rd">"stylesheet"</span> <span class="lt">href</span>=<span class="rd">"style.css"</span>&gt;
   &lt;<span class="bl">style</span>&gt;
     <span class="gn">/* CSS Styles */</span>
@@ -233,7 +238,7 @@ Project/
 <span class="bl">const</span> <span class="lt">rgbValue</span> = document.getElementById(<span class="rd">"rgbValue"</span>);
 <span class="bl">const</span> <span class="lt">colorBox</span> = document.getElementById(<span class="rd">"colorBox"</span>);
 
-<span class="bl">const</span> <span class="lt">socket</span> = io();</span>
+<span class="gn">//const socket = io();</span>
 <span class="bl">function</span> updateColor() {
   <span class="bl">const</span> <span class="lt">red</span> = <span class="lt">redRange</span>.value;
   <span class="bl">const</span> <span class="lt">green</span> = <span class="lt">greenRange</span>.value;
@@ -250,7 +255,10 @@ Project/
           </code>
         </pre>
         <p>To check if the button works, open a web browser and drag & drop the html file into a new tab.</p>
-        <p>Note: Remove the comment tags ("//") after testing the page on the browser.</p>
+        <p>Important Note: Remove the comment tags ("//") after testing the page on the browser.</p>
+        <ul>
+          <li><code class="codeBox"><span class="bl">const</span> <span class="lt">socket</span> = io();</span></code></li>
+        </ul>
       </section>
       <section style="display: block; background-color: lightgrey; color:#303030; width: 250px; text-align: center;">
         <h3>RGB Control</h3>
@@ -265,7 +273,23 @@ Project/
         <br>
       </section>
       <section>
-        <h2>Editing the Server File</h2>
+        <h2>Setting Up the Express Server</h2>
+        <p>Move the <b>index.html</b> file from the public folder to the server folder.</p>
+        <p>The directory map should now look look like the one shown.</p>
+        <pre class="codeBox">
+          <code>
+Project/
+├── node_modules/
+├── public/
+│   ├── code.js
+│   └── style.css
+├── server/
+│   ├── index.html
+│   └── server.js
+├── package.json 
+└── yarn.lock 
+          </code>
+        </pre>
         <p>Add the JavaScript code shown to the server.js file.</p>
         <pre class="codeBox">
           <code>
@@ -280,9 +304,9 @@ Project/
 <span class="bl">const</span> { <span class="sg">Board</span>, <span class="sg">Led</span> } = require(<span class="rd">'johnny-five'</span>);
 
 <span class="bl">const</span> <span class="lt">path</span> = require(<span class="rd">'path'</span>);
-<span class="lt">app</span>.use(express.static(<span class="lt">path</span>.join(<span class="lt">__dirname</span>, <span class="rd">'public'</span>)));
+<span class="lt">app</span>.use(express.static(<span class="lt">path</span>.join(<span class="lt">__dirname</span>, <span class="rd">'../public'</span>)));
 <span class="lt">app</span>.get(<span class="rd">'/'</span>, (<span class="lt">req</span>, <span class="lt">res</span>)<span class="bl"> => </span>{
-  <span class="lt">res</span>.sendFile(<span class="lt">__dirname</span> + <span class="rd">'index.html'</span>);
+  <span class="lt">res</span>.sendFile(<span class="lt">__dirname</span> + <span class="rd">'/index.html'</span>);
 });
 
 <span class="bl">const</span> <span class="lt">board</span> = <span class="bl">new</span> <span class="sg">Board</span>({
