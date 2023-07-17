@@ -3,7 +3,7 @@ const gameButton = '<button type="button" onclick="playGame()">Number Guessing G
 game.innerHTML = gameButton;
 function playGame() {
     const gameHTML = (`<form id="gameApp">
-        <h3 style="color:mediumaquamarine">Guess the number between 1 & 100<br> in 7 tries or less.</h3>
+        <h3 id="gameHeading">Guess the number from 1 to 100<br> in 7 tries or less.</h3>
         <div id="reveal"><input type="number" id="guess"><button type="button" id="check">Check</button></div>
         <h4 id="result">Guess the number.</h4>
         <label id="attempt" for="attemptMeter">Attempts: 0 </label><br>
@@ -11,6 +11,8 @@ function playGame() {
         <button id="play" type="button" >Play Again?</button><button id="close" type="button" >Close</button>
     </form>`);
     game.innerHTML = gameHTML;
+    const gameHeading = document.getElementById('gameHeading');
+    gameHeading.style.color = 'mediumaquamarine'
     const check = document.getElementById("check");
     const guess = document.getElementById("guess");
     const reveal = document.getElementById("reveal");
