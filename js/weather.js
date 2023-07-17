@@ -127,19 +127,25 @@ const jehsPoints = ({
 });
 weatherDisplay.createWithEndpoint(jehsPoints.endpoint);
 /**********************************************************************************/
+const nwsHeading = document.getElementById('nwsHeading');
+const nwsLink = '<a href="https://www.weather.gov" target="_blank">National Weather Service API</a>';
+const catLink = '<a href="https://www.thecatapi.com" target="_blank">The Cat API</a>';
 const selectLocationSELECT = document.getElementById('selectLocation');
 const weatherStatusDIV = document.getElementById('weatherStatus');
 selectLocationSELECT.addEventListener("change", function (event) {
     const weatherLocation = event.target.value;
     switch (weatherLocation) {
         case 'geolocation':
+            nwsHeading.innerHTML = nwsLink;
             useGeoLocation();
             break;
         case 'jehs':
+            nwsHeading.innerHTML = nwsLink;
             weatherStatusDIV.innerText = "";
             weatherDisplay.create(jehsPoints.latitude, jehsPoints.longitude);
             break;
         case 'showCat':
+            nwsHeading.innerHTML = catLink;
             weatherStatusDIV.innerText = "";
             displayCat();
             break;
