@@ -1,24 +1,17 @@
 {
-  "name": "js-examples",
-  "version": "1.0.0",
+  "name": "example",
+  "version": "1.0.1",
+  "author": "felixthecat8a",
   "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
+  "main": "main.js",
+  "keywords": [],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/felixthecat8a/JS-examples.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/felixthecat8a/JS-examples/issues"
   },
-  "homepage": "https://github.com/felixthecat8a/JS-examples#readme",
-  "dependencies": {
-    "dotenv": "^16.0.3"
-  }
+  "homepage": "https://github.com/felixthecat8a/JS-examples#readme"
 }
