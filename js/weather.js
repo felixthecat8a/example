@@ -6,7 +6,7 @@ class WeatherDisplay {
             const hourlyEndpoint = locationData.properties.forecastHourly
             const forecastEndpoint = locationData.properties.forecast
             const location = this.getLocation(locationData)
-            await this.display(hourlyEndpoint, location)
+            await this.displayWeather(hourlyEndpoint, location)
             await this.displayForecast(forecastEndpoint)
         }
         catch (error) {
@@ -20,7 +20,8 @@ class WeatherDisplay {
         const location = (`${city}, ${state}`);
         return location;
     }
-    async display(endpoint, location) {
+    async displayWeather(endpoint, location) {
+        console.log(`${location}: ${endpoint}`)
         try {
             const response = await fetch(endpoint);
             const data = await response.json();
@@ -35,13 +36,16 @@ class WeatherDisplay {
     }
     getWeatherData(data, location) {
         let index = 0;
-        const name = data.properties.periods[index].name;
+        const startTime = data.properties.periods[index].startTime
+        const dateTime = new Date(startTime)
+        const dayOptions = { weekday: 'long' };
+        const day = dateTime.toLocaleDateString(undefined, dayOptions);
+        const date = dateTime.toLocaleDateString();
         const temperature = data.properties.periods[index].temperature;
         const windSpeed = data.properties.periods[index].windSpeed;
         const windDirection = data.properties.periods[index].windDirection;
         const wind = `${windSpeed} ${windDirection}`;
         const shortForecast = data.properties.periods[index].shortForecast;
-        const fullForecast = data.properties.periods[index].detailedForecast;
         const humidity = `${data.properties.periods[index].relativeHumidity.value}%`;
         const chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value;
         const rain = chanceOfRain == null ? "0%" : `${chanceOfRain}%`;
@@ -49,12 +53,14 @@ class WeatherDisplay {
         const weatherData = (`<div id='weatherContainer'>
             <div id="weatherDiv">
                 <section id='weatherTitle'>
-                <div style="font-size:x-large;">${location}</div>
-                    <img src="${icon}" alt="icon" title="${fullForecast}">
+                    <div style="font-size:large;">${day}</div>
+                    <div style="font-size:large;">${date}</div>
+                    <img src="${icon}" alt="icon" title="${shortForecast}">
                 </section>
                 <section id='weatherContent'>
+                    <div style="font-size:large;">${location}</div>
                     <div style="font-size:xx-large;">${temperature}&degF</div>
-                    <div style="font-size:large;">Wind: ${wind}</div>
+                    <div style="font-size:x-large;">Wind: ${wind}</div>
                     <div style="font-size:medium;">Rain: ${rain} Humidity: ${humidity}</div>
                     <div style="font-size:small;">${shortForecast}</div>
                 </section>
@@ -97,7 +103,7 @@ class WeatherDisplay {
         const parsedUrl = new URL(endpoint);
         const path = parsedUrl.pathname.split("/").slice(2, 4).join("/");
         const locationFromEndpoint = location == null ? path : location;
-        await this.display(`${endpoint}/hourly`,locationFromEndpoint);
+        await this.displayWeather(`${endpoint}/hourly`,locationFromEndpoint);
         await this.displayForecast(endpoint);
     }
 }
