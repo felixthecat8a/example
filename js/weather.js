@@ -3,10 +3,11 @@ class WeatherDisplay {
         const pointsURL = (`https://api.weather.gov/points/${latitude},${longitude}`);
         try {
             const locationData = await (await fetch(pointsURL)).json();
-            const endpoint = locationData.properties.forecast;
-            const location = this.getLocation(locationData);
-            console.log(`${location}: ${endpoint}`);
-            await this.display(endpoint, location);
+            const hourlyEndpoint = locationData.properties.forecastHourly
+            const forecastEndpoint = locationData.properties.forecast
+            const location = this.getLocation(locationData)
+            await this.display(hourlyEndpoint, location)
+            await this.displayForecast(forecastEndpoint)
         }
         catch (error) {
             weatherStatusDIV.innerText = "Failed to get location data";
@@ -26,7 +27,6 @@ class WeatherDisplay {
             const weatherData = this.getWeatherData(data, location);
             const weatherDisplay = document.getElementById("weatherDisplay");
             weatherDisplay.innerHTML = weatherData;
-            this.getForecastData(data);
         }
         catch (error) {
             weatherStatusDIV.innerText = "Failed to get weather data";
@@ -49,11 +49,10 @@ class WeatherDisplay {
         const weatherData = (`<div id='weatherContainer'>
             <div id="weatherDiv">
                 <section id='weatherTitle'>
-                    <div style="font-size:large;">${name}</div>
+                <div style="font-size:x-large;">${location}</div>
                     <img src="${icon}" alt="icon" title="${fullForecast}">
                 </section>
                 <section id='weatherContent'>
-                    <div style="font-size:x-large;">${location}</div>
                     <div style="font-size:xx-large;">${temperature}&degF</div>
                     <div style="font-size:large;">Wind: ${wind}</div>
                     <div style="font-size:medium;">Rain: ${rain} Humidity: ${humidity}</div>
@@ -64,8 +63,10 @@ class WeatherDisplay {
         </div>`);
         return weatherData;
     }
-    getForecastData(data) {
+    async displayForecast(forecastEndpoint) {
         const forecastDiv = document.getElementById("forecastDiv");
+        const response = await fetch(forecastEndpoint)
+        const data = await response.json()
         for (let index = 1; index < 13; index++) {
             const name = data.properties.periods[index].name;
             const temperatureHigh = data.properties.periods[index].temperature;
@@ -74,7 +75,7 @@ class WeatherDisplay {
             const chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value;
             const rain = chanceOfRain == null ? "0" : chanceOfRain;
             const icon = data.properties.periods[index].icon;
-            const forecastHTML = (`<div title="${detailedForecast}">
+            const forecastHTML = (`<div title="${name}: ${detailedForecast}"
                 <span style="color:lightgreen">${name.substring(0, 3)}:</span> ${rain}%<br>
                 <span style="color:lightcoral">${temperatureHigh}&degF</span><br>
                 <span style="color:lightblue">${temperatureLow}&degF</span><br>
@@ -96,7 +97,8 @@ class WeatherDisplay {
         const parsedUrl = new URL(endpoint);
         const path = parsedUrl.pathname.split("/").slice(2, 4).join("/");
         const locationFromEndpoint = location == null ? path : location;
-        await this.display(endpoint, locationFromEndpoint);
+        await this.display(`${endpoint}/hourly`,locationFromEndpoint);
+        await this.displayForecast(endpoint);
     }
 }
 const weatherDisplay = new WeatherDisplay();
