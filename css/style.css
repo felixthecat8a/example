@@ -149,7 +149,7 @@ button {
     border: solid thin darkcyan;
     color: azure;
     display: inline-block;
-    padding: 3px 30px;
+    padding: 3px 25px;
     cursor: pointer;
     transition-duration: 0.5s;
     box-shadow: 1px 1px #999;
