@@ -36,10 +36,6 @@ class WeatherDisplay {
     }
     getWeatherData(data, location) {
         let index = 0;
-        const startTime = data.properties.periods[index].startTime
-        const dateTime = new Date(startTime)
-        const dayOptions = { weekday: 'long' };
-        const day = dateTime.toLocaleDateString(undefined, dayOptions);
         const temperature = data.properties.periods[index].temperature;
         const windSpeed = data.properties.periods[index].windSpeed;
         const windDirection = data.properties.periods[index].windDirection;
@@ -51,7 +47,6 @@ class WeatherDisplay {
         const weatherData = (`<div id='weatherContainer'>
             <div id="weatherDiv">
                 <section id='weatherTitle'>
-                    <div style="font-size:medium;">${day}</div>
                     <div id='forecastContent'></div>
                 </section>
                 <section id='weatherContent'>
@@ -104,8 +99,8 @@ class WeatherDisplay {
         const icon = data.properties.periods[index].icon;
         const detailedForecast = data.properties.periods[index].detailedForecast;
         const forecastContentData = (`
-            <img src="${icon}" alt="icon" title="${detailedForecast}">
             <div style="font-size:large;">${name}: ${temperature}&degF</div>
+            <img src="${icon}" alt="icon" title="${detailedForecast}">
         `);
         const forecastContent = document.getElementById('forecastContent');
         forecastContent.innerHTML = forecastContentData;
