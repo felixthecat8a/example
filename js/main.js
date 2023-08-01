@@ -48,19 +48,32 @@ async function displayRandomCat() {
     }
 }
 async function displayCatBreed(breedId) {
-    console.log(`showing ${breedId}`);
+    console.log(`showing id:${breedId}`);
+    const catDiv = document.getElementById("catDisplay");
     const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
-    const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}&${API_KEY}`;
+    const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}`;
     try {
-        const response = await fetch(BREED_URL);
-        const data = await response.json();
-        const catImages = data.map((cat) => cat.url);
+        const response = await fetch(BREED_URL, { headers: { 'x-api-key': API_KEY } })
+        const data = await response.json()
+        const catImages = data.map((cat) => cat.url)
         if (catImages.length === 0) {
-            console.log(`No images found for breed ${breedId}`);
-            return;
+            console.log(`no images found for id:${breedId}`)
+            catDiv.innerHTML = `<p>no images found for id:${breedId}</p>`
+            return
         }
-        const catDiv = document.getElementById("catDisplay");
-        if (catDiv) {
+        if (catImages.length < 4) {
+            console.log(`id:${breedId} has less than 4 images`);
+            const catImg = (`
+            <div class="catRow">
+                <div class="catColumn">
+                    <img src="${catImages[0]}" alt="${breedId}" height="250px" width="auto">
+                </div>
+            </div>
+            `);
+            catDiv.innerHTML = catImg
+            return
+        }
+        else {
             const catImg = (`
             <div class="catRow">
                 <div class="catColumn">
@@ -73,10 +86,9 @@ async function displayCatBreed(breedId) {
                 <div>
             </div>
             `);
-            catDiv.innerHTML = catImg;
+            catDiv.innerHTML = catImg
         }
-    }
-    catch (error) {
-        console.log(`There was a problem fetching ${breedId} cat images.`);
+    } catch (error) {
+        console.log(`There was a problem fetching id:${breedId} images.`)
     }
 }

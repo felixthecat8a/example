@@ -115,25 +115,7 @@ class WeatherDisplay {
     }
 }
 const weatherDisplay = new WeatherDisplay();
-function useGeoLocation() {
-    const success = (position) => {
-        weatherStatusDIV.innerText = "";
-        const geoLongitude = position.coords.longitude;
-        const geoLatitude = position.coords.latitude;
-        weatherDisplay.create(geoLatitude, geoLongitude);
-    };
-    const error = () => {
-        weatherStatusDIV.innerText = "Unable to retrieve your location";
-    };
-    if (!navigator.geolocation) {
-        weatherStatusDIV.innerText = "Geolocation is not supported by your browser";
-    }
-    else {
-        weatherStatusDIV.innerText = "Locating...";
-        navigator.geolocation.getCurrentPosition(success, error);
-    }
-}
-/**********************************************************************************/
+/********************************************************************************************/
 const jehsPoints = ({
     location: "JEHS",
     latitude: '26.3086',
@@ -141,7 +123,7 @@ const jehsPoints = ({
     endpoint: "https://api.weather.gov/gridpoints/BRO/54,24/forecast",
 });
 weatherDisplay.createWithEndpoint(jehsPoints.endpoint);
-/**********************************************************************************/
+/********************************************************************************************/
 const nwsHeading = document.getElementById('nwsHeading');
 const nwsLink = '<a href="https://www.weather.gov" target="_blank">National Weather Service API</a>';
 const catLink = '<a href="https://www.thecatapi.com" target="_blank">The Cat API</a>';
@@ -168,6 +150,26 @@ selectLocationSELECT.addEventListener("change", function (event) {
             break;
     }
 });
+/********************************************************************************************/
+function useGeoLocation() {
+    const success = (position) => {
+        weatherStatusDIV.innerText = "";
+        const geoLongitude = position.coords.longitude;
+        const geoLatitude = position.coords.latitude;
+        weatherDisplay.create(geoLatitude, geoLongitude);
+    };
+    const error = () => {
+        weatherStatusDIV.innerText = "Unable to retrieve your location";
+    };
+    if (!navigator.geolocation) {
+        weatherStatusDIV.innerText = "Geolocation is not supported by your browser";
+    }
+    else {
+        weatherStatusDIV.innerText = "Locating...";
+        navigator.geolocation.getCurrentPosition(success, error);
+    }
+}
+/********************************************************************************************/
 async function displayCat() {
     const api_key = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
     const url = `https://api.thecatapi.com/v1/images/search?limit=1&${api_key}`;
