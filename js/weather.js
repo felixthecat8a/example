@@ -99,7 +99,8 @@ class WeatherDisplay {
         const icon = data.properties.periods[index].icon;
         const detailedForecast = data.properties.periods[index].detailedForecast;
         const forecastContentData = (`
-            <div style="font-size:large;">${name}: ${temperature}&degF</div>
+            <div style="font-size:large;">${name}:</div>
+            <div style="font-size:medium;">${temperature}&degF</div>
             <img src="${icon}" alt="icon" title="${detailedForecast}">
         `);
         const forecastContent = document.getElementById('forecastContent');
