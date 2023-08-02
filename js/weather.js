@@ -1,4 +1,7 @@
 class WeatherDisplay {
+    constructor() {
+        this.weatherDisplay = document.getElementById("weatherDisplay");
+    }
     async create(latitude, longitude) {
         const pointsURL = (`https://api.weather.gov/points/${latitude},${longitude}`);
         try {
@@ -26,8 +29,7 @@ class WeatherDisplay {
             const response = await fetch(endpoint);
             const data = await response.json();
             const weatherData = this.getWeatherData(data, location);
-            const weatherDisplay = document.getElementById("weatherDisplay");
-            weatherDisplay.innerHTML = weatherData;
+            this.weatherDisplay.innerHTML = weatherData;
         }
         catch (error) {
             weatherStatusDIV.innerText = "Failed to get weather data";
