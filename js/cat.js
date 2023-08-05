@@ -1,19 +1,7 @@
-displayRandomCat();
 const catSelect = document.getElementById('catSelect');
+const catDiv = document.getElementById("catDisplay");
+displayRandomCat();
 createCatBreedOptions();
-catSelect.addEventListener("change", function (event) {
-    const catBreed = event.target.value;
-    switch (catBreed) {
-        case 'showCat':
-            displayRandomCat();
-            break;
-        case 'catBreed':
-            displayCatBreed(catBreed);
-            break;
-        default:
-            break;
-    }
-});
 async function createCatBreedOptions() {
     const URL = `https://api.thecatapi.com/v1/breeds`;
     try {
@@ -25,7 +13,14 @@ async function createCatBreedOptions() {
             catOption.textContent = data[i].name;
             catSelect.appendChild(catOption);
         }
-        catSelect.setAttribute('onchange', "displayCatBreed(this.value)");
+        catSelect.addEventListener('change', async(event) => {
+            const catBreed = event.target.value
+            if (catBreed == 'showCat') {
+                await displayRandomCat();
+            } else {
+                await displayCatBreed(catBreed);
+            }
+        });
     }
     catch (e) {
         console.log("There was a problem fetching the breed list.");
@@ -40,7 +35,7 @@ async function displayRandomCat() {
         const data = await response.json();
         const catImage = data[0].url;
         const catImg = `<img src="${catImage}" alt="cat" height="300px" width="auto">`;
-        const catDiv = document.getElementById("catDisplay");
+        
         catDiv.innerHTML = (`${catImg}`);
     }
     catch (error) {
@@ -49,7 +44,6 @@ async function displayRandomCat() {
 }
 async function displayCatBreed(breedId) {
     console.log(`showing id:${breedId}`);
-    const catDiv = document.getElementById("catDisplay");
     const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
     const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}`;
     try {
