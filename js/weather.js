@@ -5,31 +5,28 @@ class WeatherDisplay {
     async create(latitude, longitude) {
         const pointsURL = (`https://api.weather.gov/points/${latitude},${longitude}`);
         try {
-            const locationData = await (await fetch(pointsURL)).json();
-            const hourlyEndpoint = locationData.properties.forecastHourly
-            const forecastEndpoint = locationData.properties.forecast
-            const location = this.getLocation(locationData)
-            await this.displayWeather(hourlyEndpoint, location)
-            await this.displayForecast(forecastEndpoint)
+            const data = await (await fetch(pointsURL)).json();
+            const endpoint = data.properties.forecastHourly
+            const location = this.getLocation(data)
+            await this.displayWeather(endpoint, location)
+            await this.displayForecast(data.properties.forecast)
         }
         catch (error) {
             weatherStatusDIV.innerText = "Failed to get location data";
             console.log("Failed to get location data");
         }
     }
-    getLocation(locationData) {
-        const city = locationData.properties.relativeLocation.properties.city;
-        const state = locationData.properties.relativeLocation.properties.state;
-        const location = (`${city}, ${state}`);
-        return location;
+    getLocation(data) {
+        const locationData = data.properties.relativeLocation.properties
+        return (`${locationData.city}, ${locationData.state}`);
     }
     async displayWeather(endpoint, location) {
         console.log(`${location}: ${endpoint}`)
         try {
             const response = await fetch(endpoint);
             const data = await response.json();
-            const weatherData = this.getWeatherData(data, location);
-            this.weatherDisplay.innerHTML = weatherData;
+            const weatherHTML = this.getWeatherData(data, location);
+            this.weatherDisplay.innerHTML = weatherHTML;
         }
         catch (error) {
             weatherStatusDIV.innerText = "Failed to get weather data";
@@ -38,15 +35,16 @@ class WeatherDisplay {
     }
     getWeatherData(data, location) {
         let index = 0;
-        const temperature = data.properties.periods[index].temperature;
-        const windSpeed = data.properties.periods[index].windSpeed;
-        const windDirection = data.properties.periods[index].windDirection;
+        const weatherData = data.properties.periods[index]
+        const temperature = weatherData.temperature;
+        const windSpeed = weatherData.windSpeed;
+        const windDirection = weatherData.windDirection;
         const wind = `${windSpeed} ${windDirection}`;
-        const shortForecast = data.properties.periods[index].shortForecast;
-        const humidity = `${data.properties.periods[index].relativeHumidity.value}%`;
-        const chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value;
-        const rain = chanceOfRain == null ? "0%" : `${chanceOfRain}%`;
-        const weatherData = (`<div id='weatherContainer'>
+        const shortForecast = weatherData.shortForecast;
+        const humidity = weatherData.relativeHumidity.value;
+        const chanceOfRain = weatherData.probabilityOfPrecipitation.value;
+        const rain = chanceOfRain == null ? "0" : chanceOfRain;
+        const weatherHTML = (`<div id='weatherContainer'>
             <div id="weatherDiv">
                 <section id='weatherTitle'>
                     <div id='forecastContent'></div>
@@ -55,13 +53,13 @@ class WeatherDisplay {
                     <div style="font-size:large;">${location}</div>
                     <div style="font-size:xx-large;">${temperature}&degF</div>
                     <div style="font-size:x-large;">Wind: ${wind}</div>
-                    <div style="font-size:medium;">Rain: ${rain} Humidity: ${humidity}</div>
+                    <div style="font-size:medium;">Rain: ${rain}% Humidity: ${humidity}%</div>
                     <div style="font-size:small;">${shortForecast}</div>
                 </section>
             </div>
             <div id="forecastDiv"></div>
         </div>`);
-        return weatherData;
+        return weatherHTML;
     }
     async displayForecast(forecastEndpoint) {
         const forecastDiv = document.getElementById("forecastDiv");
@@ -69,20 +67,21 @@ class WeatherDisplay {
         const data = await response.json();
         this.currentForecast(data);
         for (let index = 1; index < 13; index++) {
-            const name = data.properties.periods[index].name;
-            const temperatureHigh = data.properties.periods[index].temperature;
-            const temperatureLow = data.properties.periods[index + 1].temperature;
-            const detailedForecast = data.properties.periods[index].detailedForecast;
-            const chanceOfRain = data.properties.periods[index].probabilityOfPrecipitation.value;
+            const forecastData = data.properties.periods;
+            const name = forecastData[index].name;
+            const temperatureHigh = forecastData[index].temperature;
+            const temperatureLow = forecastData[index + 1].temperature;
+            const detailedForecast = forecastData[index].detailedForecast;
+            const chanceOfRain = forecastData[index].probabilityOfPrecipitation.value;
             const rain = chanceOfRain == null ? "0" : chanceOfRain;
-            const icon = data.properties.periods[index].icon;
+            const icon = forecastData[index].icon;
             const forecastHTML = (`<div title="${name}: ${detailedForecast}"
                 <span style="color:lightgreen">${name.substring(0, 3)}:</span> ${rain}%<br>
                 <span style="color:lightcoral">${temperatureHigh}&degF</span><br>
                 <span style="color:lightblue">${temperatureLow}&degF</span><br>
                 <img src="${icon}" alt="icon" height="auto" width="75%" >
             </div>`);
-            const dayTime = data.properties.periods[index].isDaytime;
+            const dayTime = forecastData[index].isDaytime;
             if (!dayTime) {
                 continue;
             }
@@ -96,14 +95,11 @@ class WeatherDisplay {
     }
     currentForecast(data){
         let index = 0;
-        const name = data.properties.periods[index].name;
-        const temperature = data.properties.periods[index].temperature;
-        const icon = data.properties.periods[index].icon;
-        const detailedForecast = data.properties.periods[index].detailedForecast;
+        const forecastData = data.properties.periods[index]
         const forecastContentData = (`
-            <div style="font-size:large;">${name}:</div>
-            <div style="font-size:medium;">${temperature}&degF</div>
-            <img src="${icon}" alt="icon" title="${detailedForecast}">
+            <div style="font-size:large;">${forecastData.name}:</div>
+            <div style="font-size:medium;">${forecastData.temperature}&degF</div>
+            <img src="${forecastData.icon}" alt="icon" title="${forecastData.detailedForecast}">
         `);
         const forecastContent = document.getElementById('forecastContent');
         forecastContent.innerHTML = forecastContentData;
@@ -125,27 +121,28 @@ const jehsPoints = ({
     longitude: '-98.103',
     endpoint: "https://api.weather.gov/gridpoints/BRO/54,24/forecast",
 });
-weatherDisplay.createWithEndpoint(jehsPoints.endpoint);
+weatherDisplay.createWithEndpoint(jehsPoints.endpoint,jehsPoints.location);
 /********************************************************************************************/
-const nwsHeading = document.getElementById('nwsHeading');
-const nwsLink = '<a href="https://www.weather.gov" target="_blank">National Weather Service API</a>';
-const catLink = '<a href="https://www.thecatapi.com" target="_blank">The Cat API</a>';
+const nwsLink = document.getElementById('nwsLink');
 const selectLocationSELECT = document.getElementById('selectLocation');
 const weatherStatusDIV = document.getElementById('weatherStatus');
 selectLocationSELECT.addEventListener("change", function (event) {
     const weatherLocation = event.target.value;
     switch (weatherLocation) {
         case 'geolocation':
-            nwsHeading.innerHTML = nwsLink;
+            nwsLink.textContent = "National Weather Service API";
+            nwsLink.setAttribute('href','https://www.weather.gov');
             useGeoLocation();
             break;
         case 'jehs':
-            nwsHeading.innerHTML = nwsLink;
+            nwsLink.textContent = "National Weather Service API";
+            nwsLink.setAttribute('href','https://www.weather.gov');
             weatherStatusDIV.innerText = "";
             weatherDisplay.create(jehsPoints.latitude, jehsPoints.longitude);
             break;
         case 'showCat':
-            nwsHeading.innerHTML = catLink;
+            nwsLink.textContent = "The Cat API";
+            nwsLink.setAttribute('href','https://www.thecatapi.com');
             weatherStatusDIV.innerText = "";
             displayCat();
             break;
