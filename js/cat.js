@@ -36,7 +36,7 @@ async function displayRandomCat() {
         const catImage = data[0].url;
         const catImg = `<img src="${catImage}" alt="cat" height="300px" width="auto">`;
         
-        catDiv.innerHTML = (`${catImg}`);
+        catDiv.innerHTML = catImg;
     }
     catch (error) {
         console.log("There was a problem fetching a cat image.");
