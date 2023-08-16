@@ -109,7 +109,7 @@ class WeatherDisplay {
         const parsedUrl = new URL(endpoint);
         const path = parsedUrl.pathname.split("/").slice(2, 4).join("/");
         const locationFromEndpoint = location == null ? path : location;
-        await this.displayWeather(`${endpoint}/hourly`,`Office/Grid: ${locationFromEndpoint}`);
+        await this.displayWeather(`${endpoint}/hourly`, locationFromEndpoint);
         await this.displayForecast(endpoint);
     }
 }
