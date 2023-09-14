@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8"><meta name="author" content="felixthecat8a"> 
+    <meta name="keywords" content="RaspberryPi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>Raspberry Pi Tutorial &#x1F408;</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        h2 {color:#E30B5C}
+        main {
+            width: 800px;
+            margin: auto;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+        @media all and (max-width: 800px) {
+            body {
+                font-size: 0.8rem;
+                width: 800px;
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h1 style="color: #E30B5C;">Getting Started with Raspberry Pi</h1>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+        </ul>
+    </nav><br>
+    </header>
+    <main>
+        <article>
+            <section>
+                <h2>Installing an OS into a Raspberry Pi</h2>
+                <ol><!--Ordered List-->
+                    <li>Download and install the official <b><a href="https://www.raspberrypi.com/software/" target="_blank" rel="noopener noreferrer">Raspberry Pi Imager</a></b> from the Raspberry Pi website.</li>
+                    <li>Insert a microSD card in a microSD card reader into your computer's SD slot.</li>
+                    <li>Open the Raspberry Pi Imager.</li>
+                    <ol><!--Nested Ordered List-->
+                        <li>Choose the "Operating System" (<b>Raspberry Pi OS (32-bit)</b>).</li>
+                        <li>Choose the "Storage" (<b>SDXC Card</b>).</li>
+                    </ol> 
+                    <li>Click on the gear icon to open the Advanced Options.</li>
+                    <ul><!--Nested Unordered List-->
+                        <li>Set the hostname as <b><u>raspberrypi</u>.local</b></li>
+                        <li>Enable SSH</li>
+                        <li>Set the username (<b><i>pi</i></b>) and password (<b><i>raspberry</i></b>)</li>
+                        <li>Select "Configure wireless LAN" (optional)</li>
+                        <li>Click "Save".</li>
+                    </ul>
+                    <li>Click "Write" to image the microSD card.</li>
+                    <ul>
+                        <li>Alternatively, you can download and install <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener noreferrer">balenaEtcher</a>.</li>
+                        <li>Then, download the <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank" rel="noopener noreferrer">Raspberry Pi OS</a> from the Raspberry Pi website.</li>
+                        <li>Click on "Flash from file" to select the Raspberry Pi OS.</li> 
+                        <li>Click on "Select target" to select the miniSD card, and click on "Flash!"</li>
+                        <li>Remove and reinsert the miniSD card to open the "Boot" folder.</li>
+                        <li>Create a text file with the title "ssh" on your desktop.</li>
+                        <li>Use "Save As" to save the file in the "Boot" folder on the SD card with no extension.</li>
+                    </ul>
+                    <li>Insert the card in the slot on the Raspberry Pi and turn the single-board computer on.</li>
+                </ol>
+            </section>
+            <section>
+                <h2>Connecting to a Raspberry Pi via Ethernet Cable</h2>
+                <ol>
+                    <li>Download and install <a href="https://www.putty.org/" target="_blank" rel="noopener noreferrer">PuTTY</a>.</li>
+                    <li>Connect an RJ45 cable from the Raspbery Pi to your computer.</li>
+                    <li>Open Putty, type in the Hostname (raspberrypi.local), and click "Open".</li>
+                    <ul>
+                        <li>A Putty terminal will then open with a prompt to enter a username then a password.</li>
+                    </ul>
+                    <li>In the command promt, type "<code style="background-color: black;">sudo raspi-config</code>". This will open a new window.</li>
+                    <ol>
+                        <li>Select "interface options"</li>
+                        <li>Select "enable VNC", then select "yes".</li>
+                    </ol>
+                    <li>Set the resolution for the VNC Viewer.</li>
+                    <ol>
+                        <li>From the main menu, go to "display options".</li>
+                        <li>Go to "VNC resolution", and choose 1280x720.</li>
+                        <li>Select "Finish", and allow the Raspberry Pi to reboot.</li>
+                    </ol>
+                    <li>Download and install <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank" rel="noopener noreferrer">VNC Viewer</a>.</li>
+                    <ul>
+                        <li>You will need to create an account with VNC Viewer.</li>
+                    </ul> 
+                    <li>Type in the Hostname (raspberrypi.local), and hit enter</li>
+                    <li>Enter the username (<strong><em>pi</em></strong>) and password (<strong><em>raspberry</em></strong>), and click "ok".</li>
+                </ol>
+                <p>You should be able to see the Linux desktop on your computer monitor.</p>
+            </section>
+            <section>
+                <h2>Update Raspian</h2>
+                <p>Raspian is the Raspberry Pi Operating System</p>
+                <ol>
+                    <li>Clicking on the Raspberry Pi logo on the top-left corner opens the Applications Menu.</li>
+                    <li>Open a terminal in the desktop.</li>
+                    <ul>
+                        <li>Click on the Raspberry Pi logo then <b>Accessories >> Terminal</b></li>
+                    </ul>
+                    <li>Update and upgrade Raspian.</li>
+                    <ul>
+                        <li><code style="background-color: black;">sudo apt-get update</code></li>
+                        <li><code style="background-color: black;">sudo apt-get upgrade</code></li>
+                    </ul>
+                </ol>
+                <p>Raspian is installed with Python 3 and Thonny.</p>
+            </section>
+            <br>
+        </article>
+    </main>
+    <footer style="background-color: #E30B5C;">
+    <h5><a href="http://github.com/felixthecat8a" target="_blank" rel="noopener noreferrer">&#x1F408;
+        <span>&copy;FelixTheCat8a&#128008;</span>
+    </a></h5><br>
+    </footer>
+</body>
+</html>

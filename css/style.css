@@ -22,6 +22,9 @@ p, h1, h2, h3, h4, h5, h6 {
 
 header {
     text-align: center;
+    position: static;
+    top: 0;
+    width: 100%;
 }
 header h1 {
     color: mediumseagreen;
@@ -101,6 +104,9 @@ main a:hover, main a:active {
 
 footer {
     text-align: center;
+    position: static;
+    bottom: 0;
+    width: 100%;
 }
 footer a {
     text-decoration: none;
