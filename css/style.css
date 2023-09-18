@@ -318,7 +318,7 @@ abbr[title] {
     justify-content: space-between;
     align-items: center;
     max-width: 550px;
-    height: 190px;
+    height: 195px;
     margin: auto;
 }
 #weatherDiv img {
@@ -362,6 +362,8 @@ abbr[title] {
 #forecastDay {
     flex: 1;
     background-color: #333;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border: solid thin darkseagreen;
 }
 #forecastDay:hover {

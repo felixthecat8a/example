@@ -83,7 +83,15 @@ class WeatherDisplay {
             const response = await fetch(endpoint)
             const data = await response.json()
             let index = 0;
-            const weatherData = data.properties.periods[index]
+            const weatherData = data.properties.periods[index];
+            const dateTime = new Date(weatherData.startTime);
+            const options = {
+                weekday: 'long',
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+            };
+            const today = dateTime.toLocaleDateString('en-US', options);
             const temperature = weatherData.temperature;
             const windSpeed = weatherData.windSpeed;
             const windDirection = weatherData.windDirection;
@@ -93,13 +101,13 @@ class WeatherDisplay {
             const chanceOfRain = weatherData.probabilityOfPrecipitation.value;
             const rain = chanceOfRain == null ? "0" : chanceOfRain;
             const currentWeatherHTML = (`
-            <div style="font-size:large;">${location}</div>
+            <div style="font-size:medium;">${today}</div>
+            <div style="font-size:x-large;">${location}</div>
             <div style="font-size:xx-large;">${temperature}&degF</div>
-            <div style="font-size:x-large;">Wind: ${wind}</div>
+            <div style="font-size:large;">Wind: ${wind}</div>
             <div style="font-size:medium;">Humidity: ${humidity}%</div>
-            <div style="font-size:medium;">Chance of Rain: ${rain}%</div>
-            <br>
-            <div style="font-size:small;">${shortForecast}</div>
+            <div style="font-size:small;">Chance of Rain: ${rain}%</div>
+            <div style="font-size:medium;">${shortForecast}</div>
             `);
             const currentWeatherDIV = document.getElementById('currentWeather')
             currentWeatherDIV.innerHTML = currentWeatherHTML
