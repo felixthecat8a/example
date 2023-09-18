@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Node.js/Arduino &#x1F408;</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="code_styles.css">
     <style>
         h2 {color:mediumseagreen}
         main {
@@ -23,27 +24,6 @@
                 margin: auto;
             }
         }
-        .powershell {
-            color:white;
-            background-color:#012456;
-        }
-        .powershell span {
-            color:yellow;
-        }
-        .codeBox {
-            color: white;
-            background-color: #191919;
-            width: max-content;
-            padding-inline: 20px;
-        }
-        .sg {color: mediumseagreen}
-        .bl {color: royalblue}
-        .rd {color: salmon}
-        .lt {color: skyblue}
-        .yl {color: goldenrod}
-        .gn {color: limegreen}
-        .vt {color: orchid}
-        .gr {color: gray}
     </style>
 </head>
 <body>
@@ -83,8 +63,8 @@
                     <li><b>Yarn</b> can be downloaded using a terminal command.</li>
                         <ul>
                             <li>Open a terminal window with <b>Terminal > New Terminal</b> or <b>View > Terminal</b>.</li>
-                            <li><code class="powershell"><span>npm</span> install <code style="color:gray">--global</code> yarn</code></li>
-                            <li>Verify the installation with <code class="powershell"><span>yarn</span> --version</code></li>
+                            <li><code class="powershell"><span id="yl">npm</span> install <span id="gr">--global</span> yarn</code></li>
+                            <li>Verify the installation with <code class="powershell"><span>yarn</span> <span id="gr">--version</span></code></li>
                         </ul>
                 </ul>
             </section>
@@ -97,22 +77,22 @@
                 <ul>
                     <li>You can also create a project folder and file using PowerShell commands.</li>
                     <ul>
-                        <li><code class="powershell"><span>New-Item</span> -Path .\Project -ItemType Directory</code></li>
-                        <li><code class="powershell"><span>New-Item</span> -Path .\Project\rgbLED.js -ItemType File</code></li>
+                        <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\Project <span id="gr">-ItemType</span> Directory</code></li>
+                        <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\Project\rgbLED.js <span id="gr">-ItemType</span> File</code></li>
                     </ul>
                 </ul>
                 <p>Enter the project directory & initiate a project using the command terminal.</p>
                 <ul>
-                    <li><code class="powershell"><span>cd</span> Project</code></li>
+                    <li><code class="powershell"><span id="yl">cd</span> Project</code></li>
                     <ul>
-                        <li>Hint: Use <code class="powershell"><span>cd..</span></code> to return to a parent directory.</li>
-                        <li>Hint: Use quotations, <code class="powershell"><span>cd</span> <span style="color:lightseagreen">'My Project'</span></code> to enter a directory with spaces in the name.</li>
-                        <li>Hint: Use <code class="powershell"><span>cd</span> E:\</code> to enter a directory in a USB drive on drive E.</li>
+                        <li>Hint: Use <code class="powershell"><span id="yl">cd..</span></code> to return to a parent directory.</li>
+                        <li>Hint: Use quotations, <code class="powershell"><span id="yl">cd</span> <span  id="lsg">'My Project'</span></code> to enter a directory with spaces in the name.</li>
+                        <li>Hint: Use <code class="powershell"><span id="yl">cd</span> E:\</code> to enter a directory in a USB drive on drive E.</li>
                     </ul>
-                    <li><code class="powershell"><span>yarn</span> init <span style="color:gray">-y</span></code></li>
+                    <li><code class="powershell"><span id="yl">yarn</span> init <span  id="gr">-y</span></code></li>
                     <ul>
                         <li>Adding <code>--yes</code> or <code>-y</code> to the command bypasses the prompt questions.</li>
-                        <li>If using NPM, the command is <code class="powershell"><span>npm</span> init <span style="color:gray">--yes</span></code></li>
+                        <li>If using NPM, the command is <code class="powershell"><span id="yl">npm</span> init <span  id="gr">--yes</span></code></li>
                     </ul>
                     <li>A <b>package.json</b> file will be generated in the Project directory.</li>
                 </ul>
@@ -120,16 +100,16 @@
                 <ul>
                     <li>Install the <b><a href="http://johnny-five.io/" target="_blank" rel="noopener noreferrer">Johnny-Five</a></b> package.</li>
                     <ul>
-                        <li><code class="powershell"><span>yarn</span> add johnny-five</code><li>
+                        <li><code class="powershell"><span id="yl">yarn</span> add johnny-five</code><li>
                         <ul>
-                            <li>or <code class="powershell"><span>npm</span> install johnny-five</code></li>
+                            <li>or <code class="powershell"><span id="yl">npm</span> install johnny-five</code></li>
                         </ul>
                     </ul>
                     <li>Install the <b><a href="https://serialport.io/" target="_blank" rel="noopener noreferrer">SerialPort</a></b> package.</li>
                     <ul>
-                        <li><code class="powershell"><span>yarn</span> add serialport</code></li>
+                        <li><code class="powershell"><span id="yl">yarn</span> add serialport</code></li>
                         <ul>
-                            <li>or <code class="powershell"><span>npm</span> install serialport</code></li>
+                            <li>or <code class="powershell"><span id="yl">npm</span> install serialport</code></li>
                         </ul>
                     </ul>
                     <li>Installing packages creates a <b>package.json</b> file and a <b>yarn.lock</b>.</li>
@@ -153,48 +133,48 @@ Project/
                 <ul>
                     <li>Open the file rgbLED.js and add the JavaScript code as shown.</li>
                 </ul>
-                <pre class="codeBox">
-                    <code>
-<span class="gn">/* rgbLED.js */</span>
-<span class="bl">const</span> { <span class="sg">Board</span>, <span class="sg">Led</span> } = require(<span class="rd">'johnny-five'</span>);
-<span class="bl">const</span> <span class="lt">board</span> = <span class="bl">new</span> <span class="sg">Board</span>();
-<span class="gn">/* Requires pins that support PWM (denoted by ~) */</span>
-<span class="bl">const</span> <span class="lt">redPin</span> = 11;
-<span class="bl">const</span> <span class="lt">greenPin</span> = 10;
-<span class="bl">const</span> <span class="lt">bluePin</span> = 9;
-<span class="gn">// define each color</span>
-<span class="bl">const</span> <span class="lt">redHex</span> = <span class="rd">'FF0000'</span>;
-<span class="bl">const</span> <span class="lt">yellowHex</span> = <span class="rd">'FFFF00'</span>;
-<span class="bl">const</span> <span class="lt">greenHex</span> = <span class="rd">'00FF00'</span>;
-<span class="bl">const</span> <span class="lt">cyanHex</span> = <span class="rd">'00FFFF'</span>;
-<span class="bl">const</span> <span class="lt">blueHex</span> = <span class="rd">'0000FF'</span>;
-<span class="bl">const</span> <span class="lt">violetHex</span> = <span class="rd">'FF00FF'</span>;
-<span class="lt">board</span>.on(<span class="rd">'ready'</span>, ()<span class="bl"> => </span>{
-    <span class="lt">console</span>.log(<span class="rd">'Board is ready!'</span>);
+                <pre>
+                    <code class="code_javascript">
+<span id="gn">/* rgbLED.js */</span>
+<span id="bl">const</span> { <span id="sg">Board</span>, <span id="sg">Led</span> } = require(<span id="rd">'johnny-five'</span>);
+<span id="bl">const</span> <span id="lt">board</span> = <span id="bl">new</span> <span id="sg">Board</span>();
+<span id="gn">/* Requires pins that support PWM (denoted by ~) */</span>
+<span id="bl">const</span> <span id="lt">redPin</span> = 11;
+<span id="bl">const</span> <span id="lt">greenPin</span> = 10;
+<span id="bl">const</span> <span id="lt">bluePin</span> = 9;
+<span id="gn">// define each color</span>
+<span id="bl">const</span> <span id="lt">redHex</span> = <span id="rd">'FF0000'</span>;
+<span id="bl">const</span> <span id="lt">yellowHex</span> = <span id="rd">'FFFF00'</span>;
+<span id="bl">const</span> <span id="lt">greenHex</span> = <span id="rd">'00FF00'</span>;
+<span id="bl">const</span> <span id="lt">cyanHex</span> = <span id="rd">'00FFFF'</span>;
+<span id="bl">const</span> <span id="lt">blueHex</span> = <span id="rd">'0000FF'</span>;
+<span id="bl">const</span> <span id="lt">violetHex</span> = <span id="rd">'FF00FF'</span>;
+<span id="lt">board</span>.on(<span id="rd">'ready'</span>, ()<span id="bl"> => </span>{
+    <span id="lt">console</span>.log(<span id="rd">'Board is ready!'</span>);
 
-    <span class="bl">const</span> <span class="lt">rgb</span> = <span class="bl">new</span> <span class="sg">Led</span>.<span class="sg">RGB</span>({
+    <span id="bl">const</span> <span id="lt">rgb</span> = <span id="bl">new</span> <span id="sg">Led</span>.<span id="sg">RGB</span>({
         pins: {
-            red: <span class="lt">redPin</span>,
-            green: <span class="lt">greenPin</span>,
-            blue: <span class="lt">bluePin</span>
+            red: <span id="lt">redPin</span>,
+            green: <span id="lt">greenPin</span>,
+            blue: <span id="lt">bluePin</span>
         },
-        isAnode: <span class="bl">false</span> <span class="gn">// true if common anode</span>
+        isAnode: <span id="bl">false</span> <span id="gn">// true if common anode</span>
     }); 
     
-    <span class="bl">const</span> <span class="lt">colorWheel</span> = [
-        <span class="lt">redHex</span>,
-        <span class="lt">yellowHex</span>,
-        <span class="lt">greenHex</span>,
-        <span class="lt">cyanHex</span>,
-        <span class="lt">blueHex</span>,
-        <span class="lt">violetHex</span>
+    <span id="bl">const</span> <span id="lt">colorWheel</span> = [
+        <span id="lt">redHex</span>,
+        <span id="lt">yellowHex</span>,
+        <span id="lt">greenHex</span>,
+        <span id="lt">cyanHex</span>,
+        <span id="lt">blueHex</span>,
+        <span id="lt">violetHex</span>
     ];
 
-    <span class="bl">let</span> <span class="lt">index</span> = 0;
-    <span class="lt">board</span>.loop(1000, () <span class="bl">=></span> { <span class="gn">// every 1 sec (1000 ms)</span>
-        <span class="lt">rgb</span>.color(<span class="lt">colorWheel</span>[<span class="lt">index</span>++]);
-        <span class="vt">if</span> (<span class="lt">index</span> === <span class="lt">colorWheel</span>.length) {
-            <span class="lt">index</span> = 0;
+    <span id="bl">let</span> <span id="lt">index</span> = 0;
+    <span id="lt">board</span>.loop(1000, () <span id="bl">=></span> { <span id="gn">// every 1 sec (1000 ms)</span>
+        <span id="lt">rgb</span>.color(<span id="lt">colorWheel</span>[<span id="lt">index</span>++]);
+        <span id="vt">if</span> (<span id="lt">index</span> === <span id="lt">colorWheel</span>.length) {
+            <span id="lt">index</span> = 0;
         }
     });
 });
@@ -224,31 +204,30 @@ Project/
             <section>
                 <h2>Running the Script using Node.js</h2>
                 <ul>
-                    <li>Run the script using the command <code class="powershell"><span>node</span> rgbLED.js</code>.</li>
+                    <li>Run the script using the command <code class="powershell"><span id="yl">node</span> rgbLED.js</code>.</li>
                     <ul>
                         <li>The LED should start flacking different colors.</li>
                         <li>Use <code>"ctrl"+"c"</code> twice to stop the running the script.</li>
                     </ul>
                     <li>Edit the <code>package.json</code> file script section as shown.</li>
-                    <li>Start the rgbLED.js script using <code class="powershell"><span>yarn</span> flash</code>.</li>
-                    <li>If using NPM, you have some options.</li>
+                    <li>Start the rgbLED.js script using <code class="powershell"><span id="yl">yarn</span> flash</code>.</li>
                     <ul>
-                        <li><code class="powershell"><span>npm</span> run flash</code></li>
+                        <li>If using NPM, <code class="powershell"><span id="yl">npm</span> run flash</code></li>
                     </ul>
                 </ul>
-                <pre class="codeBox">
-                    <code>
+                <pre>
+                    <code class="code_json">
 {
-    <span class="lt">"name"</span>: <span class="rd">"project"</span>,
-    <span class="lt">"version"</span>: <span class="rd">"1.0.0"</span>,
-    <span class="lt">"main"</span>: <span class="rd">"index.js"</span>,
-    <span class="lt">"license"</span>: <span class="rd">"MIT"</span>,
-    <span class="lt">"dependencies"</span>: {
-        <span class="lt">"johnny-five"</span>: <span class="rd">"^2.1.0"</span>,
-        <span class="lt">"serialport"</span>: <span class="rd">"^11.0.0"</span>
+    <span id="sk">"name"</span>: <span id="rd">"project"</span>,
+    <span id="sk">"version"</span>: <span id="rd">"1.0.0"</span>,
+    <span id="sk">"main"</span>: <span id="rd">"index.js"</span>,
+    <span id="sk">"license"</span>: <span id="rd">"MIT"</span>,
+    <span id="sk">"dependencies"</span>: {
+        <span id="sk">"johnny-five"</span>: <span id="rd">"^2.1.0"</span>,
+        <span id="sk">"serialport"</span>: <span id="rd">"^11.0.0"</span>
     },
-    <span class="lt">"scripts"</span>: {
-        <span class="lt">"flash"</span>: <span class="rd">"node rgbLED.js"</span>
+    <span id="sk">"scripts"</span>: {
+        <span id="sk">"flash"</span>: <span id="rd">"node rgbLED.js"</span>
     }
 }
                     </code>
