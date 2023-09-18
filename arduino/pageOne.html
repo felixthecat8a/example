@@ -25,27 +25,19 @@
                 margin: auto;
             }
         }
-        .powershell {
-            color:white;
-            background-color:#012456;
-        }
-        .powershell span {
-            color:yellow;
-        }
-        .codeBox {
-            color: white;
+        pre {
             background-color: #191919;
             width: max-content;
+            border: 1px solid #999;
+            border-radius: 5px;
             padding-inline: 20px;
+            overflow: auto;
         }
-        .sg {color: mediumseagreen}
-        .bl {color: royalblue}
-        .rd {color: salmon}
-        .lt {color: skyblue}
-        .yl {color: goldenrod}
-        .gn {color: limegreen}
-        .vt {color: orchid}
-        .gr {color: gray}
+        .code_arduino {color: lightgray;}
+        .code_arduino #sg {color: mediumseagreen}
+        .code_arduino #bl {color: royalblue}
+        .code_arduino #yl {color: goldenrod}
+        .code_arduino #gr {color: gray}
     </style>
 </head>
 <body>
@@ -113,38 +105,38 @@
                     <li>If using Tinkercad, click on "Code" button on the top right area of the screen.</li>
                     <li>Change the Edit Mode from "Blocks" to "Text" by clicking on the selector.</li>
                 </ul>
-                <pre class="codeBox">
-                    <code>
-<span class="gr">/* rgbLED.ino */</span>
-<span class="gr">//#define COMMON_ANODE // uncomment common anode</span>
-<span class="gr">/* Requires pins that support PWM (denoted by ~) */</span>
-<span class="bl">const int</span> redPin = 11, greenPin = 10, bluePin = 9;
-<span class="bl">void</span> <span class="sg">setup</span>() {
-    <span class="yl">pinMode</span>(redPin, <span class="bl">OUTPUT</span>);
-    <span class="yl">pinMode</span>(bluePin, <span class="bl">OUTPUT</span>);
-    <span class="yl">pinMode</span>(greenPin, <span class="bl">OUTPUT</span>);
+                <pre>
+                    <code class="code_arduino">
+<span id="gr">/* rgbLED.ino */</span>
+<span id="gr">//#define COMMON_ANODE // uncomment common anode</span>
+<span id="gr">/* Requires pins that support PWM (denoted by ~) */</span>
+<span id="bl">const int</span> redPin = 11, greenPin = 10, bluePin = 9;
+<span id="bl">void</span> <span id="sg">setup</span>() {
+    <span id="yl">pinMode</span>(redPin, <span id="bl">OUTPUT</span>);
+    <span id="yl">pinMode</span>(bluePin, <span id="bl">OUTPUT</span>);
+    <span id="yl">pinMode</span>(greenPin, <span id="bl">OUTPUT</span>);
 }
-<span class="bl">void</span> <span class="sg">loop</span>() {
-    setColor(255, 0, 0); <span class="gr">// Red</span>
-    <span class="yl">delay</span>(1000); <span class="gr">// every 1 sec (1000 ms)</span>
-    setColor(255, 255, 0); <span class="gr">// Yellow</span>
-    <span class="yl">delay</span>(1000);
-    setColor(0, 255, 0); <span class="gr">// Green</span>
-    <span class="yl">delay</span>(1000);
-    setColor(0, 0, 255); <span class="gr">// Blue</span>
-    <span class="yl">delay</span>(1000);
-    setColor(255, 0, 255); <span class="gr">// Violet</span>
-    <span class="yl">delay</span>(1000);
+<span id="bl">void</span> <span id="sg">loop</span>() {
+    setColor(255, 0, 0); <span id="gr">// Red</span>
+    <span id="yl">delay</span>(1000); <span id="gr">// every 1 sec (1000 ms)</span>
+    setColor(255, 255, 0); <span id="gr">// Yellow</span>
+    <span id="yl">delay</span>(1000);
+    setColor(0, 255, 0); <span id="gr">// Green</span>
+    <span id="yl">delay</span>(1000);
+    setColor(0, 0, 255); <span id="gr">// Blue</span>
+    <span id="yl">delay</span>(1000);
+    setColor(255, 0, 255); <span id="gr">// Violet</span>
+    <span id="yl">delay</span>(1000);
 }
-<span class="bl">void</span> setColor(<span class="bl">int</span> redValue, <span class="bl">int</span> greenValue, <span class="bl">int</span> blueValue) {
-    <span class="sg">#ifdef</span> COMMON_ANODE
+<span id="bl">void</span> setColor(<span id="bl">int</span> redValue, <span id="bl">int</span> greenValue, <span id="bl">int</span> blueValue) {
+    <span id="sg">#ifdef</span> COMMON_ANODE
         redValue = 255 - redValue;
         greenValue = 255 - greenValue;
         blueValue = 255 - blueValue;
-    <span class="sg">#endif</span>
-    <span class="yl">analogWrite</span>(redPin, redValue);
-    <span class="yl">analogWrite</span>(greenPin, greenValue);
-    <span class="yl">analogWrite</span>(bluePin, blueValue);
+    <span id="sg">#endif</span>
+    <span id="yl">analogWrite</span>(redPin, redValue);
+    <span id="yl">analogWrite</span>(greenPin, greenValue);
+    <span id="yl">analogWrite</span>(bluePin, blueValue);
 }
                     </code>
                 </pre>

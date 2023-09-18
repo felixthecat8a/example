@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
   <title>Arduino/Socket.IO &#x1F408;</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="code_styles.css">
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
         h2 {color:mediumseagreen}
@@ -24,27 +25,6 @@
                 margin: auto;
             }
         }
-        .powershell {
-            color:white;
-            background-color:#012456;
-        }
-        .powershell span {
-            color:yellow;
-        }
-        .codeBox {
-            color: white;
-            background-color: #191919;
-            width: max-content;
-            padding-inline: 20px;
-        }
-        .sg {color: mediumseagreen}
-        .bl {color: royalblue}
-        .rd {color: salmon}
-        .lt {color: skyblue}
-        .yl {color: goldenrod}
-        .gn {color: limegreen}
-        .vt {color: orchid}
-        .gr {color: gray}
   </style>
 </head>
 <body>
@@ -67,33 +47,33 @@
         <ol>
           <li>Create a new project directory and enter the new project directory.</li>
           <ul>
-              <li><code class="powershell"><span>New-Item</span> -Path .\Project -ItemType Directory</code></li>
-              <li><code class="powershell"><span>cd</span> Project</code></li>
+              <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\Project <span id="gr">-ItemType</span> Directory</code></li>
+              <li><code class="powershell"><span id="yl">cd</span> Project</code></li>
           </ul>
           <li>Create an HTML file, a CSS file and a JavaScript file in a new folder inside the directory.</li>
           <ul>
-            <li><code class="powershell"><span>New-Item</span> -Path .\public\index.html -ItemType File</code></li>
-            <li><code class="powershell"><span>New-Item</span> -Path .\public\style.css -ItemType File</code></li>
-            <li><code class="powershell"><span>New-Item</span> -Path .\public\code.js -ItemType File</code></li>
+            <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\public\index.html <span id="gr">-ItemType</span> File</code></li>
+            <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\public\style.css <span id="gr">-ItemType</span> File</code></li>
+            <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\public\code.js <span id="gr">-ItemType</span> File</code></li>
           </ul>
           <li>Create another JavaScript file in another new directory.</li>
           <ul>
-            <li><code class="powershell"><span>New-Item</span> -Path .\server\server.js -ItemType File</code></li>
+            <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\server\server.js <span id="gr">-ItemType</span> File</code></li>
           </ul>
           <li>Install the modules for Express & Socket.IO..</li>
           <ul>
-            <li><code class="powershell"><span>yarn</span> add express</code></li>
-            <li><code class="powershell"><span>yarn</span> add socket.io</code></li>
+            <li><code class="powershell"><span id="yl">yarn</span> add express</code></li>
+            <li><code class="powershell"><span id="yl">yarn</span> add socket.io</code></li>
             <li>A <b>package.json</b> file and a <b>yarn.lock</b> file will generated.</li>
             <li>A <b>node_modules</b> folder will also be generated in the project directory.</li>
           </ul>
           <li>Install the modules for Johnny-Five & SerialPort</li>
           <ul>
-            <li><code class="powershell"><span>yarn</span> add johnny-five serialport</code></li>
+            <li><code class="powershell"><span id="yl">yarn</span> add johnny-five serialport</code></li>
           </ul>
         </ol>
         <p>The file directory should look like the file directory map shown.</p>
-        <pre class="codeBox">
+        <pre>
           <code>
 Project/
 ├── node_modules/
@@ -132,132 +112,132 @@ Project/
             <li><code>&lt;script src="/socket.io/socket.io.js"&gt;&lt;/script&gt;</code></li>
           </ul>
         </ul>
-        <pre class="codeBox">
-          <code>
-&lt;!<span class="bl">DOCTYPE</span> <span class="lt">html</span>&gt;
-&lt;<span class="bl">html</span> <span class="lt">lang</span>=<span class="lt">"en"</span>&gt;
-&lt;<span class="bl">head</span>&gt;
-  &lt;<span class="bl">meta</span> <span class="lt">charset</span>=<span class="rd">"UTF-8"</span>&gt;
-  &lt;<span class="bl">meta</span> <span class="lt">name</span>=<span class="rd">"viewport"</span> <span class="lt">content</span>=<span class="rd">"width=device-width, initial-scale=1.0"</span>&gt;
-  &lt;<span class="bl">title</span>&gt;Document&lt;<span class="bl">/title</span>&gt;
-  &lt;<span class="bl">script</span> <span class="lt">src</span>=<span class="rd">"/socket.io/socket.io.js"</span>&gt;&lt;<span class="bl">/script</span>&gt;
-  &lt;<span class="bl">link</span> <span class="lt">rel</span>=<span class="rd">"stylesheet"</span> <span class="lt">href</span>=<span class="rd">"style.css"</span>&gt;
-  &lt;<span class="bl">style</span>&gt;
-    <span class="gn">/* CSS Styles */</span>
-  &lt;<span class="bl">/style</span>&gt;
-&lt;<span class="bl">/head</span>&gt;
-&lt;<span class="bl">body</span>&gt;
-  <span class="gn">&lt;!-- HTML Template --&gt;</span>
-  &lt;<span class="bl">script</span> <span class="lt">src</span>=<span class="rd">"code.js"</span>&gt;&lt;<span class="bl">/script</span>&gt;
-  &lt;<span class="bl">script</span>&gt;
-    <span class="gn">// JavaScript Code</span>
-  &lt;<span class="bl">/script</span>&gt;
-&lt;<span class="bl">/body</span>&gt;
-&lt;<span class="bl">/html</span>&gt;
+        <pre>
+          <code class="code_html">
+&lt;!<span id="bl">DOCTYPE</span> <span id="sk">html</span>&gt;
+&lt;<span id="bl">html</span> <span id="sk">lang</span>=<span id="rd">"en"</span>&gt;
+&lt;<span id="bl">head</span>&gt;
+  &lt;<span id="bl">meta</span> <span id="sk">charset</span>=<span id="rd">"UTF-8"</span>&gt;
+  &lt;<span id="bl">meta</span> <span id="sk">name</span>=<span id="rd">"viewport"</span> <span id="sk">content</span>=<span id="rd">"width=device-width, initial-scale=1.0"</span>&gt;
+  &lt;<span id="bl">title</span>&gt;Document&lt;<span id="bl">/title</span>&gt;
+  &lt;<span id="bl">script</span> <span id="sk">src</span>=<span id="rd">"/socket.io/socket.io.js"</span>&gt;&lt;<span id="bl">/script</span>&gt;
+  &lt;<span id="bl">link</span> <span id="sk">rel</span>=<span id="rd">"stylesheet"</span> <span id="sk">href</span>=<span id="rd">"style.css"</span>&gt;
+  &lt;<span id="bl">style</span>&gt;
+    <span id="gn">/* CSS Styles */</span>
+  &lt;<span id="bl">/style</span>&gt;
+&lt;<span id="bl">/head</span>&gt;
+&lt;<span id="bl">body</span>&gt;
+  <span id="gn">&lt;!-- HTML Template --&gt;</span>
+  &lt;<span id="bl">script</span> <span id="sk">src</span>=<span id="rd">"code.js"</span>&gt;&lt;<span id="bl">/script</span>&gt;
+  &lt;<span id="bl">script</span>&gt;
+    <span id="gn">// JavaScript Code</span>
+  &lt;<span id="bl">/script</span>&gt;
+&lt;<span id="bl">/body</span>&gt;
+&lt;<span id="bl">/html</span>&gt;
           </code>
         </pre>
       </section>
       <section>
         <h2>Adding the HTML template</h2>
         <p>Add the HTML template shown to the <b>index.html</b> file between the <code>&lt;body&gt;</code> tags.</p>
-        <pre class="codeBox">
-          <code>
-<span class="gn">&lt;!-- HTML Template --&gt;</span>
-&lt;<span class="bl">form</span>&gt;
-  &lt;<span class="bl">fieldset</span>&gt;
-    &lt;<span class="bl">legend</span>&gt;RGB Control&lt;<span class="bl">/legend</span>&gt;
-    &lt;<span class="bl">label</span> <span class="lt">for</span>=<span class="rd">"redRange"</span> <span class="lt">id</span>=<span class="rd">"redLabel"</span>&gt;Red:&lt;<span class="bl">/label</span>&gt;
-    &lt;<span class="bl">input</span> <span class="lt">type</span>=<span class="rd">"range"</span> <span class="lt">id</span>=<span class="rd">"redRange"</span> <span class="lt">min</span>=<span class="rd">"0"</span> <span class="lt">max</span>=<span class="rd">"255"</span> <span class="lt">value</span>=<span class="rd">"0"</span>&gt;&lt;<span class="bl">br</span>&gt;
-    &lt;<span class="bl">label</span> <span class="lt">for</span>=<span class="rd">"greenRange"</span> <span class="lt">id</span>=<span class="rd">"greenLabel"</span>&gt;Green:&lt;<span class="bl">/label</span>&gt;
-    &lt;<span class="bl">input</span> <span class="lt">type</span>=<span class="rd">"range"</span> <span class="lt">id</span>=<span class="rd">"greenRange"</span> <span class="lt">min</span>=<span class="rd">"0"</span> <span class="lt">max</span>=<span class="rd">"255"</span> <span class="lt">value</span>=<span class="rd">"0"</span>&gt;&lt;<span class="bl">br</span>&gt;
-    &lt;<span class="bl">label</span> <span class="lt">for</span>=<span class="rd">"blueRange"</span> <span class="lt">id</span>=<span class="rd">"blueLabel"</span>&gt;Blue:&lt;<span class="bl">/label</span>&gt;
-    &lt;<span class="bl">input</span> <span class="lt">type</span>=<span class="rd">"range"</span> <span class="lt">id</span>=<span class="rd">"blueRange"</span> <span class="lt">min</span>=<span class="rd">"0"</span> <span class="lt">max</span>=<span class="rd">"255"</span> <span class="lt">value</span>=<span class="rd">"0"</span>&gt;&lt;<span class="bl">br</span>&gt;
-    &lt;<span class="bl">br</span>&gt;
-    &lt;<span class="bl">div</span> <span class="lt">id</span>=<span class="rd">"rgbValue"</span>&gt;rgb(0, 0, 0)&lt;<span class="bl">/div</span>&gt;
-    &lt;<span class="bl">div</span> <span class="lt">id</span>=<span class="rd">"colorBox"</span>&gt;&lt;<span class="bl">/div</span>&gt;
-  &lt;<span class="bl">/fieldset</span>&gt;
-&lt;<span class="bl">/form</span>&gt;
+        <pre>
+          <code class="code_html">
+<span id="gn">&lt;!-- HTML Template --&gt;</span>
+&lt;<span id="bl">form</span>&gt;
+  &lt;<span id="bl">fieldset</span>&gt;
+    &lt;<span id="bl">legend</span>&gt;RGB Control&lt;<span id="bl">/legend</span>&gt;
+    &lt;<span id="bl">label</span> <span id="sk">for</span>=<span id="rd">"redRange"</span> <span id="sk">id</span>=<span id="rd">"redLabel"</span>&gt;Red:&lt;<span id="bl">/label</span>&gt;
+    &lt;<span id="bl">input</span> <span id="sk">type</span>=<span id="rd">"range"</span> <span id="sk">id</span>=<span id="rd">"redRange"</span> <span id="sk">min</span>=<span id="rd">"0"</span> <span id="sk">max</span>=<span id="rd">"255"</span> <span id="sk">value</span>=<span id="rd">"0"</span>&gt;&lt;<span id="bl">br</span>&gt;
+    &lt;<span id="bl">label</span> <span id="sk">for</span>=<span id="rd">"greenRange"</span> <span id="sk">id</span>=<span id="rd">"greenLabel"</span>&gt;Green:&lt;<span id="bl">/label</span>&gt;
+    &lt;<span id="bl">input</span> <span id="sk">type</span>=<span id="rd">"range"</span> <span id="sk">id</span>=<span id="rd">"greenRange"</span> <span id="sk">min</span>=<span id="rd">"0"</span> <span id="sk">max</span>=<span id="rd">"255"</span> <span id="sk">value</span>=<span id="rd">"0"</span>&gt;&lt;<span id="bl">br</span>&gt;
+    &lt;<span id="bl">label</span> <span id="sk">for</span>=<span id="rd">"blueRange"</span> <span id="sk">id</span>=<span id="rd">"blueLabel"</span>&gt;Blue:&lt;<span id="bl">/label</span>&gt;
+    &lt;<span id="bl">input</span> <span id="sk">type</span>=<span id="rd">"range"</span> <span id="sk">id</span>=<span id="rd">"blueRange"</span> <span id="sk">min</span>=<span id="rd">"0"</span> <span id="sk">max</span>=<span id="rd">"255"</span> <span id="sk">value</span>=<span id="rd">"0"</span>&gt;&lt;<span id="bl">br</span>&gt;
+    &lt;<span id="bl">br</span>&gt;
+    &lt;<span id="bl">div</span> <span id="sk">id</span>=<span id="rd">"rgbValue"</span>&gt;rgb(0, 0, 0)&lt;<span id="bl">/div</span>&gt;
+    &lt;<span id="bl">div</span> <span id="sk">id</span>=<span id="rd">"colorBox"</span>&gt;&lt;<span id="bl">/div</span>&gt;
+  &lt;<span id="bl">/fieldset</span>&gt;
+&lt;<span id="bl">/form</span>&gt;
           </code>
         </pre>
       </section>
       <section>
         <h2>Adding the CSS Style Code</h2>
         <p>Open the file <b>styles.css</b> and insert the CSS style code shown.</p>
-        <pre class="codeBox">
-          <code>
-<span class="gn">/* style.css */</span>
-<span class="gn">/* CSS Styles */</span>
-<span class="yl">body {</span>
-  <span class="lt">font-family: </span><span class="rd">Arial, Helvetica, sans-serif</span>;
-  <span class="lt">font-size: </span>1rem;
-  <span class="lt">font-weight: </span><span class="rd">bold</span>;
-  <span class="lt">background-color: </span><span class="rd">lightgray</span>;
-  <span class="lt">color: </span><span class="rd">seagreen</span>;
-<span class="yl">}</span>
-<span class="yl">fieldset {</span>
-  <span class="lt">text-align: </span><span class="rd">center</span>;
-  <span class="lt">width: </span><span class="rd">max-content</span>;
-  <span class="lt">margin-left: </span><span class="rd">auto</span>;
-  <span class="lt">margin-right: </span><span class="rd">auto</span>;
-<span class="yl">}</span>
-<span class="yl">legend {</span>
-  <span class="lt">text-align: </span><span class="rd">left</span>;
-  <span class="lt">font-size: </span><span class="rd">large</span>;
-<span class="yl">}</span>
-<span class="yl">#colorBox {</span>
-  <span class="lt">width: </span>100px;
-  <span class="lt">height: </span>100px;
-  <span class="lt">margin-left: </span><span class="rd">auto</span>;
-  <span class="lt">margin-right: </span><span class="rd">auto</span>;
-  <span class="lt">margin-top: </span>10px;
-  <span class="lt">border: 2px </span><span class="rd">solid darkgrey</span>;
-  <span class="lt">border-radius: </span>50%;
-<span class="yl">}</span>
-<span class="yl">#redLabel {</span>
-  <span class="lt">color: </span><span class="rd">red</span>;
-<span class="yl">}</span>
-<span class="yl">#greenLabel {</span>
-  <span class="lt">color: </span><span class="rd">green</span>;
-<span class="yl">}</span>
-<span class="yl">#blueLabel {</span>
-  <span class="lt">color: </span><span class="rd">blue</span>;
-<span class="yl">}</span>
+        <pre>
+          <code class="code_css">
+<span id="gn">/* style.css */</span>
+<span id="gn">/* CSS Styles */</span>
+<span id="yl">body {</span>
+  <span id="sk">font-family: </span><span id="rd">Arial, Helvetica, sans-serif</span>;
+  <span id="sk">font-size: </span>1rem;
+  <span id="sk">font-weight: </span><span id="rd">bold</span>;
+  <span id="sk">background-color: </span><span id="rd">lightgray</span>;
+  <span id="sk">color: </span><span id="rd">seagreen</span>;
+<span id="yl">}</span>
+<span id="yl">fieldset {</span>
+  <span id="sk">text-align: </span><span id="rd">center</span>;
+  <span id="sk">width: </span><span id="rd">max-content</span>;
+  <span id="sk">margin-left: </span><span id="rd">auto</span>;
+  <span id="sk">margin-right: </span><span id="rd">auto</span>;
+<span id="yl">}</span>
+<span id="yl">legend {</span>
+  <span id="sk">text-align: </span><span id="rd">left</span>;
+  <span id="sk">font-size: </span><span id="rd">large</span>;
+<span id="yl">}</span>
+<span id="yl">#colorBox {</span>
+  <span id="sk">width: </span>100px;
+  <span id="sk">height: </span>100px;
+  <span id="sk">margin-left: </span><span id="rd">auto</span>;
+  <span id="sk">margin-right: </span><span id="rd">auto</span>;
+  <span id="sk">margin-top: </span>10px;
+  <span id="sk">border: 2px </span><span id="rd">solid darkgrey</span>;
+  <span id="sk">border-radius: </span>50%;
+<span id="yl">}</span>
+<span id="yl">#redLabel {</span>
+  <span id="sk">color: </span><span id="rd">red</span>;
+<span id="yl">}</span>
+<span id="yl">#greenLabel {</span>
+  <span id="sk">color: </span><span id="rd">green</span>;
+<span id="yl">}</span>
+<span id="yl">#blueLabel {</span>
+  <span id="sk">color: </span><span id="rd">blue</span>;
+<span id="yl">}</span>
           </code>
         </pre>
       </section>
       <section>
         <h2>Adding the JavaScript Code</h2>
         <p>Open the file <b>code.js</b> and insert the JavaScript code shown.</p>
-        <pre class="codeBox">
-          <code>
-<span class="gn">/* code.js */</span>
-<span class="gn">/* JavaScript Code */</span>
-<span class="bl">const</span> <span class="lt">redRange</span> = document.getElementById(<span class="rd">"redRange"</span>);
-<span class="bl">const</span> <span class="lt">greenRange</span> = document.getElementById(<span class="rd">"greenRange"</span>);
-<span class="bl">const</span> <span class="lt">blueRange</span> = document.getElementById(<span class="rd">"blueRange"</span>);
-<span class="bl">const</span> <span class="lt">rgbValue</span> = document.getElementById(<span class="rd">"rgbValue"</span>);
-<span class="bl">const</span> <span class="lt">colorBox</span> = document.getElementById(<span class="rd">"colorBox"</span>);
+        <pre>
+          <code class="code_javascript">
+<span id="gn">/* code.js */</span>
+<span id="gn">/* JavaScript Code */</span>
+<span id="bl">const</span> <span id="lt">redRange</span> = document.getElementById(<span id="rd">"redRange"</span>);
+<span id="bl">const</span> <span id="lt">greenRange</span> = document.getElementById(<span id="rd">"greenRange"</span>);
+<span id="bl">const</span> <span id="lt">blueRange</span> = document.getElementById(<span id="rd">"blueRange"</span>);
+<span id="bl">const</span> <span id="lt">rgbValue</span> = document.getElementById(<span id="rd">"rgbValue"</span>);
+<span id="bl">const</span> <span id="lt">colorBox</span> = document.getElementById(<span id="rd">"colorBox"</span>);
 
-<span class="gn">//const socket = io();</span>
-<span class="bl">function</span> updateColor() {
-  <span class="bl">const</span> <span class="lt">red</span> = <span class="lt">redRange</span>.value;
-  <span class="bl">const</span> <span class="lt">green</span> = <span class="lt">greenRange</span>.value;
-  <span class="bl">const</span> <span class="lt">blue</span> = <span class="lt">blueRange</span>.value;
-  <span class="bl">const</span> <span class="lt">rgb</span> = <span class="rd">`rgb(<span class="lt">${red}</span>, <span class="lt">${green}</span>, <span class="lt">${blue}</span>)`</span>;
-  <span class="lt">colorBox</span>.style.backgroundColor = <span class="lt">rgb</span>;
-  <span class="lt">rgbValue</span>.textContent = <span class="lt">rgb</span>;
-  <span class="lt">socket</span>.emit(<span class="rd">'colorChange'</span>, { red:<span class="lt">red</span>, green:<span class="lt">green</span>, blue:<span class="lt">blue</span> });
+<span id="gn">//const socket = io();</span>
+<span id="bl">function</span> updateColor() {
+  <span id="bl">const</span> <span id="lt">red</span> = <span id="lt">redRange</span>.value;
+  <span id="bl">const</span> <span id="lt">green</span> = <span id="lt">greenRange</span>.value;
+  <span id="bl">const</span> <span id="lt">blue</span> = <span id="lt">blueRange</span>.value;
+  <span id="bl">const</span> <span id="lt">rgb</span> = <span id="rd">`rgb(<span id="lt">${red}</span>, <span id="lt">${green}</span>, <span id="lt">${blue}</span>)`</span>;
+  <span id="lt">colorBox</span>.style.backgroundColor = <span id="lt">rgb</span>;
+  <span id="lt">rgbValue</span>.textContent = <span id="lt">rgb</span>;
+  <span id="lt">socket</span>.emit(<span id="rd">'colorChange'</span>, { red:<span id="lt">red</span>, green:<span id="lt">green</span>, blue:<span id="lt">blue</span> });
 }
 
-<span class="lt">redRange</span>.addEventListener(<span class="rd">"input"</span>, updateColor);
-<span class="lt">greenRange</span>.addEventListener(<span class="rd">"input"</span>, updateColor);
-<span class="lt">blueRange</span>.addEventListener(<span class="rd">"input"</span>, updateColor);
+<span id="lt">redRange</span>.addEventListener(<span id="rd">"input"</span>, updateColor);
+<span id="lt">greenRange</span>.addEventListener(<span id="rd">"input"</span>, updateColor);
+<span id="lt">blueRange</span>.addEventListener(<span id="rd">"input"</span>, updateColor);
           </code>
         </pre>
         <p>To check if the button works, open a web browser and drag & drop the html file into a new tab.</p>
         <p>Important Note: Remove the comment tags ("//") after testing the page on the browser.</p>
         <ul>
-          <li><code class="codeBox"><span class="bl">const</span> <span class="lt">socket</span> = io();</span></code></li>
+          <li><code class="code_javascript" style="background-color: #191919;"><span id="bl">const</span> <span id="lt">socket</span> = io();</span></code></li>
         </ul>
       </section>
       <section style="display: block; background-color: lightgrey; color:#303030; width: 250px; text-align: center;">
@@ -276,10 +256,10 @@ Project/
         <h2>Setting Up the Express Server</h2>
         <p>Move the <b>index.html</b> file from the public folder to the server folder.</p>
         <ul>
-          <li><code class="powershell"><span>Move-Item</span> -Path ./public/index.html -Destination ./server</code></li>
+          <li><code class="powershell"><span id="yl">Move-Item</span> <span id="gr">-Path</span> ./public/index.html <span id="gr">-Destination</span> ./server</code></li>
         </ul>
         <p>The directory map should now look like the one shown below.</p>
-        <pre class="codeBox">
+        <pre>
           <code>
 Project/
 ├── node_modules/
@@ -294,60 +274,60 @@ Project/
           </code>
         </pre>
         <p>Add the JavaScript code shown to the <b>server.js</b> file.</p>
-        <pre class="codeBox">
-          <code>
-<span class="gn">/* server.js */</span>
-<span class="bl">const</span> express = require(<span class="rd">'express'</span>);
-<span class="bl">const</span> <span class="lt">app</span> = express();
-<span class="bl">const</span> <span class="sg">http</span> = require(<span class="rd">'http'</span>);
-<span class="bl">const</span> <span class="lt">server</span> = <span class="sg">http</span>.createServer(<span class="lt">app</span>);
-<span class="bl">const</span> { <span class="sg">Server</span> } = require(<span class="rd">"socket.io"</span>);
-<span class="bl">const</span> <span class="lt">io</span> = <span class="bl">new</span> <span class="sg">Server</span>(<span class="lt">server</span>);
-<span class="bl">const</span> <span class="lt">PORT</span> = <span class="rd">'3000'</span>;
-<span class="bl">const</span> { <span class="sg">Board</span>, <span class="sg">Led</span> } = require(<span class="rd">'johnny-five'</span>);
+        <pre>
+          <code class="code_javascript">
+<span id="gn">/* server.js */</span>
+<span id="bl">const</span> express = require(<span id="rd">'express'</span>);
+<span id="bl">const</span> <span id="lt">app</span> = express();
+<span id="bl">const</span> <span id="sg">http</span> = require(<span id="rd">'http'</span>);
+<span id="bl">const</span> <span id="lt">server</span> = <span id="sg">http</span>.createServer(<span id="lt">app</span>);
+<span id="bl">const</span> { <span id="sg">Server</span> } = require(<span id="rd">"socket.io"</span>);
+<span id="bl">const</span> <span id="lt">io</span> = <span id="bl">new</span> <span id="sg">Server</span>(<span id="lt">server</span>);
+<span id="bl">const</span> <span id="lt">PORT</span> = <span id="rd">'3000'</span>;
+<span id="bl">const</span> { <span id="sg">Board</span>, <span id="sg">Led</span> } = require(<span id="rd">'johnny-five'</span>);
 
-<span class="bl">const</span> <span class="lt">path</span> = require(<span class="rd">'path'</span>);
-<span class="lt">app</span>.use(express.static(<span class="lt">path</span>.join(<span class="lt">__dirname</span>, <span class="rd">'../public'</span>)));
-<span class="lt">app</span>.get(<span class="rd">'/'</span>, (<span class="lt">req</span>, <span class="lt">res</span>)<span class="bl"> => </span>{
-  <span class="lt">res</span>.sendFile(<span class="lt">__dirname</span> + <span class="rd">'/index.html'</span>);
+<span id="bl">const</span> <span id="lt">path</span> = require(<span id="rd">'path'</span>);
+<span id="lt">app</span>.use(express.static(<span id="lt">path</span>.join(<span id="lt">__dirname</span>, <span id="rd">'../public'</span>)));
+<span id="lt">app</span>.get(<span id="rd">'/'</span>, (<span id="lt">req</span>, <span id="lt">res</span>)<span id="bl"> => </span>{
+  <span id="lt">res</span>.sendFile(<span id="lt">__dirname</span> + <span id="rd">'/index.html'</span>);
 });
 
-<span class="bl">const</span> <span class="lt">board</span> = <span class="bl">new</span> <span class="sg">Board</span>({
-  port: <span class="rd">'COM3'</span>,
-  repl: <span class="bl">false</span>,
-  debug: <span class="bl">false</span>,
+<span id="bl">const</span> <span id="lt">board</span> = <span id="bl">new</span> <span id="sg">Board</span>({
+  port: <span id="rd">'COM3'</span>,
+  repl: <span id="bl">false</span>,
+  debug: <span id="bl">false</span>,
   timeout: 1e5,
-  useFirmata: <span class="bl">true</span>,
+  useFirmata: <span id="bl">true</span>,
 });
-<span class="gn">// Requires pins that support PWM (denoted by ~)</span>
-<span class="lt">board</span>.on(<span class="rd">'ready'</span>, ()<span class="bl"> => </span>{
-  <span class="lt">console</span>.log(<span class="rd">'Board is ready!'</span>);
-  <span class="bl">const</span> <span class="lt">redPin</span> = 11;
-  <span class="bl">const</span> <span class="lt">greenPin</span> = 10;
-  <span class="bl">const</span> <span class="lt">bluePin</span> = 9;
-  <span class="bl">const</span> <span class="lt">rgb</span> = <span class="bl">new</span> <span class="sg">Led</span>.<span class="sg">RGB</span>({
+<span id="gn">// Requires pins that support PWM (denoted by ~)</span>
+<span id="lt">board</span>.on(<span id="rd">'ready'</span>, ()<span id="bl"> => </span>{
+  <span id="lt">console</span>.log(<span id="rd">'Board is ready!'</span>);
+  <span id="bl">const</span> <span id="lt">redPin</span> = 11;
+  <span id="bl">const</span> <span id="lt">greenPin</span> = 10;
+  <span id="bl">const</span> <span id="lt">bluePin</span> = 9;
+  <span id="bl">const</span> <span id="lt">rgb</span> = <span id="bl">new</span> <span id="sg">Led</span>.<span id="sg">RGB</span>({
     pins:{
-      red:<span class="lt">redPin</span>,
-      green:<span class="lt">greenPin</span>,
-      blue:<span class="lt">bluePin</span>
+      red:<span id="lt">redPin</span>,
+      green:<span id="lt">greenPin</span>,
+      blue:<span id="lt">bluePin</span>
     },
-    isAnode: <span class="bl">true</span>
+    isAnode: <span id="bl">true</span>
   });
-  <span class="lt">io</span>.on(<span class="rd">'connection'</span>, <span class="bl">function</span>(<span class="lt">socket</span>) {
-    <span class="lt">console</span>.log(<span class="rd">'connected!'</span>);
-    <span class="lt">socket</span>.on(<span class="rd">'colorChange'</span>, <span class="bl">function</span>(<span class="lt">data</span>) {
-      <span class="lt">console</span>.log(<span class="lt">data</span>);
-      <span class="bl">const</span> { <span class="lt">red</span>, <span class="lt">green</span>, <span class="lt">blue</span> } = <span class="lt">data</span>;
-      <span class="bl">const</span> <span class="lt">rgbColor</span> = [<span class="lt">red</span> , <span class="lt">green</span>, <span class="lt">blue</span>];
-      <span class="lt">rgb</span>.color(<span class="lt">rgbColor</span>);
+  <span id="lt">io</span>.on(<span id="rd">'connection'</span>, <span id="bl">function</span>(<span id="lt">socket</span>) {
+    <span id="lt">console</span>.log(<span id="rd">'connected!'</span>);
+    <span id="lt">socket</span>.on(<span id="rd">'colorChange'</span>, <span id="bl">function</span>(<span id="lt">data</span>) {
+      <span id="lt">console</span>.log(<span id="lt">data</span>);
+      <span id="bl">const</span> { <span id="lt">red</span>, <span id="lt">green</span>, <span id="lt">blue</span> } = <span id="lt">data</span>;
+      <span id="bl">const</span> <span id="lt">rgbColor</span> = [<span id="lt">red</span> , <span id="lt">green</span>, <span id="lt">blue</span>];
+      <span id="lt">rgb</span>.color(<span id="lt">rgbColor</span>);
     });
-    <span class="lt">socket</span>.on(<span class="rd">'disconnect'</span>, () <span class="bl">=></span> {
-      <span class="lt">console</span>.log(<span class="rd">'disconnected'</span>);
+    <span id="lt">socket</span>.on(<span id="rd">'disconnect'</span>, () <span id="bl">=></span> {
+      <span id="lt">console</span>.log(<span id="rd">'disconnected'</span>);
     });
   });
 });
-<span class="lt">server</span>.listen(<span class="lt">PORT</span>, ()<span class="bl"> => </span>{
-  <span class="lt">console</span>.log(<span class="rd">'Server started at http://localhost:'</span> + <span class="lt">PORT</span>)
+<span id="lt">server</span>.listen(<span id="lt">PORT</span>, ()<span id="bl"> => </span>{
+  <span id="lt">console</span>.log(<span id="rd">'Server started at http://localhost:'</span> + <span id="lt">PORT</span>)
 });
             </code>
           </pre>
@@ -374,7 +354,7 @@ Project/
           <li>Upload the Firmata sketch to the board using Arduino IDE.</li>
           <li>Run the Node.js Express server.</li>
           <ul>
-            <li><code class="powershell"><span>node</span> server/server.js</code></li>
+            <li><code class="powershell"><span id="yl">node</span> server/server.js</code></li>
             <li>Use <code>"ctrl"+"c"</code> to stop the running the server.</li>
           </ul>
           <li>The console should display <code class="powershell">Server started at http://localhost:3000</code>.</li>
@@ -384,12 +364,12 @@ Project/
             <li>Interact with the Arduino RGB LED circuit using the sliders.</li>
           </ul>
           <li>In the <b>package.json</b> file, edit the scripts section as shown.</li>
-          <li>Start the server using <code class="powershell"><span>yarn</span> start</code>.</li>
+          <li>Start the server using <code class="powershell"><span id="yl">yarn</span> start</code>.</li>
         </ul>
-        <pre class="codeBox">
-          <code>
-<span class="lt">"scripts"</span>: {
-  <span class="lt">"start"</span>: <span class="rd">"node server/server.js"</span>
+        <pre>
+          <code class="code_json">
+<span id="sk">"scripts"</span>: {
+  <span id="sk">"start"</span>: <span id="rd">"node server/server.js"</span>
 }
           </code>
         </pre>
