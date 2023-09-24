@@ -1,15 +1,17 @@
-pre {
-    background-color: #191919;
-    width: max-content;
-    border: 1px solid #999;
-    border-radius: 5px;
-    padding-inline: 20px;
-    overflow: auto;
+h2 {color:mediumseagreen}
+main {
+    width: 800px;
+    margin: auto;
+    padding-left: 20px;
+    line-height: 1.5;
 }
-pre code {
-    white-space: pre-wrap;
+@media all and (max-width: 800px) {
+    body {
+        font-size: 0.8rem;
+        width: 800px;
+        margin: auto;
+    }
 }
-
 /* Powershell Code */
 .powershell {
     color:white;
@@ -24,33 +26,4 @@ pre code {
 }
 .powershell #lsg {
     color: lightseagreen;
-}
-
-/* Javascript/JSON/HTML/CSS Code */
-.code_javascript, .code_json, .code_html, .code_css {
-    color: lightgray;
-}
-.code_javascript #bl, .code_html #bl {
-    color: royalblue
-}
-.code_javascript #lt {
-    color:deepskyblue
-}
-.code_javascript #sk, .code_json #sk, .code_html #sk, .code_css #sk {
-    color: skyblue
-}
-.code_javascript #rd, .code_json #rd, .code_html #rd, .code_css #rd {
-    color: darksalmon
-}
-.code_javascript #gn, .code_html #gn, .code_css #gn {
-    color: limegreen
-}
-.code_javascript #sg {
-    color: mediumseagreen
-}
-.code_javascript #vt {
-    color: orchid
-}
-.code_css #yl {
-    color:khaki;
 }

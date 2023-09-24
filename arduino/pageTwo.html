@@ -9,22 +9,10 @@
     <title>Node.js/Arduino &#x1F408;</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="code_styles.css">
-    <style>
-        h2 {color:mediumseagreen}
-        main {
-            width: 800px;
-            margin: auto;
-            padding-left: 20px;
-            line-height: 1.5;
-        }
-        @media all and (max-width: 800px) {
-            body {
-                font-size: 0.8rem;
-                width: 800px;
-                margin: auto;
-            }
-        }
-    </style>
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
     <header>
@@ -118,8 +106,8 @@
                     </ul>
                 </ul>
                 <p>The file directory should look like the file directory map shown.</p>
-                <pre class="codeBox">
-                    <code>
+                <pre>
+                    <code class="language-shell">
 Project/
 ├── node_modules/
 ├── rgbLED.js
@@ -134,51 +122,50 @@ Project/
                     <li>Open the file rgbLED.js and add the JavaScript code as shown.</li>
                 </ul>
                 <pre>
-                    <code class="code_javascript">
-<span id="gn">/* rgbLED.js */</span>
-<span id="bl">const</span> { <span id="sg">Board</span>, <span id="sg">Led</span> } = require(<span id="rd">'johnny-five'</span>);
-<span id="bl">const</span> <span id="lt">board</span> = <span id="bl">new</span> <span id="sg">Board</span>();
-<span id="gn">/* Requires pins that support PWM (denoted by ~) */</span>
-<span id="bl">const</span> <span id="lt">redPin</span> = 11;
-<span id="bl">const</span> <span id="lt">greenPin</span> = 10;
-<span id="bl">const</span> <span id="lt">bluePin</span> = 9;
-<span id="gn">// define each color</span>
-<span id="bl">const</span> <span id="lt">redHex</span> = <span id="rd">'FF0000'</span>;
-<span id="bl">const</span> <span id="lt">yellowHex</span> = <span id="rd">'FFFF00'</span>;
-<span id="bl">const</span> <span id="lt">greenHex</span> = <span id="rd">'00FF00'</span>;
-<span id="bl">const</span> <span id="lt">cyanHex</span> = <span id="rd">'00FFFF'</span>;
-<span id="bl">const</span> <span id="lt">blueHex</span> = <span id="rd">'0000FF'</span>;
-<span id="bl">const</span> <span id="lt">violetHex</span> = <span id="rd">'FF00FF'</span>;
-<span id="lt">board</span>.on(<span id="rd">'ready'</span>, ()<span id="bl"> => </span>{
-    <span id="lt">console</span>.log(<span id="rd">'Board is ready!'</span>);
-
-    <span id="bl">const</span> <span id="lt">rgb</span> = <span id="bl">new</span> <span id="sg">Led</span>.<span id="sg">RGB</span>({
-        pins: {
-            red: <span id="lt">redPin</span>,
-            green: <span id="lt">greenPin</span>,
-            blue: <span id="lt">bluePin</span>
-        },
-        isAnode: <span id="bl">false</span> <span id="gn">// true if common anode</span>
-    }); 
+                    <code class="language-javascript">
+    /* rgbLED.js */
+    const { Board, Led } = require('johnny-five');
+    const board = new Board();
+    /* Requires pins that support PWM (denoted by ~) */
+    const redPin = 11;
+    const greenPin = 10;
+    const bluePin = 9;
+    // define each color
+    const redHex = 'FF0000';
+    const yellowHex = 'FFFF00';
+    const greenHex = '00FF00';
+    const cyanHex = '00FFFF';
+    const blueHex = '0000FF';
+    const violetHex = 'FF00FF';
+    board.on('ready', () => {
+        console.log('Board is ready!');
     
-    <span id="bl">const</span> <span id="lt">colorWheel</span> = [
-        <span id="lt">redHex</span>,
-        <span id="lt">yellowHex</span>,
-        <span id="lt">greenHex</span>,
-        <span id="lt">cyanHex</span>,
-        <span id="lt">blueHex</span>,
-        <span id="lt">violetHex</span>
-    ];
-
-    <span id="bl">let</span> <span id="lt">index</span> = 0;
-    <span id="lt">board</span>.loop(1000, () <span id="bl">=></span> { <span id="gn">// every 1 sec (1000 ms)</span>
-        <span id="lt">rgb</span>.color(<span id="lt">colorWheel</span>[<span id="lt">index</span>++]);
-        <span id="vt">if</span> (<span id="lt">index</span> === <span id="lt">colorWheel</span>.length) {
-            <span id="lt">index</span> = 0;
-        }
+        const rgb = new Led.RGB({
+            pins: {
+                red: redPin,
+                green: greenPin,
+                blue: bluePin
+            },
+            isAnode: false // true if common anode
+        }); 
+        
+        const colorWheel = [
+            redHex,
+            yellowHex,
+            greenHex,
+            cyanHex,
+            blueHex,
+            violetHex
+        ];
+    
+        let index = 0;
+        board.loop(1000, () => { // every 1 sec (1000 ms)
+            rgb.color(colorWheel[index++]);
+            if (index === colorWheel.length) {
+                index = 0;
+            }
+        });
     });
-});
-
                     </code>
                 </pre>
             </section>
@@ -216,20 +203,20 @@ Project/
                     </ul>
                 </ul>
                 <pre>
-                    <code class="code_json">
-{
-    <span id="sk">"name"</span>: <span id="rd">"project"</span>,
-    <span id="sk">"version"</span>: <span id="rd">"1.0.0"</span>,
-    <span id="sk">"main"</span>: <span id="rd">"index.js"</span>,
-    <span id="sk">"license"</span>: <span id="rd">"MIT"</span>,
-    <span id="sk">"dependencies"</span>: {
-        <span id="sk">"johnny-five"</span>: <span id="rd">"^2.1.0"</span>,
-        <span id="sk">"serialport"</span>: <span id="rd">"^11.0.0"</span>
-    },
-    <span id="sk">"scripts"</span>: {
-        <span id="sk">"flash"</span>: <span id="rd">"node rgbLED.js"</span>
+                    <code class="language-json">
+    {
+        "name": "project",
+        "version": "1.0.0",
+        "main": "index.js",
+        "license": "MIT",
+        "dependencies": {
+            "johnny-five": "^2.1.0",
+            "serialport": "^11.0.0"
+        },
+        "scripts": {
+            "flash": "node rgbLED.js"
+        }
     }
-}
                     </code>
                 </pre>
                 <br>
