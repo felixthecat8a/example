@@ -20,12 +20,15 @@ class WeatherDisplay {
             const data = await response.json()
             let index = 0;
             const forecastData = data.properties.periods[index]
+            const chanceOfRain = forecastData.probabilityOfPrecipitation.value;
+            const rain = chanceOfRain == null ? "0" : chanceOfRain;
             const forecastHTML = (`<div id='weatherContainer'>
                 <div id="weatherDiv">
                     <section id='weatherTitle'>
                         <div style="font-size:large;">${forecastData.name}:</div>
                         <div style="font-size:medium;">${forecastData.temperature}&degF</div>
                         <img src="${forecastData.icon}" alt="icon" title="${forecastData.detailedForecast}">
+                        <div style="font-size:small;">Chance of Rain: ${rain}%</div>
                     </section>
                     <section id='weatherContent'>
                         <div id="currentWeather"></div>
@@ -98,16 +101,13 @@ class WeatherDisplay {
             const wind = `${windSpeed} ${windDirection}`;
             const shortForecast = weatherData.shortForecast;
             const humidity = weatherData.relativeHumidity.value;
-            const chanceOfRain = weatherData.probabilityOfPrecipitation.value;
-            const rain = chanceOfRain == null ? "0" : chanceOfRain;
             const currentWeatherHTML = (`
             <div style="font-size:medium;">${today}</div>
             <div style="font-size:x-large;">${location}</div>
             <div style="font-size:xx-large;">${temperature}&degF</div>
             <div style="font-size:large;">Wind: ${wind}</div>
-            <div style="font-size:medium;">Humidity: ${humidity}%</div>
-            <div style="font-size:small;">Chance of Rain: ${rain}%</div>
-            <div style="font-size:medium;">${shortForecast}</div>
+            <div style="font-size:small;">Humidity: ${humidity}%</div>
+            <div style="font-size:medium;">Now: ${shortForecast}</div>
             `);
             const currentWeatherDIV = document.getElementById('currentWeather')
             currentWeatherDIV.innerHTML = currentWeatherHTML
