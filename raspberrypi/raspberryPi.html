@@ -16,10 +16,10 @@
             padding-left: 20px;
             line-height: 1.5;
         }
-        @media all and (max-width: 800px) {
+        @media all and (max-width: 600px) {
             body {
                 font-size: 0.8rem;
-                width: 800px;
+                width: 600px;
                 margin: auto;
             }
         }
@@ -56,13 +56,16 @@
                     </ul>
                     <li>Click "Write" to image the microSD card.</li>
                     <ul>
-                        <li>Alternatively, you can download and install <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener noreferrer">balenaEtcher</a>.</li>
-                        <li>Then, download the <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank" rel="noopener noreferrer">Raspberry Pi OS</a> from the Raspberry Pi website.</li>
-                        <li>Click on "Flash from file" to select the Raspberry Pi OS.</li> 
-                        <li>Click on "Select target" to select the miniSD card, and click on "Flash!"</li>
-                        <li>Remove and reinsert the miniSD card to open the "Boot" folder.</li>
-                        <li>Create a text file with the title "ssh" on your desktop.</li>
-                        <li>Use "Save As" to save the file in the "Boot" folder on the SD card with no extension.</li>
+                        <li>Alternatively, you can use balenaEtcher.</li>
+                        <ol>
+                            <li>Download and install <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener noreferrer">balenaEtcher</a>.</li>
+                            <li>Then, download the <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank" rel="noopener noreferrer">Raspberry Pi OS</a> from the Raspberry Pi website.</li>
+                            <li>Click on "Flash from file" to select the Raspberry Pi OS.</li> 
+                            <li>Click on "Select target" to select the miniSD card, and click on "Flash!"</li>
+                            <li>Remove and reinsert the miniSD card to open the "Boot" folder.</li>
+                            <li>Create a text file with the title "ssh" on your desktop.</li>
+                            <li>Use "Save As" to save the file in the "Boot" folder on the SD card with no extension.</li>
+                        </ol>
                     </ul>
                     <li>Insert the card in the slot on the Raspberry Pi and turn the single-board computer on.</li>
                 </ol>
@@ -97,29 +100,34 @@
                 <p>You should be able to see the Linux desktop on your computer monitor.</p>
             </section>
             <section>
-                <h2>Update Raspian</h2>
-                <p>Raspian is the Raspberry Pi Operating System</p>
+                <h2>Update the Raspberry Pi Operating System</h2>
+                <p> Raspberry Pi OS is a Debian-based Linux distribution tailored specifically for Raspberry Pi hardware.</p>
                 <ol>
-                    <li>Clicking on the Raspberry Pi logo on the top-left corner opens the Applications Menu.</li>
+                    <li>Clicking on the Raspberry Pi logo on the top-left corner opens the <b>Applications Menu</b>.</li>
                     <li>Open a terminal in the desktop.</li>
                     <ul>
                         <li>Click on the Raspberry Pi logo then <b>Accessories >> Terminal</b></li>
                     </ul>
-                    <li>Update and upgrade Raspian.</li>
+                    <li>Update and upgrade Raspbian.</li>
                     <ul>
                         <li><code style="background-color: black; padding-inline: 3px;">sudo apt-get update</code></li>
                         <li><code style="background-color: black; padding-inline: 3px;">sudo apt-get upgrade</code></li>
                     </ul>
                 </ol>
+            </section>
+            <section>
+                <h2>Getting Started with Thonny (Under Construction)</h2>
                 <p>Raspian is installed with Python 3 and Thonny.</p>
             </section>
             <br>
         </article>
     </main>
-    <footer style="background-color: #E30B5C;">
-    <h5><a href="http://github.com/felixthecat8a" target="_blank" rel="noopener noreferrer">&#x1F408;
-        <span>&copy;FelixTheCat8a&#128008;</span>
-    </a></h5><br>
+    <footer>
+        <br>
+        <h5><a href="https://github.com/felixthecat8a/example" target="_blank" rel="noopener noreferrer">&#x1F408;
+            <span>&copy;FelixTheCat8a&#128008;</span>
+        </a></h5>
+        <br>
     </footer>
 </body>
 </html>
