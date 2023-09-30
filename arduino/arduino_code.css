@@ -1,0 +1,20 @@
+pre {
+    background-color: #191919;
+    width: max-content;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding-inline: 50px;
+    overflow: auto;
+}
+pre code .blue {
+    color: royalblue;
+}
+pre code .orange {
+    color: goldenrod;
+}
+pre code .gray {
+    color: darkgray;
+}
+pre code .green {
+    color: mediumseagreen;
+}

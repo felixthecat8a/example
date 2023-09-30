@@ -25,20 +25,10 @@
                 margin: auto;
             }
         }
-        pre {
-            background-color: #191919;
-            width: max-content;
-            border: 1px solid #999;
-            border-radius: 5px;
-            padding-inline: 20px;
-            overflow: auto;
-        }
-        .code_arduino {color: lightgray;}
-        .code_arduino #sg {color: mediumseagreen}
-        .code_arduino #bl {color: royalblue}
-        .code_arduino #yl {color: goldenrod}
-        .code_arduino #gr {color: gray}
     </style>
+    <!-- Custom Syntax Highlighter for Arduino Code -->
+    <link rel="stylesheet" href="./arduino_code.css">
+    <script src="./arduino_code.js"></script>
 </head>
 <body>
     <header>
@@ -106,37 +96,37 @@
                     <li>Change the Edit Mode from "Blocks" to "Text" by clicking on the selector.</li>
                 </ul>
                 <pre>
-                    <code class="code_arduino">
-<span id="gr">/* rgbLED.ino */</span>
-<span id="gr">//#define COMMON_ANODE // uncomment common anode</span>
-<span id="gr">/* Requires pins that support PWM (denoted by ~) */</span>
-<span id="bl">const int</span> redPin = 11, greenPin = 10, bluePin = 9;
-<span id="bl">void</span> <span id="sg">setup</span>() {
-    <span id="yl">pinMode</span>(redPin, <span id="bl">OUTPUT</span>);
-    <span id="yl">pinMode</span>(bluePin, <span id="bl">OUTPUT</span>);
-    <span id="yl">pinMode</span>(greenPin, <span id="bl">OUTPUT</span>);
+                    <code class="language-arduino">
+/* rgbLED.ino */
+/* Requires pins that support PWM (denoted by ~) */
+const int redPin = 11, greenPin = 10, bluePin = 9;
+bool commonAnode = false; // set true for common anode
+void setup() {
+    pinMode(redPin, OUTPUT);
+    pinMode(bluePin, OUTPUT);
+    pinMode(greenPin, OUTPUT);
 }
-<span id="bl">void</span> <span id="sg">loop</span>() {
-    setColor(255, 0, 0); <span id="gr">// Red</span>
-    <span id="yl">delay</span>(1000); <span id="gr">// every 1 sec (1000 ms)</span>
-    setColor(255, 255, 0); <span id="gr">// Yellow</span>
-    <span id="yl">delay</span>(1000);
-    setColor(0, 255, 0); <span id="gr">// Green</span>
-    <span id="yl">delay</span>(1000);
-    setColor(0, 0, 255); <span id="gr">// Blue</span>
-    <span id="yl">delay</span>(1000);
-    setColor(255, 0, 255); <span id="gr">// Violet</span>
-    <span id="yl">delay</span>(1000);
+void loop() {
+    setColor(255, 0, 0); // Red
+    delay(1000); // every 1 sec (1000 ms)
+    setColor(255, 255, 0); // Yellow
+    delay(1000);
+    setColor(0, 255, 0); // Green
+    delay(1000);
+    setColor(0, 0, 255); // Blue
+    delay(1000);
+    setColor(255, 0, 255); // Violet
+    delay(1000);
 }
-<span id="bl">void</span> setColor(<span id="bl">int</span> redValue, <span id="bl">int</span> greenValue, <span id="bl">int</span> blueValue) {
-    <span id="sg">#ifdef</span> COMMON_ANODE
+void setColor(int redValue, int greenValue, int blueValue) {
+    if (commonAnode) {
         redValue = 255 - redValue;
         greenValue = 255 - greenValue;
         blueValue = 255 - blueValue;
-    <span id="sg">#endif</span>
-    <span id="yl">analogWrite</span>(redPin, redValue);
-    <span id="yl">analogWrite</span>(greenPin, greenValue);
-    <span id="yl">analogWrite</span>(bluePin, blueValue);
+    }
+    analogWrite(redPin, redValue);
+    analogWrite(greenPin, greenValue);
+    analogWrite(bluePin, blueValue);
 }
                     </code>
                 </pre>
