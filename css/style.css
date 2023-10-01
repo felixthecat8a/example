@@ -389,14 +389,14 @@ abbr[title] {
     border: solid medium gray;
   }
   .memory-card-game .card {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     color: #333;
     background: #e0e0e0;
     margin: 5px;
     display: inline-block;
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
-    line-height: 90px;
+    line-height: 80px;
     cursor: pointer;
   }
