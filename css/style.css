@@ -384,19 +384,19 @@ abbr[title] {
 
 .memory-card-game {
     text-align: center;
-    width: 450px;
+    width: 400px;
     margin: 0 auto;
     border: solid medium gray;
   }
   .memory-card-game .card {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     color: #333;
-    background: #e0e0e0;
+    background: dimgray;
     margin: 5px;
     display: inline-block;
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
-    line-height: 80px;
+    line-height: 75px;
     cursor: pointer;
   }
