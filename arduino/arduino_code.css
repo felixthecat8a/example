@@ -6,15 +6,21 @@ pre {
     padding-inline: 50px;
     overflow: auto;
 }
-pre code .blue {
+.language-arduino {
+    color: lightgray;
+}
+.language-arduino .blue {
     color: royalblue;
 }
-pre code .orange {
+.language-arduino .orange {
     color: goldenrod;
 }
-pre code .gray {
+.language-arduino .gray {
     color: darkgray;
 }
-pre code .green {
+.language-arduino .green {
     color: mediumseagreen;
+}
+.language-arduino .red {
+    color: palevioletred;
 }
