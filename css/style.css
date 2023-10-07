@@ -387,6 +387,7 @@ abbr[title] {
     width: 400px;
     margin: 0 auto;
     border: solid medium gray;
+    border-radius: 0.5rem;
   }
   .memory-card-game .card {
     width: 75px;
