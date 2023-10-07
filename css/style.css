@@ -389,7 +389,7 @@ abbr[title] {
     border: solid medium gray;
     border-radius: 0.5rem;
   }
-  .memory-card-game .card {
+.memory-card-game .card {
     width: 75px;
     height: 75px;
     color: #333;
@@ -400,4 +400,4 @@ abbr[title] {
     text-align: center;
     line-height: 75px;
     cursor: pointer;
-  }
+}
