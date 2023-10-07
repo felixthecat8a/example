@@ -13,7 +13,6 @@
     main {
         width: 800px;
         margin: auto;
-        padding-left: 20px;
         line-height: 1.5;
     }
     @media all and (max-width: 800px) {
@@ -21,6 +20,9 @@
             font-size: 0.8rem;
             width: 800px;
             margin: auto;
+        }
+        main {
+          width: 700px;
         }
     }
     /* Powershell Code */
@@ -62,15 +64,18 @@
           <ul>
               <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\Project <span id="gr">-ItemType</span> Directory</code></li>
               <li><code class="powershell"><span id="yl">cd</span> Project</code></li>
+              <li><code class="powershell"><span id="yl">yarn</span> init <span id="gr">-y</span></code></li>
           </ul>
           <li>Create an HTML file, a CSS file and a JavaScript file in a new folder inside the directory.</li>
           <ul>
+            <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\public <span id="gr">-ItemType</span> Directory</code></li>
             <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\public\index.html <span id="gr">-ItemType</span> File</code></li>
             <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\public\style.css <span id="gr">-ItemType</span> File</code></li>
             <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\public\code.js <span id="gr">-ItemType</span> File</code></li>
           </ul>
           <li>Create another JavaScript file in another new directory.</li>
           <ul>
+            <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\server <span id="gr">-ItemType</span> Directory</code></li>
             <li><code class="powershell"><span id="yl">New-Item</span> <span id="gr">-Path</span> .\server\server.js <span id="gr">-ItemType</span> File</code></li>
           </ul>
           <li>Install the modules for Express & Socket.IO..</li>
@@ -105,21 +110,20 @@ Project/
         <h2>Setting Up the HTML File</h2>
         <p>The index.html file will serve as the interface for the controlling the RGB LED.</p>
         <ul>
-          <li>Open the HTML file and type <code>"!"</code> then <code>"tab"</code>.</li>
-          <li>This will inject boilerplate template for a web page.</li>
+          <li>Open the HTML file and type <code>"!"</code> then <code>"tab"</code> to inject boilerplate template.</li>
+          <ul><li>Comments can be added to HTML using <code>&lt;!-- comment --&gt;</code>.</li></ul>
           <li>Add the link to the stylesheet under the title  within the <code>&lt;head&gt;</code> tags.</li>
           <ul>
             <li><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></li>
+            <li>CSS can also be embeded in the <code>&lt;style&gt;</code> tags.</li>
+            <li>Comments can be added to a CSS file using <code>/* comment */</code>.</li>
           </ul>
           <li>Add the link to the JavaScript code between the script tags in the body.</li>
           <ul>
             <li><code>&lt;script src="code.js"&gt;&lt;/script&gt;</code></li>
+            <li>JavaScript code can be embeded in the <code>&lt;script&gt;</code> tags.</li>
+            <li>Comments can be added to a JavaScript file using <code>/* comment */</code> or <code>// comment</code>.</li>
           </ul>
-          <li>Comments can be added to HTML using <code>&lt;!-- comment --&gt;</code>.</li>
-          <li>CSS styles can be embeded between the <code>&lt;style&gt;</code> tags.</li>
-          <li>Comments can be added to a CSS file using <code>/* comment */</code>.</li>
-          <li>JavaScript code can be embeded between the <code>&lt;script&gt;</code> tags.</li>
-          <li>Comments can be added to a JavaScript file using <code>/* comment */</code> or <code>// comment</code>.</li>
           <li>Add the script tag with the link to the Socket.IO module under the title.</li>
           <ul>
             <li><code>&lt;script src="/socket.io/socket.io.js"&gt;&lt;/script&gt;</code></li>
@@ -305,16 +309,10 @@ Project/
         res.sendFile(__dirname + '/index.html');
     });
 
-    const board = new Board({
-        port: 'COM3',
-        repl: false,
-        debug: false,
-        timeout: 1e5,
-        useFirmata: true,
-    });
-    // Requires pins that support PWM (denoted by ~)
+    const board = new Board();
     board.on('ready', () => {
         console.log('Board is ready!');
+        // Requires pins that support PWM (denoted by ~)
         const redPin = 11;
         const greenPin = 10;
         const bluePin = 9;
