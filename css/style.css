@@ -265,7 +265,7 @@ abbr[title] {
 
 #gameApp {
     display: inline-block;
-    border: solid thin teal;
+    border: solid medium teal;
     border-radius: 0.5rem;
     width: 400px;
     height: fit-content;
