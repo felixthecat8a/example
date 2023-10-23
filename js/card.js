@@ -1,4 +1,3 @@
-console.log('Memory Card Game by felixthecat8a');
 document.addEventListener('DOMContentLoaded', function () {
     playMemoryCardGame();
 });

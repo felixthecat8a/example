@@ -1,7 +1,9 @@
 const catSelect = document.getElementById('catSelect');
 const catDiv = document.getElementById("catDisplay");
-displayRandomCat();
-createCatBreedOptions();
+document.addEventListener('DOMContentLoaded', () => {
+    createCatBreedOptions();
+    displayRandomCat();
+});
 async function createCatBreedOptions() {
     const URL = `https://api.thecatapi.com/v1/breeds`;
     try {
@@ -34,8 +36,7 @@ async function displayRandomCat() {
         const response = await (await fetch(CAT_URL));
         const data = await response.json();
         const catImage = data[0].url;
-        const catImg = `<img src="${catImage}" alt="cat" height="300px" width="auto">`;
-        
+        const catImg = (`<img src="${catImage}" alt="cat" height="300px" width="auto">`);
         catDiv.innerHTML = catImg;
     }
     catch (error) {
