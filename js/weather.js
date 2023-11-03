@@ -4,9 +4,21 @@ class WeatherDisplay {
     }
     async create(latitude, longitude) {
         const pointsURL = (`https://api.weather.gov/points/${latitude},${longitude}`);
+        this.weatherDisplayDIV.innerHTML = (`<div id='weatherContainer'>
+            <div id="weatherDiv">
+                <section id='weatherTitle'>
+                    <div id='nearForecastDiv'></div>
+                </section>
+                <section id='weatherContent'>
+                    <div id="currentWeather"></div>
+                </section>
+            </div>
+            <div id="futureForecastDiv"></div>
+        </div>`);
         try {
             const data = await (await fetch(pointsURL)).json();
-            await this.displayForecast(data.properties.forecast)
+            await this.displayNearForecast(data.properties.forecast)
+            await this.displayFutureForecast(data.properties.forecast)
             await this.displayCurrentWeather(data)
         }
         catch (error) {
@@ -14,7 +26,8 @@ class WeatherDisplay {
             console.log("Failed to get weather API data");
         }
     }
-    async displayForecast(endpoint) {
+    async displayNearForecast(endpoint) {
+        const nearForecastDiv = document.getElementById("nearForecastDiv");
         try {
             const response = await fetch(endpoint)
             const data = await response.json()
@@ -22,22 +35,13 @@ class WeatherDisplay {
             const forecastData = data.properties.periods[index]
             const chanceOfRain = forecastData.probabilityOfPrecipitation.value;
             const rain = chanceOfRain == null ? "0" : chanceOfRain;
-            const forecastHTML = (`<div id='weatherContainer'>
-                <div id="weatherDiv">
-                    <section id='weatherTitle'>
-                        <div style="font-size:large;">${forecastData.name}:</div>
-                        <div style="font-size:medium;">${forecastData.temperature}&degF</div>
-                        <img src="${forecastData.icon}" alt="icon" title="${forecastData.detailedForecast}">
-                        <div style="font-size:small;">Chance of Rain: ${rain}%</div>
-                    </section>
-                    <section id='weatherContent'>
-                        <div id="currentWeather"></div>
-                    </section>
-                </div>
-                <div id="futureForecastDiv"></div>
-            </div>`);
-            this.weatherDisplayDIV.innerHTML = forecastHTML
-            await this.displayFutureForecast(endpoint)
+            nearForecastDiv.innerHTML = (`
+            <div style="font-size:large;">${forecastData.name}:</div>
+            <div style="font-size:medium;">${forecastData.temperature}&degF</div>
+            <img src="${forecastData.icon}" alt="icon" title="${forecastData.detailedForecast}">
+            <div style="font-size:small;">Chance of Rain: ${rain}%</div>
+            `);
+            
         }
         catch (error) {
             weatherStatusDIV.innerText = "Failed to get forecast data";
