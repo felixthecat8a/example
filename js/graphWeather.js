@@ -29,7 +29,7 @@ async function getForecastData(useGeolocation) {
         if (useGeolocation) {
             endpoint = await getGeoEndpoint();
         } else {
-            endpoint = 'https://api.weather.gov/gridpoints/BRO/46,23/forecast/';
+            endpoint = 'https://api.weather.gov/gridpoints/BRO/54,24/forecast';
         }
         const response = await fetch(endpoint);
         const data = await response.json();
@@ -79,6 +79,12 @@ async function createForecastChart() {
                     borderColor: "rgba(75, 192, 192, 1)",
                     fill: false,
                 },
+                {
+                    label: "72\u00B0F",
+                    data: Array(forecastData.dayTemperature.length).fill(72),
+                    borderColor: "rgba(144, 240, 144, 0.6)",
+                    fill: false,
+                },
             ],
         },
         options: {
@@ -92,7 +98,7 @@ async function createForecastChart() {
                 y: {
                     title: {
                         display: true,
-                        text: 'Temperature',
+                        text: 'Temperature (\u00B0F)',
                     },
                 },
                 x: {
@@ -126,7 +132,7 @@ async function createForecastChart() {
                     max: 100,
                     title: {
                         display: true,
-                        text: '% Chance of Rain',
+                        text: '%',
                         color: 'gray',
                         font: {
                             size: 14,
