@@ -47,7 +47,6 @@ async function getForecastData(useGeolocation) {
 }
 document.addEventListener('DOMContentLoaded', async () => {
     const { temperatureChart, rainChanceChart } = await createForecastChart()
-    console.log(temperatureChart)
     const selectForecastGraph = document.getElementById('selectForecastGraph')
     selectForecastGraph.addEventListener('change', async (event) => {
         const graphSelection = event.target.value;
