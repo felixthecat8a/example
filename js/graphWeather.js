@@ -47,7 +47,6 @@ async function getForecastData(useGeolocation) {
 }
 document.addEventListener('DOMContentLoaded', async () => {
     const { temperatureChart, rainChanceChart } = await createForecastChart()
-    console.log(temperatureChart)
     const selectForecastGraph = document.getElementById('selectForecastGraph')
     selectForecastGraph.addEventListener('change', async (event) => {
         const graphSelection = event.target.value;
@@ -70,13 +69,13 @@ async function createForecastChart() {
                 {
                     label: "Highs",
                     data: forecastData.dayTemperature,
-                    borderColor: "rgba(192, 75, 75, 1)",
+                    borderColor: "red",
                     fill: false,
                 },
                 {
                     label: "Lows",
                     data: forecastData.nightTemperature,
-                    borderColor: "rgba(75, 192, 192, 1)",
+                    borderColor: "blue",
                     fill: false,
                 },
                 {
@@ -84,6 +83,7 @@ async function createForecastChart() {
                     data: Array(forecastData.dayTemperature.length).fill(72),
                     borderColor: "rgba(144, 240, 144, 0.6)",
                     fill: false,
+                    pointRadius: 0,
                 },
             ],
         },
@@ -91,7 +91,11 @@ async function createForecastChart() {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Forecast Temperatures'
+                    text: 'Forecast Temperatures',
+                    color: 'lightgray',
+                    font: {
+                        size: 14,
+                    },
                 }
             },
             scales: {
@@ -153,7 +157,11 @@ async function createForecastChart() {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Forecast Chance of Rain'
+                    text: 'Forecast Chance of Rain',
+                    color: 'lightgray',
+                    font: {
+                        size: 14,
+                    },
                 }
             }
         },
