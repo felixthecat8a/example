@@ -10,7 +10,7 @@ function playMemoryCardGame() {
     ];
     const cardDecal = '&#x2754;&#x1F408;';
     let selectedCards = [];
-    let matchedCards = 0;
+    let matchedCards = [];
     function initializeGame() {
         cards.sort(() => Math.random() - 0.5);
         const gameBoard = document.getElementById('gameBoard');
@@ -26,6 +26,9 @@ function playMemoryCardGame() {
     }
     function flipCard() {
         const cardIndex = parseInt(this.dataset.index || '0', 10);
+        if (selectedCards.includes(cardIndex) || matchedCards.includes(cardIndex)) {
+            return;
+        }
         if (selectedCards.length < 2 && !selectedCards.includes(cardIndex)) {
             this.innerHTML = cards[cardIndex];
             selectedCards.push(cardIndex);
@@ -37,8 +40,8 @@ function playMemoryCardGame() {
     function checkMatch() {
         const [card1, card2] = selectedCards;
         if (cards[card1] === cards[card2]) {
-            matchedCards += 2;
-            if (matchedCards === cards.length) {
+            matchedCards.push(card1, card2);
+            if (matchedCards.length === cards.length) {
                 alert('Congratulations! You have matched all cards.');
                 resetGame();
             }
@@ -51,7 +54,7 @@ function playMemoryCardGame() {
         selectedCards = [];
     }
     function resetGame() {
-        matchedCards = 0;
+        matchedCards = [];
         selectedCards = [];
         initializeGame();
     }
