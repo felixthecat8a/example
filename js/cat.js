@@ -1,5 +1,8 @@
 const catSelect = document.getElementById('catSelect');
 const catDiv = document.getElementById("catDisplay");
+const catNameHeading = document.getElementById('catNameHeading');
+const catParagraph = document.getElementById("catParagraph");
+const catInfo = document.getElementById("catInfo");
 document.addEventListener('DOMContentLoaded', () => {
     createCatBreedOptions();
     displayRandomCat();
@@ -20,7 +23,9 @@ async function createCatBreedOptions() {
             if (catBreed == 'showCat') {
                 await displayRandomCat();
             } else {
-                await displayCatBreed(catBreed);
+                const catData = data.find((cat) => cat.id === catBreed);
+                const catName = catData.name;
+                await displayCatBreed(catBreed,catName,catData);
             }
         });
     }
@@ -29,6 +34,9 @@ async function createCatBreedOptions() {
     }
 }
 async function displayRandomCat() {
+    catNameHeading.textContent = 'Random Cat Image';
+    catParagraph.textContent = '';
+    catInfo.textContent = '';
     console.log('showing random cat');
     const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
     const CAT_URL = `https://api.thecatapi.com/v1/images/search?limit=1&${API_KEY}`;
@@ -43,8 +51,13 @@ async function displayRandomCat() {
         console.log("There was a problem fetching a cat image.");
     }
 }
-async function displayCatBreed(breedId) {
-    console.log(`showing id:${breedId}`);
+async function displayCatBreed(breedId,breedName,breedData) {
+    catNameHeading.textContent = (`${breedName}`);
+    catParagraph.textContent = (`${breedData.description}`);
+    catInfo.innerHTML = (`
+    <p>Temperament: ${breedData.temperament}<br>Alternate Names: ${breedData.alt_names || "None"}</p>
+    `);
+    console.log(`showing ${breedName}`);
     const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
     const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}`;
     try {
@@ -52,16 +65,16 @@ async function displayCatBreed(breedId) {
         const data = await response.json()
         const catImages = data.map((cat) => cat.url)
         if (catImages.length === 0) {
-            console.log(`no images found for id:${breedId}`)
-            catDiv.innerHTML = `<p>no images found for id:${breedId}</p>`
+            console.log(`no images found for ${breedName}`)
+            catDiv.innerHTML = `<p>no images found for ${breedName}</p>`
             return
         }
         if (catImages.length < 4) {
-            console.log(`id:${breedId} has less than 4 images`);
+            console.log(`${breedName} has less than 4 images`);
             const catImg = (`
             <div class="catRow">
                 <div class="catColumn">
-                    <img src="${catImages[0]}" alt="${breedId}" height="250px" width="auto">
+                    <img src="${catImages[0]}" ${breedName}" height="250px" width="auto">
                 </div>
             </div>
             `);
@@ -72,18 +85,18 @@ async function displayCatBreed(breedId) {
             const catImg = (`
             <div class="catRow">
                 <div class="catColumn">
-                    <img src="${catImages[0]}" alt="${breedId}" height="250px" width="auto">
-                    <img src="${catImages[1]}" alt="${breedId}" height="250px" width="auto">
+                    <img src="${catImages[0]}" alt="${breedName}" height="250px" width="auto">
+                    <img src="${catImages[1]}" alt="${breedName}" height="250px" width="auto">
                 </div>
                 <div class="catColumn">
-                    <img src="${catImages[2]}" alt="${breedId}" height="250px" width="auto">
-                    <img src="${catImages[3]}" alt="${breedId}" height="250px" width="auto">
+                    <img src="${catImages[2]}" alt="${breedName}" height="250px" width="auto">
+                    <img src="${catImages[3]}" alt="${breedName}" height="250px" width="auto">
                 <div>
             </div>
             `);
             catDiv.innerHTML = catImg
         }
     } catch (error) {
-        console.log(`There was a problem fetching id:${breedId} images.`)
+        console.log(`There was a problem fetching ${breedName} images.`)
     }
 }
