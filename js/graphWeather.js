@@ -10,14 +10,24 @@ async function getGeoLocation() {
         }
     });
 }
-async function getGeoEndpoint() {
+async function getGeoEndpoint(useGeolocation) {
     try {
-        const coords = await getGeoLocation();
-        const NWS_URL = `https://api.weather.gov/points/${coords.latitude},${coords.longitude}`
+        let position
+        if (useGeolocation){
+            const coords = await getGeoLocation()
+            position = (`${coords.latitude},${coords.longitude}`) 
+        } else {
+            const jehsLatitude = '26.3086'
+            const jehsLongitude = '-98.103'
+            position = (`${jehsLatitude},${jehsLongitude}`) 
+        }
+        const NWS_URL = (`https://api.weather.gov/points/${position}`)
         const response = await fetch(NWS_URL);
         const data = await response.json();
-        const endpoint = data.properties.forecast;
-        return endpoint;
+        const endpoint = data.properties.forecast
+        const locationData = data.properties.relativeLocation.properties
+        const location = (`${locationData.city}, ${locationData.state}`)
+        return {endpoint, location}
     } catch (error) {
         console.error(error);
         return null;
@@ -25,13 +35,9 @@ async function getGeoEndpoint() {
 }
 async function getForecastData(useGeolocation) {
     try {
-        let endpoint;
-        if (useGeolocation) {
-            endpoint = await getGeoEndpoint();
-        } else {
-            endpoint = 'https://api.weather.gov/gridpoints/BRO/54,24/forecast';
-        }
-        const response = await fetch(endpoint);
+        const locationData = await getGeoEndpoint(useGeolocation);
+        const location = locationData.location;
+        const response = await fetch(locationData.endpoint);
         const data = await response.json();
         const daytimeData = data.properties.periods.filter((period) => period.isDaytime);
         const nighttimeData = data.properties.periods.filter((period) => !period.isDaytime);
@@ -39,7 +45,7 @@ async function getForecastData(useGeolocation) {
         const dayTemperature = daytimeData.map((period) => period.temperature);
         const nightTemperature = nighttimeData.map((period) => period.temperature);
         const rainChance = daytimeData.map((period) => period.probabilityOfPrecipitation.value);
-        return { dayLabels , dayTemperature, nightTemperature, rainChance };
+        return { dayLabels , dayTemperature, nightTemperature, rainChance, location };
     } catch (error) {
         console.error(error);
         return null;
@@ -96,7 +102,11 @@ async function createForecastChart() {
                     font: {
                         size: 14,
                     },
-                }
+                },
+                subtitle: {
+                    display: true,
+                    text: forecastData.location
+                },
             },
             scales: {
                 y: {
@@ -162,7 +172,11 @@ async function createForecastChart() {
                     font: {
                         size: 14,
                     },
-                }
+                },
+                subtitle: {
+                    display: true,
+                    text: forecastData.location
+                },
             }
         },
     });
@@ -173,7 +187,9 @@ async function updateForecastChart(temperatureChart, rainChanceChart, useGeoloca
     const forecastData = await getForecastData(useGeolocation);
     temperatureChart.data.datasets[0].data = forecastData.dayTemperature
     temperatureChart.data.datasets[1].data = forecastData.nightTemperature
+    temperatureChart.options.plugins.subtitle.text = forecastData.location
     temperatureChart.update()
     rainChanceChart.data.datasets[0].data = forecastData.rainChance
+    rainChanceChart.options.plugins.subtitle.text = forecastData.location
     rainChanceChart.update()
 }
