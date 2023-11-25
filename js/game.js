@@ -1,5 +1,5 @@
 const game = document.getElementById("game");
-const gameButton = '<button type="button" onclick="playGame()">Play</button>';
+const gameButton = '<button type="button" onclick="playGame()">Click to Play</button>';
 game.innerHTML = gameButton;
 function playGame() {
     const gameHTML = (`<form id="gameApp">
