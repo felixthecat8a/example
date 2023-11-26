@@ -159,12 +159,23 @@ async function createForecastChart() {
         const screenWidth = window.innerWidth
         temperatureChart.canvas.parentNode.style.margin = 'auto'
         rainChanceChart.canvas.parentNode.style.margin = 'auto'
-        if (screenWidth <= 550) {
+        if (screenWidth <= defaultChartWidth) {
             temperatureChart.resize(screenWidth,'auto')
             temperatureChart.canvas.parentNode.style.width = screenWidth
             rainChanceChart.resize(screenWidth,'auto')
             rainChanceChart.canvas.parentNode.style.width = screenWidth
-        } else if (screenWidth <= defaultChartWidth) {
+        } else {
+            temperatureChart.resize(defaultChartWidth,'auto')
+            temperatureChart.canvas.parentNode.style.width = `${defaultChartWidth}px`
+            rainChanceChart.resize(defaultChartWidth,'auto')
+            rainChanceChart.canvas.parentNode.style.width = `${defaultChartWidth}px`
+        }
+    })
+    window.addEventListener('orientationchange', () => {
+        const screenWidth = window.innerWidth
+        temperatureChart.canvas.parentNode.style.margin = 'auto'
+        rainChanceChart.canvas.parentNode.style.margin = 'auto'
+        if (screenWidth <= 550) {
             temperatureChart.resize(screenWidth,'auto')
             temperatureChart.canvas.parentNode.style.width = screenWidth
             rainChanceChart.resize(screenWidth,'auto')
