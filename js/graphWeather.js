@@ -159,7 +159,7 @@ async function createForecastChart() {
         const screenWidth = window.innerWidth
         temperatureChart.canvas.parentNode.style.margin = 'auto'
         rainChanceChart.canvas.parentNode.style.margin = 'auto'
-        if (screenWidth <= defaultChartWidth) {
+        if (screenWidth <= 550) {
             temperatureChart.resize(screenWidth,'auto')
             temperatureChart.canvas.parentNode.style.width = screenWidth
             rainChanceChart.resize(screenWidth,'auto')
