@@ -82,7 +82,7 @@ async function createForecastChart() {
     }
     const options = {
         plugins: {
-            title: { display: true, text: 'Forecast Temperatures', color: 'lightgray', font: { size: 18 } },
+            title: { display: true, text: 'Temperature Forecast', color: 'lightgray', font: { size: 18 } },
             subtitle: { display: true, text: forecastData.location, color: 'lightgray', font: { size: 16 } },
         },
         scales: {
