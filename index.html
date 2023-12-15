@@ -7,6 +7,9 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>Mr. Ochoa</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Animatelo -->
+    <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
+    <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
 </head>
 <body>
     <header>
@@ -26,12 +29,10 @@
             </div>
         </article>
         <br>
-        <section>
-            <h2 style="color: lightseagreen;">Number Guessing Game</h2>
-            <br>
-            <div id="game"></div>
+        <section id="numberGuessingGameContainer">
+            <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
+            <div id="numberGuessingGame"></div><br>
             <script src="js/game.js"></script>
-            <br>
         </section>
         <br>
         <article id="weatherApp">
@@ -49,9 +50,6 @@
                     <optgroup label="Geo Location">
                         <option value="geolocation">Use GeoLocation</option>
                     </optgroup>
-                    <optgroup label="Cat">
-                        <option value="showCat">Show a Cat</option>
-                    </optgroup>
                 </select>
             </label>
             <div id="weatherDisplay"></div>
@@ -65,6 +63,7 @@
         </article>
     </main>
     <footer>
+        <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
         <h4>View my GitHub code repo <a href="https://github.com/felixthecat8a/example" target="_blank"><span style="color:lightseagreen">here</span></a>.</h4>
         <h5><a href="http://github.com/felixthecat8a" target="_blank" rel="noopener noreferrer">
             <span class="felix">felixthecat8a&#x1F408;</span>

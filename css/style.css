@@ -259,12 +259,9 @@ abbr[title] {
 }
 
 /* GAME */
-#game {
+#numberGuessingGameContainer {
     text-align: center;
-}
-
-#gameApp {
-    display: inline-block;
+    display: block;
     border: solid medium teal;
     border-radius: 0.5rem;
     width: 400px;
@@ -272,20 +269,17 @@ abbr[title] {
     margin: auto;
     padding: 5px 15px;
 }
-#gameApp:hover {
+#numberGuessingGameContainer:hover {
     outline: solid thin teal;
     box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9333333333);
 }
-#gameApp .gameHeading {
-    color: mediumaquamarine;
-}
-#gameApp #attempt {
-    font-size: smaller;
-    font-weight: bolder;
-    font-style: normal;
+#numberGuessingGameContainer #attempt {
+    font-size: medium;
+    font-weight: bold;
+    font-style: italic;
 }
 @media screen and (max-width: 500px) {
-    #gameApp {
+    #numberGuessingGameContainer {
         flex: 100%;
         max-width: 100%;
     }
