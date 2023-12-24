@@ -16,7 +16,8 @@ class WeatherDisplay {
             <div id="futureForecastDiv"></div>
         </div>`);
         try {
-            const data = await (await fetch(pointsURL)).json();
+            const headers = {'User-Agent': 'https://github.com/felixthecat8a'}
+            const data = await (await fetch(pointsURL, {headers:headers})).json();
             await this.displayNearForecast(data.properties.forecast)
             await this.displayFutureForecast(data.properties.forecast)
             await this.displayCurrentWeather(data)
