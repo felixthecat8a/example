@@ -82,7 +82,7 @@ async function displayCatBreed(breedId,breedName,breedData) {
             return
         }
         else {
-            const catImg = (`
+            /*const catImg = (`
             <div class="catRow">
                 <div class="catColumn">
                     <img src="${catImages[0]}" alt="${breedName}" height="250px" width="auto">
@@ -93,8 +93,26 @@ async function displayCatBreed(breedId,breedName,breedData) {
                     <img src="${catImages[3]}" alt="${breedName}" height="250px" width="auto">
                 <div>
             </div>
+            `);*/
+            const catImg = (`
+            <section class="splide" aria-label="Splide Basic Cat Images" style="width:400px; margin: auto;">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide"><img src="${catImages[0]}" alt="${breedName}" height="270px" width="auto"></li>
+                    <li class="splide__slide"><img src="${catImages[1]}" alt="${breedName}" height="270px" width="auto"></li>
+                    <li class="splide__slide"><img src="${catImages[2]}" alt="${breedName}" height="270px" width="auto"></li>
+                    <li class="splide__slide"><img src="${catImages[3]}" alt="${breedName}" height="270px" width="auto"></li>
+                </ul>
+            </div>
+            </section>
             `);
             catDiv.innerHTML = catImg
+            const { Splide } = window;
+            var splide = new Splide('.splide', {
+                type: 'fade',
+                rewind: true,
+            });
+            splide.mount();
         }
     } catch (error) {
         console.log(`There was a problem fetching ${breedName} images.`)

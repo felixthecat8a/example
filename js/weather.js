@@ -42,7 +42,6 @@ class WeatherDisplay {
             <img src="${forecastData.icon}" alt="icon" title="${forecastData.detailedForecast}">
             <div style="font-size:small;">Chance of Rain: ${rain}%</div>
             `);
-            
         }
         catch (error) {
             weatherStatusDIV.innerText = "Failed to get forecast data";

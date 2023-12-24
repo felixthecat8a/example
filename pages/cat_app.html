@@ -6,6 +6,9 @@
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     <title>Cat App</title>
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Splide.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 </head>
 <body>
     <header>
@@ -16,7 +19,6 @@
     </header>
     <main>
       <section id="cat_container">
-        <h2 id="catNameHeading" style="color: darkorange;">Random Cat Image</h2>
         <label style="color: orange;">
             <b>Select Cat Breed: </b>
             <select id="catSelect">
@@ -29,6 +31,7 @@
             </select>
         </label>
         <div id="catDisplay"></div>
+        <h2 id="catNameHeading" style="color: darkorange;">Random Cat Image</h2>
         <p id="catParagraph"></p>
         <div id="catInfo"></div>
       </section>
