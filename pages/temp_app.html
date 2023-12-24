@@ -54,30 +54,6 @@
             <script src="../js/weather.js"></script>
         </article>
         <hr>
-        <article>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <h2 style="text-align: center;">Forecast Graphs using Chart.js</h2>
-            <div style="text-align: center;">
-                <label for="selectForecastGraph">
-                    <b>Select Location: </b>
-                    <select id="selectForecastGraph">
-                        <optgroup label="Fixed Location">
-                            <option value="fixedlocation" selected>JEHS</option>
-                        </optgroup>
-                        <optgroup label="Geo Location">
-                            <option value="geolocation">Use GeoLocation</option>
-                        </optgroup>
-                    </select>
-                </label>
-            </div><br>
-            <div class="chart-container">
-                <canvas id="temperatureChart"></canvas>
-            </div><br>
-            <div class="chart-container">
-                <canvas id="rainChanceChart"></canvas>
-            </div><br>
-            <script src="../js/graphWeather.js"></script>
-        </article>
     </main>
     <footer>
         <style>.githubName {color: mediumseagreen} .githubName:hover {color: seagreen}</style>

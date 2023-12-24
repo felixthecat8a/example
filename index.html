@@ -10,6 +10,8 @@
     <!-- Animatelo -->
     <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
     <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -35,35 +37,42 @@
             <script src="js/game.js"></script>
         </section>
         <br>
-        <article id="weatherApp">
+        <article>
+            <h3>Check out these tutorials to get started with<br><a href="arduino/pageOne.html"><span style="color: #00979D;">Arduino</span></a> and <a href="raspberrypi/raspberryPi.html"><span style="color: #E30B5C;">Raspberry Pi</span></a>.</h3>
+        </article>
+        <br>
+        <article>
             <h2 id='nwsHeading'>
                 <a href="https://www.weather.gov" target="_blank" rel="noopener noreferrer" id="nwsLink">
                     National Weather Service API
                 </a>
             </h2>
-            <label style="color: darkseagreen;">
-                <b>Select Location: </b>
-                <select id="selectLocation">
-                    <optgroup label="Fixed Location">
-                        <option value="jehs">JEHS</option>
-                    </optgroup>
-                    <optgroup label="Geo Location">
-                        <option value="geolocation">Use GeoLocation</option>
-                    </optgroup>
-                </select>
-            </label>
-            <div id="weatherDisplay"></div>
-            <div id="weatherStatus"></div>
-            <script src="./js/weather.js"></script>
-        </article>
-        <br>
-        <article>
-            <h3>Check out these tutorials to get started with<br><a href="arduino/pageOne.html"><span style="color: #00979D;">Arduino</span></a> and <a href="raspberrypi/raspberryPi.html"><span style="color: #E30B5C;">Raspberry Pi</span></a>.</h3>
-            <br>
+            <h3>Forecast Charts</h3>
+            <div style="text-align: center;">
+                <label for="selectForecastGraph">
+                    <b>Select Location: </b>
+                    <select id="selectForecastGraph">
+                        <optgroup label="Fixed Location">
+                            <option value="fixedlocation" selected>JEHS</option>
+                        </optgroup>
+                        <optgroup label="Geo Location">
+                            <option value="geolocation">Use GeoLocation</option>
+                        </optgroup>
+                    </select>
+                </label>
+            </div><br>
+            <div class="chart-container">
+                <canvas id="temperatureChart"></canvas>
+            </div><br>
+            <div class="chart-container">
+                <canvas id="rainChanceChart"></canvas>
+            </div><br>
+            <script src="./js/graphWeather.js"></script>
         </article>
     </main>
     <footer>
         <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
+        <h4>Charts created using <a href="https://www.chartjs.org" target="_blank" rel="noopener noreferrer">Chart.js</a></h4>
         <h4>View my GitHub code repo <a href="https://github.com/felixthecat8a/example" target="_blank"><span style="color:lightseagreen">here</span></a>.</h4>
         <h5><a href="http://github.com/felixthecat8a" target="_blank" rel="noopener noreferrer">
             <span class="felix">felixthecat8a&#x1F408;</span>
