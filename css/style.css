@@ -289,59 +289,53 @@ abbr[title] {
 #weatherApp {
     text-align: center;
     font-weight: bold;
-}
-
-#nwsHeading {
-    color: darkseagreen;
+  }
+  
+  #nwsHeading {
+    color: mediumseagreen;
     padding: 0;
-}
-#nwsHeading a {
+    margin-bottom: 0;
+  }
+  #nwsHeading a {
     text-decoration: none;
-}
-#nwsHeading a:link, #nwsHeading a:visited {
-    color: darkseagreen;
-}
-#nwsHeading a:hover, #nwsHeading a:active {
+  }
+  #nwsHeading a:link, #nwsHeading a:visited {
+    color: mediumseagreen;
+  }
+  #nwsHeading a:hover, #nwsHeading a:active {
     color: seagreen;
-}
-
-#weatherDiv {
+  }
+  
+  #forecastDiv {
     border: solid thin darkseagreen;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     max-width: 550px;
-    height: 180px;
+    height: 175px;
     margin: auto;
-}
-#weatherDiv img {
-    border: solid thin darkseagreen;
-    margin: auto;
-}
-
-#weatherTitle {
+  }
+  #forecastDiv #forecastLeftSection {
     background-color: #333;
-    color: mediumseagreen;
+    color: darkseagreen;
     float: left;
     flex: 1;
     height: 100%;
-    padding-top: 10px;
-}
-
-#weatherContent {
+    padding-top: 5px;
+  }
+  #forecastDiv #forecastRightSection {
     background-color: seagreen;
     color: honeydew;
     float: right;
     flex: 2;
     height: 100%;
     word-break: keep-all;
-    padding-top: 10px;
-}
-
-#futureForecastDiv {
+    padding-top: 5px;
+  }
+  
+  #futureForecastDiv {
     display: flex;
-    flex-direction: row;
     align-items: center;
     align-content: center;
     justify-content: space-between;
@@ -351,30 +345,25 @@ abbr[title] {
     min-height: min-content;
     font-size: 0.8rem;
     font-weight: bold;
-}
-
-#forecastDay {
+  }
+  #futureForecastDiv .forecastDay {
     flex: 1;
     background-color: #333;
     padding-top: 5px;
     padding-bottom: 5px;
     border: solid thin darkseagreen;
-}
-#forecastDay:hover {
+  }
+  #futureForecastDiv .forecastDay:hover {
     outline: solid thin mediumseagreen;
     box-shadow: 0 5px 10px rgba(60, 179, 113, 0.9333333333);
-}
-
-@media screen and (max-width: 500px) {
-    #weatherDiv {
-        flex: 100%;
-        max-width: 100%;
+  }
+  
+  @media screen and (max-width: 500px) {
+    #forecastDiv, #futureForecastDiv {
+      flex: 100%;
+      max-width: 100%;
     }
-    #forecastDiv {
-        flex: 100%;
-        max-width: 100%;
-    }
-}
+  }
 
 .memory-card-game {
     text-align: center;
