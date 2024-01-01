@@ -28,26 +28,22 @@ class WeatherDataUtil {
             const data = await response.json();
             const wd = data.properties.periods[0];
             const weatherDataHTML = (`
-            <div style="font-size:1rem;">${this.getDate(wd.startTime)}</div>
+            <div style="font-size:1rem;">${this.formatDateTime(wd.startTime)}</div>
             <div style="font-size:1.5rem;">${this.getPointsLocationName(pointsData)}</div>
             <div style="font-size:2.5rem;">${wd.temperature}&deg;F</div>
             <div style="font-size:1rem;">${wd.windSpeed} ${wd.windDirection}</div>
-            <div style="font-size:0.9rem;" hidden>Humidity: ${wd.relativeHumidity.value}%</div>
             <br><div style="font-size:1.1rem;">${wd.shortForecast}</div>
             `);
             currentWeather.innerHTML = weatherDataHTML;
         }
         catch (error) {
-            currentWeather.innerHTML = '<h3>Unavailable</h3>';
-            return
+            console.error(error);;
         }
     }
-    static getDate(dateTimeData) {
+    static formatDateTime(dateTimeData) {
         const dateTime = new Date(dateTimeData);
-        const l = 'long';
-        const n = 'numeric';
-        const options = { weekday: l, month: l, day: n, year: n };
-        return dateTime.toLocaleDateString('en-US', options);
+        const options = { dateStyle: 'full' };
+        return new Intl.DateTimeFormat(navigator.language, options).format(dateTime);
     }
 }
 /***************************************************************************************************/
@@ -87,8 +83,6 @@ class FutureForecast {
             <div style="font-size:0.75rem;">Temperature: ${fd.temperature}&deg;F</div>
             <div style="font-size:0.75rem;">Wind: ${fd.windSpeed} ${fd.windDirection}</div>
             <div style="font-size:0.75rem;">Chance of Rain: ${rainChance}%</div>
-            <div style="font-size:0.7rem;">Humidity: ${fd.relativeHumidity.value}%</div>
-            <div style="font-size:0.7rem;">Dewpoint: ${fd.dewpoint.value * 1.8 + 32}&deg;F</div>
             `);
         }
         catch (error) {
@@ -104,7 +98,7 @@ class FutureForecast {
             <span style="color:lightgreen">${fd[i].name.substring(0, 3)}:</span> ${rain}%<br>
             <span style="color:lightcoral">${fd[i].temperature}&deg;F</span><br>
             <span style="color:lightblue">${fd[i + 1].temperature}&deg;F</span><br>
-            <img src="${fd[i].icon}" alt="icon" height="auto" width="75%" loading="lazy">
+            <img src="${fd[i].icon}" alt="icon" height="auto" width="70%" loading="lazy">
             `);
             const isDaytime = fd[i].isDaytime;
             if (!isDaytime) {
