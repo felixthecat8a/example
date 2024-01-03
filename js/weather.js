@@ -32,7 +32,7 @@ class WeatherDataUtil {
             <div style="font-size:1.5rem;">${this.getPointsLocationName(pointsData)}</div>
             <div style="font-size:2.5rem;">${wd.temperature}&deg;F</div>
             <div style="font-size:1rem;">${wd.windSpeed} ${wd.windDirection}</div>
-            <br><div style="font-size:1.1rem;">${wd.shortForecast}</div>
+            <div style="font-size:1.1rem;">${wd.shortForecast}</div>
             `);
             currentWeather.innerHTML = weatherDataHTML;
         }
