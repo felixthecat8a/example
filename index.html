@@ -12,8 +12,10 @@
     <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--SoundJS-->
+    <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
 </head>
-<body>
+<body onload="loadSound();init();">
     <header>
         <h1>Mr. Ochoa's Web App Examples</h1>
     </header>
@@ -35,6 +37,19 @@
             <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
             <div id="numberGuessingGame"></div><br>
             <script src="js/game.js"></script>
+        </section>
+        <br>
+        <section style="text-align: center;">
+            <button onclick="playSound();" class="playSound">SoundJS: The More You Know</button>
+            <script>
+                var soundID = "TheMoreYouKnow";
+                function loadSound () {
+                    createjs.Sound.registerSound("./assets/audio/tmyk.mp3", soundID);
+                }
+                function playSound () {
+                    createjs.Sound.play(soundID);
+                }
+            </script>
         </section>
         <br>
         <article>
