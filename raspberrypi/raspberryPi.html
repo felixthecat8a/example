@@ -42,49 +42,40 @@
                 <h2>Installing an OS into a Raspberry Pi</h2>
                 <ol><!--Ordered List-->
                     <li>Download and install the official <b><a href="https://www.raspberrypi.com/software/" target="_blank" rel="noopener noreferrer">Raspberry Pi Imager</a></b> from the Raspberry Pi website.</li>
-                    <li>Insert a microSD card in a microSD card reader into your computer's SD slot.</li>
+                    <li>Insert a microSD card in a microSD card reader into your computer's SD slot and format it. This will delete everything on the SD card.</li>
                     <li>Open the Raspberry Pi Imager.</li>
                     <ol><!--Nested Ordered List-->
-                        <li>Choose the "Operating System" (<b>Raspberry Pi OS (32-bit)</b>).</li>
+                        <li>Choose the "Raspberry Pi" device.</li>
+                        <li>Choose the "Operating System" (<b>Raspberry Pi OS (64-bit)</b>).</li>
                         <li>Choose the "Storage" (<b>SDXC Card</b>).</li>
+                        <li>Click on "Next".</li>
                     </ol> 
-                    <li>Click on the gear icon to open the Advanced Options.</li>
+                    <li>On the OS customisation settings pop-up, click on "Edit Settings".</li>
                     <ul><!--Nested Unordered List-->
-                        <li>Set the hostname as <b><u>raspberrypi</u>.local</b></li>
-                        <li>Enable SSH</li>
+                        <li>Under the "General" tab, set the hostname as <b><u>raspberrypi</u>.local</b></li>
                         <li>Set the username (<b><i>pi</i></b>) and password (<b><i>raspberry</i></b>)</li>
-                        <li>Select "Configure wireless LAN" (optional)</li>
-                        <li>Click "Save".</li>
-                    </ul>
-                    <li>Click "Write" to image the microSD card.</li>
-                    <ul>
-                        <li>Alternatively, you can use balenaEtcher.</li>
-                        <ol>
-                            <li>Download and install <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener noreferrer">balenaEtcher</a>.</li>
-                            <li>Then, download the <a href="https://www.raspberrypi.com/software/operating-systems/" target="_blank" rel="noopener noreferrer">Raspberry Pi OS</a> from the Raspberry Pi website.</li>
-                            <li>Click on "Flash from file" to select the Raspberry Pi OS.</li> 
-                            <li>Click on "Select target" to select the miniSD card, and click on "Flash!"</li>
-                            <li>Remove and reinsert the miniSD card to open the "Boot" folder.</li>
-                            <li>Create a text file with the title "ssh" on your desktop.</li>
-                            <li>Use "Save As" to save the file in the "Boot" folder on the SD card with no extension.</li>
-                        </ol>
+                        <li>Select "Configure wireless LAN" (optional: this allows WiFi connection)</li>
+                        <li>Set the "Time Zone" and "Keyboard Layout".</li>
+                        <li>Under the "Services" tab, select "Enable SSH".</li>
+                        <li>Click "Save", then "Yes" to proceed to image the microSD card.</li>
                     </ul>
                     <li>Insert the card in the slot on the Raspberry Pi and turn the single-board computer on.</li>
                 </ol>
             </section>
             <section>
-                <h2>Connecting to a Raspberry Pi via Ethernet Cable</h2>
+                <h2>Connecting to a Raspberry Pi</h2>
                 <ol>
-                    <li>Download and install <a href="https://www.putty.org/" target="_blank" rel="noopener noreferrer">PuTTY</a>.</li>
-                    <li>Connect an RJ45 cable from the Raspbery Pi to your computer.</li>
-                    <li>Open Putty, type in the Hostname (raspberrypi.local), and click "Open".</li>
+                    <li>Open PowerShell and enter the command <code style="background-color: black;">ssh [username]@[hostname].local</code>.</li>
                     <ul>
-                        <li>A Putty terminal will then open with a prompt to enter a username then a password.</li>
+                        <li><code style="background-color: black;">ssh pi@raspberrypi.local</code></li>
+                        <li>Enter the password ("raspberry") when prompted</li>
                     </ul>
-                    <li>In the command prompt, type <code style="background-color: black; padding-inline: 3px;">sudo raspi-config</code>. This will open a new window.</li>
+
+                    <li>The command prompt will then show <code style="background-color: black;">pi@raspberrypi:~ $</code>.</li>
+                    <li>In the command prompt, type "<code style="background-color: black;">sudo raspi-config</code>". This will open a new window.</li>
                     <ol>
                         <li>Select "interface options"</li>
-                        <li>Select "enable VNC", then select "yes".</li>
+                        <li>Select "VNC", then select "yes".</li>
                     </ol>
                     <li>Set the resolution for the VNC Viewer.</li>
                     <ol>
@@ -126,8 +117,9 @@
     </main>
     <footer>
         <br>
-        <h5><a href="https://github.com/felixthecat8a/example" target="_blank" rel="noopener noreferrer">&#x1F408;
-            <span>&copy;FelixTheCat8a&#128008;</span>
+        <h6>Updated January, 2024</h6>
+        <h5><a href="https://github.com/felixthecat8a/example" target="_blank" rel="noopener noreferrer">
+            <span>&#x1F408;FelixTheCat8a&#128008;</span>
         </a></h5>
         <br>
     </footer>
