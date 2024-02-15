@@ -98,10 +98,10 @@ async function displayCatBreed(breedId,breedName,breedData) {
             <section class="splide" aria-label="Splide Basic Cat Images" style="width:400px; margin: auto;">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide"><img src="${catImages[0]}" alt="${breedName}" height="270px" width="auto"></li>
-                    <li class="splide__slide"><img src="${catImages[1]}" alt="${breedName}" height="270px" width="auto"></li>
-                    <li class="splide__slide"><img src="${catImages[2]}" alt="${breedName}" height="270px" width="auto"></li>
-                    <li class="splide__slide"><img src="${catImages[3]}" alt="${breedName}" height="270px" width="auto"></li>
+                    <li class="splide__slide"><img src="${catImages[0]}" alt="${breedName}" height="250px" width="auto"></li>
+                    <li class="splide__slide"><img src="${catImages[1]}" alt="${breedName}" height="250px" width="auto"></li>
+                    <li class="splide__slide"><img src="${catImages[2]}" alt="${breedName}" height="250px" width="auto"></li>
+                    <li class="splide__slide"><img src="${catImages[3]}" alt="${breedName}" height="250px" width="auto"></li>
                 </ul>
             </div>
             </section>
