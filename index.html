@@ -45,7 +45,7 @@
         <br>
         <section style="text-align: center;">
             <button onclick="playSound();" class="playSound">SoundJS: The More You Know</button><br>
-            <canvas id="tmykCanvas" width="500" height="100"></canvas>
+            <canvas id="tmykCanvas" width="500" height="75"></canvas>
             <script>
                 var soundID = "TheMoreYouKnow";
                 function loadSound () {
@@ -58,13 +58,13 @@
                 function tmykStar() {
                     var stage = new createjs.Stage("tmykCanvas");
                     var star = new createjs.Shape();
-                    star.graphics.beginFill("Yellow").drawPolyStar(0, 0, 50, 5, 0.6, -90);
+                    star.graphics.beginFill("Yellow").drawPolyStar(0, 0, 25, 5, 0.6, -90);
                     star.x = 100;
                     star.y = 50;
                     stage.addChild(star);
                     //stage.update();
                     createjs.Tween.get(star, {loop: false})
-                        .to({x: 400}, 2500, createjs.Ease.getPowInOut(2))
+                        .to({x: 400}, 3000, createjs.Ease.getPowInOut(2))
                         .to({alpha: 0, y: 25}, 500, createjs.Ease.getPowInOut(2));
                     createjs.Ticker.setFPS(60);
                     createjs.Ticker.addEventListener("tick", stage);
