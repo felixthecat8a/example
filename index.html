@@ -14,6 +14,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!--SoundJS-->
     <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
+    <!--EaselJS-->
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <!--TweenJS-->
+    <script src="https://code.createjs.com/1.0.0/tweenjs.min.js"></script>
 </head>
 <body onload="loadSound();init();">
     <header>
@@ -40,7 +44,8 @@
         </section>
         <br>
         <section style="text-align: center;">
-            <button onclick="playSound();" class="playSound">SoundJS: The More You Know</button>
+            <button onclick="playSound();" class="playSound">SoundJS: The More You Know</button><br>
+            <canvas id="tmykCanvas" width="500" height="100"></canvas>
             <script>
                 var soundID = "TheMoreYouKnow";
                 function loadSound () {
@@ -48,6 +53,21 @@
                 }
                 function playSound () {
                     createjs.Sound.play(soundID);
+                    tmykStar();
+                }
+                function tmykStar() {
+                    var stage = new createjs.Stage("tmykCanvas");
+                    var star = new createjs.Shape();
+                    star.graphics.beginFill("Yellow").drawPolyStar(0, 0, 50, 5, 0.6, -90);
+                    star.x = 100;
+                    star.y = 50;
+                    stage.addChild(star);
+                    //stage.update();
+                    createjs.Tween.get(star, {loop: false})
+                        .to({x: 400}, 2500, createjs.Ease.getPowInOut(2))
+                        .to({alpha: 0, y: 25}, 500, createjs.Ease.getPowInOut(2));
+                    createjs.Ticker.setFPS(60);
+                    createjs.Ticker.addEventListener("tick", stage);
                 }
             </script>
         </section>
