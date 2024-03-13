@@ -132,7 +132,7 @@ async function displayForecast(latitude, longitude) {
     try {
         const pointsData = await WeatherDataUtil.fetchPointsData(latitude, longitude);
         await WeatherDataUtil.setCurrentWeather(currentWeatherId, pointsData);
-        forecast.setForecastData(pointsData);
+        await forecast.setForecastData(pointsData);
         statusDiv.setStatus(null);
     }
     catch (error) {
