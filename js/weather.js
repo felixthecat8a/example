@@ -114,11 +114,13 @@ class ForecastChart {
 class WeatherForecast extends ForecastChart {
     nearForecastDiv;
     currentWeatherDiv;
+    alertDiv;
     futureForecastDiv;
-    constructor(nearId, currentId, futureId, canvasId) {
+    constructor(nearId, currentId, alertId, futureId, canvasId) {
         super(canvasId);
         this.nearForecastDiv = document.getElementById(nearId);
         this.currentWeatherDiv = document.getElementById(currentId);
+        this.alertDiv = document.getElementById(alertId);
         this.futureForecastDiv = document.getElementById(futureId);
     }
     async displayForecast(latitude, longitude) {
@@ -189,11 +191,17 @@ class WeatherForecast extends ForecastChart {
         }
         else {
             for (let index = 0; index < features.length; index++) {
-                const alertInfo = features[index].properties;
-                console.group(alertInfo.event);
-                console.groupCollapsed(alertInfo.headline);
-                console.dir(alertInfo.description);
-                console.dir(alertInfo.instruction);
+                const weatherAlerts = document.createElement("div")
+                const alrt = features[index].properties
+                weatherAlerts.setAttribute("title", `${alrt.description}\n${alrt.instruction}`)
+                weatherAlerts.innerHTML = (`
+                <div>${alrt.event}:${alrt.headline}</div>
+                `)
+                this.alertDiv.appendChild(weatherAlerts)
+                console.group(alrt.event);
+                console.groupCollapsed(alrt.headline);
+                console.dir(alrt.description);
+                console.dir(alrt.instruction);
                 console.groupEnd();
                 console.groupEnd();
             }
@@ -257,14 +265,16 @@ async function setForecast(latitude, longitude) {
         <section id='forecastLeftSection'></section>
         <section id='forecastRightSection'></section>
     </div>
+    <div id="alertDiv"></div>
     <div id="futureForecastDiv"></div>
     <div><canvas id="forecastChart"></canvas></div>
     `);
     const nearId = 'forecastLeftSection';
     const currentId = 'forecastRightSection';
+    const alertId = 'alertDiv'
     const futureId = 'futureForecastDiv';
     const canvasId = 'forecastChart';
-    const forecast = new WeatherForecast(nearId, currentId, futureId, canvasId);
+    const forecast = new WeatherForecast(nearId, currentId, alertId, futureId, canvasId);
     try {
         await forecast.displayForecast(latitude, longitude);
         statusDiv.setStatus(null);

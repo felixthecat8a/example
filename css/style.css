@@ -333,7 +333,15 @@ abbr[title] {
     word-break: keep-all;
     padding-top: 5px;
   }
-  
+  #alertDiv {
+    background-color: #8B2E57;
+    border-inline: solid thin darkseagreen;
+    max-width: 550px;
+    min-height: min-content;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-inline: auto;
+    }
   #futureForecastDiv {
     display: flex;
     align-items: center;
