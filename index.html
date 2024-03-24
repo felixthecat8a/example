@@ -21,7 +21,8 @@
 </head>
 <body onload="loadSound();init();">
     <header>
-        <h1>Mr. Ochoa's Web App Examples</h1>
+        <h1>Mr. Ochoa's Simple JavaScript Examples</h1>
+        <br>
     </header>
     <main style="text-align: center;">
         <article>
@@ -31,8 +32,6 @@
                 <a href="pages/temp_app.html"><b>Temperature Conversion</b></a><br>
                 <br>
                 <a href="pages/cat_app.html"><b>Cat Breed Selector</b></a><br>
-                <br>
-                <a href="pages/card_game.html"><b>Memory Card Matching Game</b></a><br>
                 <br>
             </div>
         </article>
@@ -76,38 +75,9 @@
             <h3>Check out these tutorials to get started with<br><a href="arduino/pageOne.html"><span style="color: #00979D;">Arduino</span></a> and <a href="raspberrypi/raspberryPi.html"><span style="color: #E30B5C;">Raspberry Pi</span></a>.</h3>
         </article>
         <br>
-        <article>
-            <h2 id='nwsHeading'>
-                <a href="https://www.weather.gov" target="_blank" rel="noopener noreferrer" id="nwsLink">
-                    National Weather Service API
-                </a>
-            </h2>
-            <h3>Forecast Charts</h3>
-            <div style="text-align: center;">
-                <label for="selectForecastGraph">
-                    <b>Select Location: </b>
-                    <select id="selectForecastGraph">
-                        <optgroup label="Fixed Location">
-                            <option value="fixedlocation" selected>JEHS</option>
-                        </optgroup>
-                        <optgroup label="Geo Location">
-                            <option value="geolocation">Use GeoLocation</option>
-                        </optgroup>
-                    </select>
-                </label>
-            </div><br>
-            <div class="chart-container">
-                <canvas id="temperatureChart"></canvas>
-            </div><br>
-            <div class="chart-container">
-                <canvas id="rainChanceChart"></canvas>
-            </div><br>
-            <script src="./js/graphWeather.js"></script>
-        </article>
     </main>
     <footer>
         <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
-        <h4>Charts created using <a href="https://www.chartjs.org" target="_blank" rel="noopener noreferrer">Chart.js</a></h4>
         <h4>View my GitHub code repo <a href="https://github.com/felixthecat8a/example" target="_blank"><span style="color:lightseagreen">here</span></a>.</h4>
         <h5><a href="http://github.com/felixthecat8a" target="_blank" rel="noopener noreferrer">
             <span class="felix">felixthecat8a&#x1F408;</span>
