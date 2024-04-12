@@ -139,7 +139,6 @@ class WeatherForecast extends ForecastChart {
             throw new Error(`${response.status}: Forecast Data Not Found`);
         }
         const data = await response.json();
-        this.setFutureForecast(data);
         const index = 0;
         const fd = data.properties.periods[index];
         const rain = fd.probabilityOfPrecipitation.value;
@@ -150,6 +149,7 @@ class WeatherForecast extends ForecastChart {
         <div style="font-size:0.75rem;">Wind: ${fd.windSpeed} ${fd.windDirection}</div>
         <div style="font-size:0.75rem;">Chance of Rain: ${rain == null ? "0" : rain}%</div>
         `);
+        this.setFutureForecast(data);
         super.createChart(data, locationName);
     }
     setFutureForecast(forecastData) {
