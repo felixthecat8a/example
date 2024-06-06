@@ -76,6 +76,10 @@ main fieldset {
     font-size: medium;
     padding: 5px 25px 15px 25px;
 }
+main fieldset p {
+    font-weight: bold;
+    font-size:small;
+}
 main legend {
     color: #3cb3ad;
     text-align: left;
@@ -264,14 +268,14 @@ abbr[title] {
     display: block;
     border: solid medium teal;
     border-radius: 0.5rem;
-    width: 400px;
+    width: 440px;
     height: fit-content;
     margin: auto;
     padding: 5px 15px;
 }
 #numberGuessingGameContainer:hover {
     outline: solid thin teal;
-    box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9333333333);
+    box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9);
 }
 #numberGuessingGameContainer #attempt {
     font-size: medium;
