@@ -38,8 +38,8 @@ async function displayRandomCat() {
     catParagraph.textContent = '';
     catInfo.textContent = '';
     console.log('showing random cat');
-    const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
-    const CAT_URL = `https://api.thecatapi.com/v1/images/search?limit=1&${API_KEY}`;
+    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
+    const CAT_URL = `https://api.thecatapi.com/v1/images/search?limit=1&${CAT}`;
     try {
         const response = await (await fetch(CAT_URL));
         const data = await response.json();
@@ -58,10 +58,10 @@ async function displayCatBreed(breedId,breedName,breedData) {
     <p>Temperament: ${breedData.temperament}<br>Alternate Names: ${breedData.alt_names || "None"}</p>
     `);
     console.log(`showing ${breedName}`);
-    const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
+    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
     const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}`;
     try {
-        const response = await fetch(BREED_URL, { headers: { 'x-api-key': API_KEY } })
+        const response = await fetch(BREED_URL, { headers: { 'x-api-key': CAT } })
         const data = await response.json()
         const catImages = data.map((cat) => cat.url)
         if (catImages.length === 0) {

@@ -191,13 +191,16 @@ class WeatherForecast extends ForecastChart {
         }
         else {
             for (let index = 0; index < features.length; index++) {
-                const weatherAlerts = document.createElement("div")
                 const alrt = features[index].properties
-                weatherAlerts.setAttribute("title", `${alrt.description}\n${alrt.instruction}`)
-                weatherAlerts.innerHTML = (`
-                <div>${alrt.event}:${alrt.headline}</div>
-                `)
-                this.alertDiv.appendChild(weatherAlerts)
+                if (alrt.status == "Actual") {
+                    const weatherAlerts = document.createElement("div")
+                    const alertMessage = (`${alrt.headline}\n\n${alrt.description}\n${alrt.instruction}`)
+                    weatherAlerts.setAttribute("title", `${alrt.headline}`)
+                    weatherAlerts.style.padding = "5px"
+                    weatherAlerts.innerHTML = (`<div>${alrt.event}: ${alrt.severity}</div>`)
+                    weatherAlerts.onclick = () => {alert(alertMessage)}
+                    this.alertDiv.appendChild(weatherAlerts)
+                }
                 console.group(alrt.event);
                 console.groupCollapsed(alrt.headline);
                 console.dir(alrt.description);
@@ -285,10 +288,10 @@ async function setForecast(latitude, longitude) {
 }
 /***************************************************************************************************/
 async function displayCat() {
-    const API_KEY = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
+    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
     const CAT_URL = 'https://api.thecatapi.com/v1/images/search?limit=1';
     try {
-        const response = await fetch(CAT_URL, { headers: { 'x-api-key': API_KEY } });
+        const response = await fetch(CAT_URL, { headers: { 'x-api-key': CAT } });
         if (!response.ok) {
             throw new Error(`${response.status} Cat Image Not Found.`);
         }
