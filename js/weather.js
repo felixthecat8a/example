@@ -78,10 +78,8 @@ class ForecastChart {
         const roomTemperature = 72;
         const rt = Array(highTemp.length).fill(roomTemperature);
         const rtDataSet = { label: "72\u00B0F", data: rt, borderColor: "green", pointRadius: 0 };
-        const dp = lowData.map((period) => (period.dewpoint.value * 9 / 5) + 32);
-        const dpDataSet = { label: "Dewpoint", data: dp, borderColor: "purple", pointRadius: 3 };
         const labels = highData.map((period) => period.name);
-        const datasets = [hiDataSet, loDataSet, rtDataSet, dpDataSet];
+        const datasets = [hiDataSet, loDataSet, rtDataSet];
         const data = { labels: labels, datasets: datasets };
         return data;
     }
