@@ -142,7 +142,7 @@ class WeatherForecast extends ForecastChart {
         const rain = fd.probabilityOfPrecipitation.value;
         this.nearForecastDiv.innerHTML = (`
         <div style="font-size:1rem;">${fd.name}</div>
-        <img src="https://api.weather.gov/${fd.icon}" alt="icon" title="${fd.name}: ${fd.detailedForecast}">
+        <img src="${fd.icon}" alt="icon" title="${fd.name}: ${fd.detailedForecast}">
         <div style="font-size:0.75rem;">Temperature: ${fd.temperature}&deg;F</div>
         <div style="font-size:0.75rem;">Wind: ${fd.windSpeed} ${fd.windDirection}</div>
         <div style="font-size:0.75rem;">Chance of Rain: ${rain == null ? "0" : rain}%</div>
@@ -166,7 +166,7 @@ class WeatherForecast extends ForecastChart {
                 <span style="color:lightgreen">${fd[i].name.substring(0, 3)}:</span> ${rain}%<br>
                 <span style="color:lightcoral">${fd[i].temperature}&deg;F</span><br>
                 <span style="color:lightblue">${fd[i + 1].temperature}&deg;F</span><br>
-                <img src="https://api.weather.gov/${fd[i].icon}" alt="icon" height="auto" width="70%" loading="lazy">
+                <img src="${fd[i].icon}" alt="icon" height="auto" width="70%" loading="lazy">
                 `);
                 this.futureForecastDiv.appendChild(forecastDays);
             }
