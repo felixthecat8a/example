@@ -1,46 +1,10 @@
-class WeatherDataUtil {
-    static async fetchPointData(latitude, longitude) {
-        const url = new URL(`https://api.weather.gov/points/${latitude},${longitude}`);
-        const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
-        const request = new Request(url, { headers: headers });
-        const response = await fetch(request);
-        if (!response.ok) {
-            throw new Error(`${response.status}: Weather Data Not Found`);
-        }
-        return await response.json();
-    }
-    static getForecastEndpoint(pointData) {
-        return new URL(pointData.properties.forecast);
-    }
-    static getLocationName(pointData) {
-        const locationData = pointData.properties.relativeLocation.properties;
-        return (`${locationData.city}, ${locationData.state}`);
-    }
-    static async setCurrentWeather(pointData) {
-        const url = new URL(pointData.properties.forecastHourly);
-        const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
-        const request = new Request(url, { headers: headers });
-        const response = await fetch(request);
-        if (!response.ok) {
-            throw new Error(`${response.status}: Weather Data Not Found`);
-        }
-        const data = await response.json();
-        const wd = data.properties.periods[0];
-        return (`
-        <div style="font-size:1rem;">${this.formatDateTime(wd.startTime)}</div>
-        <div style="font-size:1.5rem;">${this.getLocationName(pointData)}</div>
-        <div style="font-size:2.5rem;">${wd.temperature}&deg;F</div>
-        <div style="font-size:1rem;">${wd.windSpeed} ${wd.windDirection}</div>
-        <div style="font-size:1rem;">${wd.shortForecast}</div>
-        `);
-    }
+class DateTimeUtil {
     static formatDateTime(dateTimeData) {
         const dateTime = new Date(dateTimeData);
         const options = { dateStyle: 'full' };
         return new Intl.DateTimeFormat(navigator.language, options).format(dateTime);
     }
 }
-/***************************************************************************************************/
 class StatusUtil {
     statusDIV;
     constructor(statusDivElement) {
@@ -121,16 +85,84 @@ class WeatherForecast extends ForecastChart {
         this.alertDiv = document.getElementById(alertId);
         this.futureForecastDiv = document.getElementById(futureId);
     }
+
+    async fetchPointData(latitude, longitude) {
+        const url = new URL(`https://api.weather.gov/points/${latitude},${longitude}`);
+        const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
+        const request = new Request(url, { headers: headers });
+        const response = await fetch(request);
+        if (!response.ok) {
+            throw new Error(`${response.status}: Weather Data Not Found`);
+        }
+        return await response.json();
+    }
+    static getForecastEndpoint(pointData) {
+        return new URL(pointData.properties.forecast);
+    }
+
     async displayForecast(latitude, longitude) {
         console.log(`Points URL: https://api.weather.gov/points/${latitude},${longitude}`);
-        const pointData = await WeatherDataUtil.fetchPointData(latitude, longitude);
-        this.currentWeatherDiv.innerHTML = await WeatherDataUtil.setCurrentWeather(pointData);
-        await this.setWeatherAlerts(pointData);
-        await this.setForecastDataAndChart(pointData);
+        const pointData = await this.fetchPointData(latitude, longitude);
+        const locationData = pointData.properties.relativeLocation.properties;
+        const locationName = (`${locationData.city}, ${locationData.state}`);
+        await this.setCurrentWeather(pointData, locationName)
+        await this.setWeatherAlerts(pointData, locationName);
+        await this.setForecastDataAndChart(pointData, locationName);
     }
-    async setForecastDataAndChart(pointData) {
-        const locationName = WeatherDataUtil.getLocationName(pointData);
-        const endpoint = new Request(WeatherDataUtil.getForecastEndpoint(pointData));
+    async setCurrentWeather(pointData, locationName) {
+        const url = new URL(pointData.properties.forecastHourly);
+        const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
+        const request = new Request(url, { headers: headers });
+        const response = await fetch(request);
+        if (!response.ok) {
+            throw new Error(`${response.status}: Weather Data Not Found`);
+        }
+        const data = await response.json();
+        const wd = data.properties.periods[0];
+        this.currentWeatherDiv.innerHTML =  (`
+        <div style="font-size:1rem;">${DateTimeUtil.formatDateTime(wd.startTime)}</div>
+        <div style="font-size:1.5rem;">${locationName}</div>
+        <div style="font-size:2.5rem;">${wd.temperature}&deg;F</div>
+        <div style="font-size:1rem;">${wd.windSpeed} ${wd.windDirection}</div>
+        <div style="font-size:1rem;">${wd.shortForecast}</div>
+        `);
+    }
+    async setWeatherAlerts(pointData, locationName) {
+        const alertsCoords = pointData.properties.relativeLocation.geometry.coordinates;
+        const point = `${alertsCoords[1].toFixed(4)},${alertsCoords[0].toFixed(4)}`;
+        const url = new URL(`https://api.weather.gov/alerts/active?point=${point}`);
+        const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
+        const request = new Request(url, { headers: headers });
+        const response = await fetch(request);
+        if (!response.ok) {
+            throw new Error(`${response.status}: Alert Data Not Found`);
+        }
+        const alerts = await response.json();
+        const features = alerts.features;
+        if (features.length == 0) {
+            console.log(`There are currently no active alerts for ${locationName}.`);
+        }
+        for (let index = 0; index < features.length; index++) {
+            const alrt = features[index].properties
+            if (alrt.status == "Actual") {
+                const weatherAlerts = document.createElement("div")
+                const alertMessage = (`${alrt.headline}\n\n${alrt.description}\n${alrt.instruction}`)
+                weatherAlerts.setAttribute("title", `${alrt.headline}`)
+                weatherAlerts.style.padding = "5px"
+                weatherAlerts.innerHTML = (`<div>${alrt.event}: ${alrt.severity}</div>`)
+                weatherAlerts.onclick = () => {alert(alertMessage)}
+                this.alertDiv.appendChild(weatherAlerts)
+            }
+            console.group(alrt.event);
+            console.groupCollapsed(alrt.headline);
+            console.dir(alrt.description);
+            console.dir(alrt.instruction);
+            console.groupEnd();
+            console.groupEnd();
+        }
+    }
+    async setForecastDataAndChart(pointData, locationName) {
+        const endpoint = new Request(new URL(pointData.properties.forecast));
         console.log(`Displaying weather for ${locationName}: ${endpoint.url}!`);
         const response = await fetch(endpoint);
         if (!response.ok) {
@@ -169,42 +201,6 @@ class WeatherForecast extends ForecastChart {
                 <img src="${fd[i].icon}" alt="icon" height="auto" width="70%" loading="lazy">
                 `);
                 this.futureForecastDiv.appendChild(forecastDays);
-            }
-        }
-    }
-    async setWeatherAlerts(pointData) {
-        const alertsCoords = pointData.properties.relativeLocation.geometry.coordinates;
-        const point = `${alertsCoords[1].toFixed(4)},${alertsCoords[0].toFixed(4)}`;
-        const url = new URL(`https://api.weather.gov/alerts/active?point=${point}`);
-        const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
-        const request = new Request(url, { headers: headers });
-        const response = await fetch(request);
-        if (!response.ok) {
-            throw new Error(`${response.status}: Alert Data Not Found`);
-        }
-        const alerts = await response.json();
-        const features = alerts.features;
-        if (features.length == 0) {
-            console.log("There are currently no active alerts for this location.");
-        }
-        else {
-            for (let index = 0; index < features.length; index++) {
-                const alrt = features[index].properties
-                if (alrt.status == "Actual") {
-                    const weatherAlerts = document.createElement("div")
-                    const alertMessage = (`${alrt.headline}\n\n${alrt.description}\n${alrt.instruction}`)
-                    weatherAlerts.setAttribute("title", `${alrt.headline}`)
-                    weatherAlerts.style.padding = "5px"
-                    weatherAlerts.innerHTML = (`<div>${alrt.event}: ${alrt.severity}</div>`)
-                    weatherAlerts.onclick = () => {alert(alertMessage)}
-                    this.alertDiv.appendChild(weatherAlerts)
-                }
-                console.group(alrt.event);
-                console.groupCollapsed(alrt.headline);
-                console.dir(alrt.description);
-                console.dir(alrt.instruction);
-                console.groupEnd();
-                console.groupEnd();
             }
         }
     }
