@@ -1,10 +1,3 @@
-class DateTimeUtil {
-    static formatDateTime(dateTimeData) {
-        const dateTime = new Date(dateTimeData);
-        const options = { dateStyle: 'full' };
-        return new Intl.DateTimeFormat(navigator.language, options).format(dateTime);
-    }
-}
 class StatusUtil {
     statusDIV;
     constructor(statusDivElement) {
@@ -85,7 +78,6 @@ class WeatherForecast extends ForecastChart {
         this.alertDiv = document.getElementById(alertId);
         this.futureForecastDiv = document.getElementById(futureId);
     }
-
     async fetchPointData(latitude, longitude) {
         const url = new URL(`https://api.weather.gov/points/${latitude},${longitude}`);
         const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
@@ -96,10 +88,6 @@ class WeatherForecast extends ForecastChart {
         }
         return await response.json();
     }
-    static getForecastEndpoint(pointData) {
-        return new URL(pointData.properties.forecast);
-    }
-
     async displayForecast(latitude, longitude) {
         console.log(`Points URL: https://api.weather.gov/points/${latitude},${longitude}`);
         const pointData = await this.fetchPointData(latitude, longitude);
@@ -108,6 +96,11 @@ class WeatherForecast extends ForecastChart {
         await this.setCurrentWeather(pointData, locationName)
         await this.setWeatherAlerts(pointData, locationName);
         await this.setForecastDataAndChart(pointData, locationName);
+    }
+    setDate(dateTime) {
+        const date = new Date(dateTime);
+        const options = { dateStyle: 'full' };
+        return date.toLocaleDateString(navigator.language,options);
     }
     async setCurrentWeather(pointData, locationName) {
         const url = new URL(pointData.properties.forecastHourly);
@@ -120,7 +113,7 @@ class WeatherForecast extends ForecastChart {
         const data = await response.json();
         const wd = data.properties.periods[0];
         this.currentWeatherDiv.innerHTML =  (`
-        <div style="font-size:1rem;">${DateTimeUtil.formatDateTime(wd.startTime)}</div>
+        <div style="font-size:1rem;">${this.setDate(wd.startTime)}</div>
         <div style="font-size:1.5rem;">${locationName}</div>
         <div style="font-size:2.5rem;">${wd.temperature}&deg;F</div>
         <div style="font-size:1rem;">${wd.windSpeed} ${wd.windDirection}</div>
@@ -153,12 +146,6 @@ class WeatherForecast extends ForecastChart {
                 weatherAlerts.onclick = () => {alert(alertMessage)}
                 this.alertDiv.appendChild(weatherAlerts)
             }
-            console.group(alrt.event);
-            console.groupCollapsed(alrt.headline);
-            console.dir(alrt.description);
-            console.dir(alrt.instruction);
-            console.groupEnd();
-            console.groupEnd();
         }
     }
     async setForecastDataAndChart(pointData, locationName) {
@@ -208,8 +195,8 @@ class WeatherForecast extends ForecastChart {
 /***************************************************************************************************/
 document.addEventListener('DOMContentLoaded', () => {displayForecast()});
 /***************************************************************************************************/
-const locationSelectorDiv = document.getElementById('selectLocation');
-locationSelectorDiv.addEventListener("change", (event) => {
+const locationSelector = document.getElementById('selectLocation');
+locationSelector.addEventListener("change", (event) => {
     const weatherLocation = event.target.value;
     switch (weatherLocation) {
         case 'geolocation':
@@ -235,56 +222,45 @@ function setHeadingLink(linkTitle, linkTarget) {
     nwsLink.setAttribute('href', linkTarget);
 }
 async function displayForecast(useGeoLocation) {
-    if (useGeoLocation) {
-        const success = async (position) => {
-            const coords = position.coords;
-            await setForecast(coords.latitude, coords.longitude);
-        };
-        const error = (error) => { statusDiv.setStatus(error.message); };
-        if (!navigator.geolocation) {
-            statusDiv.setStatus('Geolocation is not supported by the browser.');
-        }
-        else {
-            statusDiv.setStatus('Locating...');
-            const options = { enableHighAccuracy: false, timeout: 5000, maximumAge: 0 };
-            navigator.geolocation.getCurrentPosition(success, error, options);
-        }
-    }
-    else {
-        const JEHS = { latitude: '26.3086', longitude: '-98.103' };
-        await setForecast(JEHS.latitude, JEHS.longitude);
-    }
-}
-async function setForecast(latitude, longitude) {
     const forecastDisplayDiv = document.getElementById("displayDiv");
     forecastDisplayDiv.innerHTML = (`
-    <div id="forecastDiv">
-        <section id='forecastLeftSection'></section>
-        <section id='forecastRightSection'></section>
-    </div>
-    <div id="alertDiv"></div>
-    <div id="futureForecastDiv"></div>
-    <div><canvas id="forecastChart"></canvas></div>
+        <div id="forecastDiv">
+            <section id='nearId'></section>
+            <section id='currentId'></section>
+        </div>
+        <div id="alertDiv"></div>
+        <div id="futureDiv"></div>
+        <div><canvas id="canvasId"></canvas></div>
     `);
-    const nearId = 'forecastLeftSection';
-    const currentId = 'forecastRightSection';
-    const alertId = 'alertDiv'
-    const futureId = 'futureForecastDiv';
-    const canvasId = 'forecastChart';
-    const forecast = new WeatherForecast(nearId, currentId, alertId, futureId, canvasId);
+    const forecast = new WeatherForecast('nearId', 'currentId', 'alertDiv', 'futureDiv', 'canvasId');
     try {
-        await forecast.displayForecast(latitude, longitude);
-        statusDiv.setStatus(null);
-    }
-    catch (error) {
-        statusDiv.setStatus(error);
-    }
+        statusDiv.setStatus('Locating...');
+        if (useGeoLocation) {
+            const success = async (position) => {
+                await forecast.displayForecast(position.coords.latitude, position.coords.longitude);
+                statusDiv.setStatus(null);
+            }
+            const error = (error) => { statusDiv.setStatus(error.message); };
+            if (!navigator.geolocation) {
+                statusDiv.setStatus('Geolocation is not supported by the browser.');
+            }
+            else {
+                navigator.geolocation.getCurrentPosition(success, error);
+            }
+        }
+        else {
+            const JEHS = { latitude: '26.3086', longitude: '-98.103' };
+            await forecast.displayForecast(JEHS.latitude, JEHS.longitude);
+            statusDiv.setStatus(null);
+        }
+    } catch (error) {statusDiv.setStatus(error)}
 }
 /***************************************************************************************************/
 async function displayCat() {
     const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
     const CAT_URL = 'https://api.thecatapi.com/v1/images/search?limit=1';
     try {
+        statusDiv.setStatus('Loading...');
         const response = await fetch(CAT_URL, { headers: { 'x-api-key': CAT } });
         if (!response.ok) {
             throw new Error(`${response.status} Cat Image Not Found.`);
@@ -296,6 +272,5 @@ async function displayCat() {
         <button type="button" onclick="displayCat()">New Cat</button><br>
         `);
         statusDiv.setStatus(null);
-    }
-    catch (error) {statusDiv.setStatus(error)}
+    } catch (error) {statusDiv.setStatus(error)}
 }
