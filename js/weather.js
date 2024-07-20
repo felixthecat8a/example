@@ -29,29 +29,45 @@ class ForecastChart {
         window.addEventListener('resize', () => { this.setChartWidth(temperatureChart); });
     }
     setData(forecastData) {
-        const highData = forecastData.properties.periods.filter((pd) => pd.isDaytime);
+        const Daytime = forecastData.properties.periods.filter((pd) => pd.isDaytime);
         const lowData = forecastData.properties.periods.filter((pd) => !pd.isDaytime);
-        const highTemp = highData.map((period) => period.temperature);
+        const highTemp = Daytime.map((period) => period.temperature);
         const lowTemp = lowData.map((period) => period.temperature);
-        const hiDataSet = { label: "Highs", data: highTemp, borderColor: "red", pointRadius: 3 };
-        const loDataSet = { label: "Lows", data: lowTemp, borderColor: "blue", pointRadius: 3 };
-        const roomTemperature = 72;
-        const rt = Array(highTemp.length).fill(roomTemperature);
-        const rtDataSet = { label: "72\u00B0F", data: rt, borderColor: "green", pointRadius: 0 };
-        const labels = highData.map((period) => period.name);
-        const datasets = [hiDataSet, loDataSet, rtDataSet];
+        const roomTemp = Array(highTemp.length).fill(72);
+        const rainData = Daytime.map((period) => period.probabilityOfPrecipitation.value);
+
+
+
+        //const highDataSet = { label: "Highs", data: highTemp, borderColor: "red", pointRadius: 3 };
+        //const lowDataSet = { label: "Lows", data: lowTemp, borderColor: "blue", pointRadius: 3 };
+        //const roomDataSet = { label: "72\u00B0F", data: roomTemp, borderColor: "green", pointRadius: 0 };
+        
+
+        
+        const highDataSet = { type: 'line', label: 'Highs', data: highTemp, borderColor: '#e36e85', pointRadius: 3 };
+        const lowDataSet = { type: 'line', label: 'Lows', data: lowTemp, borderColor: '#67a0e3', pointRadius: 3 };
+        const roomDataSet = { type: 'line', label: '72\u00B0F', data: roomTemp, borderColor: '#7abebf', pointRadius: 0, borderDash: [5, 5] };
+        const rainDataSet = { type: 'bar', label: 'Rain', data: rainData, backgroundColor: '#9966FF77', barThickness: 15, yAxisID: 'y2' };
+
+
+
+
+
+        const labels = Daytime.map((period) => period.name);
+        const datasets = [highDataSet, lowDataSet, roomDataSet, rainDataSet];
         const data = { labels: labels, datasets: datasets };
         return data;
     }
     setOptions(location) {
-        const name = 'Temperature Forecast';
+        const name = 'Weather Forecast';
         const title = { display: true, text: name, color: 'gray', font: { size: 18 } };
         const subtitle = { display: true, text: location, color: 'gray', font: { size: 16 } };
         const plugins = { title: title, subtitle: subtitle };
         const grid = { display: true, color: '#333' };
-        const scaleX = { title: { display: true, text: 'Temperature (\u00B0F)' }, grid: grid };
-        const scaleY = { title: { display: true, text: 'Day of the Week' }, grid: grid };
-        const options = { plugins: plugins, scales: { y: scaleX, x: scaleY } };
+        const scaleX = { title: { display: true, text: 'Day of the Week' }, grid: grid };
+        const scaleY = { title: { display: true, text: 'Temperature (\u00B0F)' }, grid: grid, position: 'left' };
+        const scaleY2 = { title: { display: true, text: 'Precipitation (%)' }, grid: grid, position: 'right', beginAtZero: true, suggestedMax: 100 };
+        const options = { plugins: plugins, scales: { x: scaleX, y: scaleY, y2: scaleY2 } };
         return options;
     }
     setChartWidth(forecastTemperatureChart) {
