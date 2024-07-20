@@ -6,6 +6,9 @@ class StatusUtil {
     setStatus(message) {
         this.statusDIV.textContent = message;
     }
+    clearStatus() {
+        this.statusDIV.textContent = null;
+    }
 }
 const statusDiv = new StatusUtil('statusDiv');
 /***************************************************************************************************/
@@ -238,7 +241,7 @@ async function displayForecast(useGeoLocation) {
         if (useGeoLocation) {
             const success = async (position) => {
                 await forecast.displayForecast(position.coords.latitude, position.coords.longitude);
-                statusDiv.setStatus(null);
+                statusDiv.clearStatus();
             }
             const error = (error) => { statusDiv.setStatus(error.message); };
             if (!navigator.geolocation) {
@@ -251,7 +254,7 @@ async function displayForecast(useGeoLocation) {
         else {
             const JEHS = { latitude: '26.3086', longitude: '-98.103' };
             await forecast.displayForecast(JEHS.latitude, JEHS.longitude);
-            statusDiv.setStatus(null);
+            statusDiv.clearStatus();
         }
     } catch (error) {statusDiv.setStatus(error)}
 }
@@ -271,6 +274,6 @@ async function displayCat() {
         <img src="${data[0].url}" alt="cat" height="300" width="auto"><br>
         <button type="button" onclick="displayCat()">New Cat</button><br>
         `);
-        statusDiv.setStatus(null);
+        statusDiv.clearStatus();
     } catch (error) {statusDiv.setStatus(error)}
 }
