@@ -46,15 +46,6 @@ nav li {
     padding: 0 5px;
     display: inline-block;
 }
-nav a {
-    text-decoration: none;
-}
-nav a:link, nav a:visited {
-    color: lightgray;
-}
-nav a:hover, nav a:active {
-    color: #999;
-}
 
 main {
     width: 100%;
@@ -96,15 +87,6 @@ main label {
 main fieldset:hover {
     box-shadow: 0 5px 10px rgba(60, 179, 173, 0.9333333333);
 }
-main a {
-    text-decoration: none;
-}
-main a:link, main a:visited {
-    color: lightgray;
-}
-main a:hover, main a:active {
-    color: #999;
-}
 
 footer {
     text-align: center;
@@ -112,13 +94,14 @@ footer {
     bottom: 0;
     width: 100%;
 }
-footer a {
+
+a {
     text-decoration: none;
 }
-footer a:link, footer a:visited {
+a:link, a:visited {
     color: lightgray;
 }
-footer a:hover, footer a:active {
+a:hover, a:active {
     color: dimgray;
 }
 
@@ -174,33 +157,6 @@ button:active {
     box-shadow: 0.5px 0.5px #666;
 }
 
-/* TABLE ELEMENTS */
-main table {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    border: 1px solid #555;
-}
-main table tr, main table th, main table td {
-    border: 1px solid #555;
-    padding: 0.5rem;
-}
-main table thead, main table tfoot {
-    background-color: #555;
-    color: #fff;
-}
-main table caption {
-    padding: 10px;
-    caption-side: bottom;
-    font-size: small;
-    font-weight: bold;
-    font-style: italic;
-}
-
-abbr[title] {
-    text-decoration: none !important;
-}
-
 /* CAT.HTML/CAT.JS */
 #cat_container {
     text-align: center;
@@ -214,52 +170,6 @@ abbr[title] {
     align-items: center;
     flex-wrap: wrap;
     margin: 20px;
-}
-
-/* RGB.HTML/RGB.JS */
-#rgbSection {
-    display: block;
-    margin-inline: auto;
-    text-align: center;
-    width: 300px;
-    border: solid thin dimgray;
-    border-radius: 0.5rem;
-}
-#rgbSection:hover {
-    outline: solid thin dimgray;
-    box-shadow: 0 5px 10px rgba(60, 179, 173, 0.9333333333);
-}
-#rgbSection h2 {
-    color: mediumseagreen;
-}
-
-#redLabel {
-    color: lightcoral;
-}
-
-#greenLabel {
-    color: lightgreen;
-}
-
-#blueLabel {
-    color: lightblue;
-}
-
-#hexColor, #rgbColor {
-    font-size: large;
-    font-weight: bold;
-    text-align: center;
-    color: #eee;
-}
-
-#colorBox {
-    width: 100px;
-    height: 100px;
-    margin-inline: auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border: 2px solid darkgrey;
-    border-radius: 0.5rem;
 }
 
 /* GAME */
@@ -288,92 +198,3 @@ abbr[title] {
         max-width: 100%;
     }
 }
-
-/* WEATHER */
-#weatherApp {
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  #nwsHeading {
-    color: mediumseagreen;
-    padding: 0;
-    margin-bottom: 0;
-  }
-  #nwsHeading a {
-    text-decoration: none;
-  }
-  #nwsHeading a:link, #nwsHeading a:visited {
-    color: mediumseagreen;
-  }
-  #nwsHeading a:hover, #nwsHeading a:active {
-    color: seagreen;
-  }
-  
-  #forecastDiv {
-    border: solid thin darkseagreen;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 550px;
-    height: 175px;
-    margin: auto;
-  }
-  #forecastDiv #nearId {
-    background-color: #333;
-    color: darkseagreen;
-    float: left;
-    flex: 1;
-    height: 100%;
-    padding-top: 5px;
-  }
-  #forecastDiv #currentId {
-    background-color: seagreen;
-    color: honeydew;
-    float: right;
-    flex: 2;
-    height: 100%;
-    word-break: keep-all;
-    padding-top: 5px;
-  }
-  #alertDiv {
-    background-color: #8B2E57;
-    border-inline: solid thin darkseagreen;
-    max-width: 550px;
-    min-height: min-content;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-inline: auto;
-    }
-  #futureDiv {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-    margin-inline: auto;
-    padding: 0;
-    max-width: 550px;
-    min-height: min-content;
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
-  #futureDiv .forecastDay {
-    flex: 1;
-    background-color: #333;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border: solid thin darkseagreen;
-  }
-  #futureDiv .forecastDay:hover {
-    outline: solid thin mediumseagreen;
-    box-shadow: 0 5px 10px rgba(60, 179, 113, 0.9333333333);
-  }
-  
-  @media screen and (max-width: 500px) {
-    #forecastDiv, #futureDiv {
-      flex: 100%;
-      max-width: 100%;
-    }
-  }
-

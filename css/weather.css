@@ -1,0 +1,88 @@
+/* WEATHER */
+#weatherApp {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  #nwsHeading {
+    color: mediumseagreen;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  #nwsHeading a {
+    text-decoration: none;
+  }
+  #nwsHeading a:link, #nwsHeading a:visited {
+    color: mediumseagreen;
+  }
+  #nwsHeading a:hover, #nwsHeading a:active {
+    color: seagreen;
+  }
+  
+  #forecastDiv {
+    border: solid thin darkseagreen;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 550px;
+    height: 175px;
+    margin: auto;
+  }
+  #forecastDiv #nearId {
+    background-color: #333;
+    color: darkseagreen;
+    float: left;
+    flex: 1;
+    height: 100%;
+    padding-top: 5px;
+  }
+  #forecastDiv #currentId {
+    background-color: seagreen;
+    color: honeydew;
+    float: right;
+    flex: 2;
+    height: 100%;
+    word-break: keep-all;
+    padding-top: 5px;
+  }
+  #alertDiv {
+    background-color: #8B2E57;
+    border-inline: solid thin darkseagreen;
+    max-width: 550px;
+    min-height: min-content;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-inline: auto;
+    }
+  #futureDiv {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    margin-inline: auto;
+    padding: 0;
+    max-width: 550px;
+    min-height: min-content;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  #futureDiv .forecastDay {
+    flex: 1;
+    background-color: #333;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: solid thin darkseagreen;
+  }
+  #futureDiv .forecastDay:hover {
+    outline: solid thin mediumseagreen;
+    box-shadow: 0 5px 10px rgba(60, 179, 113, 0.9333333333);
+  }
+  
+  @media screen and (max-width: 500px) {
+    #forecastDiv, #futureDiv {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+
