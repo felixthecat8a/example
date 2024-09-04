@@ -83,19 +83,14 @@ class WeatherForecast extends ForecastChart {
         this.alertDiv = document.getElementById(alertId);
         this.futureForecastDiv = document.getElementById(futureId);
     }
-    async fetchPointData(latitude, longitude) {
+    async displayForecast(latitude, longitude) {
         const url = new URL(`https://api.weather.gov/points/${latitude},${longitude}`);
+        console.log(`Points URL: ${url.href}`);
         const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
         const request = new Request(url, { headers: headers });
         const response = await fetch(request);
-        if (!response.ok) {
-            throw new Error(`${response.status}: Weather Data Not Found`);
-        }
-        return await response.json();
-    }
-    async displayForecast(latitude, longitude) {
-        console.log(`Points URL: https://api.weather.gov/points/${latitude},${longitude}`);
-        const pointData = await this.fetchPointData(latitude, longitude);
+        if (!response.ok) { throw new Error(`${response.status}: Weather Data Not Found`) };
+        const pointData = await response.json();
         const locationData = pointData.properties.relativeLocation.properties;
         const locationName = (`${locationData.city}, ${locationData.state}`);
         await this.setCurrentWeather(pointData, locationName)
@@ -107,15 +102,15 @@ class WeatherForecast extends ForecastChart {
         const options = { dateStyle: 'full' };
         return date.toLocaleDateString(navigator.language,options);
     }
-    async setCurrentWeather(pointData, locationName) {
-        const url = new URL(pointData.properties.forecastHourly);
+    async fetchWeatherData(url) {
         const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
         const request = new Request(url, { headers: headers });
         const response = await fetch(request);
-        if (!response.ok) {
-            throw new Error(`${response.status}: Weather Data Not Found`);
-        }
-        const data = await response.json();
+        if (!response.ok) { throw new Error(`${response.status}: Data Not Found`) };
+        return await response.json();
+    }
+    async setCurrentWeather(pointData, locationName) {
+        const data = await this.fetchWeatherData(pointData.properties.forecastHourly);
         const wd = data.properties.periods[0];
         this.currentWeatherDiv.innerHTML =  (`
         <div style="font-size:1rem;">${this.setDate(wd.startTime)}</div>
@@ -128,14 +123,7 @@ class WeatherForecast extends ForecastChart {
     async setWeatherAlerts(pointData, locationName) {
         const alertsCoords = pointData.properties.relativeLocation.geometry.coordinates;
         const point = `${alertsCoords[1].toFixed(4)},${alertsCoords[0].toFixed(4)}`;
-        const url = new URL(`https://api.weather.gov/alerts/active?point=${point}`);
-        const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' });
-        const request = new Request(url, { headers: headers });
-        const response = await fetch(request);
-        if (!response.ok) {
-            throw new Error(`${response.status}: Alert Data Not Found`);
-        }
-        const alerts = await response.json();
+        const alerts = await this.fetchWeatherData(`https://api.weather.gov/alerts/active?point=${point}`);
         const features = alerts.features;
         if (features.length == 0) {
             console.log(`There are currently no active alerts for ${locationName}.`);
@@ -154,15 +142,10 @@ class WeatherForecast extends ForecastChart {
         }
     }
     async setForecastDataAndChart(pointData, locationName) {
-        const endpoint = new Request(new URL(pointData.properties.forecast));
-        console.log(`Displaying weather for ${locationName}: ${endpoint.url}!`);
-        const response = await fetch(endpoint);
-        if (!response.ok) {
-            throw new Error(`${response.status}: Forecast Data Not Found`);
-        }
-        const data = await response.json();
-        const index = 0;
-        const fd = data.properties.periods[index];
+        const endpoint = pointData.properties.forecast;
+        console.log(`Displaying weather for ${locationName}: ${endpoint}!`);
+        const data = await this.fetchWeatherData(endpoint);
+        const fd = data.properties.periods[0];
         const rain = fd.probabilityOfPrecipitation.value;
         this.nearForecastDiv.innerHTML = (`
         <div style="font-size:1rem;">${fd.name}</div>
@@ -204,13 +187,9 @@ const locationSelector = document.getElementById('selectLocation');
 locationSelector.addEventListener("change", (event) => {
     const weatherLocation = event.target.value;
     switch (weatherLocation) {
-        case 'geolocation':
+        case 'showWeather':
             setHeadingLink('National Weather Service API', 'https://www.weather.gov');
-            displayForecast(true);
-            break;
-        case 'fixedlocation':
-            setHeadingLink('National Weather Service API', 'https://www.weather.gov');
-            displayForecast(false);
+            displayForecast();
             break;
         case 'showCat':
             setHeadingLink('The Cat API', 'https://www.thecatapi.com');
@@ -226,7 +205,7 @@ function setHeadingLink(linkTitle, linkTarget) {
     nwsLink.textContent = linkTitle;
     nwsLink.setAttribute('href', linkTarget);
 }
-async function displayForecast(useGeoLocation) {
+async function displayForecast() {
     const forecastDisplayDiv = document.getElementById("displayDiv");
     forecastDisplayDiv.innerHTML = (`
         <div id="forecastDiv">
@@ -240,25 +219,22 @@ async function displayForecast(useGeoLocation) {
     const forecast = new WeatherForecast('nearId', 'currentId', 'alertDiv', 'futureDiv', 'canvasId');
     try {
         statusDiv.setStatus('Locating...');
-        if (useGeoLocation) {
-            const success = async (position) => {
-                await forecast.displayForecast(position.coords.latitude, position.coords.longitude);
-                statusDiv.clearStatus();
-            }
-            const error = (error) => { statusDiv.setStatus(error.message); };
-            if (!navigator.geolocation) {
-                statusDiv.setStatus('Geolocation is not supported by the browser.');
-            }
-            else {
-                navigator.geolocation.getCurrentPosition(success, error);
-            }
-        }
-        else {
-            const JEHS = { latitude: '26.3086', longitude: '-98.103' };
+        const JEHS = { latitude: '26.3086', longitude: '-98.103' };
+        const success = async (position) => {
+            await forecast.displayForecast(position.coords.latitude, position.coords.longitude);
+            statusDiv.clearStatus();
+        };
+        const error = async (error) => { 
+            await forecast.displayForecast(JEHS.latitude, JEHS.longitude);
+            statusDiv.setStatus(error.message);
+        };
+        if (!navigator.geolocation) {
             await forecast.displayForecast(JEHS.latitude, JEHS.longitude);
             statusDiv.clearStatus();
-        }
-    } catch (error) {statusDiv.setStatus(error)}
+        } else {
+            navigator.geolocation.getCurrentPosition(success, error);
+        };
+    } catch (error) {statusDiv.setStatus(error)};
 }
 /***************************************************************************************************/
 async function displayCat() {
