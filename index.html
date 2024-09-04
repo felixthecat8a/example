@@ -10,6 +10,11 @@
     <!-- Animatelo -->
     <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
     <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
+    <!-- HighlightJS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
     <header>
@@ -34,6 +39,101 @@
             <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
             <script src="js/game.js"></script>
         </section>
+        <article>
+            <pre><code class="language-javascript" style="text-align: left;">
+    //Number Guessing Game JavaScript Code
+    const gameDIV = document.getElementById("numberGuessingGame");
+    const gameButton = '<button type="button" onclick="playGame(true)">Click to Play</button>';
+    document.addEventListener('DOMContentLoaded', () => { gameDIV.innerHTML = gameButton; });
+    function playGame(debugGame) {
+        window.animatelo.jackInTheBox('#numberGuessingGameContainer')
+        const MAX_ATTEMPTS = 7;
+        gameDIV.innerHTML = (`
+        &lt;h3 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${MAX_ATTEMPTS} tries or less.&lt;/h3&gt;
+        &lt;input type="number" id="guess" min="1" max="100" placeholder="Guess"&gt;
+        &lt;button type="button" id="check"&gt;Check&lt;/button&gt;&lt;br&gt;
+        &lt;br&gt;&lt;label for="meter" id="attempt"&gt;Attempts Left: ${MAX_ATTEMPTS}&lt;/label&gt;&lt;br&gt;
+        &lt;meter value="0" min="0" high="5" max="${MAX_ATTEMPTS}" id="meter"&gt;&lt;/meter&gt;&lt;br&gt;
+        &lt;button type="button" id="playAgain"&gt;Play Again?&lt;/button&gt;
+        &lt;button type="button" id="close"&gt;Close&lt;/button&gt;
+        `);
+        const heading = document.getElementById("heading");
+        heading.style.color = 'mediumaquamarine';
+        const guessInput = document.getElementById("guess");
+        const checkButton = document.getElementById("check");
+        const attemptLabel = document.getElementById("attempt");
+        const attemptMeter = document.getElementById("meter");
+        const playAgainButton = document.getElementById("playAgain");
+        const close = document.getElementById("close");
+        const answer = (Math.floor(Math.random() * 100) + 1);
+        if (debugGame) {
+            console.log(answer);
+        }
+        let attempts = 0;
+        guessInput.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkButton.click();
+            }
+        });
+        checkButton.addEventListener("click", () => {
+            if (guessInput.value) {
+                attempts++;
+                attemptMeter.value = attempts;
+                checkNumber(Number(guessInput.value));
+            }
+        });
+        function checkNumber(guessNumber) {
+            if (attempts &lt; MAX_ATTEMPTS || guessNumber == answer) {
+                if (guessNumber &lt; answer) {
+                    window.animatelo.shake('#heading');
+                    updateHeading('Your number is too low.\nTry again.', 'cornflowerblue');
+                }
+                else if (guessNumber &gt; answer) {
+                    window.animatelo.shake('#heading');
+                    updateHeading('Your number is too high.\nTry again.', 'palevioletred');
+                }
+                else {
+                    window.animatelo.rubberBand('#heading');
+                    updateHeading(`You guessed it right!\nThe number is ${answer}!`, 'gold', true);
+                    disableCheckButton();
+                }
+            }
+            else {
+                window.animatelo.flash('#heading');
+                updateHeading(`You've reached the limit.\nThe number was ${answer}.`, 'orchid', false);
+                disableCheckButton();
+            }
+        }
+        function updateHeading(text, textColor, success) {
+            heading.innerText = text;
+            heading.style.color = textColor;
+            if (!success) {
+                attemptLabel.innerText = `Attempts Left: ${MAX_ATTEMPTS - attempts}`;
+            }
+            else {
+                const tries = (attempts === 1) ? 'try' : 'tries';
+                attemptLabel.innerText = `It only took ${attempts} ${tries}.`;
+            }
+        }
+        function disableCheckButton() {
+            checkButton.disabled = true;
+            checkButton.style.opacity = '0.5';
+        }
+        playAgainButton.onclick = function () {
+            attemptMeter.value = 0;
+            attempts = 0;
+            playGame(true);
+        };
+        close.addEventListener("click", function () {
+            window.animatelo.flip('#numberGuessingGame');
+            attemptMeter.setAttribute('value', '0');
+            attempts = 0;
+            gameDIV.innerHTML = gameButton;
+        });
+    }
+            </code></pre>
+        </article>
         <br>
         <article>
             <h3>Also, check out these <span style="color: #62AEB2;">Arduino</span> tutorials.</h3>
