@@ -65,51 +65,45 @@
         const playAgainButton = document.getElementById("playAgain");
         const close = document.getElementById("close");
         const answer = (Math.floor(Math.random() * 100) + 1);
-        if (debugGame) {
-            console.log(answer);
-        }
+        if (debugGame) { console.log(answer) }
         let attempts = 0;
         guessInput.addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
                 event.preventDefault();
                 checkButton.click();
-            }
+            };
         });
         checkButton.addEventListener("click", () => {
             if (guessInput.value) {
                 attempts++;
                 attemptMeter.value = attempts;
                 checkNumber(Number(guessInput.value));
-            }
+            };
         });
         function checkNumber(guessNumber) {
             if (attempts &lt; MAX_ATTEMPTS || guessNumber == answer) {
                 if (guessNumber &lt; answer) {
                     updateHeading('Your number is too low.\nTry again.', 'cornflowerblue');
-                }
-                else if (guessNumber &gt; answer) {
+                } else if (guessNumber &gt; answer) {
                     updateHeading('Your number is too high.\nTry again.', 'palevioletred');
-                }
-                else {
+                } else {
                     updateHeading(`You guessed it right!\nThe number is ${answer}!`, 'gold', true);
                     disableCheckButton();
-                }
-            }
-            else {
+                };
+            } else {
                 updateHeading(`You've reached the limit.\nThe number was ${answer}.`, 'orchid', false);
                 disableCheckButton();
-            }
-        }
+            };
+        };
         function updateHeading(text, textColor, success) {
             heading.innerText = text;
             heading.style.color = textColor;
             if (!success) {
                 attemptLabel.innerText = `Attempts Left: ${MAX_ATTEMPTS - attempts}`;
-            }
-            else {
+            } else {
                 const tries = (attempts === 1) ? 'try' : 'tries';
                 attemptLabel.innerText = `It only took ${attempts} ${tries}.`;
-            }
+            };
         };
         function disableCheckButton() {
             checkButton.disabled = true;
