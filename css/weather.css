@@ -74,11 +74,7 @@
     padding-bottom: 5px;
     border: solid thin darkseagreen;
   }
-  #futureDiv .forecastDay:hover {
-    outline: solid thin mediumseagreen;
-    box-shadow: 0 5px 10px rgba(60, 179, 113, 0.9333333333);
-  }
-  
+
   @media screen and (max-width: 500px) {
     #forecastDiv, #futureDiv {
       flex: 100%;

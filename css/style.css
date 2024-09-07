@@ -25,9 +25,9 @@ header {
     position: static;
     top: 0;
     width: 100%;
-}
-header h1 {
-    color: mediumseagreen;
+    h1 {
+        color: mediumseagreen;
+    }
 }
 
 nav {
@@ -35,16 +35,16 @@ nav {
     font-size: medium;
     font-weight: bold;
     display: inline-block;
-}
-nav ul {
-    list-style-type: none;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-nav li {
-    padding: 0 5px;
-    display: inline-block;
+    ul {
+        list-style-type: none;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        padding: 0 5px;
+        display: inline-block;
+    }
 }
 
 main {
@@ -84,9 +84,6 @@ main label {
     padding: 0;
     margin: 0;
 }
-main fieldset:hover {
-    box-shadow: 0 5px 10px rgba(60, 179, 173, 0.9333333333);
-}
 
 footer {
     text-align: center;
@@ -103,6 +100,12 @@ a:link, a:visited {
 }
 a:hover, a:active {
     color: dimgray;
+}
+
+@media all and (max-width: 33rem) {
+    body {
+      font-size: 0.8rem;
+    }
 }
 
 /* ELEMENTS: INPUT, SELECT & BUTTON */

@@ -41,12 +41,11 @@
         </section>
         <article>
             <pre><code class="language-javascript" style="text-align: left;">
-    //Number Guessing Game JavaScript Code
+    //Number Guessing Game JavaScript Code (minus animations)
     const gameDIV = document.getElementById("numberGuessingGame");
     const gameButton = '<button type="button" onclick="playGame(true)">Click to Play</button>';
     document.addEventListener('DOMContentLoaded', () => { gameDIV.innerHTML = gameButton; });
     function playGame(debugGame) {
-        window.animatelo.jackInTheBox('#numberGuessingGameContainer')
         const MAX_ATTEMPTS = 7;
         gameDIV.innerHTML = (`
         &lt;h3 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${MAX_ATTEMPTS} tries or less.&lt;/h3&gt;
@@ -86,21 +85,17 @@
         function checkNumber(guessNumber) {
             if (attempts &lt; MAX_ATTEMPTS || guessNumber == answer) {
                 if (guessNumber &lt; answer) {
-                    window.animatelo.shake('#heading');
                     updateHeading('Your number is too low.\nTry again.', 'cornflowerblue');
                 }
                 else if (guessNumber &gt; answer) {
-                    window.animatelo.shake('#heading');
                     updateHeading('Your number is too high.\nTry again.', 'palevioletred');
                 }
                 else {
-                    window.animatelo.rubberBand('#heading');
                     updateHeading(`You guessed it right!\nThe number is ${answer}!`, 'gold', true);
                     disableCheckButton();
                 }
             }
             else {
-                window.animatelo.flash('#heading');
                 updateHeading(`You've reached the limit.\nThe number was ${answer}.`, 'orchid', false);
                 disableCheckButton();
             }
@@ -115,23 +110,22 @@
                 const tries = (attempts === 1) ? 'try' : 'tries';
                 attemptLabel.innerText = `It only took ${attempts} ${tries}.`;
             }
-        }
+        };
         function disableCheckButton() {
             checkButton.disabled = true;
             checkButton.style.opacity = '0.5';
-        }
+        };
         playAgainButton.onclick = function () {
             attemptMeter.value = 0;
             attempts = 0;
             playGame(true);
         };
         close.addEventListener("click", function () {
-            window.animatelo.flip('#numberGuessingGame');
             attemptMeter.setAttribute('value', '0');
             attempts = 0;
             gameDIV.innerHTML = gameButton;
         });
-    }
+    };
             </code></pre>
         </article>
         <br>
