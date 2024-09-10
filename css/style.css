@@ -102,9 +102,19 @@ a:hover, a:active {
     color: dimgray;
 }
 
+pre {
+    width: 660px;
+    margin: auto;
+    font-size: 0.8rem;
+}
+
 @media all and (max-width: 33rem) {
     body {
       font-size: 0.8rem;
+      pre {
+        width: 100%;
+        font-size: 0.65rem;
+      }
     }
 }
 

@@ -3,13 +3,13 @@ const gameButton = '<button type="button" onclick="playGame(true)">Click to Play
 document.addEventListener('DOMContentLoaded', () => { gameDIV.innerHTML = gameButton; });
 function playGame(debugGame) {
     window.animatelo.jackInTheBox('#numberGuessingGameContainer');
-    const MAX_ATTEMPTS = 7;
+    const limit = 7;
     gameDIV.innerHTML = (`
-    <h3 id="heading">Guess the number from 1 to 100<br>in ${MAX_ATTEMPTS} tries or less.</h3>
+    <h3 id="heading">Guess the number from 1 to 100<br>in ${limit} tries or less.</h3>
     <input type="number" id="guess" min="1" max="100" placeholder="Guess">
     <button type="button" id="check">Check</button><br>
-    <br><label for="meter" id="attempt">Attempts Left: ${MAX_ATTEMPTS}</label><br>
-    <meter value="0" min="0" high="5" max="${MAX_ATTEMPTS}" id="meter"></meter><br>
+    <br><label for="meter" id="attempt">Attempts Left: ${limit}</label><br>
+    <meter value="0" min="0" high="5" max="${limit}" id="meter"></meter><br>
     <button type="button" id="playAgain">Play Again?</button>
     <button type="button" id="close">Close</button>
     `);
@@ -38,32 +38,31 @@ function playGame(debugGame) {
         };
     });
     function checkNumber(guessNumber) {
-        if (attempts < MAX_ATTEMPTS || guessNumber == answer) {
+        if (attempts < limit || guessNumber == answer) {
             if (guessNumber < answer) {
                 window.animatelo.shake('#heading');
-                updateHeading('Your number is too low.\nTry again.', 'cornflowerblue');
+                heading.innerText = 'Your number is too low.\nTry again.';
+                heading.style.color = 'cornflowerblue';
+                attemptLabel.innerText = `Attempts Left: ${limit - attempts}`;
             } else if (guessNumber > answer) {
                 window.animatelo.shake('#heading');
-                updateHeading('Your number is too high.\nTry again.', 'palevioletred');
+                heading.innerText = 'Your number is too high.\nTry again.';
+                heading.style.color = 'palevioletred';
+                attemptLabel.innerText = `Attempts Left: ${limit - attempts}`;
             } else {
                 window.animatelo.rubberBand('#heading');
-                updateHeading(`You guessed it right!\nThe number is ${answer}!`, 'gold', true);
+                heading.innerText = `You guessed it right!\nThe number is ${answer}!`;
+                heading.style.color = 'gold';
+                const tries = (attempts === 1) ? 'try' : 'tries';
+                attemptLabel.innerText = `It only took ${attempts} ${tries}.`;
                 disableCheckButton();
             };
         } else {
             window.animatelo.flash('#heading');
-            updateHeading(`You've reached the limit.\nThe number was ${answer}.`, 'orchid', false);
+            heading.innerText = `You've reached the limit.\nThe number was ${answer}.`;
+            heading.style.color = 'orchid';
+            attemptLabel.innerText = `Attempts Left: ${limit - attempts}`;
             disableCheckButton();
-        };
-    };
-    function updateHeading(text, textColor, success) {
-        heading.innerText = text;
-        heading.style.color = textColor;
-        if (!success) {
-            attemptLabel.innerText = `Attempts Left: ${MAX_ATTEMPTS - attempts}`;
-        } else {
-            const tries = (attempts === 1) ? 'try' : 'tries';
-            attemptLabel.innerText = `It only took ${attempts} ${tries}.`;
         };
     };
     function disableCheckButton() {

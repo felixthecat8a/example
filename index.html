@@ -41,85 +41,84 @@
         </section>
         <article>
             <pre><code class="language-javascript" style="text-align: left;">
-    //Number Guessing Game JavaScript Code (minus animations)
-    const gameDIV = document.getElementById("numberGuessingGame");
-    const gameButton = '<button type="button" onclick="playGame(true)">Click to Play</button>';
-    document.addEventListener('DOMContentLoaded', () => { gameDIV.innerHTML = gameButton; });
-    function playGame(debugGame) {
-        const MAX_ATTEMPTS = 7;
-        gameDIV.innerHTML = (`
-        &lt;h3 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${MAX_ATTEMPTS} tries or less.&lt;/h3&gt;
-        &lt;input type="number" id="guess" min="1" max="100" placeholder="Guess"&gt;
-        &lt;button type="button" id="check"&gt;Check&lt;/button&gt;&lt;br&gt;
-        &lt;br&gt;&lt;label for="meter" id="attempt"&gt;Attempts Left: ${MAX_ATTEMPTS}&lt;/label&gt;&lt;br&gt;
-        &lt;meter value="0" min="0" high="5" max="${MAX_ATTEMPTS}" id="meter"&gt;&lt;/meter&gt;&lt;br&gt;
-        &lt;button type="button" id="playAgain"&gt;Play Again?&lt;/button&gt;
-        &lt;button type="button" id="close"&gt;Close&lt;/button&gt;
-        `);
-        const heading = document.getElementById("heading");
-        heading.style.color = 'mediumaquamarine';
-        const guessInput = document.getElementById("guess");
-        const checkButton = document.getElementById("check");
-        const attemptLabel = document.getElementById("attempt");
-        const attemptMeter = document.getElementById("meter");
-        const playAgainButton = document.getElementById("playAgain");
-        const close = document.getElementById("close");
-        const answer = (Math.floor(Math.random() * 100) + 1);
-        if (debugGame) { console.log(answer) }
-        let attempts = 0;
-        guessInput.addEventListener("keypress", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                checkButton.click();
-            };
-        });
-        checkButton.addEventListener("click", () => {
-            if (guessInput.value) {
-                attempts++;
-                attemptMeter.value = attempts;
-                checkNumber(Number(guessInput.value));
-            };
-        });
-        function checkNumber(guessNumber) {
-            if (attempts &lt; MAX_ATTEMPTS || guessNumber == answer) {
-                if (guessNumber &lt; answer) {
-                    updateHeading('Your number is too low.\nTry again.', 'cornflowerblue');
-                } else if (guessNumber &gt; answer) {
-                    updateHeading('Your number is too high.\nTry again.', 'palevioletred');
-                } else {
-                    updateHeading(`You guessed it right!\nThe number is ${answer}!`, 'gold', true);
-                    disableCheckButton();
-                };
-            } else {
-                updateHeading(`You've reached the limit.\nThe number was ${answer}.`, 'orchid', false);
-                disableCheckButton();
-            };
+//Number Guessing Game JavaScript Code (minus animations)
+const gameDIV = document.getElementById("numberGuessingGame");
+const gameButton = '<button type="button" onclick="playGame(true)">Click to Play</button>';
+document.addEventListener('DOMContentLoaded', () => { gameDIV.innerHTML = gameButton; });
+function playGame(debugGame) {
+    const limit = 7;
+    gameDIV.innerHTML = (`
+    &lt;h3 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${limit} tries or less.&lt;/h3&gt;
+    &lt;input type="number" id="guess" min="1" max="100" placeholder="Guess"&gt;
+    &lt;button type="button" id="check"&gt;Check&lt;/button&gt;&lt;br&gt;
+    &lt;br&gt;&lt;label for="meter" id="attempt"&gt;Attempts Left: ${limit}&lt;/label&gt;&lt;br&gt;
+    &lt;meter value="0" min="0" high="5" max="${limit}" id="meter"&gt;&lt;/meter&gt;&lt;br&gt;
+    &lt;button type="button" id="playAgain"&gt;Play Again?&lt;/button&gt;
+    &lt;button type="button" id="close"&gt;Close&lt;/button&gt;
+    `);
+    const heading = document.getElementById("heading");
+    heading.style.color = 'mediumaquamarine';
+    const guessInput = document.getElementById("guess");
+    const checkButton = document.getElementById("check");
+    const attemptLabel = document.getElementById("attempt");
+    const attemptMeter = document.getElementById("meter");
+    const playAgainButton = document.getElementById("playAgain");
+    const close = document.getElementById("close");
+    const answer = (Math.floor(Math.random() * 100) + 1);
+    if (debugGame) { console.log(answer) }
+    let attempts = 0;
+    guessInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            checkButton.click();
         };
-        function updateHeading(text, textColor, success) {
-            heading.innerText = text;
-            heading.style.color = textColor;
-            if (!success) {
-                attemptLabel.innerText = `Attempts Left: ${MAX_ATTEMPTS - attempts}`;
+    });
+    checkButton.addEventListener("click", () => {
+        if (guessInput.value) {
+            attempts++;
+            attemptMeter.value = attempts;
+            checkNumber(Number(guessInput.value));
+        };
+    });
+    function checkNumber(guessNumber) {
+        if (attempts &lt; limit || guessNumber == answer) {
+            if (guessNumber &lt; answer) {
+                heading.innerText = 'Your number is too low.\nTry again.';
+                heading.style.color = 'cornflowerblue';
+                attemptLabel.innerText = `Attempts Left: ${limit - attempts}`;
+            } else if (guessNumber &gt; answer) {
+                heading.innerText = 'Your number is too high.\nTry again.';
+                heading.style.color = 'palevioletred';
+                attemptLabel.innerText = `Attempts Left: ${limit - attempts}`;
             } else {
+                heading.innerText = `You guessed it right!\nThe number is ${answer}!`;
+                heading.style.color = 'gold';
                 const tries = (attempts === 1) ? 'try' : 'tries';
                 attemptLabel.innerText = `It only took ${attempts} ${tries}.`;
+                disableCheckButton();
             };
+        } else {
+            heading.innerText = `You've reached the limit.\nThe number was ${answer}.`;
+            heading.style.color = 'orchid';
+            attemptLabel.innerText = `Attempts Left: ${limit - attempts}`;
+            disableCheckButton();
         };
-        function disableCheckButton() {
-            checkButton.disabled = true;
-            checkButton.style.opacity = '0.5';
-        };
-        playAgainButton.onclick = function () {
-            attemptMeter.value = 0;
-            attempts = 0;
-            playGame(true);
-        };
-        close.addEventListener("click", function () {
-            attemptMeter.setAttribute('value', '0');
-            attempts = 0;
-            gameDIV.innerHTML = gameButton;
-        });
     };
+    function disableCheckButton() {
+        checkButton.disabled = true;
+        checkButton.style.opacity = '0.5';
+    };
+    playAgainButton.onclick = function () {
+        attemptMeter.value = 0;
+        attempts = 0;
+        playGame(true);
+    };
+    close.addEventListener("click", function () {
+        attemptMeter.setAttribute('value', '0');
+        attempts = 0;
+        gameDIV.innerHTML = gameButton;
+    });
+};
             </code></pre>
         </article>
         <br>
