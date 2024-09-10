@@ -8,7 +8,7 @@ function playGame(debugGame) {
     <h3 id="heading">Guess the number from 1 to 100<br>in ${limit} tries or less.</h3>
     <input type="number" id="guess" min="1" max="100" placeholder="Guess">
     <button type="button" id="check">Check</button><br>
-    <br><label for="meter" id="attempt">Attempts Left: ${limit}</label><br>
+    <br><h3 id="attempt">Attempts Left: ${limit}</h3>
     <meter value="0" min="0" high="5" max="${limit}" id="meter"></meter><br>
     <button type="button" id="playAgain">Play Again?</button>
     <button type="button" id="close">Close</button>
@@ -24,6 +24,7 @@ function playGame(debugGame) {
     const answer = (Math.floor(Math.random() * 100) + 1);
     if (debugGame) { console.log(answer) };
     let attempts = 0;
+    attemptMeter.value = 0;
     guessInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -70,14 +71,10 @@ function playGame(debugGame) {
         checkButton.style.opacity = '0.5';
     };
     playAgainButton.onclick = function () {
-        attemptMeter.value = 0;
-        attempts = 0;
         playGame(true);
     };
     close.addEventListener("click", function () {
         window.animatelo.flip('#numberGuessingGame');
-        attemptMeter.setAttribute('value', '0');
-        attempts = 0;
         gameDIV.innerHTML = gameButton;
     });
 };

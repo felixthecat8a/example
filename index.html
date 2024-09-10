@@ -51,7 +51,7 @@ function playGame(debugGame) {
     &lt;h3 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${limit} tries or less.&lt;/h3&gt;
     &lt;input type="number" id="guess" min="1" max="100" placeholder="Guess"&gt;
     &lt;button type="button" id="check"&gt;Check&lt;/button&gt;&lt;br&gt;
-    &lt;br&gt;&lt;label for="meter" id="attempt"&gt;Attempts Left: ${limit}&lt;/label&gt;&lt;br&gt;
+    &lt;br&gt;&lt;h3 id="attempt"&gt;Attempts Left: ${limit}&lt;/h3&gt;&lt;br&gt;
     &lt;meter value="0" min="0" high="5" max="${limit}" id="meter"&gt;&lt;/meter&gt;&lt;br&gt;
     &lt;button type="button" id="playAgain"&gt;Play Again?&lt;/button&gt;
     &lt;button type="button" id="close"&gt;Close&lt;/button&gt;
@@ -67,6 +67,7 @@ function playGame(debugGame) {
     const answer = (Math.floor(Math.random() * 100) + 1);
     if (debugGame) { console.log(answer) }
     let attempts = 0;
+    attemptMeter.value = 0;
     guessInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -109,13 +110,9 @@ function playGame(debugGame) {
         checkButton.style.opacity = '0.5';
     };
     playAgainButton.onclick = function () {
-        attemptMeter.value = 0;
-        attempts = 0;
         playGame(true);
     };
-    close.addEventListener("click", function () {
-        attemptMeter.setAttribute('value', '0');
-        attempts = 0;
+    close.addEventListener("click", () => {
         gameDIV.innerHTML = gameButton;
     });
 };
