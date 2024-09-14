@@ -76,15 +76,16 @@ function playGame() {
     function checkNumber(guessNumber) {
         attempts++;
         if (attempts &lt; limit || guessNumber == answer) {
+            const leftAttempts = limit - attempts;
             if (guessNumber &lt; answer) {
-                heading.innerText = `Too low. Try again.\nAttempts Left: ${limit - attempts}`;
+                heading.innerText = `Too low. Try again.\nAttempts Left: ${leftAttempts}`;
                 heading.style.color = 'cornflowerblue';
             } else if (guessNumber &gt; answer) {
-                heading.innerText = `Too high. Try again.\nAttempts Left: ${limit - attempts}`;
+                heading.innerText = `Too high. Try again.\nAttempts Left: ${leftAttempts}`;
                 heading.style.color = 'palevioletred';
             } else {
                 const tries = (attempts === 1) ? 'try' : 'tries';
-                heading.innerText = `${answer} is correct!\nIt only took ${attempts} ${tries}.`;
+                heading.innerText = `${answer} is correct\nin only ${attempts} ${tries}!`;
                 heading.style.color = 'gold';
                 disableCheckButton();
             };

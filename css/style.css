@@ -99,17 +99,17 @@ a:hover, a:active {
 }
 
 pre {
-    width: 660px;
+    width: 650px;
     margin: auto;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
 }
 
-@media all and (max-width: 33rem) {
+@media all and (max-width: 34rem) {
     body {
       font-size: 0.8rem;
       pre {
         width: 100%;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
       }
     }
 }

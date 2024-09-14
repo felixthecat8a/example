@@ -44,7 +44,7 @@ function playGame(limit) {
             } else {
                 window.animatelo.rubberBand('#heading');
                 const tries = (attempts === 1) ? 'try' : 'tries';
-                updateHeading(`${answer} is correct!\nIt only took ${attempts} ${tries}.`,'gold');
+                updateHeading(`${answer} is correct\nin only ${attempts} ${tries}!`,'gold');
                 disableCheckButton();
             };
         } else {
