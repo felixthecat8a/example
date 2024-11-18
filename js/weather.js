@@ -71,6 +71,76 @@ class ForecastChart {
         }
     }
 }
+class ForecastChart24Hr {
+    ctx;
+    constructor(canvasId) {
+        this.ctx = document.getElementById(canvasId);
+    }
+    createChart(weatherData, locationName) {
+        const { Chart } = window;
+        Chart.defaults.color = '#aaa';
+        this.ctx.style.backgroundColor = '#282828';
+        const data = this.setData(weatherData.properties.periods.slice(1,25));
+        const options = this.setOptions(locationName);
+        const config = { type: "line", data: data, options: options };
+        const weatherChart = new Chart(this.ctx, config);
+        this.setChartWidth(weatherChart);
+        window.addEventListener('resize', () => { this.setChartWidth(weatherChart); });
+    }
+    setData(hourlyData) {
+        const temp = hourlyData.map((period) => period.temperature);
+        const room = Array(temp.length).fill(72);
+        const rain = hourlyData.map((period) => period.probabilityOfPrecipitation.value);
+        const hum = hourlyData.map((period) => period.relativeHumidity.value);
+        const tempDataSet = {
+            label: 'Temperature', data: temp, borderColor: "#ff9f40", pointRadius: 3
+        };
+        const roomDataSet = {
+            label: '72\u00B0F', data: room, borderColor: "#4bc0c0", pointRadius: 0, borderDash: [5, 5]
+        };
+        const rainDataSet = {
+            label: 'Rain', data: rain, borderColor: "#36a2eb", pointRadius: 3, yAxisID: 'y2'
+        };
+        const humDataSet = {
+            label: 'Humidity', data: hum, borderColor: "#9966ff", pointRadius: 3
+        };
+        const labels = hourlyData.map((period) => this.formatTime(period.startTime));
+        return { labels: labels, datasets: [tempDataSet, roomDataSet, rainDataSet, humDataSet] };
+    }
+    setOptions(location) {
+        const name = '24 Hour Forecast';
+        const title = { display: true, text: name, color: '#aaa', font: { size: 16 } };
+        const subtitle = { display: true, text: location, color: '#aaa', font: { size: 14 } };
+        const plugins = { title: title, subtitle: subtitle };
+        const grid = { display: true, color: '#333' };
+        const titleX = { display: true, text: 'Time' };
+        const scaleX = { title: titleX, grid: grid };
+        const titleY = { display: true, text: 'Temperature (\u00B0F)' };
+        const scaleY = { title: titleY, grid: grid, position: 'left' };
+        const titleY2 = { display: true, text: 'Percent (%)' };
+        const scaleY2 = { title: titleY2, grid: grid, position: 'right', beginAtZero: true, max: 100 };
+        const options = { plugins: plugins, scales: { x: scaleX, y: scaleY, y2: scaleY2 } };
+        return options;
+    }
+    setChartWidth(forecastTemperatureChart) {
+        const chartStyle = forecastTemperatureChart.canvas.parentNode.style;
+        chartStyle.border = 'solid thin darkseagreen';
+        const screenWidth = window.innerWidth;
+        chartStyle.margin = 'auto';
+        if (screenWidth <= 550) {
+            forecastTemperatureChart.resize(screenWidth, 'auto');
+            chartStyle.width = '100%';
+        }
+        else {
+            forecastTemperatureChart.resize(550, 'auto');
+            chartStyle.width = '550px';
+        }
+    }
+    formatTime(dateTime) {
+        const time = new Date(dateTime)
+        return time.toLocaleTimeString(navigator.language, { timeStyle: 'short'})
+    }
+}
 class WeatherForecast extends ForecastChart {
     nearForecastDiv;
     currentWeatherDiv;
@@ -119,6 +189,9 @@ class WeatherForecast extends ForecastChart {
         <div style="font-size:1rem;">${wd.windSpeed} ${wd.windDirection}</div>
         <div style="font-size:1rem;">${wd.shortForecast}</div>
         `);
+        //new 24 hour chart
+        const chart24Hr = new ForecastChart24Hr("hourlyId");
+        chart24Hr.createChart(data, locationName)
     }
     async setWeatherAlerts(pointData, locationName) {
         const alertsCoords = pointData.properties.relativeLocation.geometry.coordinates;
@@ -214,9 +287,10 @@ async function displayForecast() {
         </div>
         <div id="alertDiv"></div>
         <div id="futureDiv"></div>
-        <div><canvas id="canvasId"></canvas></div>
+        <div><canvas id="weekId"></canvas></div>
+        <div><canvas id="hourlyId"></canvas></div>
     `);
-    const forecast = new WeatherForecast('nearId', 'currentId', 'alertDiv', 'futureDiv', 'canvasId');
+    const forecast = new WeatherForecast('nearId', 'currentId', 'alertDiv', 'futureDiv', 'weekId');
     try {
         statusDiv.setStatus('Locating...');
         const JEHS = { latitude: '26.3086', longitude: '-98.103' };
