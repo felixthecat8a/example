@@ -11,11 +11,6 @@
     <!-- Animatelo -->
     <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
     <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
-    <!-- HighlightJS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
-    <script>hljs.highlightAll();</script>
 </head>
 <body>
     <header>
@@ -37,82 +32,10 @@
         <section id="numberGuessingGameContainer">
             <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
             <div id="numberGuessingGame"></div><br>
+            <h3>View the code for this game <a href="pages/code_page.html">here</a>.</h3>
             <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
             <script src="js/game.js"></script>
         </section>
-        <article>
-            <pre><code class="language-javascript" style="text-align: left;">
-//Number Guessing Game JavaScript Code (minus animations)
-const gameDIV = document.getElementById("numberGuessingGame");
-const gameButton = '&lt;button type="button" onclick="playGame()"&gt;Click to Play&lt;/button&gt;';
-document.addEventListener('DOMContentLoaded', () => { gameDIV.innerHTML = gameButton; });
-function playGame() {
-    const limit = 7;
-    gameDIV.innerHTML = (`
-    &lt;input type="number" id="guess" min="1" max="100" placeholder="Guess"&gt;
-    &lt;button type="button" id="check"&gt;Check&lt;/button&gt;&lt;br&gt;
-    &lt;h3 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${limit} tries or less.&lt;/h3&gt;
-    &lt;button type="button" id="playAgain"&gt;Play Again?&lt;/button&gt;
-    &lt;button type="button" id="close"&gt;Close&lt;/button&gt;
-    `);
-    const heading = document.getElementById("heading");
-    heading.style.color = 'mediumaquamarine';
-    const guessInput = document.getElementById("guess");
-    const checkButton = document.getElementById("check");
-    const playAgainButton = document.getElementById("playAgain");
-    const close = document.getElementById("close");
-    const answer = (Math.floor(Math.random() * 100) + 1);
-    let attempts = 0;
-    attemptMeter.value = 0;
-    guessInput.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            checkButton.click();
-        };
-    });
-    checkButton.addEventListener("click", () => {
-        if (guessInput.value) { checkNumber(Number(guessInput.value)) };
-    });
-    function checkNumber(guessNumber) {
-        attempts++;
-        if (attempts &lt; limit || guessNumber == answer) {
-            const leftAttempts = limit - attempts;
-            if (guessNumber &lt; answer) {
-                heading.innerText = `Too low. Try again.\nAttempts Left: ${leftAttempts}`;
-                heading.style.color = 'cornflowerblue';
-            } else if (guessNumber &gt; answer) {
-                heading.innerText = `Too high. Try again.\nAttempts Left: ${leftAttempts}`;
-                heading.style.color = 'palevioletred';
-            } else {
-                const tries = (attempts === 1) ? 'try' : 'tries';
-                heading.innerText = `${answer} is correct\nin only ${attempts} ${tries}!`;
-                heading.style.color = 'gold';
-                disableCheckButton();
-            };
-        } else {
-            heading.innerText = `You've reached the limit.\nThe number was ${answer}.`;
-            heading.style.color = 'orchid';
-            disableCheckButton();
-        };
-    };
-    function disableCheckButton() {
-        checkButton.disabled = true;
-        checkButton.style.opacity = '0.5';
-    };
-    playAgainButton.onclick = function () { playGame() };
-    close.addEventListener("click", () => { gameDIV.innerHTML = gameButton });
-};
-            </code></pre>
-        </article>
-        <br>
-        <article>
-            <h3>Also, check out these <span style="color: #62AEB2;">Arduino</span> tutorials.</h3>
-            <ul style="margin: auto; text-align: left; width: 380px;">
-                <li><strong><a href="arduino/pageOne.html">Control an RGB LED using Arduino</a></strong></li>
-                <li><strong><a href="arduino/pageTwo.html">Control an RGB LED using Node.js</a></strong></li>
-                <li><strong><a href="arduino/pageThree.html">Control an RGB LED using Socket.IO</a></strong></li>
-            </ul>
-        </article>
         <br>
     </main>
     <footer>

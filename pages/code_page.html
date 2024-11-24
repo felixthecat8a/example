@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8"><meta name="author" content="felixthecat8a">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <title>Simple JavaScript Examples</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <!-- Animatelo -->
+    <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
+    <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
+    <!-- HighlightJS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <header>
+        <h1>Number Guessing Game Code</h1>
+        <nav>
+            <a href="../index.html"><u>Home</u></a>
+        </nav>
+    </header><hr>
+    <main>
+        <br>
+        <section id="numberGuessingGameContainer">
+            <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
+            <div id="numberGuessingGame"></div><br>
+            <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
+            <script src="../js/game.js"></script>
+        </section>
+        <br>
+        <article>
+            <pre><code class="language-javascript" style="text-align: left;">
+//Number Guessing Game JavaScript Code (minus animations)
+const gameDIV = document.getElementById("numberGuessingGame");
+const gameButton = '&lt;button type="button" onclick="playGame()"&gt;Click to Play&lt;/button&gt;';
+document.addEventListener('DOMContentLoaded', () => { gameDIV.innerHTML = gameButton; });
+function playGame() {
+    const limit = 7;
+    gameDIV.innerHTML = (`
+    &lt;input type="number" id="guess" min="1" max="100" placeholder="Guess"&gt;
+    &lt;button type="button" id="check"&gt;Check&lt;/button&gt;&lt;br&gt;
+    &lt;h3 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${limit} tries or less.&lt;/h3&gt;
+    &lt;button type="button" id="playAgain"&gt;Play Again?&lt;/button&gt;
+    &lt;button type="button" id="close"&gt;Close&lt;/button&gt;
+    `);
+    const heading = document.getElementById("heading");
+    heading.style.color = 'mediumaquamarine';
+    const guessInput = document.getElementById("guess");
+    const checkButton = document.getElementById("check");
+    const playAgainButton = document.getElementById("playAgain");
+    const close = document.getElementById("close");
+    const answer = (Math.floor(Math.random() * 100) + 1);
+    let attempts = 0;
+    attemptMeter.value = 0;
+    guessInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            checkButton.click();
+        };
+    });
+    checkButton.addEventListener("click", () => {
+        if (guessInput.value) { checkNumber(Number(guessInput.value)) };
+    });
+    function checkNumber(guessNumber) {
+        attempts++;
+        if (attempts &lt; limit || guessNumber == answer) {
+            const leftAttempts = limit - attempts;
+            if (guessNumber &lt; answer) {
+                heading.innerText = `Too low. Try again.\nAttempts Left: ${leftAttempts}`;
+                heading.style.color = 'cornflowerblue';
+            } else if (guessNumber &gt; answer) {
+                heading.innerText = `Too high. Try again.\nAttempts Left: ${leftAttempts}`;
+                heading.style.color = 'palevioletred';
+            } else {
+                const tries = (attempts === 1) ? 'try' : 'tries';
+                heading.innerText = `${answer} is correct\nin only ${attempts} ${tries}!`;
+                heading.style.color = 'gold';
+                disableCheckButton();
+            };
+        } else {
+            heading.innerText = `You've reached the limit.\nThe number was ${answer}.`;
+            heading.style.color = 'orchid';
+            disableCheckButton();
+        };
+    };
+    function disableCheckButton() {
+        checkButton.disabled = true;
+        checkButton.style.opacity = '0.5';
+    };
+    playAgainButton.onclick = function () { playGame() };
+    close.addEventListener("click", () => { gameDIV.innerHTML = gameButton });
+};
+            </code></pre>
+        </article>
+        <br>
+    </main>
+    <footer>
+        <style>.githubName {color: mediumseagreen} .githubName:hover {color: seagreen}</style>
+        <h4><a href="https://github.com/felixthecat8a/example" target="_blank" rel="noopener noreferrer">
+            <span class="githubName">felixthecat8a&#128008;</span>
+        </a></h4>
+    </footer>
+</body>
+</html>
