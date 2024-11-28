@@ -62,7 +62,7 @@ class ForecastChart {
         const screenWidth = window.innerWidth;
         chartStyle.margin = 'auto';
         if (screenWidth <= 550) {
-            forecastTemperatureChart.resize(screenWidth, 'auto');
+            forecastTemperatureChart.resize(screenWidth, '270px');
             chartStyle.width = '100%';
         }
         else {
@@ -128,7 +128,7 @@ class ForecastChart24Hr {
         const screenWidth = window.innerWidth;
         chartStyle.margin = 'auto';
         if (screenWidth <= 550) {
-            forecastTemperatureChart.resize(screenWidth, 'auto');
+            forecastTemperatureChart.resize(screenWidth, '270px');
             chartStyle.width = '100%';
         }
         else {
