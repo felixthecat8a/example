@@ -1,17 +1,18 @@
 {
   "name": "example",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "author": "felixthecat8a",
+  "type": "commonjs",
   "description": "",
   "main": "main.js",
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felixthecat8a/JS-examples.git"
+    "url": "git+https://github.com/felixthecat8a/example.git"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/felixthecat8a/JS-examples/issues"
+    "url": "https://github.com/felixthecat8a/example/issues"
   },
-  "homepage": "https://github.com/felixthecat8a/JS-examples#readme"
+  "homepage": "https://github.com/felixthecat8a/example#readme"
 }
