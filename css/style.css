@@ -69,11 +69,11 @@ body footer {
 
 @media all and (max-width: 31.25rem) {
   body {
-    width: 31.25rem;
+    width: 100%;
     font-size: 0.8rem;
   }
   main {
-    width: 30.9375rem;
+    width: 90%;
   }
 }
 #weatherApp {

@@ -19,6 +19,6 @@
     "sass": "^1.86.0"
   },
   "scripts": {
-    "build": "sass ./scss:./css"
+    "style": "sass ./scss:./css --watch"
   }
 }

@@ -80,10 +80,10 @@ body {
 
 @media all and (max-width: rem(500)) {
     body {
-        width: rem(500);
+        width: 100%;
         font-size: 0.8rem;
     }
     main {
-        width: rem(495);
+        width: 90%;
     }
 }
