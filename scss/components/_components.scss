@@ -1,0 +1,16 @@
+@forward './forms';
+@forward './tables';
+
+@mixin elements {
+    a {
+        text-decoration: none;
+        &:link, &:visited {color:#ddd;}
+        &:hover, &:active {color:#aaa;}
+    }
+    abbr[title] {
+        text-decoration: none !important;
+    }
+    figcaption {
+        font-size: small;
+    }
+}

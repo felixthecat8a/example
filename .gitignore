@@ -1,2 +1,15 @@
 # ignore ALL .log files
+logs
 *.log
+
+# ignore dependencies
+node_modules/
+.npm
+*.tgz
+.DS_Store
+.eslintcache
+.env
+coverage
+
+# ignore
+build/

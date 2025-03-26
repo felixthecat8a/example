@@ -1,0 +1,10 @@
+@use './layouts/base';
+@use './components/components';
+@use './layouts/pages/projects';
+
+@include components.elements;
+
+body {
+    @include components.forms;
+    @include components.tables;
+}

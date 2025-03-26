@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "felixthecat8a",
   "type": "commonjs",
   "description": "",
@@ -14,5 +14,11 @@
   "bugs": {
     "url": "https://github.com/felixthecat8a/example/issues"
   },
-  "homepage": "https://github.com/felixthecat8a/example#readme"
+  "homepage": "https://github.com/felixthecat8a/example#readme",
+  "dependencies": {
+    "sass": "^1.86.0"
+  },
+  "scripts": {
+    "build": "sass ./scss:./css"
+  }
 }

@@ -1,167 +1,380 @@
 *, *::before, *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html, body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    background-color: #333;
-    color: azure;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #333;
+  color: azure;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body h1 {
+  color: mediumseagreen;
+  margin: 1.1875rem;
+}
+body h2 {
+  color: lightseagreen;
+  margin: 1.0625rem;
+}
+body h3 {
+  color: darkorange;
+  margin: 0.9375rem;
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  text-align: center;
+}
+body header {
+  text-align: center;
+  width: 100%;
+  position: static;
+  top: 0;
+  padding: 0.3125rem;
+}
+body header nav {
+  font-size: medium;
+  font-weight: bold;
+  display: inline-block;
+}
+body header nav ul {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+body header nav li {
+  padding: 0 0.3125rem;
+  display: inline-block;
+}
+body main {
+  width: min(49.375rem, 90%);
+  margin: auto;
+}
+body main article, body main section {
+  margin: 0;
+  padding: 0;
+}
+body footer {
+  text-align: center;
+  width: 100%;
+  position: static;
+  bottom: 0;
+  padding: 0.3125rem;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-    padding: 2px;
-    margin: 2px;
+@media all and (max-width: 31.25rem) {
+  body {
+    width: 31.25rem;
+    font-size: 0.8rem;
+  }
+  main {
+    width: 30.9375rem;
+  }
+}
+#weatherApp {
+  text-align: center;
+  font-weight: bold;
 }
 
-header {
-    text-align: center;
-    position: static;
-    top: 0;
-    width: 100%;
-    h1 {
-        color: mediumseagreen;
-    }
+#nwsHeading {
+  color: mediumseagreen;
+  padding: 0;
+  margin-bottom: 0;
 }
 
-nav {
-    text-align: center;
-    font-size: medium;
-    font-weight: bold;
-    display: inline-block;
-    ul {
-        list-style-type: none;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-    }
-    li {
-        padding: 0 5px;
-        display: inline-block;
-    }
+#nwsHeading a {
+  text-decoration: none;
 }
 
-main {
-    width: 100%;
-}
-main form {
-    text-align: center;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-main fieldset {
-    font-weight: bold;
-    font-size: medium;
-    padding: 5px 25px 15px 25px;
-}
-main fieldset p {
-    font-weight: bold;
-    font-size:small;
-}
-main legend {
-    color: #3cb3ad;
-    text-align: left;
-    font-size: x-large;
-    font-weight: bold;
-    padding: 0.2em;
-    margin: 0;
-}
-main label {
-    font-size: large;
-    padding: 0;
-    margin: 0;
+#nwsHeading a:link, #nwsHeading a:visited {
+  color: mediumseagreen;
 }
 
-footer {
-    text-align: center;
-    position: static;
-    bottom: 0;
-    width: 100%;
+#nwsHeading a:hover, #nwsHeading a:active {
+  color: seagreen;
 }
 
+#forecastDiv {
+  border: solid thin darkseagreen;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 550px;
+  height: 175px;
+  margin: auto;
+}
+
+#forecastDiv #nearId {
+  background-color: #333;
+  color: darkseagreen;
+  float: left;
+  flex: 1;
+  height: 100%;
+  padding-top: 5px;
+}
+
+#forecastDiv #currentId {
+  background-color: seagreen;
+  color: honeydew;
+  float: right;
+  flex: 2;
+  height: 100%;
+  word-break: keep-all;
+  padding-top: 5px;
+}
+
+#alertDiv {
+  background-color: #8B2E57;
+  border-inline: solid thin darkseagreen;
+  max-width: 550px;
+  min-height: min-content;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-inline: auto;
+}
+
+#futureDiv {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  margin-inline: auto;
+  padding: 0;
+  max-width: 550px;
+  min-height: min-content;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+#futureDiv .forecastDay {
+  flex: 1;
+  background-color: #333;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: solid thin darkseagreen;
+}
+
+@media screen and (max-width: 500px) {
+  #forecastDiv, #futureDiv {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+/* CAT.HTML */
+#cat_container {
+  text-align: center;
+}
+
+#catDisplay {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#catHeading {
+  color: darkorange;
+}
+
+.splide {
+  margin: auto;
+  width: 95%;
+}
+
+#numberGuessingGameContainer {
+  text-align: center;
+  display: block;
+  border: solid medium teal;
+  border-radius: 0.5rem;
+  width: 450px;
+  height: fit-content;
+  margin: auto;
+  padding: 5px 15px;
+}
+
+#numberGuessingGameContainer:hover {
+  outline: solid thin teal;
+  box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9);
+}
+
+@media screen and (max-width: 500px) {
+  #numberGuessingGameContainer {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:link, a:visited {
-    color: lightgray;
+  color: #ddd;
 }
 a:hover, a:active {
-    color: dimgray;
+  color: #aaa;
 }
 
-pre {
-    width: 650px;
-    margin: auto;
-    font-size: 0.78rem;
+abbr[title] {
+  text-decoration: none !important;
 }
 
-@media all and (max-width: 34rem) {
-    body {
-      font-size: 0.8rem;
-      pre {
-        width: 100%;
-        font-size: 0.6rem;
-      }
-    }
+figcaption {
+  font-size: small;
 }
 
-/* ELEMENTS: INPUT, SELECT & BUTTON */
-button, select, input[type=number] {
-    box-sizing: border-box;
-    text-align: center;
-    font-family: inherit;
-    font-size: medium;
-    font-weight: bold;
-    border-radius: 0.5rem;
-    margin: 2px;
+body form {
+  text-align: center;
+  max-width: 490px;
+  margin: 0 auto 0 auto;
+}
+body form fieldset {
+  font-size: medium;
+  font-weight: bold;
+  padding: 5px 25px 15px 25px;
+  border-radius: 5px;
+}
+body form legend {
+  color: #62AEB2;
+  text-align: left;
+  font-size: x-large;
+  font-weight: bold;
+  padding: 0.2em;
+  margin: 0;
+}
+body form label {
+  padding: 3px;
+  margin: 3px;
+  color: #eee;
+}
+body form p {
+  font-size: small;
+}
+body .red-link-button, body button, body input[type=reset], body input[type=submit], body textarea, body input[type=text], body input[type=url], body input[type=password], body input[type=number], body select {
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: inherit;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  margin: 3px;
+  padding: 3px;
+}
+body select {
+  border: 1px solid #333;
+  cursor: pointer;
+}
+body input[type=number] {
+  border: 1px solid #333;
+  width: 120px;
+}
+body input[type=number]:hover, body input[type=number]:focus {
+  border: 1px solid lightseagreen;
+  outline: 1px solid lightseagreen;
+  background-color: azure;
+}
+body input[type=text], body input[type=url], body input[type=password] {
+  border: 1px solid #333;
+  width: fit-content;
+}
+body input[type=text]:hover, body input[type=text]:focus, body input[type=url]:hover, body input[type=url]:focus, body input[type=password]:hover, body input[type=password]:focus {
+  border: 1px solid lightseagreen;
+  outline: 1px solid lightseagreen;
+  background-color: azure;
+}
+body textarea {
+  border: 1px solid #333;
+  width: 310px;
+}
+body textarea:hover, body textarea:focus {
+  border: 1px solid lightseagreen;
+  outline: 1px solid lightseagreen;
+  background-color: azure;
+}
+body button, body input[type=reset], body input[type=submit] {
+  color: azure;
+  background-color: darkcyan;
+  border: solid thin darkcyan;
+  display: inline-block;
+  padding-inline: 25px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  box-shadow: 1px 1px #999;
+}
+body button:hover, body input[type=reset]:hover, body input[type=submit]:hover {
+  color: azure;
+  background-color: teal;
+  border: solid thin teal;
+}
+body button:active, body input[type=reset]:active, body input[type=submit]:active {
+  opacity: 60%;
+  transform: scale(1px, 1px);
+  box-shadow: 0.5px 0.5px #666;
+}
+body .red-link-button {
+  color: snow;
+  background-color: crimson;
+  border: solid thin crimson;
+  display: inline-block;
+  padding-inline: 25px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  box-shadow: 1px 1px #999;
+}
+body .red-link-button:hover {
+  color: snow;
+  background-color: firebrick;
+  border: solid thin firebrick;
+}
+body .red-link-button:active {
+  opacity: 60%;
+  transform: scale(1px, 1px);
+  box-shadow: 0.5px 0.5px #666;
+}
+body .red-link-button a {
+  text-decoration: none;
+}
+body .red-link-button a:link, body .red-link-button a:visited, body .red-link-button a:hover, body .red-link-button a:active {
+  color: snow;
+}
+@media screen and (max-width: 510px) {
+  body form {
+    font-size: 0.8rem;
+  }
+}
+body table {
+  margin-inline: auto;
+  text-align: center;
+  border: 1px solid #555;
+  background-color: #333;
+}
+body table tr, body table th, body table td {
+  border: 1px solid #555;
+  outline: 1px solid #555;
+  padding: 0.5rem;
+}
+body table thead, body table tfoot {
+  border: 1px solid #555;
+  outline: 1px solid #555;
+  color: #fff;
+  background-color: #555;
+}
+body table caption {
+  caption-side: bottom;
+  font-size: small;
+  font-weight: normal;
+  font-style: italic;
+}
+@media screen and (max-width: 510px) {
+  body table {
+    font-size: 0.8rem;
+  }
 }
 
-input[type=number] {
-    border: 1px solid #333;
-    padding: 3px;
-    width: 150px;
-}
-input[type=number]:hover {
-    border: 1px solid lightseagreen;
-}
-input[type=number]:focus {
-    border: 1px solid lightseagreen;
-    outline: 1px solid lightseagreen;
-    background-color: azure;
-}
-
-select {
-    border: none;
-    outline: none;
-    padding: 3px;
-    cursor: pointer;
-}
-
-button {
-    background-color: darkcyan;
-    border: solid thin darkcyan;
-    color: azure;
-    display: inline-block;
-    padding: 3px 25px;
-    cursor: pointer;
-    transition-duration: 0.5s;
-    box-shadow: 1px 1px #999;
-}
-button:hover {
-    background-color: teal;
-    border: solid thin teal;
-}
-button:active {
-    opacity: 60%;
-    transform: scale(1px, 1px);
-    box-shadow: 0.5px 0.5px #666;
-}
+/*# sourceMappingURL=style.css.map */

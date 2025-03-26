@@ -1,9 +1,8 @@
-/* WEATHER */
 #weatherApp {
     text-align: center;
     font-weight: bold;
   }
-  
+
   #nwsHeading {
     color: mediumseagreen;
     padding: 0;
@@ -18,7 +17,7 @@
   #nwsHeading a:hover, #nwsHeading a:active {
     color: seagreen;
   }
-  
+
   #forecastDiv {
     border: solid thin darkseagreen;
     display: flex;
@@ -81,4 +80,3 @@
       max-width: 100%;
     }
   }
-
