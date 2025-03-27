@@ -17,7 +17,8 @@
   "homepage": "https://github.com/felixthecat8a/example#readme",
   "dependencies": {
     "prettier": "^3.5.3",
-    "sass": "^1.86.0"
+    "sass": "^1.86.0",
+    "typescript": "^5.8.2"
   },
   "scripts": {
     "styles": "sass ./scss:./css",

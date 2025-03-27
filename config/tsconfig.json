@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target":"ESNext",
+    "module": "CommonJS",
+    "noImplicitAny": true,
+    "moduleResolution": "Node10",
+    "rootDir": "../ts/",
+    "outDir": "../build/js",
+    "strict": true,
+    "allowJs": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "declaration": false,
+    "declarationMap": false,
+    //"declarationDir": "../types",
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "pretty": true
+  },
+  "include": ["../ts/**/*.ts", "../ts/**/*.cts", "../ts/**/*.mts"],
+  "lib": ["ES2015"]
+}
