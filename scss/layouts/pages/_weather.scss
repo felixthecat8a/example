@@ -1,82 +1,107 @@
-#weatherApp {
+@use './loader';
+
+@use 'sass:color';
+$alert-violet: color.complement(seagreen);
+//$light-green-text: lighten(darkseagreen, 15%);
+$light-green-text: color.adjust(darkseagreen, $lightness: 15%);
+$green-line: solid thin darkseagreen;
+@mixin flex-center($direction: row, $justify: space-between, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+.weather-display {
+    max-width: 550px;
+    margin: auto;
     text-align: center;
     font-weight: bold;
-  }
-
-  #nwsHeading {
-    color: mediumseagreen;
-    padding: 0;
-    margin-bottom: 0;
-  }
-  #nwsHeading a {
-    text-decoration: none;
-  }
-  #nwsHeading a:link, #nwsHeading a:visited {
-    color: mediumseagreen;
-  }
-  #nwsHeading a:hover, #nwsHeading a:active {
-    color: seagreen;
-  }
-
-  #forecastDiv {
-    border: solid thin darkseagreen;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 550px;
-    height: 175px;
-    margin: auto;
-  }
-  #forecastDiv #nearId {
+    outline: $green-line;
+    border: $green-line;
+    border-radius: 16px;
     background-color: #333;
-    color: darkseagreen;
-    float: left;
-    flex: 1;
-    height: 100%;
-    padding-top: 5px;
-  }
-  #forecastDiv #currentId {
-    background-color: seagreen;
-    color: honeydew;
-    float: right;
-    flex: 2;
-    height: 100%;
-    word-break: keep-all;
-    padding-top: 5px;
-  }
-  #alertDiv {
-    background-color: #8B2E57;
-    border-inline: solid thin darkseagreen;
-    max-width: 550px;
-    min-height: min-content;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-inline: auto;
+    .heading-container {
+        @include flex-center;
+        .heading-card {
+            margin: auto;
+            h1 {
+                color: mediumseagreen;
+                padding: 0;
+                margin: 0;
+                a {
+                    text-decoration: none;
+                    &:link, &:visited { color: mediumseagreen; }
+                    &:hover, &:active { color: seagreen; }
+                }
+            }
+        }
     }
-  #futureDiv {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: space-between;
-    margin-inline: auto;
-    padding: 0;
-    max-width: 550px;
-    min-height: min-content;
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
-  #futureDiv .forecastDay {
-    flex: 1;
-    background-color: #333;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border: solid thin darkseagreen;
-  }
+    #currentDiv {
+        @include flex-center;
+        border-top: $green-line;
+        #currentId {
+            background-color: seagreen;
+            color: honeydew;
+            float: left;
+            flex: 2;
+            height: 100%;
+            word-break: keep-all;
+            padding: 8px;
+        }
+        #nextId {
+            background-color: #333;
+            color: $light-green-text;
+            float: right;
+            flex: 1;
+            height: 100%;
+        }
+    }
+    #alertsId {
+        border-top: $green-line;
+        background-color: $alert-violet;
+        color: honeydew;
+        text-align: center;
+    }
+    #weekId {
+        @include flex-center;
+        .dayId {
+            flex: 1;
+            background-color: #333;
+            padding: 5px 0;
+            border: $green-line;
+            font-size: smaller;
+            font-weight: bold;
+            .day { color: lightgreen; }
+            .hi { color: lightcoral; }
+            .lo { color: lightblue; }
+        }
+    }
+    #chartId {
+        margin: "auto";
+        max-width: "550px";
+        background-color: "#333";
+    }
+}
 
-  @media screen and (max-width: 500px) {
-    #forecastDiv, #futureDiv {
-      flex: 100%;
-      max-width: 100%;
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
     }
-  }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@include loader.cloud-loader
