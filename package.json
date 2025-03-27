@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/felixthecat8a/example.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/felixthecat8a/example/issues"
   },
