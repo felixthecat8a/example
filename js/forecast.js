@@ -168,7 +168,7 @@ class LinkUtility {
         if (!element) {
             throw new Error('Link Element Not Found');
         }
-        if (element.tagName != 'A') {
+        if (element.tagName !== 'A') {
             throw new Error(`Not A Link Element`);
         }
         this.linkElement = element;
@@ -267,7 +267,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
     }
     async setActiveAlerts(point, logAlerts) {
         const alertData = (await NWS.fetchAlerts(point));
-        if (alertData.features.length == 0) {
+        if (alertData.features.length === 0) {
             console.log(`No active alerts found.`);
         }
         for (const feature of alertData.features) {
@@ -275,7 +275,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
             const alertTitle = `${alertProps.messageType}: ${alertProps.event} - ${alertProps.severity}`;
             const information = `${alertProps.description}\n${alertProps.instruction || ''}`;
             const alertMessage = `${alertProps.headline}\n${information}`;
-            if (alertProps.status == 'Actual') {
+            if (alertProps.status === 'Actual') {
                 const weatherAlert = document.createElement('div');
                 weatherAlert.setAttribute('title', alertProps.headline);
                 weatherAlert.style.padding = '5px';
