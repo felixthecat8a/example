@@ -1,29 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-    <title>Cat App</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-      #cat_container {
-          text-align: center;
-          padding: 10px;
-      }
-
-      #catDisplay {
-          display: flex;
-          justify-content: space-evenly;
-          align-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-          margin: 20px;
-      }
-    </style>
-    <!-- Splide.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+  <meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <title>Cat App</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Splide.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 </head>
 <body>
     <header>
@@ -34,23 +19,13 @@
     </header>
     <main>
       <section id="cat_container">
-        <label style="color: orange;">
-            <b>Select Cat Breed: </b>
-            <select id="catSelect">
-                <optgroup label="Random Cat">
-                    <option value="showCat">Show a Random Cat</option>
-                </optgroup>
-                <optgroup label="Cat by Breed">
-                    <option value="catBreed" id="catBreed" hidden>Choose a Cat Breed</option>
-                </optgroup>
-            </select>
-        </label>
+        <div id="catSelector"></div>
         <div id="catDisplay"></div>
-        <h2 id="catNameHeading" style="color: darkorange;">Random Cat Image</h2>
+        <h2 id="catHeading">Random Cats</h2>
         <p id="catParagraph"></p>
         <div id="catInfo"></div>
       </section>
-      <script src="../js/cat.js"></script>
+       <script src="../js/cat.js"></script>
     </main>
     <footer>
       <h3>API from <a href="https://thecatapi.com/" target="_blank" rel="noopener noreferrer" style="color:#d24515;">The Cat API</a></h3>

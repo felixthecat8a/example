@@ -1,117 +1,167 @@
-const catSelect = document.getElementById('catSelect')
-const catDiv = document.getElementById('catDisplay')
-const catNameHeading = document.getElementById('catNameHeading')
-const catParagraph = document.getElementById('catParagraph')
-const catInfo = document.getElementById('catInfo')
-document.addEventListener('DOMContentLoaded', () => {
-    createCatBreedOptions()
-    displayRandomCat()
-})
-async function createCatBreedOptions() {
-    const URL = `https://api.thecatapi.com/v1/breeds`
-    try {
-        const response = await fetch(URL)
-        const data = await response.json()
-        for (let i = 0; i < data.length; i++) {
-            const catOption = document.createElement('option')
-            catOption.value = data[i].id
-            catOption.textContent = data[i].name
-            catSelect.appendChild(catOption)
+"use strict";
+class Cat {
+    static CAT_API = {
+        BASE_URL: 'https://api.thecatapi.com/v1',
+        KEY: 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh',
+    };
+    static async fetchCatBreeds() {
+        const request = new Request(`${this.CAT_API.BASE_URL}/breeds`);
+        const response = await fetch(request);
+        if (!response.ok) {
+            throw new Error(`${response.status} Breed Options Not Found!`);
         }
+        return await response.json();
+    }
+    static getCatBreedOptions(breeds) {
+        const fragment = new DocumentFragment();
+        for (const breed of breeds) {
+            const option = document.createElement('option');
+            option.value = breed.id;
+            option.textContent = breed.name;
+            fragment.append(option);
+        }
+        return fragment;
+    }
+    static async fetchCatImageData(limit, breedId) {
+        const url = new URL(`${this.CAT_API.BASE_URL}/images/search`);
+        url.searchParams.set('limit', String(limit));
+        if (breedId) {
+            url.searchParams.append('breed_id', breedId);
+        }
+        const response = await fetch(url, { headers: { 'x-api-key': this.CAT_API.KEY } });
+        if (!response.ok) {
+            throw new Error(`${response.status} Images Not Found`);
+        }
+        return await response.json();
+    }
+}
+class TheCatAPI {
+    LINK = { title: 'The Cat API', target: 'https://www.thecatapi.com' };
+    constructor() { }
+    async getCatBreeds() {
+        return await Cat.fetchCatBreeds();
+    }
+    setCatBreedOptions(optGroup, breeds) {
+        const options = Cat.getCatBreedOptions(breeds);
+        optGroup.appendChild(options);
+    }
+    async getCatImageData(limit, breedId) {
+        return Cat.fetchCatImageData(limit, breedId);
+    }
+}
+const CatAPI = new TheCatAPI();
+const catDiv = document.getElementById('catDisplay');
+const catHeading = document.getElementById('catHeading');
+const catParagraph = document.getElementById('catParagraph');
+const catInfo = document.getElementById('catInfo');
+document.addEventListener('DOMContentLoaded', async () => {
+    displayRandomCats();
+    const catSelector = document.getElementById('catSelector');
+    catSelector.innerHTML = `
+    <select id="catSelect">
+        <optgroup label="Random Cat">
+            <option value="showCat" selected>Show Random Cats</option>
+        </optgroup>
+        <optgroup label="Cat by Breed" id="catBreedOptGroup">
+            <option value="catBreed" id="catBreed" hidden>Choose a Cat Breed</option>
+        </optgroup>
+    </select>
+    `;
+    try {
+        const catSelect = document.getElementById('catSelect');
+        const catBreedOptGroup = document.getElementById('catBreedOptGroup');
+        const breeds = await CatAPI.getCatBreeds();
+        CatAPI.setCatBreedOptions(catBreedOptGroup, breeds);
         catSelect.addEventListener('change', async (event) => {
-            const catBreed = event.target.value
-            if (catBreed == 'showCat') {
-                await displayRandomCat()
-            } else {
-                const catData = data.find((cat) => cat.id === catBreed)
-                const catName = catData.name
-                await displayCatBreed(catBreed, catName, catData)
+            const catBreedEvent = event.target.value;
+            if (catBreedEvent === 'showCat') {
+                displayRandomCats();
             }
-        })
-    } catch (e) {
-        console.log('There was a problem fetching the breed list.')
+            else {
+                const selectedBreed = breeds.find((breed) => breed.id === catBreedEvent);
+                if (selectedBreed) {
+                    displayCatBreed(selectedBreed);
+                }
+            }
+        });
     }
-}
-async function displayRandomCat() {
-    catNameHeading.textContent = 'Random Cat Image'
-    catParagraph.textContent = ''
-    catInfo.textContent = ''
-    console.log('showing random cat')
-    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh'
-    const CAT_URL = `https://api.thecatapi.com/v1/images/search?limit=1&${CAT}`
-    try {
-        const response = await await fetch(CAT_URL)
-        const data = await response.json()
-        const catImage = data[0].url
-        const catImg = `<img src="${catImage}" alt="cat" height="300px" width="auto">`
-        catDiv.innerHTML = catImg
-    } catch (error) {
-        console.log('There was a problem fetching a cat image.')
+    catch (error) {
+        console.error(error);
     }
+});
+const { Splide } = window;
+async function displayRandomCats() {
+    catHeading.textContent = 'Random Cats';
+    catParagraph.textContent = '';
+    catInfo.innerHTML = '';
+    console.log('showing random cats');
+    const data = await CatAPI.getCatImageData(4);
+    const catImg = data.map((cat) => cat.url);
+    catDiv.innerHTML = `
+    <section class="splide" aria-label="Splide Cat Images">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><img src="${catImg[0]}" height="350px" width="auto"></li>
+                <li class="splide__slide"><img src="${catImg[1]}" height="350px" width="auto"></li>
+                <li class="splide__slide"><img src="${catImg[2]}" height="350px" width="auto"></li>
+                <li class="splide__slide"><img src="${catImg[3]}" height="350px" width="auto"></li>
+            </ul>
+        </div>
+    </section>
+    `;
+    const options = { type: 'loop', padding: '5rem' };
+    new Splide('.splide', options).mount();
 }
-async function displayCatBreed(breedId, breedName, breedData) {
-    catNameHeading.textContent = `${breedName}`
-    catParagraph.textContent = `${breedData.description}`
+async function displayCatBreed(catBreed) {
+    catHeading.textContent = catBreed.name;
+    catParagraph.textContent = catBreed.description;
     catInfo.innerHTML = `
-    <p>Temperament: ${breedData.temperament}<br>Alternate Names: ${breedData.alt_names || 'None'}</p>
-    `
-    console.log(`showing ${breedName}`)
-    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh'
-    const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}`
-    try {
-        const response = await fetch(BREED_URL, { headers: { 'x-api-key': CAT } })
-        const data = await response.json()
-        const catImages = data.map((cat) => cat.url)
-        if (catImages.length === 0) {
-            console.log(`no images found for ${breedName}`)
-            catDiv.innerHTML = `<p>no images found for ${breedName}</p>`
-            return
-        }
-        if (catImages.length < 4) {
-            console.log(`${breedName} has less than 4 images`)
-            const catImg = `
-            <div class="catRow">
-                <div class="catColumn">
-                    <img src="${catImages[0]}" ${breedName}" height="250px" width="auto">
-                </div>
-            </div>
-            `
-            catDiv.innerHTML = catImg
-            return
-        } else {
-            /*const catImg = (`
-            <div class="catRow">
-                <div class="catColumn">
-                    <img src="${catImages[0]}" alt="${breedName}" height="250px" width="auto">
-                    <img src="${catImages[1]}" alt="${breedName}" height="250px" width="auto">
-                </div>
-                <div class="catColumn">
-                    <img src="${catImages[2]}" alt="${breedName}" height="250px" width="auto">
-                    <img src="${catImages[3]}" alt="${breedName}" height="250px" width="auto">
-                <div>
-            </div>
-            `);*/
-            const catImg = `
-            <section class="splide" aria-label="Splide Basic Cat Images" style="width:400px; margin: auto;">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide"><img src="${catImages[0]}" alt="${breedName}" height="250px" width="auto"></li>
-                    <li class="splide__slide"><img src="${catImages[1]}" alt="${breedName}" height="250px" width="auto"></li>
-                    <li class="splide__slide"><img src="${catImages[2]}" alt="${breedName}" height="250px" width="auto"></li>
-                    <li class="splide__slide"><img src="${catImages[3]}" alt="${breedName}" height="250px" width="auto"></li>
-                </ul>
-            </div>
-            </section>
-            `
-            catDiv.innerHTML = catImg
-            const { Splide } = window
-            var splide = new Splide('.splide', {
-                type: 'fade',
-                rewind: true,
-            })
-            splide.mount()
-        }
-    } catch (error) {
-        console.log(`There was a problem fetching ${breedName} images.`)
+    <p>Temperament: ${catBreed.temperament}<br>Alternate Names: ${catBreed.alt_names || 'None'}</p>
+    `;
+    console.log(`now showing ${catBreed.name}`);
+    const limit = 4;
+    const data = await CatAPI.getCatImageData(limit, catBreed.id);
+    const catImages = data.map((cat) => cat.url);
+    catDiv.innerHTML = getDisplayHTML(catImages, catBreed.name);
+    const options = { type: 'loop', padding: '5rem' };
+    new Splide('.splide', options).mount();
+}
+function getDisplayHTML(img, name) {
+    const dimensions = "height='350px' width='auto'";
+    if (img.length === 0) {
+        console.log(`No images found for ${name}.`);
+        return `<h4>No images found for ${name}.</h4>`;
+    }
+    else if (img.length === 1) {
+        console.log(`${name} has only 1 image`);
+        return `<img src="${img[0]}" alt="${name}" ${dimensions}>`;
+    }
+    else if (img.length < 3) {
+        console.log(`${name} has less than 3 images`);
+        return `
+        <section class="splide" aria-label="Splide Cat Images">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><img src="${img[0]}" alt="${name}" ${dimensions}></li>
+                <li class="splide__slide"><img src="${img[1]}" alt="${name}" ${dimensions}></li>
+            </ul>
+        </div>
+        </section>
+        `;
+    }
+    else {
+        return `
+        <section class="splide" aria-label="Splide Cat Images">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><img src="${img[0]}" alt="${name}" ${dimensions}></li>
+                <li class="splide__slide"><img src="${img[1]}" alt="${name}" ${dimensions}></li>
+                <li class="splide__slide"><img src="${img[2]}" alt="${name}" ${dimensions}></li>
+                <li class="splide__slide"><img src="${img[3]}" alt="${name}" ${dimensions}></li>
+            </ul>
+        </div>
+        </section>
+        `;
     }
 }
+//# sourceMappingURL=cat.js.map

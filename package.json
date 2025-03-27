@@ -25,6 +25,7 @@
     "typescript": "^5.8.2"
   },
   "scripts": {
+    "scripts": "tsc --project ./config/tsconfig.json",
     "styles": "sass ./scss:./css",
     "lint": "eslint **/*.js",
     "format": "prettier --write ts/ && lint"
