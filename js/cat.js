@@ -1,65 +1,63 @@
-const catSelect = document.getElementById('catSelect');
-const catDiv = document.getElementById("catDisplay");
-const catNameHeading = document.getElementById('catNameHeading');
-const catParagraph = document.getElementById("catParagraph");
-const catInfo = document.getElementById("catInfo");
+const catSelect = document.getElementById('catSelect')
+const catDiv = document.getElementById('catDisplay')
+const catNameHeading = document.getElementById('catNameHeading')
+const catParagraph = document.getElementById('catParagraph')
+const catInfo = document.getElementById('catInfo')
 document.addEventListener('DOMContentLoaded', () => {
-    createCatBreedOptions();
-    displayRandomCat();
-});
+    createCatBreedOptions()
+    displayRandomCat()
+})
 async function createCatBreedOptions() {
-    const URL = `https://api.thecatapi.com/v1/breeds`;
+    const URL = `https://api.thecatapi.com/v1/breeds`
     try {
-        const response = await fetch(URL);
-        const data = await response.json();
+        const response = await fetch(URL)
+        const data = await response.json()
         for (let i = 0; i < data.length; i++) {
-            const catOption = document.createElement('option');
-            catOption.value = data[i].id;
-            catOption.textContent = data[i].name;
-            catSelect.appendChild(catOption);
+            const catOption = document.createElement('option')
+            catOption.value = data[i].id
+            catOption.textContent = data[i].name
+            catSelect.appendChild(catOption)
         }
-        catSelect.addEventListener('change', async(event) => {
+        catSelect.addEventListener('change', async (event) => {
             const catBreed = event.target.value
             if (catBreed == 'showCat') {
-                await displayRandomCat();
+                await displayRandomCat()
             } else {
-                const catData = data.find((cat) => cat.id === catBreed);
-                const catName = catData.name;
-                await displayCatBreed(catBreed,catName,catData);
+                const catData = data.find((cat) => cat.id === catBreed)
+                const catName = catData.name
+                await displayCatBreed(catBreed, catName, catData)
             }
-        });
-    }
-    catch (e) {
-        console.log("There was a problem fetching the breed list.");
+        })
+    } catch (e) {
+        console.log('There was a problem fetching the breed list.')
     }
 }
 async function displayRandomCat() {
-    catNameHeading.textContent = 'Random Cat Image';
-    catParagraph.textContent = '';
-    catInfo.textContent = '';
-    console.log('showing random cat');
-    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
-    const CAT_URL = `https://api.thecatapi.com/v1/images/search?limit=1&${CAT}`;
+    catNameHeading.textContent = 'Random Cat Image'
+    catParagraph.textContent = ''
+    catInfo.textContent = ''
+    console.log('showing random cat')
+    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh'
+    const CAT_URL = `https://api.thecatapi.com/v1/images/search?limit=1&${CAT}`
     try {
-        const response = await (await fetch(CAT_URL));
-        const data = await response.json();
-        const catImage = data[0].url;
-        const catImg = (`<img src="${catImage}" alt="cat" height="300px" width="auto">`);
-        catDiv.innerHTML = catImg;
-    }
-    catch (error) {
-        console.log("There was a problem fetching a cat image.");
+        const response = await await fetch(CAT_URL)
+        const data = await response.json()
+        const catImage = data[0].url
+        const catImg = `<img src="${catImage}" alt="cat" height="300px" width="auto">`
+        catDiv.innerHTML = catImg
+    } catch (error) {
+        console.log('There was a problem fetching a cat image.')
     }
 }
-async function displayCatBreed(breedId,breedName,breedData) {
-    catNameHeading.textContent = (`${breedName}`);
-    catParagraph.textContent = (`${breedData.description}`);
-    catInfo.innerHTML = (`
-    <p>Temperament: ${breedData.temperament}<br>Alternate Names: ${breedData.alt_names || "None"}</p>
-    `);
-    console.log(`showing ${breedName}`);
-    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh';
-    const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}`;
+async function displayCatBreed(breedId, breedName, breedData) {
+    catNameHeading.textContent = `${breedName}`
+    catParagraph.textContent = `${breedData.description}`
+    catInfo.innerHTML = `
+    <p>Temperament: ${breedData.temperament}<br>Alternate Names: ${breedData.alt_names || 'None'}</p>
+    `
+    console.log(`showing ${breedName}`)
+    const CAT = 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh'
+    const BREED_URL = `https://api.thecatapi.com/v1/images/search?limit=4&breed_id=${breedId}`
     try {
         const response = await fetch(BREED_URL, { headers: { 'x-api-key': CAT } })
         const data = await response.json()
@@ -70,18 +68,17 @@ async function displayCatBreed(breedId,breedName,breedData) {
             return
         }
         if (catImages.length < 4) {
-            console.log(`${breedName} has less than 4 images`);
-            const catImg = (`
+            console.log(`${breedName} has less than 4 images`)
+            const catImg = `
             <div class="catRow">
                 <div class="catColumn">
                     <img src="${catImages[0]}" ${breedName}" height="250px" width="auto">
                 </div>
             </div>
-            `);
+            `
             catDiv.innerHTML = catImg
             return
-        }
-        else {
+        } else {
             /*const catImg = (`
             <div class="catRow">
                 <div class="catColumn">
@@ -94,7 +91,7 @@ async function displayCatBreed(breedId,breedName,breedData) {
                 <div>
             </div>
             `);*/
-            const catImg = (`
+            const catImg = `
             <section class="splide" aria-label="Splide Basic Cat Images" style="width:400px; margin: auto;">
             <div class="splide__track">
                 <ul class="splide__list">
@@ -105,14 +102,14 @@ async function displayCatBreed(breedId,breedName,breedData) {
                 </ul>
             </div>
             </section>
-            `);
+            `
             catDiv.innerHTML = catImg
-            const { Splide } = window;
+            const { Splide } = window
             var splide = new Splide('.splide', {
                 type: 'fade',
                 rewind: true,
-            });
-            splide.mount();
+            })
+            splide.mount()
         }
     } catch (error) {
         console.log(`There was a problem fetching ${breedName} images.`)

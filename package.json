@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "felixthecat8a",
   "type": "commonjs",
   "description": "",
@@ -16,9 +16,11 @@
   },
   "homepage": "https://github.com/felixthecat8a/example#readme",
   "dependencies": {
+    "prettier": "^3.5.3",
     "sass": "^1.86.0"
   },
   "scripts": {
-    "style": "sass ./scss:./css --watch"
+    "styles": "sass ./scss:./css",
+    "format": "prettier --write ts/"
   }
 }
