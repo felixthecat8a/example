@@ -293,7 +293,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
                 forecastDay.classList.add('dayId')
                 forecastDay.setAttribute('title', `${data.name[i]}: ${data.forecast[i]}`)
                 forecastDay.innerHTML = `
-                    <span class="day">${data.name[i].substring(0, 3)}:</span> ${data.rain[0]}%<br>
+                    <span class="day">${data.name[i].substring(0, 3)}:</span> ${data.rain[i]}%<br>
                     <span class="hi">${data.temperature[i]}&deg;F</span><br>
                     <span class="lo">${data.temperature[i + 1]}&deg;F</span><br>
                     <img src="${data.icon[i]}" alt="icon" height="auto" width="75%">
