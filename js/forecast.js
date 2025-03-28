@@ -332,7 +332,7 @@ async function displayWeather(useGeoLocation) {
     const forecast = new NationalWeatherServiceDataDisplay('displayDiv', 'apiLink');
     await forecast.setDisplay(useGeoLocation);
 }
-const CAT = new TheCatAPI_Weather();
+const CAT = new TheCatAPI();
 class CatDisplay extends LinkUtility {
     displayDIV;
     constructor(displayId, linkId) {
@@ -369,9 +369,6 @@ class CatDisplay extends LinkUtility {
                 <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
             </div>
         </div>
-        <a href="https://glidejs.com/" target="_blank" rel="noopener noreferrer">
-            <span style="color: #ed145b;">Glide</span>.js
-        </a>
         `;
         const options = { autoplay: 3000, hoverpause: false };
         const { Glide } = window;

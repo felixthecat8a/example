@@ -20,7 +20,9 @@ class Weather {
         const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' })
         const request = new Request(url, { headers: headers })
         const response = await fetch(request)
-        if (!response.ok) throw new Error(`${response.status} Data Not Found: ${response.url}`)
+        if (!response.ok) {
+            throw new Error(`${response.status} Data Not Found: ${response.url}`)
+        }
         return response.json() as Promise<T>
     }
     public static formatDate(dateTime: string): string {
@@ -135,7 +137,9 @@ class StatusUtility {
     private readonly statusDIV: HTMLDivElement
     constructor(statusDivElement: string) {
         const element = document.getElementById(statusDivElement) as HTMLDivElement
-        if (!element) throw new Error(`Status Div Element Not Found`)
+        if (!element) {
+            throw new Error(`Status Div Element Not Found`)
+        }
         this.statusDIV = element
     }
     public setStatus(status: string | null): void {
@@ -243,63 +247,4 @@ class WeatherApexCharts {
     }
 }
 /**************************************************************************************************/
-type BreedData = {
-    id: string
-    name: string
-    description: string
-    temperament: string
-    alt_names?: string
-}
-type Cat_IMG = { id: string; url: string; width: number; height: number }
-class Cat_Display {
-    private static readonly CAT_API = {
-        BASE_URL: 'https://api.thecatapi.com/v1',
-        KEY: 'live_8e9vqpLpntUSCiumthQu2zHnvYwMOIMF1JLdWpcUKeqztLa53mfjoZcz3GrymaBh',
-    }
-    public static async fetchCatBreeds<T>(): Promise<T> {
-        const request = new Request(`${this.CAT_API.BASE_URL}/breeds`)
-        const response = await fetch(request)
-        if (!response.ok) {
-            throw new Error(`${response.status} Breed Options Not Found!`)
-        }
-        return await response.json()
-    }
-    public static getCatBreedOptions(breeds: BreedData[]): DocumentFragment {
-        const fragment = new DocumentFragment()
-        for (const breed of breeds) {
-            const option = document.createElement('option') as HTMLOptionElement
-            option.value = breed.id
-            option.textContent = breed.name
-            fragment.append(option)
-        }
-        return fragment
-    }
-    public static async fetchCatImageData(limit: number, breedId?: string): Promise<Cat_IMG[]> {
-        const url = new URL(`${this.CAT_API.BASE_URL}/images/search`)
-        url.searchParams.set('limit', String(limit))
-        if (breedId) {
-            url.searchParams.append('breed_id', breedId)
-        }
-        const response = await fetch(url, { headers: { 'x-api-key': this.CAT_API.KEY } })
-        if (!response.ok) {
-            throw new Error(`${response.status} Images Not Found`)
-        }
-        return await response.json()
-    }
-}
-/**************************************************************************************************/
-class TheCatAPI_Weather {
-    public readonly LINK = { title: 'The Cat API', target: 'https://www.thecatapi.com' }
-    constructor() {}
-    public async getCatBreeds(): Promise<BreedData[]> {
-        return await Cat_Display.fetchCatBreeds()
-    }
-    public setCatBreedOptions(optGroup: HTMLOptGroupElement, breeds: BreedData[]): void {
-        const options = Cat_Display.getCatBreedOptions(breeds)
-        optGroup.appendChild(options)
-    }
-    public async getCatImageData(limit: number, breedId?: string): Promise<Cat_IMG[]> {
-        return Cat_Display.fetchCatImageData(limit, breedId)
-    }
-}
-/**************************************************************************************************/
+module.exports = { NationalWeatherServiceAPI, StatusUtility, WeatherApexCharts }

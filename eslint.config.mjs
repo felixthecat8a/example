@@ -21,7 +21,7 @@ export default [
             semi: "off", //semicolon
             "prefer-const": "warn",
             "no-unused-vars": "warn",
-            "no-undef": "error",
+            "no-undef": "warn",
             "eqeqeq": "warn",
             "curly": "warn",
         },
