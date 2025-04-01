@@ -187,7 +187,6 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
     weekForecast;
     forecastChart;
     twentyfourhourChart;
-    AltonFixedCoords = { latitude: 26.2845, longitude: -98.3174 };
     constructor(displayId, linkId) {
         super(linkId);
         super.setLink(NWS.LINK.title, NWS.LINK.target);
@@ -206,7 +205,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
         this.twentyfourhourChart = new WeatherChartJS('hourId', 'hourCTX');
     }
     async setDisplay(useGeoLocation) {
-        let coords = this.AltonFixedCoords;
+        let coords = { latitude: 26.3091, longitude: -98.1021 };
         if (useGeoLocation) {
             coords = (await NWS.getCoords()) || coords;
         }
@@ -298,7 +297,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    displayWeather();
+    displayWeather(true);
 });
 const apiSELECT = document.getElementById('apiSelect');
 apiSELECT.addEventListener('change', async (event) => {

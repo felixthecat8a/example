@@ -225,7 +225,6 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
     //private readonly twentyfourhourChart: WeatherApexCharts
     private readonly forecastChart: WeatherChartJS
     private readonly twentyfourhourChart: WeatherChartJS
-    public readonly AltonFixedCoords = { latitude: 26.2845, longitude: -98.3174 }
     constructor(displayId: string, linkId: string) {
         super(linkId)
         super.setLink(NWS.LINK.title, NWS.LINK.target)
@@ -246,7 +245,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
         this.twentyfourhourChart = new WeatherChartJS('hourId', 'hourCTX')
     }
     public async setDisplay(useGeoLocation?: boolean): Promise<void> {
-        let coords = this.AltonFixedCoords
+        let coords = { latitude: 26.3091, longitude: -98.1021 }
         if (useGeoLocation) {
             coords = (await NWS.getCoords()) || coords
         }
@@ -337,7 +336,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
     }
 } /*************************************************************************************************/
 document.addEventListener('DOMContentLoaded', () => {
-    displayWeather()
+    displayWeather(true)
 })
 const apiSELECT = document.getElementById('apiSelect') as HTMLSelectElement
 apiSELECT.addEventListener('change', async (event: Event) => {
