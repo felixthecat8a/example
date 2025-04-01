@@ -1,42 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="UTF-8"><meta name="author" content="felixthecat8a">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <title>Simple JavaScript Examples</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- Animatelo -->
-    <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
-    <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
-    <!-- HighlightJS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
-    <script>hljs.highlightAll();</script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8"><meta name="author" content="felixthecat8a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <title>Simple JavaScript Examples</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Animatelo -->
+  <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
+  <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
+  <!-- HighlightJS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+  <script>hljs.highlightAll();</script>
 </head>
 <body>
-    <header>
-        <h1>Number Guessing Game Code</h1>
-        <nav>
-            <a href="../index.html"><u>Home</u></a>
-        </nav>
-    </header>
-    <main>
-      <hr>
-      <br>
-      <section id="numberGuessingGameContainer">
-        <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
-        <div id="numberGuessingGame"></div><br>
-        <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
-        <script>
-
-        </script>
-      </section>
-      <br>
-        <article>
-            <pre><code class="language-javascript" style="text-align: left;">
+  <header>
+    <h1>Number Guessing Game Code</h1>
+    <nav>
+      <a href="../index.html"><u>Home</u></a>
+    </nav>
+  </header>
+  <main>
+    <hr>
+    <br>
+    <section id="numberGuessingGameContainer">
+      <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
+      <div id="numberGuessingGame"></div><br>
+      <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
+      <script>
+const gameDIV = document.getElementById('numberGuessingGame')
+const gameButton = '<button type="button" onclick="playGame(7)">Click to Play</button>'
+document.addEventListener('DOMContentLoaded', () => {
+  gameDIV.innerHTML = gameButton
+})
+function playGame(limit) {
+  window.animatelo.jackInTheBox('#numberGuessingGameContainer')
+  gameDIV.innerHTML = `
+  <input type="number" id="guess" min="1" max="100" placeholder="Guess">
+  <button type="button" id="check">Check</button><br>
+  <h3 id="heading">Guess the number from 1 to 100<br>in ${limit} tries or less.</h3>
+  <meter value="0" min="0" high="5" max="${limit}" id="meter"></meter><br>
+  <button type="button" id="playAgain">Play Again?</button>
+  <button type="button" id="close">Close</button>
+  `
+  const heading = document.getElementById('heading')
+  heading.style.color = 'mediumaquamarine'
+  const guessInput = document.getElementById('guess')
+  const checkButton = document.getElementById('check')
+  const attemptMeter = document.getElementById('meter')
+  const playAgainButton = document.getElementById('playAgain')
+  const close = document.getElementById('close')
+  const answer = Math.floor(Math.random() * 100) + 1
+  console.log(answer)
+  let attempts = 0
+  attemptMeter.value = 0
+  guessInput.addEventListener('keypress', function (event) {
+      if (event.key === 'Enter') {
+          event.preventDefault()
+          checkButton.click()
+      }
+  })
+  checkButton.addEventListener('click', () => {
+      if (guessInput.value) {
+          checkNumber(Number(guessInput.value))
+      }
+  })
+  function checkNumber(guessNumber) {
+    attempts++
+    attemptMeter.value = attempts
+    if (attempts < limit || guessNumber == answer) {
+      if (guessNumber < answer) {
+        window.animatelo.shake('#heading')
+        updateHeading( `Too low. Try again.\nAttempts Left: ${limit - attempts}`, 'cornflowerblue' )
+      } else if (guessNumber > answer) {
+        window.animatelo.shake('#heading')
+        updateHeading( `Too high. Try again.\nAttempts Left: ${limit - attempts}`, 'palevioletred' )
+      } else {
+        window.animatelo.rubberBand('#heading')
+        const tries = attempts === 1 ? 'try' : 'tries'
+        updateHeading(`${answer} is correct\nin only ${attempts} ${tries}!`, 'gold')
+        disableCheckButton()
+      }
+    } else {
+      window.animatelo.flash('#heading')
+      updateHeading(`You've reached the limit.\nThe number was ${answer}.`, 'orchid')
+      disableCheckButton()
+    }
+  }
+  function updateHeading(text, color) {
+    heading.innerText = text
+    heading.style.color = color
+  }
+  function disableCheckButton() {
+    checkButton.disabled = true
+    checkButton.style.opacity = '0.5'
+  }
+  playAgainButton.onclick = function () {
+    playGame(7)
+  }
+  close.addEventListener('click', function () {
+    window.animatelo.flip('#numberGuessingGame')
+    gameDIV.innerHTML = gameButton
+  })
+}
+      </script>
+    </section>
+    <br>
+    <article>
+      <pre><code class="language-javascript" style="text-align: left;">
 //Number Guessing Game JavaScript Code (minus animations)
 const gameDIV = document.getElementById("numberGuessingGame");
 const gameButton = '&lt;button type="button" onclick="playGame()"&gt;Click to Play&lt;/button&gt;';
@@ -97,15 +171,15 @@ function playGame() {
     playAgainButton.onclick = function () { playGame() };
     close.addEventListener("click", () => { gameDIV.innerHTML = gameButton });
 };
-            </code></pre>
-        </article>
-        <br>
-    </main>
-    <footer>
-        <style>.githubName {color: mediumseagreen} .githubName:hover {color: seagreen}</style>
-        <h4><a href="https://github.com/felixthecat8a/example" target="_blank" rel="noopener noreferrer">
-            <span class="githubName">felixthecat8a&#128008;</span>
-        </a></h4>
-    </footer>
+      </code></pre>
+    </article>
+    <br>
+  </main>
+  <footer>
+    <style>.githubName {color: mediumseagreen} .githubName:hover {color: seagreen}</style>
+    <h4><a href="https://github.com/felixthecat8a/example" target="_blank" rel="noopener noreferrer">
+      <span class="githubName">felixthecat8a&#128008;</span>
+    </a></h4>
+  </footer>
 </body>
 </html>
