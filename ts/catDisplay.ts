@@ -54,16 +54,15 @@ async function displayRandomCats(): Promise<void> {
     <section class="splide" aria-label="Splide Cat Images">
         <div class="splide__track">
             <ul class="splide__list">
-                <li class="splide__slide"><img src="${catImg[0]}" height="350px" width="${imgWidth[0]}"></li>
-                <li class="splide__slide"><img src="${catImg[1]}" height="350px" width="${imgWidth[1]}"></li>
-                <li class="splide__slide"><img src="${catImg[2]}" height="350px" width="${imgWidth[2]}"></li>
-                <li class="splide__slide"><img src="${catImg[3]}" height="350px" width="${imgWidth[3]}"></li>
+                <li class="splide__slide"><img src="${catImg[0]}" height="350px" width="auto"></li>
+                <li class="splide__slide"><img src="${catImg[1]}" height="350px" width="auto"></li>
+                <li class="splide__slide"><img src="${catImg[2]}" height="350px" width="auto"></li>
+                <li class="splide__slide"><img src="${catImg[3]}" height="350px" width="auto"></li>
             </ul>
         </div>
     </section>
     `
-    const options = { autoWidth: true, type: 'loop', padding: '5rem' }
-    new Splide('.splide', options).mount()
+    new Splide('.splide').mount()
 }
 /****************************************************************************************************/
 async function displayCatBreed(catBreed: CatBreedData) {
@@ -78,8 +77,7 @@ async function displayCatBreed(catBreed: CatBreedData) {
     const catImages = data.map((cat: { url: string }) => cat.url)
     const imgWidth = data.map((cat: { width: number }) => cat.width)
     catDiv.innerHTML = getDisplayHTML(catImages, catBreed.name, imgWidth)
-    //const options = { type: 'fade', rewind: true }
-    const options = { autoWidth: true, type: 'loop', padding: '5rem' }
+    const options = { type: 'fade', rewind: true }
     new Splide('.splide', options).mount()
 }
 function getDisplayHTML(img: string[], name: string, imgWidth: number[]): string {
@@ -88,15 +86,15 @@ function getDisplayHTML(img: string[], name: string, imgWidth: number[]): string
         return `<h4>No images found for ${name}.</h4>`
     } else if (img.length === 1) {
         console.log(`${name} has only 1 image`)
-        return `<img src="${img[0]}" alt="${name}" height='350px' width='${imgWidth[0]}'>`
+        return `<img src="${img[0]}" alt="${name}" height='350px' width='auto'>`
     } else if (img.length < 3) {
         console.log(`${name} has less than 3 images`)
         return `
         <section class="splide" aria-label="Splide Cat Images">
         <div class="splide__track">
             <ul class="splide__list">
-                <li class="splide__slide"><img src="${img[0]}" alt="${name}" height='350px' width='${imgWidth[0]}'></li>
-                <li class="splide__slide"><img src="${img[1]}" alt="${name}" height='350px' width='${imgWidth[1]}'></li>
+                <li class="splide__slide"><img src="${img[0]}" alt="${name}" height='350px' width='auto'></li>
+                <li class="splide__slide"><img src="${img[1]}" alt="${name}" height='350px' width='auto'></li>
             </ul>
         </div>
         </section>
@@ -106,10 +104,10 @@ function getDisplayHTML(img: string[], name: string, imgWidth: number[]): string
         <section class="splide" aria-label="Splide Cat Images">
         <div class="splide__track">
             <ul class="splide__list">
-                <li class="splide__slide"><img src="${img[0]}" alt="${name}" height='350px' width='${imgWidth[0]}'></li>
-                <li class="splide__slide"><img src="${img[1]}" alt="${name}" height='350px' width='${imgWidth[1]}'></li>
-                <li class="splide__slide"><img src="${img[2]}" alt="${name}" height='350px' width='${imgWidth[2]}'></li>
-                <li class="splide__slide"><img src="${img[3]}" alt="${name}" height='350px' width='${imgWidth[3]}'></li>
+                <li class="splide__slide"><img src="${img[0]}" alt="${name}" height='350px' width='auto'></li>
+                <li class="splide__slide"><img src="${img[1]}" alt="${name}" height='350px' width='auto'></li>
+                <li class="splide__slide"><img src="${img[2]}" alt="${name}" height='350px' width='auto'></li>
+                <li class="splide__slide"><img src="${img[3]}" alt="${name}" height='350px' width='auto'></li>
             </ul>
         </div>
         </section>
