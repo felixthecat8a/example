@@ -73,12 +73,11 @@ async function displayCatBreed(catBreed) {
     const limit = 4;
     const data = await CatAPI.getCatImageData(limit, catBreed.id);
     const catImages = data.map((cat) => cat.url);
-    const imgWidth = data.map((cat) => cat.width);
-    catDiv.innerHTML = getDisplayHTML(catImages, catBreed.name, imgWidth);
+    catDiv.innerHTML = getDisplayHTML(catImages, catBreed.name);
     const options = { type: 'fade', rewind: true };
     new Splide('.splide', options).mount();
 }
-function getDisplayHTML(img, name, imgWidth) {
+function getDisplayHTML(img, name) {
     if (img.length === 0) {
         console.log(`No images found for ${name}.`);
         return `<h4>No images found for ${name}.</h4>`;
