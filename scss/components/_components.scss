@@ -1,16 +1,31 @@
-@forward './forms';
-@forward './tables';
-
-@mixin elements {
+@mixin anchors {
     a {
         text-decoration: none;
-        &:link, &:visited {color:#ddd;}
-        &:hover, &:active {color:#aaa;}
+        &:link,
+        &:visited {
+            color: #ddd;
+        }
+        &:hover,
+        &:active {
+            color: #aaa;
+        }
     }
+}
+
+@mixin abbreviations {
     abbr[title] {
         text-decoration: none !important;
     }
+}
+
+@mixin figure-captions {
     figcaption {
         font-size: small;
     }
+}
+
+@mixin elements {
+    @include anchors;
+    @include abbreviations;
+    @include figure-captions;
 }

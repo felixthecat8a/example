@@ -1,0 +1,22 @@
+// _cat.scss
+@mixin cat-page {
+    #cat_container {
+        text-align: center;
+    }
+
+    #catDisplay {
+        display: flex;
+        justify-content: space-evenly;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    #catHeading {
+        color: darkorange;
+    }
+
+    .splide {
+        margin: auto;
+        width: 95%;
+    }
+}

@@ -1,3 +1,4 @@
+@use "sass:map";
 @use 'sass:math';
 @function rem($pixel) {
     @if math.is-unitless($pixel) {
@@ -6,62 +7,92 @@
         @error 'Don\'t use units when using the rem() function';
     }
 }
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-html, body {
-    height: 100%;
-}
-//* Font Families */
-$font-serif: "Times New Roman", Times, serif;
+//Font Families
+$font-serif: 'Times New Roman', Times, serif;
 $font-sans: Arial, Helvetica, sans-serif;
-$font-mono: "Lucida Console", Courier, monospace;
-body {
-    font-family: $font-sans;
-    background-color: #333;
-    color:azure;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    h1 {
-        color:mediumseagreen;
-        margin: rem(19);
+$font-mono: 'Lucida Console', Courier, monospace;
+$font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
+@mixin base() {
+    *, *::before, *::after {
+        box-sizing: border-box;
     }
-    h2 {
-        color:lightseagreen;
-        margin: rem(17);
+    html, body {
+        height: 100%;
     }
-    h3 {
-        color:darkorange;
-        margin: rem(15);
+    body {
+        font-family: map.get($font-family, "sans");
+        background-color: #333;
+        color: azure;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        h1 {
+            color: mediumseagreen;
+            margin: rem(19);
+        }
+        h2 {
+            color: lightseagreen;
+            margin: rem(17);
+        }
+        h3 {
+            color: darkorange;
+            margin: rem(15);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+        }
+        @include header;
+        @include main;
+        @include footer;
     }
-    h1, h2, h3, h4, h5, h6 {
-        text-align: center;
+
+    @media all and (max-width: rem(500)) {
+        body {
+            width: rem(500);
+            font-size: 0.8rem;
+        }
+        main {
+            width: rem(495);
+        }
     }
+}
+@mixin navigation {
+    %unordered-list {
+        list-style-type: none;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    %list-item {
+        padding: 0 rem(5);
+        display: inline-block;
+    }
+    nav {
+        font-size: medium;
+        font-weight: bold;
+        display: inline-block;
+        ul {
+            @extend %unordered-list;
+        }
+        li {
+            @extend %list-item;
+        }
+    }
+}
+@mixin header() {
     header {
         text-align: center;
         width: 100%;
         position: static;
         top: 0;
         padding: rem(5);
-        nav {
-            font-size: medium;
-            font-weight: bold;
-            display: inline-block;
-            ul {
-                list-style-type: none;
-                overflow: hidden;
-                margin: 0;
-                padding: 0;
-            }
-            li {
-                padding: 0 rem(5);
-                display: inline-block;
-            }
-        }
+        @include navigation()
     }
+}
+@mixin main() {
     main {
-        //width: rem(790); max-width: 90%;
+        //width: rem(790);
+        //max-width: 90%;
         width: min(rem(790), 90%);
         margin: auto;
         article, section {
@@ -69,21 +100,13 @@ body {
             padding: 0;
         }
     }
+}
+@mixin footer() {
     footer {
         text-align: center;
         width: 100%;
         position: static;
         bottom: 0;
         padding: rem(5);
-    }
-}
-
-@media all and (max-width: rem(500)) {
-    body {
-        width: 100%;
-        font-size: 0.8rem;
-    }
-    main {
-        width: 90%;
     }
 }

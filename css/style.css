@@ -36,11 +36,6 @@ body header {
   top: 0;
   padding: 0.3125rem;
 }
-body header nav {
-  font-size: medium;
-  font-weight: bold;
-  display: inline-block;
-}
 body header nav ul {
   list-style-type: none;
   overflow: hidden;
@@ -49,6 +44,11 @@ body header nav ul {
 }
 body header nav li {
   padding: 0 0.3125rem;
+  display: inline-block;
+}
+body header nav {
+  font-size: medium;
+  font-weight: bold;
   display: inline-block;
 }
 body main {
@@ -69,200 +69,11 @@ body footer {
 
 @media all and (max-width: 31.25rem) {
   body {
-    width: 100%;
+    width: 31.25rem;
     font-size: 0.8rem;
   }
   main {
-    width: 90%;
-  }
-}
-.weather-display {
-  max-width: 550px;
-  margin: auto;
-  text-align: center;
-  font-weight: bold;
-  outline: solid thin darkseagreen;
-  border: solid thin darkseagreen;
-  border-radius: 16px;
-  background-color: #333;
-}
-.weather-display .heading-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.weather-display .heading-container .heading-card {
-  margin: auto;
-}
-.weather-display .heading-container .heading-card h1 {
-  color: mediumseagreen;
-  padding: 0;
-  margin: 0;
-}
-.weather-display .heading-container .heading-card h1 a {
-  text-decoration: none;
-}
-.weather-display .heading-container .heading-card h1 a:link, .weather-display .heading-container .heading-card h1 a:visited {
-  color: mediumseagreen;
-}
-.weather-display .heading-container .heading-card h1 a:hover, .weather-display .heading-container .heading-card h1 a:active {
-  color: seagreen;
-}
-.weather-display #currentDiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-top: solid thin darkseagreen;
-}
-.weather-display #currentDiv #currentId {
-  background-color: seagreen;
-  color: honeydew;
-  float: left;
-  flex: 2;
-  height: 100%;
-  word-break: keep-all;
-  padding: 8px;
-}
-.weather-display #currentDiv #nextId {
-  background-color: #333;
-  color: rgb(190.8659217877, 216.6340782123, 190.8659217877);
-  float: right;
-  flex: 1;
-  height: 100%;
-}
-.weather-display #alertsId {
-  border-top: solid thin darkseagreen;
-  background-color: #8b2e62;
-  color: honeydew;
-  text-align: center;
-}
-.weather-display #weekId {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.weather-display #weekId .dayId {
-  flex: 1;
-  background-color: #333;
-  padding: 5px 0;
-  border: solid thin darkseagreen;
-  font-size: smaller;
-  font-weight: bold;
-}
-.weather-display #weekId .dayId .day {
-  color: lightgreen;
-}
-.weather-display #weekId .dayId .hi {
-  color: lightcoral;
-}
-.weather-display #weekId .dayId .lo {
-  color: lightblue;
-}
-.weather-display #chartId {
-  margin: "auto";
-  max-width: "550px";
-  background-color: "#333";
-}
-
-.spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #999;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.cloudLoader {
-  width: 180px;
-  height: 140px;
-  display: block;
-  margin: 0 auto 20px;
-  position: relative;
-  box-sizing: border-box;
-  background-image: radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #FFF 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 15px at 15px 15px, #FFF 100%, transparent 0), linear-gradient(#FFF 50px, transparent 0);
-  background-size: 50px 50px, 100px 75px, 50px 50px, 30px 32px, 136px 20px;
-  background-repeat: no-repeat;
-  background-position: 0px 30px, 30px 0px, 113px 29px, 147px 50px, 23px 60px;
-}
-.cloudLoader::after {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 65px;
-  width: 2px;
-  height: 6px;
-  color: #FFF;
-  box-sizing: border-box;
-  animation: animateLoader 0.6s linear infinite;
-}
-
-@keyframes animateLoader {
-  0% {
-    box-shadow: 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF, 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF;
-  }
-  50% {
-    box-shadow: 25px 20px #FFF, 50px 60px rgba(255, 255, 255, 0), 75px 30px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 40px #FFF, 150px 60px rgba(255, 255, 255, 0), 25px 20px #FFF, 50px 30px #FFF, 75px 10px #FFF, 100px 30px #FFF, 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
-  }
-  100% {
-    box-shadow: 25px 60px rgba(255, 255, 255, 0), 50px 60px rgba(255, 255, 255, 0), 75px 50px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 70px rgba(255, 255, 255, 0), 150px 60px rgba(255, 255, 255, 0), 25px 80px rgba(255, 255, 255, 0), 50px 80px rgba(255, 255, 255, 0), 75px 70px rgba(255, 255, 255, 0), 100px 60px rgba(255, 255, 255, 0), 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
-  }
-}
-/* CAT.HTML */
-#cat_container {
-  text-align: center;
-}
-
-#catDisplay {
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-#catHeading {
-  color: darkorange;
-}
-
-.splide {
-  margin: auto;
-  width: 95%;
-}
-
-#numberGuessingGameContainer {
-  text-align: center;
-  display: block;
-  border: solid medium teal;
-  border-radius: 0.5rem;
-  width: 450px;
-  height: fit-content;
-  margin: auto;
-  padding: 5px 15px;
-}
-
-#numberGuessingGameContainer:hover {
-  outline: solid thin teal;
-  box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9);
-}
-
-@media screen and (max-width: 500px) {
-  #numberGuessingGameContainer {
-    flex: 100%;
-    max-width: 100%;
+    width: 30.9375rem;
   }
 }
 a {
@@ -293,9 +104,10 @@ body form fieldset {
   font-weight: bold;
   padding: 5px 25px 15px 25px;
   border-radius: 5px;
+  border-color: #62aeb2;
 }
 body form legend {
-  color: #62AEB2;
+  color: #62aeb2;
   text-align: left;
   font-size: x-large;
   font-weight: bold;
@@ -311,22 +123,21 @@ body form p {
   font-size: small;
 }
 body .red-link-button, body button, body input[type=reset], body input[type=submit], body textarea, body input[type=text], body input[type=url], body input[type=password], body input[type=number], body select {
+  border: 1px solid #333;
   outline: none;
   box-sizing: border-box;
   text-align: center;
   font-family: inherit;
   font-size: medium;
   font-weight: bold;
-  border-radius: 0.5rem;
+  border-radius: 5px;
   margin: 3px;
   padding: 3px;
 }
 body select {
-  border: 1px solid #333;
   cursor: pointer;
 }
 body input[type=number] {
-  border: 1px solid #333;
   width: 120px;
 }
 body input[type=number]:hover, body input[type=number]:focus {
@@ -335,7 +146,6 @@ body input[type=number]:hover, body input[type=number]:focus {
   background-color: azure;
 }
 body input[type=text], body input[type=url], body input[type=password] {
-  border: 1px solid #333;
   width: fit-content;
 }
 body input[type=text]:hover, body input[type=text]:focus, body input[type=url]:hover, body input[type=url]:focus, body input[type=password]:hover, body input[type=password]:focus {
@@ -344,13 +154,26 @@ body input[type=text]:hover, body input[type=text]:focus, body input[type=url]:h
   background-color: azure;
 }
 body textarea {
-  border: 1px solid #333;
   width: 310px;
 }
 body textarea:hover, body textarea:focus {
   border: 1px solid lightseagreen;
   outline: 1px solid lightseagreen;
   background-color: azure;
+}
+body input[type=checkbox], body input[type=radio] {
+  accent-color: lightseagreen;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0.3rem;
+  cursor: pointer;
+  vertical-align: middle;
+}
+body label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  user-select: none;
 }
 body button, body input[type=reset], body input[type=submit] {
   color: azure;
@@ -369,7 +192,7 @@ body button:hover, body input[type=reset]:hover, body input[type=submit]:hover {
 }
 body button:active, body input[type=reset]:active, body input[type=submit]:active {
   opacity: 60%;
-  transform: scale(1px, 1px);
+  transform: scale(0.98);
   box-shadow: 0.5px 0.5px #666;
 }
 body .red-link-button {
@@ -389,7 +212,7 @@ body .red-link-button:hover {
 }
 body .red-link-button:active {
   opacity: 60%;
-  transform: scale(1px, 1px);
+  transform: scale(0.98);
   box-shadow: 0.5px 0.5px #666;
 }
 body .red-link-button a {
@@ -398,7 +221,7 @@ body .red-link-button a {
 body .red-link-button a:link, body .red-link-button a:visited, body .red-link-button a:hover, body .red-link-button a:active {
   color: snow;
 }
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 550px) {
   body form {
     font-size: 0.8rem;
   }
@@ -426,9 +249,192 @@ body table caption {
   font-weight: normal;
   font-style: italic;
 }
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 550px) {
   body table {
     font-size: 0.8rem;
+  }
+  body table img {
+    max-height: 50px;
+    width: auto;
+  }
+}
+body #cat_container {
+  text-align: center;
+}
+body #catDisplay {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+body #catHeading {
+  color: darkorange;
+}
+body .splide {
+  margin: auto;
+  width: 95%;
+}
+body .weather-display {
+  max-width: 550px;
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+  outline: solid thin darkseagreen;
+  border: solid thin darkseagreen;
+  border-radius: 16px;
+  background-color: #333;
+}
+body .weather-display .heading-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+body .weather-display .heading-container .heading-card {
+  margin: auto;
+}
+body .weather-display .heading-container .heading-card h1 {
+  color: mediumseagreen;
+  padding: 0;
+  margin: 0;
+}
+body .weather-display .heading-container .heading-card h1 a {
+  text-decoration: none;
+}
+body .weather-display .heading-container .heading-card h1 a:link, body .weather-display .heading-container .heading-card h1 a:visited {
+  color: mediumseagreen;
+}
+body .weather-display .heading-container .heading-card h1 a:hover, body .weather-display .heading-container .heading-card h1 a:active {
+  color: seagreen;
+}
+body .weather-display #currentDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top: solid thin darkseagreen;
+}
+body .weather-display #currentDiv #currentId {
+  background-color: seagreen;
+  color: honeydew;
+  float: left;
+  flex: 2;
+  height: 100%;
+  word-break: keep-all;
+  padding: 8px;
+}
+body .weather-display #currentDiv #nextId {
+  background-color: #333;
+  color: rgb(190.8659217877, 216.6340782123, 190.8659217877);
+  float: right;
+  flex: 1;
+  height: 100%;
+}
+body .weather-display #alertsId {
+  border-top: solid thin darkseagreen;
+  background-color: #8b2e62;
+  color: honeydew;
+  text-align: center;
+}
+body .weather-display #weekId {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+body .weather-display #weekId .dayId {
+  flex: 1;
+  background-color: #333;
+  padding: 5px 0;
+  border: solid thin darkseagreen;
+  font-size: smaller;
+  font-weight: bold;
+}
+body .weather-display #weekId .dayId .day {
+  color: lightgreen;
+}
+body .weather-display #weekId .dayId .hi {
+  color: lightcoral;
+}
+body .weather-display #weekId .dayId .lo {
+  color: lightblue;
+}
+body .weather-display #chartId {
+  margin: "auto";
+  max-width: "550px";
+  background-color: "#333";
+}
+body .spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #999;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+body .cloudLoader {
+  width: 180px;
+  height: 140px;
+  display: block;
+  margin: 0 auto 20px;
+  position: relative;
+  box-sizing: border-box;
+  background-image: radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #FFF 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 15px at 15px 15px, #FFF 100%, transparent 0), linear-gradient(#FFF 50px, transparent 0);
+  background-size: 50px 50px, 100px 75px, 50px 50px, 30px 32px, 136px 20px;
+  background-repeat: no-repeat;
+  background-position: 0px 30px, 30px 0px, 113px 29px, 147px 50px, 23px 60px;
+}
+body .cloudLoader::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 65px;
+  width: 2px;
+  height: 6px;
+  color: #FFF;
+  box-sizing: border-box;
+  animation: animateLoader 0.6s linear infinite;
+}
+@keyframes animateLoader {
+  0% {
+    box-shadow: 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF, 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF;
+  }
+  50% {
+    box-shadow: 25px 20px #FFF, 50px 60px rgba(255, 255, 255, 0), 75px 30px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 40px #FFF, 150px 60px rgba(255, 255, 255, 0), 25px 20px #FFF, 50px 30px #FFF, 75px 10px #FFF, 100px 30px #FFF, 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 25px 60px rgba(255, 255, 255, 0), 50px 60px rgba(255, 255, 255, 0), 75px 50px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 70px rgba(255, 255, 255, 0), 150px 60px rgba(255, 255, 255, 0), 25px 80px rgba(255, 255, 255, 0), 50px 80px rgba(255, 255, 255, 0), 75px 70px rgba(255, 255, 255, 0), 100px 60px rgba(255, 255, 255, 0), 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
+  }
+}
+body #numberGuessingGameContainer {
+  text-align: center;
+  display: block;
+  border: solid medium teal;
+  border-radius: 0.5rem;
+  width: 450px;
+  height: fit-content;
+  margin: auto;
+  padding: 5px 15px;
+}
+body #numberGuessingGameContainer:hover {
+  outline: solid thin teal;
+  box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9);
+}
+@media screen and (max-width: 500px) {
+  body #numberGuessingGameContainer {
+    flex: 100%;
+    max-width: 100%;
   }
 }
 
