@@ -64,8 +64,10 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
 }
 @mixin header() {
     header {
+        background-color: seagreen;
         text-align: center;
         width: 100%;
+        height: rem(100);
         position: static;
         top: 0;
         padding: rem(5);
@@ -74,7 +76,7 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
         @include headings();
         .header-container {
             display: flex;
-            justify-content: space-between;
+            justify-content:space-evenly;
             align-items: center;
             height: 100%;
             margin: 0 rem(40);
@@ -82,12 +84,12 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
     }
     @media(max-width: rem(768)) {
         header {
-            height: rem(150);
+            height: rem(140);
             .header-container  {
                 flex-direction: column;
                 justify-content: center;
                 ul {
-                    padding: rem(8);
+                    padding: rem(4);
                     background-color: rgb(0, 0, 0, 0.1);
                 }
             }
@@ -110,8 +112,10 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
 }
 @mixin footer() {
     footer {
+        background-color: seagreen;
         text-align: center;
         width: 100%;
+        height: rem(90);
         position: static;
         bottom: 0;
         padding: rem(5);
@@ -135,11 +139,11 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
 @mixin headings($c1: #fff, $c2:#fff, $c3:#fff) {
     h1 {
         color: $c1;
-        margin: rem(8);
+        margin: rem(12);
     }
     h2 {
         color: $c2;
-        margin: rem(8);
+        margin: rem(10);
     }
     h3 {
         color: $c3;
@@ -147,6 +151,7 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
     }
     h4, h5, h6 {
         color: #fff;
+        margin: rem(6);
     }
     h1, h2, h3, h4, h5, h6 {
         text-align: center;
