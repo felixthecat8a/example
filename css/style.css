@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 html, body {
   height: 100%;
 }
@@ -9,25 +14,9 @@ html, body {
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #333;
-  color: azure;
+  color: #fefefe;
+  line-height: 1.5;
   width: 100%;
-  margin: 0;
-  padding: 0;
-}
-body h1 {
-  color: mediumseagreen;
-  margin: 1.1875rem;
-}
-body h2 {
-  color: lightseagreen;
-  margin: 1.0625rem;
-}
-body h3 {
-  color: darkorange;
-  margin: 0.9375rem;
-}
-body h1, body h2, body h3, body h4, body h5, body h6 {
-  text-align: center;
 }
 body header {
   text-align: center;
@@ -39,8 +28,6 @@ body header {
 body header nav ul {
   list-style-type: none;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
 }
 body header nav li {
   padding: 0 0.3125rem;
@@ -51,9 +38,89 @@ body header nav {
   font-weight: bold;
   display: inline-block;
 }
+body header nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+body header a {
+  text-decoration: none;
+  color: #ddd;
+}
+body header a:link, body header a:visited {
+  color: #ccc;
+}
+body header a:hover, body header a:active {
+  color: #eee;
+}
+body header h1 {
+  color: #fff;
+  margin: 0.5rem;
+}
+body header h2 {
+  color: #fff;
+  margin: 0.5rem;
+}
+body header h3 {
+  color: #fff;
+  margin: 0.5rem;
+}
+body header h4, body header h5, body header h6 {
+  color: #fff;
+}
+body header h1, body header h2, body header h3, body header h4, body header h5, body header h6 {
+  text-align: center;
+}
+body header .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin: 0 2.5rem;
+}
+@media (max-width: 48rem) {
+  body header {
+    height: 9.375rem;
+  }
+  body header .header-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+  body header .header-container ul {
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
 body main {
   width: min(49.375rem, 90%);
   margin: auto;
+}
+body main a {
+  text-decoration: none;
+  color: #ddd;
+}
+body main a:link, body main a:visited {
+  color: #ccc;
+}
+body main a:hover, body main a:active {
+  color: #eee;
+}
+body main h1 {
+  color: mediumseagreen;
+  margin: 0.5rem;
+}
+body main h2 {
+  color: lightseagreen;
+  margin: 0.5rem;
+}
+body main h3 {
+  color: darkorange;
+  margin: 0.5rem;
+}
+body main h4, body main h5, body main h6 {
+  color: #fff;
+}
+body main h1, body main h2, body main h3, body main h4, body main h5, body main h6 {
+  text-align: center;
 }
 body main article, body main section {
   margin: 0;
@@ -66,26 +133,29 @@ body footer {
   bottom: 0;
   padding: 0.3125rem;
 }
+body footer a {
+  text-decoration: none;
+  color: #ddd;
+}
+body footer a:link, body footer a:visited {
+  color: #ccc;
+}
+body footer a:hover, body footer a:active {
+  color: #eee;
+}
 
+/* Tablets & under */
+@media all and (max-width: 48rem) {
+  body {
+    font-size: 0.9rem;
+  }
+}
+/*Mobile*/
 @media all and (max-width: 31.25rem) {
   body {
     width: 31.25rem;
-    font-size: 0.8rem;
-  }
-  main {
-    width: 30.9375rem;
   }
 }
-a {
-  text-decoration: none;
-}
-a:link, a:visited {
-  color: #ddd;
-}
-a:hover, a:active {
-  color: #aaa;
-}
-
 abbr[title] {
   text-decoration: none !important;
 }

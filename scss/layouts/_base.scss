@@ -1,12 +1,5 @@
+@use '../utilities/rem' as *;
 @use "sass:map";
-@use 'sass:math';
-@function rem($pixel) {
-    @if math.is-unitless($pixel) {
-        @return math.div($pixel, 16) + rem;
-    } @else {
-        @error 'Don\'t use units when using the rem() function';
-    }
-}
 //Font Families
 $font-serif: 'Times New Roman', Times, serif;
 $font-sans: Arial, Helvetica, sans-serif;
@@ -16,43 +9,33 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
     *, *::before, *::after {
         box-sizing: border-box;
     }
+    * {
+        padding: 0;
+        margin: 0;
+    }
     html, body {
         height: 100%;
     }
     body {
         font-family: map.get($font-family, "sans");
         background-color: #333;
-        color: azure;
+        color: #fefefe;
+        line-height: 1.5;
         width: 100%;
-        margin: 0;
-        padding: 0;
-        h1 {
-            color: mediumseagreen;
-            margin: rem(19);
-        }
-        h2 {
-            color: lightseagreen;
-            margin: rem(17);
-        }
-        h3 {
-            color: darkorange;
-            margin: rem(15);
-        }
-        h1, h2, h3, h4, h5, h6 {
-            text-align: center;
-        }
         @include header;
         @include main;
         @include footer;
     }
-
+    /* Tablets & under */
+    @media all and (max-width: rem(768)) {
+        body {
+            font-size: 0.9rem;
+        }
+    }
+    /*Mobile*/
     @media all and (max-width: rem(500)) {
         body {
             width: rem(500);
-            font-size: 0.8rem;
-        }
-        main {
-            width: rem(495);
         }
     }
 }
@@ -60,8 +43,6 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
     %unordered-list {
         list-style-type: none;
         overflow: hidden;
-        margin: 0;
-        padding: 0;
     }
     %list-item {
         padding: 0 rem(5);
@@ -73,6 +54,8 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
         display: inline-block;
         ul {
             @extend %unordered-list;
+            display: flex;
+            justify-content: space-between;
         }
         li {
             @extend %list-item;
@@ -86,7 +69,29 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
         position: static;
         top: 0;
         padding: rem(5);
-        @include navigation()
+        @include navigation();
+        @include anchors(#ddd, #ccc, #eee);
+        @include headings();
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            margin: 0 rem(40);
+        }
+    }
+    @media(max-width: rem(768)) {
+        header {
+            height: rem(150);
+            .header-container  {
+                flex-direction: column;
+                justify-content: center;
+                ul {
+                    padding: rem(8);
+                    background-color: rgb(0, 0, 0, 0.1);
+                }
+            }
+        }
     }
 }
 @mixin main() {
@@ -95,6 +100,8 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
         //max-width: 90%;
         width: min(rem(790), 90%);
         margin: auto;
+        @include anchors(#ddd, #ccc, #eee);
+        @include headings(mediumseagreen, lightseagreen, darkorange);
         article, section {
             margin: 0;
             padding: 0;
@@ -108,5 +115,40 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
         position: static;
         bottom: 0;
         padding: rem(5);
+        @include anchors(#ddd, #ccc, #eee);
+    }
+}
+@mixin anchors($color, $link, $hover) {
+    a {
+        text-decoration: none;
+        color: $color;
+        &:link,
+        &:visited {
+            color: $link;
+        }
+        &:hover,
+        &:active {
+            color: $hover;
+        }
+    }
+}
+@mixin headings($c1: #fff, $c2:#fff, $c3:#fff) {
+    h1 {
+        color: $c1;
+        margin: rem(8);
+    }
+    h2 {
+        color: $c2;
+        margin: rem(8);
+    }
+    h3 {
+        color: $c3;
+        margin: rem(8);
+    }
+    h4, h5, h6 {
+        color: #fff;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
     }
 }

@@ -7,6 +7,11 @@
   <title>Cat App</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
+    .cat-header-footer {
+      background-color: #b3713c;
+      color: white;
+    }
+
     @media all and (max-width: 500px) {
       .splide__slide img {
         height: 250px;
@@ -19,13 +24,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 </head>
 <body>
-    <header>
-      <h1>Cat Image View<br>with Breed Selector</h1>
-      <nav>
-        <a href="../index.html"><u>Home</u></a>
-      </nav>
+    <header class="cat-header-footer">
+      <div class="header-container">
+        <h1>Simple JavaScript Projects</h1>
+        <nav>
+          <a href="../index.html">Home</a>
+        </nav>
+      </div>
     </header>
     <main>
+      <h1>Cat Image View<br>with Breed Selector</h1>
       <section id="cat_container">
         <div id="catSelector"></div>
         <div id="catDisplay"></div>
@@ -38,8 +46,8 @@
       <br>
             <h3>API from <a href="https://thecatapi.com/" target="_blank" rel="noopener noreferrer" style="color:#d24515;">The Cat API</a></h3>
     </main>
-  <footer>
-    <h4>View my GitHub code repository for this site <a href="https://github.com/felixthecat8a/example" target="_blank"><span style="color:lightseagreen">here</span></a>.</h4>
+  <footer class="cat-header-footer">
+    <h4>View my GitHub code repository for this site <a href="https://github.com/felixthecat8a/example" target="_blank">here</a>.</h4>
     <h5>
       <a href="http://github.com/felixthecat8a" target="_blank" rel="noopener noreferrer">
         <span class="felix">felixthecat8a&#x1F408;</span>

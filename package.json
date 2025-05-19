@@ -28,7 +28,7 @@
   "scripts": {
     "build": "yarn scripts && yarn styles && yarn format",
     "scripts": "tsc --project ./config/tsconfig.json",
-    "styles": "sass ./scss:./css",
+    "styles": "sass --watch ./scss:./css",
     "lint": "eslint **/*.js",
     "format": "prettier --write ts/ && yarn lint"
   }
