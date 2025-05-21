@@ -103,7 +103,7 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
         width: min(rem(790), 90%);
         margin: auto;
         @include anchors(#ddd, #ccc, #eee);
-        @include headings(mediumseagreen, lightseagreen, darkorange);
+        @include headings(mediumseagreen, lightseagreen);
         article, section {
             margin: 0;
             padding: 0;
@@ -136,7 +136,7 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
         }
     }
 }
-@mixin headings($c1: #fff, $c2:#fff, $c3:#fff) {
+@mixin headings($c1: #fff, $c2:#fff) {
     h1 {
         color: $c1;
         margin: rem(12);
@@ -146,7 +146,7 @@ $font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
         margin: rem(10);
     }
     h3 {
-        color: $c3;
+        color: #fff;
         margin: rem(8);
     }
     h4, h5, h6 {
