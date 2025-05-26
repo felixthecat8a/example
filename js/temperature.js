@@ -34,4 +34,4 @@ function toCelsius() {
         celsiusVal.value = '';
     }
 }
-//# sourceMappingURL=temp.js.map
+//# sourceMappingURL=temperature.js.map
