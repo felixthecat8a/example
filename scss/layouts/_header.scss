@@ -1,0 +1,60 @@
+@use '../utilities' as *;
+@use '../components' as *;
+
+
+@mixin navigation {
+    %unordered-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    %list-item {
+        padding: 0 rem(5);
+        display: inline-block;
+    }
+    nav {
+        font-size: medium;
+        font-weight: bold;
+        ul {
+            @extend %unordered-list;
+        }
+        li {
+            @extend %list-item;
+        }
+        @content;
+    }
+    @include medium-media {
+        ul {
+            padding: rem(4);
+            background-color: rgb(0, 0, 0, 0.1);
+        }
+    }
+}
+
+@mixin header($bg-color:seagreen, $txt-color:#f1f1f1) {
+    header {
+        background-color: $bg-color;
+        color: $txt-color;
+        height: rem(110);
+        text-align: center;
+        width: 100%;
+        position: static;
+        .header-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100%;
+            margin: 0 rem(40);
+            @include navigation;
+        }
+        @content;
+    }
+    @include medium-media {
+        header {
+            height: rem(150);
+            .header-container  {
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@use '../utilities' as *;
+@use '../components' as *;
+
+@mixin footer($bg-color:seagreen, $txt-color:#f1f1f1) {
+    footer {
+        background-color: $bg-color;
+        color: $txt-color;
+        text-align: center;
+        width: 100%;
+        height: rem(50);
+        padding: rem(5);
+        @content;
+    }
+}

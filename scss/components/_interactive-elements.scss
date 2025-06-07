@@ -1,0 +1,163 @@
+@use 'sass:color';
+@use '../utilities' as *;
+
+@mixin buttons($color: mediumseagreen) {
+    $hover: color.adjust($color, $blackness: 10%);
+    background-color: $color;
+    border: solid thin $color;
+    display: inline-block;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    box-shadow: 1px 1px #999;
+    @content;
+    &:hover {
+        background-color: $hover;
+        border: solid thin $hover;
+    }
+    &:active {
+        opacity: 60%;
+        //transform: translateY(1px);
+        //transform: translateX(1px);
+        transform: scale(0.98);
+        box-shadow: 0.5px 0.5px #666;
+    }
+}
+
+@mixin interactive-elements {
+    $button-text-color: #F1F1F1;
+    %data-box {
+        border: 1px solid #333;
+        outline: none;
+        box-sizing: border-box;
+        text-align: center;
+        font-family: inherit;
+        font-size: medium;
+        font-weight: normal;
+        border-radius: 5px;
+        padding: 0.3rem 1rem;
+        margin-top: 0.5rem;
+        margin-inline: 0.5rem;
+    }
+    select {
+        @extend %data-box;
+        cursor: pointer;
+    }
+    input[type='number'] {
+        @extend %data-box;
+        width: 100px;
+    }
+    input[type='text'], input[type='url'], input[type='password'] {
+        @extend %data-box;
+        width: fit-content;
+    }
+    textarea {
+        @extend %data-box;
+        width: 310px;
+    }
+    button, input[type='reset'], input[type='submit'] {
+        @extend %data-box;
+        @include buttons(darkcyan) {
+            color: azure;
+        };
+    }
+    input[type='range'] {
+        cursor: pointer;
+    }
+    input[type='color'] {
+        cursor: pointer;
+        background: none;
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        inline-size: 50px;
+        block-size: 32px;
+        box-sizing: border-box;
+        border: 1px solid #333;
+    }
+    input[type='checkbox'], input[type='radio'] {
+        accent-color: darkcyan;
+        width: 1.1rem;
+        height: 1.1rem;
+        margin: 0.3rem;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    a.button-danger, button.button-danger {
+        @extend %data-box;
+        @include buttons(#DC3545) {
+            color: $button-text-color;
+        };
+    }
+    a.button-primary, button.button-primary {
+        @extend %data-box;
+        @include buttons(#007BFF) {
+            color: $button-text-color;
+        };
+    }
+    a.button-secondary, button.button-secondary {
+        @extend %data-box;
+        @include buttons(#6C757D) {
+            color: $button-text-color;
+        };
+    }
+    a.button-success, button.button-success {
+        @extend %data-box;
+        @include buttons(#28A745) {
+            color: $button-text-color;
+        };
+    }
+    a.button-warning, button.button-warning {
+        @extend %data-box;
+        @include buttons(#FFC107) {
+            color: $button-text-color;
+        };
+    }
+    a.button-info, button.button-info {
+        @extend %data-box;
+        @include buttons(#17A2B8) {
+            color: $button-text-color;
+        };
+    }
+}
+
+@mixin passive-anchors($color) {
+    a {
+        text-decoration: none;
+        color: $color;
+        @content;
+        &:link, &:visited {
+            color: $color;
+        }
+        &:hover, &:active {
+            color: $color;
+        }
+    }
+}
+
+@mixin anchors($color, $hover) {
+    a {
+        text-decoration: none;
+        color: $color;
+        @content;
+        &:link, &:visited {
+            color: $color;
+        }
+        &:hover, &:active {
+            color: $hover;
+        }
+    }
+}
+
+@mixin active-anchors($color, $link, $hover) {
+    a {
+        text-decoration: none;
+        color: $color;
+        @content;
+        &:link, &:visited {
+            color: $link;
+        }
+        &:hover, &:active {
+            color: $hover;
+        }
+    }
+}

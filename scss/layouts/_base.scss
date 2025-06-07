@@ -1,159 +1,61 @@
-@use '../utilities/rem' as *;
-@use "sass:map";
-//Font Families
-$font-serif: 'Times New Roman', Times, serif;
-$font-sans: Arial, Helvetica, sans-serif;
-$font-mono: 'Lucida Console', Courier, monospace;
-$font-family: ("serif": $font-serif, "sans": $font-sans, "mono": $font-mono);
+@use '../utilities' as *;
+@use '../components' as *;
+@use './header';
+@use './footer';
+@use './main';
+
 @mixin base() {
     *, *::before, *::after {
         box-sizing: border-box;
-    }
-    * {
-        padding: 0;
         margin: 0;
+        padding: 0;
     }
     html, body {
         height: 100%;
     }
     body {
-        font-family: map.get($font-family, "sans");
-        background-color: #333;
-        color: #fefefe;
+        font-family: fonts('sans');
+        background-color: $main-bg-color;
+        color: $main-txt-color;
         line-height: 1.5;
         width: 100%;
-        @include header;
-        @include main;
-        @include footer;
-    }
-    /* Tablets & under */
-    @media all and (max-width: rem(768)) {
-        body {
-            font-size: 0.9rem;
-        }
-    }
-    /*Mobile*/
-    @media all and (max-width: rem(500)) {
-        body {
-            width: rem(500);
-        }
-    }
-}
-@mixin navigation {
-    %unordered-list {
-        list-style-type: none;
-        overflow: hidden;
-    }
-    %list-item {
-        padding: 0 rem(5);
-        display: inline-block;
-    }
-    nav {
-        font-size: medium;
-        font-weight: bold;
-        display: inline-block;
-        ul {
-            @extend %unordered-list;
-            display: flex;
-            justify-content: space-between;
-        }
-        li {
-            @extend %list-item;
-        }
-    }
-}
-@mixin header() {
-    header {
-        background-color: seagreen;
-        text-align: center;
-        width: 100%;
-        height: rem(100);
-        position: static;
-        top: 0;
-        padding: rem(5);
-        @include navigation();
-        @include anchors(#ddd, #ccc, #eee);
-        @include headings();
-        .header-container {
-            display: flex;
-            justify-content:space-evenly;
-            align-items: center;
-            height: 100%;
-            margin: 0 rem(40);
-        }
-    }
-    @media(max-width: rem(768)) {
-        header {
-            height: rem(140);
-            .header-container  {
-                flex-direction: column;
-                justify-content: center;
-                ul {
-                    padding: rem(4);
-                    background-color: rgb(0, 0, 0, 0.1);
-                }
+        @include header.header($header-footer-bg-color, $header-footer-txt-color) {
+            @include all-headings($main-txt-color);
+            @include anchors(#DDD, #FFF);
+        };
+        @include main.main {
+            h1 {
+                @include headings(8, mediumseagreen);
             }
+            h2 {
+                @include headings(6, lightseagreen);
+            }
+            h3 {
+                @include headings(4, $main-txt-color);
+            }
+            h4, h5, h6 {
+                @include headings(2, $main-txt-color);
+            }
+            @include anchors($main-txt-color, #FFF);
+            @include paragraphs;
+        };
+        @include footer.footer($header-footer-bg-color, $header-footer-txt-color) {
+            @include all-headings($main-txt-color);
+            @include passive-anchors(#DDD);
+        };
+        @include abbreviations;
+        @include figure-captions;
+        @include forms;
+        @include tables;
+    }
+    @include medium-media {
+        body {
+            font-size: 0.8rem;
         }
     }
-}
-@mixin main() {
-    main {
-        //width: rem(790);
-        //max-width: 90%;
-        width: min(rem(790), 90%);
-        margin: auto;
-        @include anchors(#ddd, #ccc, #eee);
-        @include headings(mediumseagreen, lightseagreen);
-        article, section {
-            margin: 0;
-            padding: 0;
+    @include small-media {
+        body {
+            width: breakpoint('sm');
         }
-    }
-}
-@mixin footer() {
-    footer {
-        background-color: seagreen;
-        text-align: center;
-        width: 100%;
-        height: rem(90);
-        position: static;
-        bottom: 0;
-        padding: rem(5);
-        @include anchors(#ddd, #ccc, #eee);
-    }
-}
-@mixin anchors($color, $link, $hover) {
-    a {
-        text-decoration: none;
-        color: $color;
-        &:link,
-        &:visited {
-            color: $link;
-        }
-        &:hover,
-        &:active {
-            color: $hover;
-        }
-    }
-}
-@mixin headings($c1: #fff, $c2:#fff) {
-    h1 {
-        color: $c1;
-        margin: rem(12);
-    }
-    h2 {
-        color: $c2;
-        margin: rem(10);
-    }
-    h3 {
-        color: #fff;
-        margin: rem(8);
-    }
-    h4, h5, h6 {
-        color: #fff;
-        margin: rem(6);
-    }
-    h1, h2, h3, h4, h5, h6 {
-        text-align: center;
     }
 }

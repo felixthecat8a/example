@@ -1,10 +1,7 @@
 *, *::before, *::after {
   box-sizing: border-box;
-}
-
-* {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 html, body {
@@ -14,64 +11,17 @@ html, body {
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #333;
-  color: #fefefe;
+  color: #F1F1F1;
   line-height: 1.5;
   width: 100%;
 }
 body header {
   background-color: seagreen;
+  color: #F1F1F1;
+  height: 6.875rem;
   text-align: center;
   width: 100%;
-  height: 6.25rem;
   position: static;
-  top: 0;
-  padding: 0.3125rem;
-}
-body header nav ul {
-  list-style-type: none;
-  overflow: hidden;
-}
-body header nav li {
-  padding: 0 0.3125rem;
-  display: inline-block;
-}
-body header nav {
-  font-size: medium;
-  font-weight: bold;
-  display: inline-block;
-}
-body header nav ul {
-  display: flex;
-  justify-content: space-between;
-}
-body header a {
-  text-decoration: none;
-  color: #ddd;
-}
-body header a:link, body header a:visited {
-  color: #ccc;
-}
-body header a:hover, body header a:active {
-  color: #eee;
-}
-body header h1 {
-  color: #fff;
-  margin: 0.75rem;
-}
-body header h2 {
-  color: #fff;
-  margin: 0.625rem;
-}
-body header h3 {
-  color: #fff;
-  margin: 0.5rem;
-}
-body header h4, body header h5, body header h6 {
-  color: #fff;
-  margin: 0.375rem;
-}
-body header h1, body header h2, body header h3, body header h4, body header h5, body header h6 {
-  text-align: center;
 }
 body header .header-container {
   display: flex;
@@ -80,96 +30,139 @@ body header .header-container {
   height: 100%;
   margin: 0 2.5rem;
 }
-@media (max-width: 48rem) {
+body header .header-container nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+body header .header-container nav li {
+  padding: 0 0.3125rem;
+  display: inline-block;
+}
+body header .header-container nav {
+  font-size: medium;
+  font-weight: bold;
+}
+@media only screen and (max-width: 48rem) {
+  body header .header-container ul {
+    padding: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+body header h1 {
+  margin: 0.5rem;
+  color: #F1F1F1;
+}
+body header h2 {
+  margin: 0.375rem;
+  color: #F1F1F1;
+}
+body header h3 {
+  margin: 0.25rem;
+  color: #F1F1F1;
+}
+body header h4, body header h5, body header h6 {
+  margin: 0.125rem;
+  color: #F1F1F1;
+}
+body header a {
+  text-decoration: none;
+  color: #DDD;
+}
+body header a:link, body header a:visited {
+  color: #DDD;
+}
+body header a:hover, body header a:active {
+  color: #FFF;
+}
+@media only screen and (max-width: 48rem) {
   body header {
-    height: 8.75rem;
+    height: 9.375rem;
   }
   body header .header-container {
     flex-direction: column;
     justify-content: center;
-  }
-  body header .header-container ul {
-    padding: 0.25rem;
-    background-color: rgba(0, 0, 0, 0.1);
   }
 }
 body main {
   width: min(49.375rem, 90%);
   margin: auto;
 }
-body main a {
-  text-decoration: none;
-  color: #ddd;
-}
-body main a:link, body main a:visited {
-  color: #ccc;
-}
-body main a:hover, body main a:active {
-  color: #eee;
-}
-body main h1 {
-  color: mediumseagreen;
-  margin: 0.75rem;
-}
-body main h2 {
-  color: lightseagreen;
-  margin: 0.625rem;
-}
-body main h3 {
-  color: #fff;
-  margin: 0.5rem;
-}
-body main h4, body main h5, body main h6 {
-  color: #fff;
-  margin: 0.375rem;
-}
 body main h1, body main h2, body main h3, body main h4, body main h5, body main h6 {
   text-align: center;
 }
-body main article, body main section {
-  margin: 0;
-  padding: 0;
+body main h1 {
+  margin: 0.5rem;
+  color: mediumseagreen;
+}
+body main h2 {
+  margin: 0.375rem;
+  color: lightseagreen;
+}
+body main h3 {
+  margin: 0.25rem;
+  color: #F1F1F1;
+}
+body main h4, body main h5, body main h6 {
+  margin: 0.125rem;
+  color: #F1F1F1;
+}
+body main a {
+  text-decoration: none;
+  color: #F1F1F1;
+}
+body main a:link, body main a:visited {
+  color: #F1F1F1;
+}
+body main a:hover, body main a:active {
+  color: #FFF;
+}
+body main p {
+  font-size: medium;
+  font-weight: normal;
+  margin: 0.0625rem 0;
 }
 body footer {
   background-color: seagreen;
+  color: #F1F1F1;
   text-align: center;
   width: 100%;
-  height: 5.625rem;
-  position: static;
-  bottom: 0;
+  height: 3.125rem;
   padding: 0.3125rem;
+}
+body footer h1 {
+  margin: 0.5rem;
+  color: #F1F1F1;
+}
+body footer h2 {
+  margin: 0.375rem;
+  color: #F1F1F1;
+}
+body footer h3 {
+  margin: 0.25rem;
+  color: #F1F1F1;
+}
+body footer h4, body footer h5, body footer h6 {
+  margin: 0.125rem;
+  color: #F1F1F1;
 }
 body footer a {
   text-decoration: none;
-  color: #ddd;
+  color: #DDD;
 }
 body footer a:link, body footer a:visited {
-  color: #ccc;
+  color: #DDD;
 }
 body footer a:hover, body footer a:active {
-  color: #eee;
+  color: #DDD;
 }
-
-/* Tablets & under */
-@media all and (max-width: 48rem) {
-  body {
-    font-size: 0.9rem;
-  }
-}
-/*Mobile*/
-@media all and (max-width: 31.25rem) {
-  body {
-    width: 31.25rem;
-  }
-}
-abbr[title] {
+body abbr[title] {
   text-decoration: none !important;
 }
-
-figcaption {
+body figcaption {
   font-size: small;
+  font-weight: normal;
+  font-style: italic;
 }
-
 body form {
   text-align: center;
   max-width: 490px;
@@ -198,104 +191,178 @@ body form label {
 body form p {
   font-size: small;
 }
-body .red-link-button, body button, body input[type=reset], body input[type=submit], body textarea, body input[type=text], body input[type=url], body input[type=password], body input[type=number], body select {
+body a.button-info, body button.button-info, body a.button-warning, body button.button-warning, body a.button-success, body button.button-success, body a.button-secondary, body button.button-secondary, body a.button-primary, body button.button-primary, body a.button-danger, body button.button-danger, body button, body input[type=reset], body input[type=submit], body textarea, body input[type=text], body input[type=url], body input[type=password], body input[type=number], body select {
   border: 1px solid #333;
   outline: none;
   box-sizing: border-box;
   text-align: center;
   font-family: inherit;
   font-size: medium;
-  font-weight: bold;
+  font-weight: normal;
   border-radius: 5px;
-  margin: 3px;
-  padding: 3px;
+  padding: 0.3rem 1rem;
+  margin-top: 0.5rem;
+  margin-inline: 0.5rem;
 }
 body select {
   cursor: pointer;
 }
 body input[type=number] {
-  width: 120px;
-}
-body input[type=number]:hover, body input[type=number]:focus {
-  border: 1px solid lightseagreen;
-  outline: 1px solid lightseagreen;
-  background-color: azure;
+  width: 100px;
 }
 body input[type=text], body input[type=url], body input[type=password] {
   width: fit-content;
 }
-body input[type=text]:hover, body input[type=text]:focus, body input[type=url]:hover, body input[type=url]:focus, body input[type=password]:hover, body input[type=password]:focus {
-  border: 1px solid lightseagreen;
-  outline: 1px solid lightseagreen;
-  background-color: azure;
-}
 body textarea {
   width: 310px;
 }
-body textarea:hover, body textarea:focus {
-  border: 1px solid lightseagreen;
-  outline: 1px solid lightseagreen;
-  background-color: azure;
-}
-body input[type=checkbox], body input[type=radio] {
-  accent-color: lightseagreen;
-  width: 1.1rem;
-  height: 1.1rem;
-  margin: 0.3rem;
-  cursor: pointer;
-  vertical-align: middle;
-}
-body label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  user-select: none;
-}
 body button, body input[type=reset], body input[type=submit] {
-  color: azure;
   background-color: darkcyan;
   border: solid thin darkcyan;
   display: inline-block;
-  padding-inline: 25px;
   cursor: pointer;
   transition-duration: 0.5s;
   box-shadow: 1px 1px #999;
+  color: azure;
 }
 body button:hover, body input[type=reset]:hover, body input[type=submit]:hover {
-  color: azure;
-  background-color: teal;
-  border: solid thin teal;
+  background-color: rgb(0, 113.5, 113.5);
+  border: solid thin rgb(0, 113.5, 113.5);
 }
 body button:active, body input[type=reset]:active, body input[type=submit]:active {
   opacity: 60%;
   transform: scale(0.98);
   box-shadow: 0.5px 0.5px #666;
 }
-body .red-link-button {
-  color: snow;
-  background-color: crimson;
-  border: solid thin crimson;
+body input[type=range] {
+  cursor: pointer;
+}
+body input[type=color] {
+  cursor: pointer;
+  background: none;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  inline-size: 50px;
+  block-size: 32px;
+  box-sizing: border-box;
+  border: 1px solid #333;
+}
+body input[type=checkbox], body input[type=radio] {
+  accent-color: darkcyan;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0.3rem;
+  cursor: pointer;
+  vertical-align: middle;
+}
+body a.button-danger, body button.button-danger {
+  background-color: #DC3545;
+  border: solid thin #DC3545;
   display: inline-block;
-  padding-inline: 25px;
   cursor: pointer;
   transition-duration: 0.5s;
   box-shadow: 1px 1px #999;
+  color: #F1F1F1;
 }
-body .red-link-button:hover {
-  color: snow;
-  background-color: firebrick;
-  border: solid thin firebrick;
+body a.button-danger:hover, body button.button-danger:hover {
+  background-color: rgb(194.5, 53, 66.5568862275);
+  border: solid thin rgb(194.5, 53, 66.5568862275);
 }
-body .red-link-button:active {
+body a.button-danger:active, body button.button-danger:active {
   opacity: 60%;
   transform: scale(0.98);
   box-shadow: 0.5px 0.5px #666;
 }
-body .red-link-button a {
-  text-decoration: none;
+body a.button-primary, body button.button-primary {
+  background-color: #007BFF;
+  border: solid thin #007BFF;
+  display: inline-block;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  box-shadow: 1px 1px #999;
+  color: #F1F1F1;
 }
-body .red-link-button a:link, body .red-link-button a:visited, body .red-link-button a:hover, body .red-link-button a:active {
-  color: snow;
+body a.button-primary:hover, body button.button-primary:hover {
+  background-color: rgb(0, 110.7, 229.5);
+  border: solid thin rgb(0, 110.7, 229.5);
+}
+body a.button-primary:active, body button.button-primary:active {
+  opacity: 60%;
+  transform: scale(0.98);
+  box-shadow: 0.5px 0.5px #666;
+}
+body a.button-secondary, body button.button-secondary {
+  background-color: #6C757D;
+  border: solid thin #6C757D;
+  display: inline-block;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  box-shadow: 1px 1px #999;
+  color: #F1F1F1;
+}
+body a.button-secondary:hover, body button.button-secondary:hover {
+  background-color: rgb(104.5161290323, 104.5161290323, 104.5161290323);
+  border: solid thin rgb(104.5161290323, 104.5161290323, 104.5161290323);
+}
+body a.button-secondary:active, body button.button-secondary:active {
+  opacity: 60%;
+  transform: scale(0.98);
+  box-shadow: 0.5px 0.5px #666;
+}
+body a.button-success, body button.button-success {
+  background-color: #28A745;
+  border: solid thin #28A745;
+  display: inline-block;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  box-shadow: 1px 1px #999;
+  color: #F1F1F1;
+}
+body a.button-success:hover, body button.button-success:hover {
+  background-color: rgb(40, 141.5, 63.1771653543);
+  border: solid thin rgb(40, 141.5, 63.1771653543);
+}
+body a.button-success:active, body button.button-success:active {
+  opacity: 60%;
+  transform: scale(0.98);
+  box-shadow: 0.5px 0.5px #666;
+}
+body a.button-warning, body button.button-warning {
+  background-color: #FFC107;
+  border: solid thin #FFC107;
+  display: inline-block;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  box-shadow: 1px 1px #999;
+  color: #F1F1F1;
+}
+body a.button-warning:hover, body button.button-warning:hover {
+  background-color: rgb(229.5, 173.875, 7);
+  border: solid thin rgb(229.5, 173.875, 7);
+}
+body a.button-warning:active, body button.button-warning:active {
+  opacity: 60%;
+  transform: scale(0.98);
+  box-shadow: 0.5px 0.5px #666;
+}
+body a.button-info, body button.button-info {
+  background-color: #17A2B8;
+  border: solid thin #17A2B8;
+  display: inline-block;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  box-shadow: 1px 1px #999;
+  color: #F1F1F1;
+}
+body a.button-info:hover, body button.button-info:hover {
+  background-color: rgb(23, 139.9844720497, 158.5);
+  border: solid thin rgb(23, 139.9844720497, 158.5);
+}
+body a.button-info:active, body button.button-info:active {
+  opacity: 60%;
+  transform: scale(0.98);
+  box-shadow: 0.5px 0.5px #666;
 }
 @media screen and (max-width: 550px) {
   body form {
@@ -332,6 +399,17 @@ body table caption {
   body table img {
     max-height: 50px;
     width: auto;
+  }
+}
+
+@media only screen and (max-width: 48rem) {
+  body {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 30rem) {
+  body {
+    width: 30rem;
   }
 }
 body #cat_container {

@@ -1,0 +1,15 @@
+@use '../utilities' as *;
+@use '../components' as *;
+
+@mixin main() {
+    main {
+        //width: rem(790);
+        //max-width: 90%;
+        width: min(rem(790), 90%);
+        margin: auto;
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+        }
+        @content;
+    }
+}

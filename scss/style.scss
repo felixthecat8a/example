@@ -1,14 +1,9 @@
 @use './layouts/base';
-@use 'components';
 @use 'pages';
 
 @include base.base;
 
-@include components.elements;
-
 body {
-    @include components.forms;
-    @include components.tables;
     @include pages.cat-page;
     @include pages.weather-display;
     @include pages.number-guessing-game-page;
