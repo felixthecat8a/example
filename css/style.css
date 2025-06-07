@@ -200,7 +200,7 @@ body a.button-info, body button.button-info, body a.button-warning, body button.
   font-size: medium;
   font-weight: normal;
   border-radius: 5px;
-  padding: 0.3rem 1rem;
+  padding: 0.25rem 1rem;
   margin-top: 0.5rem;
   margin-inline: 0.5rem;
 }
@@ -446,6 +446,7 @@ body .weather-display .heading-container {
   align-items: center;
 }
 body .weather-display .heading-container .heading-card {
+  height: 80px;
   margin: auto;
 }
 body .weather-display .heading-container .heading-card h1 {
@@ -476,7 +477,7 @@ body .weather-display #currentDiv #currentId {
   flex: 2;
   height: 100%;
   word-break: keep-all;
-  padding: 8px;
+  padding: 4px;
 }
 body .weather-display #currentDiv #nextId {
   background-color: #333;

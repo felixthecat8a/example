@@ -25,6 +25,7 @@ $green-line: solid thin darkseagreen;
         .heading-container {
             @include flex-center;
             .heading-card {
+                height: 80px;
                 margin: auto;
                 h1 {
                     color: mediumseagreen;
@@ -48,7 +49,7 @@ $green-line: solid thin darkseagreen;
                 flex: 2;
                 height: 100%;
                 word-break: keep-all;
-                padding: 8px;
+                padding: 4px;
             }
             #nextId {
                 background-color: #333;
