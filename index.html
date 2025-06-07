@@ -10,6 +10,28 @@
   <!-- Animatelo -->
   <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
   <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
+  <style>
+    .project-card {
+      background: #2d2d2d;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      a.button {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: #1F1F1F;
+        color: #FEFEFE;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 1rem;
+      }
+      a.button:hover {
+        background: #9FEF00;
+        color: black;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -27,24 +49,26 @@
   </header>
   <main style="text-align: center;">
     <h1>Hi! I'm Mr. Ochoa, a Technology Teacher.</h1>
+    <br>
+    <h2>Check out these simple JavaScript examples.</h2>
     <article>
-      <h2>Check out these simple JavaScript examples.</h2>
-      <br>
-      <div>
-        <a href="pages/temperature_page.html"><b>Simple Temperature Conversion Example</b></a><br>
-        <br>
-        <a href="pages/cat_page.html"><b>Cat Breed Selector Example</b></a><br>
-        <br>
+
+      <div class="project-card">
+        <a href="pages/temperature_page.html"><b>Simple Temperature Conversion Example</b></a>
+      </div>
+      <div class="project-card">
+        <a href="pages/cat_page.html"><b>Cat Breed Selector Example</b></a>
+      </div>
+      <div class="project-card">
+        <section id="numberGuessingGameContainer">
+          <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
+          <div id="numberGuessingGame"></div><br>
+          <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
+          <!-- <script src="js/game.js"></script> -->
+        </section>
+        <h4>View the code for this game <a href="pages/code_page.html">here</a>.</h4>
       </div>
     </article>
-    <section id="numberGuessingGameContainer">
-      <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
-      <div id="numberGuessingGame"></div><br>
-      <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
-      <!-- <script src="js/game.js"></script> -->
-    </section>
-    <h4>View the code for this game <a href="pages/code_page.html">here</a>.</h4>
-    <br>
     <script>
 const gameDIV = document.getElementById('numberGuessingGame')
 const gameButton = '<button type="button" onclick="playGame(5)">Click to Play</button>'
