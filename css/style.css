@@ -200,7 +200,7 @@ body a.button-info, body button.button-info, body a.button-warning, body button.
   font-size: medium;
   font-weight: normal;
   border-radius: 5px;
-  padding: 0.25rem 1rem;
+  padding: 0.2rem 1rem;
   margin-top: 0.5rem;
   margin-inline: 0.5rem;
 }
@@ -329,17 +329,17 @@ body a.button-success:active, body button.button-success:active {
   box-shadow: 0.5px 0.5px #666;
 }
 body a.button-warning, body button.button-warning {
-  background-color: #FFC107;
-  border: solid thin #FFC107;
+  background-color: #E3714E;
+  border: solid thin #E3714E;
   display: inline-block;
   cursor: pointer;
   transition-duration: 0.5s;
   box-shadow: 1px 1px #999;
-  color: #F1F1F1;
+  color: #333;
 }
 body a.button-warning:hover, body button.button-warning:hover {
-  background-color: rgb(229.5, 173.875, 7);
-  border: solid thin rgb(229.5, 173.875, 7);
+  background-color: rgb(201.5, 107.0100671141, 78);
+  border: solid thin rgb(201.5, 107.0100671141, 78);
 }
 body a.button-warning:active, body button.button-warning:active {
   opacity: 60%;
@@ -581,10 +581,6 @@ body #numberGuessingGameContainer {
   height: fit-content;
   margin: auto;
   padding: 5px 15px;
-}
-body #numberGuessingGameContainer:hover {
-  outline: solid thin teal;
-  box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9);
 }
 @media screen and (max-width: 500px) {
   body #numberGuessingGameContainer {

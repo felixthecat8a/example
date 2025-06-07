@@ -12,24 +12,11 @@
   <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
   <style>
     .project-card {
-      background: #2d2d2d;
+      background: #222;
       padding: 1rem;
       margin-top: 1rem;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      a.button {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background: #1F1F1F;
-        color: #FEFEFE;
-        text-decoration: none;
-        border-radius: 4px;
-        margin-top: 1rem;
-      }
-      a.button:hover {
-        background: #9FEF00;
-        color: black;
-      }
     }
   </style>
 </head>
@@ -49,103 +36,27 @@
   </header>
   <main style="text-align: center;">
     <h1>Hi! I'm Mr. Ochoa, a Technology Teacher.</h1>
-    <br>
     <h2>Check out these simple JavaScript examples.</h2>
     <article>
-
       <div class="project-card">
-        <a href="pages/temperature_page.html"><b>Simple Temperature Conversion Example</b></a>
+        <h3>Simple Temperature Conversion Example</h3>
+        <a href="pages/temperature_page.html" class="button-info">Click to Interact</a>
       </div>
       <div class="project-card">
-        <a href="pages/cat_page.html"><b>Cat Breed Selector Example</b></a>
+        <h3>Cat Breed Selector Example</h3>
+        <a href="pages/cat_page.html" class="button-warning">Click to Interact</a>
       </div>
       <div class="project-card">
         <section id="numberGuessingGameContainer">
-          <h2 style="color: lightseagreen;">Number Guessing Game</h2><br>
+          <h3>Number Guessing Game</h3>
           <div id="numberGuessingGame"></div><br>
           <h4>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h4>
-          <!-- <script src="js/game.js"></script> -->
         </section>
-        <h4>View the code for this game <a href="pages/code_page.html">here</a>.</h4>
+        <a href="pages/code_page.html" class="button-secondary">View the Code</a>
       </div>
+      <script src="./pages/script/numberguessinggame.js"></script>
     </article>
-    <script>
-const gameDIV = document.getElementById('numberGuessingGame')
-const gameButton = '<button type="button" onclick="playGame(5)">Click to Play</button>'
-document.addEventListener('DOMContentLoaded', () => {
-  gameDIV.innerHTML = gameButton
-})
-function playGame(limit) {
-  window.animatelo.jackInTheBox('#numberGuessingGameContainer')
-  gameDIV.innerHTML = `
-  <input type="number" id="guess" min="1" max="100" placeholder="Guess">
-  <button type="button" id="check">Check</button><br>
-  <h3 id="heading">Guess the number from 1 to 100<br>in ${limit} tries or less.</h3>
-  <meter value="0" min="0" high="5" max="${limit}" id="meter"></meter><br>
-  <button type="button" id="playAgain">Play Again?</button>
-  <button type="button" id="close">Close</button>
-  `
-  const heading = document.getElementById('heading')
-  heading.style.color = 'mediumaquamarine'
-  const guessInput = document.getElementById('guess')
-  const checkButton = document.getElementById('check')
-  const attemptMeter = document.getElementById('meter')
-  const playAgainButton = document.getElementById('playAgain')
-  const close = document.getElementById('close')
-  const answer = Math.floor(Math.random() * 100) + 1
-  console.log(answer)
-  let attempts = 0
-  attemptMeter.value = 0
-  guessInput.addEventListener('keypress', function (event) {
-      if (event.key === 'Enter') {
-          event.preventDefault()
-          checkButton.click()
-      }
-  })
-  checkButton.addEventListener('click', () => {
-      if (guessInput.value) {
-          checkNumber(Number(guessInput.value))
-      }
-  })
-  function checkNumber(guessNumber) {
-    attempts++
-    attemptMeter.value = attempts
-    if (attempts < limit || guessNumber == answer) {
-      if (guessNumber < answer) {
-        window.animatelo.shake('#heading')
-        updateHeading( `Too low. Try again.\nAttempts Left: ${limit - attempts}`, 'cornflowerblue' )
-      } else if (guessNumber > answer) {
-        window.animatelo.shake('#heading')
-        updateHeading( `Too high. Try again.\nAttempts Left: ${limit - attempts}`, 'palevioletred' )
-      } else {
-        window.animatelo.rubberBand('#heading')
-        const tries = attempts === 1 ? 'try' : 'tries'
-        updateHeading(`${answer} is correct\nin only ${attempts} ${tries}!`, 'gold')
-        disableCheckButton()
-      }
-    } else {
-      window.animatelo.flash('#heading')
-      updateHeading(`You've reached the limit.\nThe number was ${answer}.`, 'orchid')
-      disableCheckButton()
-    }
-  }
-  function updateHeading(text, color) {
-    heading.innerText = text
-    heading.style.color = color
-  }
-  function disableCheckButton() {
-    checkButton.disabled = true
-    checkButton.style.opacity = '0.5'
-  }
-  playAgainButton.onclick = function () {
-    playGame(7)
-  }
-  close.addEventListener('click', function () {
-    window.animatelo.flip('#numberGuessingGame')
-    gameDIV.innerHTML = gameButton
-  })
-}
-    </script>
+    <br>
   </main>
   <footer>
     <h5>&copy;2025 felixthecat8a&#x1F408; | <a href="https://github.com/felixthecat8a" target="_blank"  rel="noopener noreferrer">GitHub</a></h5>

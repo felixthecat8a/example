@@ -34,7 +34,7 @@
         font-size: medium;
         font-weight: normal;
         border-radius: 5px;
-        padding: 0.25rem 1rem;
+        padding: 0.2rem 1rem;
         margin-top: 0.5rem;
         margin-inline: 0.5rem;
     }
@@ -108,8 +108,8 @@
     }
     a.button-warning, button.button-warning {
         @extend %data-box;
-        @include buttons(#FFC107) {
-            color: $button-text-color;
+        @include buttons(#E3714E) {
+            color: #333;
         };
     }
     a.button-info, button.button-info {
