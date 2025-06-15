@@ -245,7 +245,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
         this.twentyfourhourChart = new WeatherChartJS('hourId', 'hourCTX')
     }
     public async setDisplay(useGeoLocation?: boolean): Promise<void> {
-        let coords = { latitude: 26.3091, longitude: -98.1021 }
+        let coords = { latitude: 26.3085, longitude: -98.1016 } //Default: JEHS
         if (useGeoLocation) {
             coords = (await NWS.getCoords()) || coords
         }
@@ -335,34 +335,62 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
         }
     }
 } /*************************************************************************************************/
+class StatusUtility {
+    private readonly statusDIV: HTMLDivElement
+    constructor(statusDivElement: string) {
+        const element = document.getElementById(statusDivElement) as HTMLDivElement
+        if (!element) {
+            throw new Error(`Status Div Element Not Found`)
+        }
+        this.statusDIV = element
+    }
+    public setStatus(status: string | null): void {
+        this.statusDIV.textContent = status
+    }
+    public clearStatus(): void {
+        this.setStatus(null)
+    }
+    public setError(message: string): void {
+        this.statusDIV.innerHTML = `<span style="color:palevioletred">${message}</span>`
+    }
+    public setLoading(message: string): void {
+        this.statusDIV.innerHTML = `${message}...<span class="spinner"></span>`
+    }
+    public setCloudLoading(message: string): void {
+        this.statusDIV.innerHTML = `${message}...<span class="cloudLoader"></span>`
+    }
+} //const statusDIV = new StatusUtility('statusDIV')
+/**************************************************************************************************/
 document.addEventListener('DOMContentLoaded', () => {
     displayWeather(true)
 })
 const apiSELECT = document.getElementById('apiSelect') as HTMLSelectElement
 apiSELECT.addEventListener('change', async (event: Event) => {
-    const statusDiv = new StatusUtility('statusDiv')
+    const statusDIV = new StatusUtility('statusDiv')
     const weatherLocation = (event.target as HTMLSelectElement).value
     try {
         switch (weatherLocation) {
             case 'showWeather':
-                statusDiv.setLoading('Locating')
+                statusDIV.setCloudLoading('Locating')
                 await displayWeather(true)
+                statusDIV.clearStatus()
                 break
             case 'showCat':
-                statusDiv.setLoading('Meowing')
+                statusDIV.setLoading('Meowing')
                 await displayCat()
+                statusDIV.clearStatus()
                 break
             case 'showCatSlider':
-                statusDiv.setLoading('Meowing')
+                statusDIV.setLoading('Meowing')
                 await displayCatSlider()
+                statusDIV.clearStatus()
                 break
             default:
                 break
         }
-        statusDiv.clearStatus()
     } catch (error: any) {
         await displayWeather(false)
-        statusDiv.setError(error)
+        statusDIV.setError(error)
     }
 })
 async function displayWeather(useGeoLocation?: boolean): Promise<void> {

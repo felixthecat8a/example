@@ -205,7 +205,7 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
         this.twentyfourhourChart = new WeatherChartJS('hourId', 'hourCTX');
     }
     async setDisplay(useGeoLocation) {
-        let coords = { latitude: 26.3091, longitude: -98.1021 };
+        let coords = { latitude: 26.3085, longitude: -98.1016 };
         if (useGeoLocation) {
             coords = (await NWS.getCoords()) || coords;
         }
@@ -296,35 +296,62 @@ class NationalWeatherServiceDataDisplay extends LinkUtility {
         }
     }
 }
+class StatusUtility {
+    statusDIV;
+    constructor(statusDivElement) {
+        const element = document.getElementById(statusDivElement);
+        if (!element) {
+            throw new Error(`Status Div Element Not Found`);
+        }
+        this.statusDIV = element;
+    }
+    setStatus(status) {
+        this.statusDIV.textContent = status;
+    }
+    clearStatus() {
+        this.setStatus(null);
+    }
+    setError(message) {
+        this.statusDIV.innerHTML = `<span style="color:palevioletred">${message}</span>`;
+    }
+    setLoading(message) {
+        this.statusDIV.innerHTML = `${message}...<span class="spinner"></span>`;
+    }
+    setCloudLoading(message) {
+        this.statusDIV.innerHTML = `${message}...<span class="cloudLoader"></span>`;
+    }
+}
 document.addEventListener('DOMContentLoaded', () => {
     displayWeather(true);
 });
 const apiSELECT = document.getElementById('apiSelect');
 apiSELECT.addEventListener('change', async (event) => {
-    const statusDiv = new StatusUtility('statusDiv');
+    const statusDIV = new StatusUtility('statusDiv');
     const weatherLocation = event.target.value;
     try {
         switch (weatherLocation) {
             case 'showWeather':
-                statusDiv.setLoading('Locating');
+                statusDIV.setCloudLoading('Locating');
                 await displayWeather(true);
+                statusDIV.clearStatus();
                 break;
             case 'showCat':
-                statusDiv.setLoading('Meowing');
+                statusDIV.setLoading('Meowing');
                 await displayCat();
+                statusDIV.clearStatus();
                 break;
             case 'showCatSlider':
-                statusDiv.setLoading('Meowing');
+                statusDIV.setLoading('Meowing');
                 await displayCatSlider();
+                statusDIV.clearStatus();
                 break;
             default:
                 break;
         }
-        statusDiv.clearStatus();
     }
     catch (error) {
         await displayWeather(false);
-        statusDiv.setError(error);
+        statusDIV.setError(error);
     }
 });
 async function displayWeather(useGeoLocation) {

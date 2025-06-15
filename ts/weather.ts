@@ -133,29 +133,6 @@ class NationalWeatherServiceAPI {
     }
 } //const nws = new NationalWeatherServiceAPI()
 /**************************************************************************************************/
-class StatusUtility {
-    private readonly statusDIV: HTMLDivElement
-    constructor(statusDivElement: string) {
-        const element = document.getElementById(statusDivElement) as HTMLDivElement
-        if (!element) {
-            throw new Error(`Status Div Element Not Found`)
-        }
-        this.statusDIV = element
-    }
-    public setStatus(status: string | null): void {
-        this.statusDIV.textContent = status
-    }
-    public clearStatus(): void {
-        this.setStatus(null)
-    }
-    public setError(message: string): void {
-        this.statusDIV.innerHTML = `<span style="color:palevioletred">${message}</span>`
-    }
-    public setLoading(message: string): void {
-        this.statusDIV.innerHTML = `${message}...<span class="spinner"></span>`
-    }
-} //const statusDIV = new StatusUtility('statusDIV')
-/**************************************************************************************************/
 interface CurrentChartData {
     temp: number[]
     min: number

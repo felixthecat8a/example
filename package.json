@@ -26,9 +26,10 @@
     "typescript": "^5.8.2"
   },
   "scripts": {
-    "build": "yarn scripts && yarn styles && yarn format",
-    "scripts": "tsc --project ./config/tsconfig.json",
-    "styles": "sass --watch ./scss:./css",
+    "build": "yarn build:scripts && yarn build:styles && yarn format",
+    "build:scripts": "tsc --project ./config/tsconfig.json",
+    "build:styles": "sass ./scss:./css",
+    "style": "sass --watch ./scss:./css",
     "lint": "eslint **/*.js",
     "format": "prettier --write ts/ && yarn lint"
   }

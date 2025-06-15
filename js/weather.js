@@ -108,28 +108,6 @@ class NationalWeatherServiceAPI {
         return this.fetchData(`${this.BASE_URL}/alerts/active?point=${point}`);
     }
 }
-class StatusUtility {
-    statusDIV;
-    constructor(statusDivElement) {
-        const element = document.getElementById(statusDivElement);
-        if (!element) {
-            throw new Error(`Status Div Element Not Found`);
-        }
-        this.statusDIV = element;
-    }
-    setStatus(status) {
-        this.statusDIV.textContent = status;
-    }
-    clearStatus() {
-        this.setStatus(null);
-    }
-    setError(message) {
-        this.statusDIV.innerHTML = `<span style="color:palevioletred">${message}</span>`;
-    }
-    setLoading(message) {
-        this.statusDIV.innerHTML = `${message}...<span class="spinner"></span>`;
-    }
-}
 class WeatherApexCharts {
     line = {
         Blue: '#008FFB',
