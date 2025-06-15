@@ -91,14 +91,8 @@ class WeatherChartJS {
         const chartStyle = weatherChart.canvas.parentNode.style;
         chartStyle.margin = 'auto';
         const screenWidth = window.innerWidth;
-        if (screenWidth <= 550) {
-            weatherChart.resize(screenWidth, 'auto');
-            chartStyle.width = '100%';
-        }
-        else {
-            weatherChart.resize(550, 'auto');
-            chartStyle.width = '550px';
-        }
+        weatherChart.resize(screenWidth, 'auto');
+        chartStyle.width = '100%';
     }
     set24HrChart(data) {
         const { Chart } = window;

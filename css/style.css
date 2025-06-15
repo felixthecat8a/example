@@ -672,7 +672,7 @@ body .splide {
   width: 95%;
 }
 body .weather-display {
-  max-width: 550px;
+  max-width: 650px;
   margin: auto;
   text-align: center;
   font-weight: bold;
@@ -680,6 +680,7 @@ body .weather-display {
   border: solid thin darkseagreen;
   border-radius: 16px;
   background-color: #333;
+  overflow: hidden;
 }
 body .weather-display .heading-container {
   display: flex;
