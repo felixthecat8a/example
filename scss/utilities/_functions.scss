@@ -1,7 +1,5 @@
 @use 'sass:math';
 @use 'sass:map';
-@forward './fonts';
-@forward './variables';
 
 @function rem($pixel) {
     @if math.is-unitless($pixel) {

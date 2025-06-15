@@ -4,243 +4,536 @@
   padding: 0;
 }
 
-html, body {
+html {
   height: 100%;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  line-height: 1.5;
+  height: 100%;
+  width: 100%;
   background-color: #333;
   color: #F1F1F1;
-  line-height: 1.5;
-  width: 100%;
+}
+body h1 {
+  margin: 0.5rem;
+}
+body h2 {
+  margin: 0.375rem;
+}
+body h3 {
+  margin: 0.25rem;
+}
+body h4 {
+  margin: 0.125rem;
+}
+body h5 {
+  margin: 0.125rem;
+}
+body h6 {
+  margin: 0.125rem;
 }
 body header {
+  width: 100%;
   background-color: seagreen;
   color: #F1F1F1;
-  height: 6.875rem;
-  text-align: center;
-  width: 100%;
-  position: static;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 body header .header-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  height: 100%;
-  margin: 0 2.5rem;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  margin: 0 auto;
+}
+body header .header-container nav {
+  font-size: medium;
+  font-weight: 500;
 }
 body header .header-container nav ul {
-  display: flex;
-  justify-content: space-between;
+  list-style: none;
+  gap: 1.5rem;
 }
 body header .header-container nav li {
   padding: 0 0.3125rem;
   display: inline-block;
-}
-body header .header-container nav {
-  font-size: medium;
-  font-weight: bold;
+  text-align: center;
 }
 @media only screen and (max-width: 48rem) {
-  body header .header-container ul {
+  body header .header-container nav ul {
     padding: 0.25rem;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
-body header h1 {
-  margin: 0.5rem;
-  color: #F1F1F1;
-}
-body header h2 {
-  margin: 0.375rem;
-  color: #F1F1F1;
-}
-body header h3 {
-  margin: 0.25rem;
-  color: #F1F1F1;
-}
-body header h4, body header h5, body header h6 {
-  margin: 0.125rem;
-  color: #F1F1F1;
-}
-body header a {
+body header .header-container a {
   text-decoration: none;
-  color: #DDD;
+  color: #ddd;
 }
-body header a:link, body header a:visited {
-  color: #DDD;
+body header .header-container a:link, body header .header-container a:visited {
+  color: #ddd;
 }
-body header a:hover, body header a:active {
-  color: #FFF;
+body header .header-container a:hover, body header .header-container a:active {
+  color: #eeeeee;
 }
 @media only screen and (max-width: 48rem) {
-  body header {
-    height: 9.375rem;
-  }
   body header .header-container {
     flex-direction: column;
     justify-content: center;
   }
 }
 body main {
+  background-color: inherit;
+  color: inherit;
   width: min(49.375rem, 90%);
-  margin: auto;
-}
-body main h1, body main h2, body main h3, body main h4, body main h5, body main h6 {
-  text-align: center;
-}
-body main h1 {
-  margin: 0.5rem;
-  color: mediumseagreen;
-}
-body main h2 {
-  margin: 0.375rem;
-  color: lightseagreen;
-}
-body main h3 {
-  margin: 0.25rem;
-  color: #F1F1F1;
-}
-body main h4, body main h5, body main h6 {
-  margin: 0.125rem;
-  color: #F1F1F1;
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 body main a {
   text-decoration: none;
-  color: #F1F1F1;
+  color: #ddd;
 }
 body main a:link, body main a:visited {
-  color: #F1F1F1;
+  color: #ddd;
 }
 body main a:hover, body main a:active {
-  color: #FFF;
+  color: #eee;
 }
 body main p {
-  font-size: medium;
+  font-size: inherit;
   font-weight: normal;
   margin: 0.0625rem 0;
 }
-body footer {
-  background-color: seagreen;
-  color: #F1F1F1;
-  text-align: center;
-  width: 100%;
-  height: 3.75rem;
-  padding: 0.3125rem;
+body main form {
+  max-width: 700px;
+  margin: 0 auto;
 }
-body footer h1 {
-  margin: 0.5rem;
-  color: #F1F1F1;
-}
-body footer h2 {
-  margin: 0.375rem;
-  color: #F1F1F1;
-}
-body footer h3 {
-  margin: 0.25rem;
-  color: #F1F1F1;
-}
-body footer h4, body footer h5, body footer h6 {
-  margin: 0.125rem;
-  color: #F1F1F1;
-}
-body footer a {
-  text-decoration: none;
-  color: #DDD;
-}
-body footer a:link, body footer a:visited {
-  color: #DDD;
-}
-body footer a:hover, body footer a:active {
-  color: #DDD;
-}
-body abbr[title] {
-  text-decoration: none !important;
-}
-body figcaption {
-  font-size: small;
-  font-weight: normal;
-  font-style: italic;
-}
-body form {
-  text-align: center;
-  max-width: 490px;
-  margin: 0 auto 0 auto;
-}
-body form fieldset {
-  font-size: medium;
-  font-weight: bold;
+body main form fieldset {
   padding: 5px 25px 15px 25px;
   border-radius: 5px;
   border-color: #62aeb2;
+  text-align: center;
 }
-body form legend {
-  color: #62aeb2;
-  text-align: left;
+body main form fieldset legend {
   font-size: x-large;
   font-weight: bold;
-  padding: 0.2em;
-  margin: 0;
+  text-align: left;
+  color: #62aeb2;
 }
-body form label {
-  padding: 3px;
-  margin: 3px;
-  color: #eee;
+body main form fieldset label {
+  font-size: large;
+  font-weight: bold;
 }
-body form p {
-  font-size: small;
-}
-body a.button-info, body button.button-info, body a.button-warning, body button.button-warning, body a.button-success, body button.button-success, body a.button-secondary, body button.button-secondary, body a.button-primary, body button.button-primary, body a.button-danger, body button.button-danger, body button, body input[type=reset], body input[type=submit], body textarea, body input[type=text], body input[type=url], body input[type=password], body input[type=number], body select {
-  border: 1px solid #333;
-  outline: none;
+body main .file-input-label, body main input[type=date],
+body main input[type=month],
+body main input[type=week],
+body main input[type=time],
+body main input[type=datetime-local], body main button, body main input[type=reset], body main input[type=submit], body main textarea, body main input[type=text],
+body main input[type=url],
+body main input[type=password],
+body main input[type=email],
+body main input[type=tel],
+body main input[type=search], body main input[type=number], body main select, body main a.button-info, body main button.button-info, body main a.button-warning, body main button.button-warning, body main a.button-success, body main button.button-success, body main a.button-secondary, body main button.button-secondary, body main a.button-primary, body main button.button-primary, body main a.button-danger, body main button.button-danger {
   box-sizing: border-box;
-  text-align: center;
+  border-radius: 0.3125rem;
+  outline: none;
+  line-height: inherit;
   font-family: inherit;
-  font-size: medium;
-  font-weight: normal;
-  border-radius: 5px;
-  padding: 0.2rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.25rem 0.75rem;
   margin-top: 0.5rem;
   margin-inline: 0.5rem;
 }
-body select {
+body main a.button-info, body main button.button-info, body main a.button-warning, body main button.button-warning, body main a.button-success, body main button.button-success, body main a.button-secondary, body main button.button-secondary, body main a.button-primary, body main button.button-primary, body main a.button-danger, body main button.button-danger {
+  text-decoration: none;
+}
+body main select {
+  border: 1px solid #333;
   cursor: pointer;
 }
-body input[type=number] {
-  width: 100px;
+body main input[type=number] {
+  border: 1px solid #333;
+  width: 125px;
 }
-body input[type=text], body input[type=url], body input[type=password] {
+body main input[type=text],
+body main input[type=url],
+body main input[type=password],
+body main input[type=email],
+body main input[type=tel],
+body main input[type=search] {
+  border: 1px solid #333;
   width: fit-content;
 }
-body textarea {
-  width: 310px;
+body main textarea {
+  border: 1px solid #333;
+  width: 90%;
 }
-body button, body input[type=reset], body input[type=submit] {
-  background-color: darkcyan;
-  border: solid thin darkcyan;
+body main a.button-danger, body main button.button-danger {
   display: inline-block;
   cursor: pointer;
-  transition-duration: 0.5s;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
+  border: none;
   box-shadow: 1px 1px #999;
-  color: azure;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
-body button:hover, body input[type=reset]:hover, body input[type=submit]:hover {
-  background-color: rgb(0, 113.5, 113.5);
-  border: solid thin rgb(0, 113.5, 113.5);
+body main a.button-danger:hover, body main button.button-danger:hover {
+  background: rgb(221.75, 63.1, 78.3);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-body button:active, body input[type=reset]:active, body input[type=submit]:active {
-  opacity: 60%;
+body main a.button-danger:active, body main button.button-danger:active {
+  background: linear-gradient(135deg, rgb(181.75, 53, 65.3353293413), rgb(143.5, 53, 61.6706586826));
   transform: scale(0.98);
-  box-shadow: 0.5px 0.5px #666;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body input[type=range] {
+body main input[type=reset].button-danger {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=reset].button-danger:hover {
+  background: rgb(221.75, 63.1, 78.3);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-danger:active {
+  background: linear-gradient(135deg, rgb(181.75, 53, 65.3353293413), rgb(143.5, 53, 61.6706586826));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-danger {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=submit].button-danger:hover {
+  background: rgb(221.75, 63.1, 78.3);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-danger:active {
+  background: linear-gradient(135deg, rgb(181.75, 53, 65.3353293413), rgb(143.5, 53, 61.6706586826));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-primary, body main button.button-primary {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main a.button-primary:hover, body main button.button-primary:hover {
+  background: rgb(12.75, 129.6, 255);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-primary:active, body main button.button-primary:active {
+  background: linear-gradient(135deg, rgb(0, 104.55, 216.75), rgb(0, 86.1, 178.5));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-primary {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=reset].button-primary:hover {
+  background: rgb(12.75, 129.6, 255);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-primary:active {
+  background: linear-gradient(135deg, rgb(0, 104.55, 216.75), rgb(0, 86.1, 178.5));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-primary {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=submit].button-primary:hover {
+  background: rgb(12.75, 129.6, 255);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-primary:active {
+  background: linear-gradient(135deg, rgb(0, 104.55, 216.75), rgb(0, 86.1, 178.5));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-secondary, body main button.button-secondary {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main a.button-secondary:hover, body main button.button-secondary:hover {
+  background: rgb(114.4197424893, 123.95472103, 132.4302575107);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-secondary:active, body main button.button-secondary:active {
+  background: linear-gradient(135deg, rgb(99.6923076923, 99.6923076923, 99.6923076923), rgb(86.6889632107, 86.6889632107, 86.6889632107));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-secondary {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=reset].button-secondary:hover {
+  background: rgb(114.4197424893, 123.95472103, 132.4302575107);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-secondary:active {
+  background: linear-gradient(135deg, rgb(99.6923076923, 99.6923076923, 99.6923076923), rgb(86.6889632107, 86.6889632107, 86.6889632107));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-secondary {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=submit].button-secondary:hover {
+  background: rgb(114.4197424893, 123.95472103, 132.4302575107);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-secondary:active {
+  background: linear-gradient(135deg, rgb(99.6923076923, 99.6923076923, 99.6923076923), rgb(86.6889632107, 86.6889632107, 86.6889632107));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-success, body main button.button-success {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main a.button-success:hover, body main button.button-success:hover {
+  background: rgb(42.9275362319, 179.2224637681, 74.05);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-success:active, body main button.button-success:active {
+  background: linear-gradient(135deg, rgb(40, 128.75, 60.2657480315), rgb(40, 90.5, 51.531496063));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-success {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=reset].button-success:hover {
+  background: rgb(42.9275362319, 179.2224637681, 74.05);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-success:active {
+  background: linear-gradient(135deg, rgb(40, 128.75, 60.2657480315), rgb(40, 90.5, 51.531496063));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-success {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=submit].button-success:hover {
+  background: rgb(42.9275362319, 179.2224637681, 74.05);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-success:active {
+  background: linear-gradient(135deg, rgb(40, 128.75, 60.2657480315), rgb(40, 90.5, 51.531496063));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-warning, body main button.button-warning {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main a.button-warning:hover, body main button.button-warning:hover {
+  background: rgb(228.4, 120.1, 86.85);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-warning:active, body main button.button-warning:active {
+  background: linear-gradient(135deg, rgb(188.75, 104.0151006711, 78), rgb(150.5, 95.0302013423, 78));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-warning {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=reset].button-warning:hover {
+  background: rgb(228.4, 120.1, 86.85);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-warning:active {
+  background: linear-gradient(135deg, rgb(188.75, 104.0151006711, 78), rgb(150.5, 95.0302013423, 78));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-warning {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=submit].button-warning:hover {
+  background: rgb(228.4, 120.1, 86.85);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-warning:active {
+  background: linear-gradient(135deg, rgb(188.75, 104.0151006711, 78), rgb(150.5, 95.0302013423, 78));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-info, body main button.button-info {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main a.button-info:hover, body main button.button-info:hover {
+  background: rgb(24.6833333333, 173.8565217391, 197.4666666667);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-info:active, body main button.button-info:active {
+  background: linear-gradient(135deg, rgb(23, 128.9767080745, 145.75), rgb(23, 95.9534161491, 107.5));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-info {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=reset].button-info:hover {
+  background: rgb(24.6833333333, 173.8565217391, 197.4666666667);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=reset].button-info:active {
+  background: linear-gradient(135deg, rgb(23, 128.9767080745, 145.75), rgb(23, 95.9534161491, 107.5));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-info {
+  display: inline-block;
+  cursor: pointer;
+  color: #F1F1F1;
+  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
+  border: none;
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main input[type=submit].button-info:hover {
+  background: rgb(24.6833333333, 173.8565217391, 197.4666666667);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main input[type=submit].button-info:active {
+  background: linear-gradient(135deg, rgb(23, 128.9767080745, 145.75), rgb(23, 95.9534161491, 107.5));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main button:disabled, body main input[type=reset]:disabled, body main input[type=submit]:disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+  box-shadow: none;
+  filter: grayscale(40%);
+}
+body main input[type=range], body main input[type=checkbox], body main input[type=radio], body main input[type=color] {
   cursor: pointer;
 }
-body input[type=color] {
-  cursor: pointer;
+body main input[type=checkbox], body main input[type=radio] {
+  accent-color: darkcyan;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0.3rem;
+  vertical-align: middle;
+}
+body main input[type=color] {
   background: none;
-  appearance: none;
+  appearance: auto;
   -moz-appearance: none;
   -webkit-appearance: none;
   inline-size: 50px;
@@ -248,162 +541,111 @@ body input[type=color] {
   box-sizing: border-box;
   border: 1px solid #333;
 }
-body input[type=checkbox], body input[type=radio] {
-  accent-color: darkcyan;
-  width: 1.1rem;
-  height: 1.1rem;
-  margin: 0.3rem;
-  cursor: pointer;
-  vertical-align: middle;
+body main input[type=date],
+body main input[type=month],
+body main input[type=week],
+body main input[type=time],
+body main input[type=datetime-local] {
+  border: 1px solid #333;
 }
-body a.button-danger, body button.button-danger {
-  background-color: #DC3545;
-  border: solid thin #DC3545;
+body main .file-input-label {
+  position: relative;
+  border: 1px solid #333;
   display: inline-block;
   cursor: pointer;
-  transition-duration: 0.5s;
-  box-shadow: 1px 1px #999;
   color: #F1F1F1;
-}
-body a.button-danger:hover, body button.button-danger:hover {
-  background-color: rgb(194.5, 53, 66.5568862275);
-  border: solid thin rgb(194.5, 53, 66.5568862275);
-}
-body a.button-danger:active, body button.button-danger:active {
-  opacity: 60%;
-  transform: scale(0.98);
-  box-shadow: 0.5px 0.5px #666;
-}
-body a.button-primary, body button.button-primary {
-  background-color: #007BFF;
-  border: solid thin #007BFF;
-  display: inline-block;
-  cursor: pointer;
-  transition-duration: 0.5s;
+  background: linear-gradient(135deg, #5B5, rgb(85, 148.75, 85));
+  border: none;
   box-shadow: 1px 1px #999;
-  color: #F1F1F1;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
-body a.button-primary:hover, body button.button-primary:hover {
-  background-color: rgb(0, 110.7, 229.5);
-  border: solid thin rgb(0, 110.7, 229.5);
+body main .file-input-label:hover {
+  background: rgb(93.5, 190.4, 93.5);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-body a.button-primary:active, body button.button-primary:active {
-  opacity: 60%;
+body main .file-input-label:active {
+  background: linear-gradient(135deg, rgb(85, 148.75, 85), rgb(85, 110.5, 85));
   transform: scale(0.98);
-  box-shadow: 0.5px 0.5px #666;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body a.button-secondary, body button.button-secondary {
-  background-color: #6C757D;
-  border: solid thin #6C757D;
-  display: inline-block;
+body main .file-input-label input[type=file] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
   cursor: pointer;
-  transition-duration: 0.5s;
-  box-shadow: 1px 1px #999;
-  color: #F1F1F1;
+  height: 100%;
+  width: 100%;
 }
-body a.button-secondary:hover, body button.button-secondary:hover {
-  background-color: rgb(104.5161290323, 104.5161290323, 104.5161290323);
-  border: solid thin rgb(104.5161290323, 104.5161290323, 104.5161290323);
+body main meter {
+  width: 75%;
+  height: 16px;
+  margin-top: 10px;
+  border-radius: 8px;
+  appearance: none;
 }
-body a.button-secondary:active, body button.button-secondary:active {
-  opacity: 60%;
-  transform: scale(0.98);
-  box-shadow: 0.5px 0.5px #666;
+body main dialog {
+  background: #d1d1d1;
+  margin: auto;
+  padding: 32px 16px;
+  position: fixed;
 }
-body a.button-success, body button.button-success {
-  background-color: #28A745;
-  border: solid thin #28A745;
-  display: inline-block;
-  cursor: pointer;
-  transition-duration: 0.5s;
-  box-shadow: 1px 1px #999;
-  color: #F1F1F1;
+body main dialog button.dialog-close {
+  position: absolute;
+  top: 1px;
+  right: 1px;
 }
-body a.button-success:hover, body button.button-success:hover {
-  background-color: rgb(40, 141.5, 63.1771653543);
-  border: solid thin rgb(40, 141.5, 63.1771653543);
+body main dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
 }
-body a.button-success:active, body button.button-success:active {
-  opacity: 60%;
-  transform: scale(0.98);
-  box-shadow: 0.5px 0.5px #666;
+body main .dialog-card {
+  background-color: #fefefe;
+  color: #1f1f1f;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  margin-top: 1rem;
 }
-body a.button-warning, body button.button-warning {
-  background-color: #E3714E;
-  border: solid thin #E3714E;
-  display: inline-block;
-  cursor: pointer;
-  transition-duration: 0.5s;
-  box-shadow: 1px 1px #999;
-  color: #333;
-}
-body a.button-warning:hover, body button.button-warning:hover {
-  background-color: rgb(201.5, 107.0100671141, 78);
-  border: solid thin rgb(201.5, 107.0100671141, 78);
-}
-body a.button-warning:active, body button.button-warning:active {
-  opacity: 60%;
-  transform: scale(0.98);
-  box-shadow: 0.5px 0.5px #666;
-}
-body a.button-info, body button.button-info {
-  background-color: #17A2B8;
-  border: solid thin #17A2B8;
-  display: inline-block;
-  cursor: pointer;
-  transition-duration: 0.5s;
-  box-shadow: 1px 1px #999;
-  color: #F1F1F1;
-}
-body a.button-info:hover, body button.button-info:hover {
-  background-color: rgb(23, 139.9844720497, 158.5);
-  border: solid thin rgb(23, 139.9844720497, 158.5);
-}
-body a.button-info:active, body button.button-info:active {
-  opacity: 60%;
-  transform: scale(0.98);
-  box-shadow: 0.5px 0.5px #666;
-}
-@media screen and (max-width: 550px) {
-  body form {
-    font-size: 0.8rem;
-  }
-}
-body table {
-  margin-inline: auto;
+body main h1 {
+  color: mediumseagreen;
   text-align: center;
-  border: 1px solid #555;
-  background-color: #333;
 }
-body table tr, body table th, body table td {
-  border: 1px solid #555;
-  outline: 1px solid #555;
-  padding: 0.5rem;
+body main h2 {
+  color: lightseagreen;
+  text-align: center;
 }
-body table thead, body table tfoot {
-  border: 1px solid #555;
-  outline: 1px solid #555;
-  color: #fff;
-  background-color: #555;
+body main h3, body main h4, body main h5, body main h6 {
+  text-align: center;
 }
-body table caption {
-  caption-side: bottom;
-  font-size: small;
-  font-weight: normal;
-  font-style: italic;
+body footer {
+  background-color: seagreen;
+  color: #F1F1F1;
+  text-align: center;
+  width: 100%;
+  padding: 0.3125rem;
 }
-@media screen and (max-width: 550px) {
-  body table {
-    font-size: 0.8rem;
-  }
-  body table img {
-    max-height: 50px;
-    width: auto;
-  }
+body footer a {
+  text-decoration: none;
+  color: #ddd;
+}
+body footer a:link, body footer a:visited {
+  color: #ddd;
+}
+body footer a:hover, body footer a:active {
+  color: #eeeeee;
+}
+body .project-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 5px solid mediumseagreen;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  margin-top: 1rem;
 }
 
 @media only screen and (max-width: 48rem) {
-  body {
+  body header, body main, body footer {
     font-size: 0.8rem;
   }
 }

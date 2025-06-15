@@ -1,0 +1,27 @@
+// General Theme Tokens
+$color-dark: #1F1F1F;
+$color-light: #F1F1F1;
+$color-grey: #333;
+
+// Header/Footer using theme tokens
+$bg-header: seagreen;
+$txt-header: $color-light;
+$a-header: #ddd;
+$bg-footer: seagreen;
+$txt-footer: $color-light;
+$a-footer: #ddd;
+
+// Main Colors
+$bg-main: $color-grey;
+$txt-main: $color-light;
+$a-main: #ddd;
+$a-main-hover: #eee;
+
+// Accent Colors
+$green-accent: #37B501;
+$blue-accent: #3489FF;
+$orange-accent: #FF8C42;
+$project-card-border-green: 5px solid mediumseagreen;
+$project-card-border-blue: 5px solid $blue-accent;
+$project-card-border-orange: 5px solid $orange-accent;
+

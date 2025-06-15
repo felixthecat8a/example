@@ -1,41 +1,26 @@
-@use './interactive-elements' as *;
-
-@mixin forms {
-    form {
-        text-align: center;
-        max-width: 490px;
-        margin: 0 auto 0 auto;
-        fieldset {
-            font-size: medium;
-            font-weight: bold;
-            padding: 5px 25px 15px 25px;
-            border-radius: 5px;
-            border-color: #62aeb2;
-        }
-        legend {
-            color: #62aeb2;
-            text-align: left;
-            font-size: x-large;
-            font-weight: bold;
-            padding: 0.2em;
-            margin: 0;
-        }
-        label {
-            padding: 3px;
-            margin: 3px;
-            color: #eee;
-        }
-        p {
-            font-size: small;
+@mixin dialogs($dialog-bg:#fefefe , $dialog-txt: #1f1f1f) {
+    dialog {
+        background: #d1d1d1;
+        margin: auto;
+        padding: 32px 16px;
+        position: fixed;
+        button.dialog-close {
+            position: absolute;
+            top: 1px;
+            right: 1px;
         }
     }
 
-    @include interactive-elements;
-
-    @media screen and (max-width: 550px) {
-        form {
-            font-size: 0.8rem;
-        }
+    dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .dialog-card {
+        background-color: $dialog-bg;
+        color: $dialog-txt;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 1rem 2rem;
+        margin-top: 1rem;
     }
 }
 

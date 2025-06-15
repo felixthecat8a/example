@@ -1,8 +1,24 @@
-@use '../utilities' as *;
+@use '../utilities/' as *;
 
-@mixin paragraphs() {
+@mixin headings($level, $margin) {
+    h#{$level} {
+        margin: rem($margin);
+        @content;
+    }
+}
+
+@mixin all-headings {
+    @include headings(1, 8);
+    @include headings(2, 6);
+    @include headings(3, 4);
+    @include headings(4, 2);
+    @include headings(5, 2);
+    @include headings(6, 2);
+}
+
+@mixin paragraphs {
     p {
-        font-size: medium;
+        font-size: inherit;
         font-weight: normal;
         margin: rem(1) 0;
         @content;
@@ -22,25 +38,5 @@
         font-weight: normal;
         font-style: italic;
         @content;
-    }
-}
-
-@mixin headings($size, $color: #333) {
-    margin: rem($size);
-    color: $color;
-}
-
-@mixin all-headings($color: #333) {
-    h1 {
-        @include headings(8, $color);
-    }
-    h2 {
-        @include headings(6, $color);
-    }
-    h3 {
-        @include headings(4, $color);
-    }
-    h4, h5, h6 {
-        @include headings(2, $color);
     }
 }

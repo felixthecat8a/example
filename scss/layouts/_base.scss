@@ -1,56 +1,53 @@
 @use '../utilities' as *;
 @use '../components' as *;
+@use '../themes/' as*;
 @use './header';
 @use './footer';
 @use './main';
 
 @mixin base() {
-    *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    html, body {
-        height: 100%;
-    }
+    @include reset;
     body {
-        font-family: fonts('sans');
-        background-color: $main-bg-color;
-        color: $main-txt-color;
+        font-family: fonts('segoe');
         line-height: 1.5;
+        height: 100%;
         width: 100%;
-        @include header.header($header-footer-bg-color, $header-footer-txt-color) {
-            @include all-headings($main-txt-color);
-            @include anchors(#DDD, #FFF);
-        };
+        background-color: $bg-main;
+        color: $txt-main;
+        @include all-headings;
+        @include header.header($bg-header,$txt-header,$a-header);
         @include main.main {
+            @include anchors($a-main,$a-main-hover);
+            @include paragraphs;
+            @include forms;
+            @include dialogs();
             h1 {
-                @include headings(8, mediumseagreen);
+                color: mediumseagreen;
+                text-align: center;
             }
             h2 {
-                @include headings(6, lightseagreen);
+                color: lightseagreen;
+                text-align: center;
             }
-            h3 {
-                @include headings(4, $main-txt-color);
+            h3, h4, h5, h6 {
+                text-align: center;
             }
-            h4, h5, h6 {
-                @include headings(2, $main-txt-color);
-            }
-            @include anchors($main-txt-color, #FFF);
-            @include paragraphs;
         };
-        @include footer.footer($header-footer-bg-color, $header-footer-txt-color) {
-            @include all-headings($main-txt-color);
-            @include passive-anchors(#DDD);
-        };
-        @include abbreviations;
-        @include figure-captions;
-        @include forms;
-        @include tables;
+        @include footer.footer($bg-footer,$txt-footer,$a-footer);
+        .project-card {
+            background: rgba(0,0,0,0.2);
+            border-left: $project-card-border-green;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+        }
     }
     @include medium-media {
         body {
-            font-size: 0.8rem;
+            header, main, footer {
+                font-size: 0.8rem;
+            }
         }
     }
     @include small-media {

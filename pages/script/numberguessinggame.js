@@ -1,5 +1,5 @@
 const gameDIV = document.getElementById('numberGuessingGame')
-const gameButton = '<button type="button" onclick="playGame(5)">Click to Play</button>'
+const gameButton = '<button type="button" onclick="playGame(5)" class="button-info">Click to Play</button>'
 document.addEventListener('DOMContentLoaded', () => {
   gameDIV.innerHTML = gameButton
 })

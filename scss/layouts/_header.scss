@@ -1,60 +1,55 @@
+@use 'sass:color';
 @use '../utilities' as *;
 @use '../components' as *;
 
 
-@mixin navigation {
-    %unordered-list {
-        display: flex;
-        justify-content: space-between;
-    }
-    %list-item {
-        padding: 0 rem(5);
-        display: inline-block;
-    }
+@mixin header-navigation {
     nav {
         font-size: medium;
-        font-weight: bold;
+        font-weight: 500;
         ul {
-            @extend %unordered-list;
+            list-style: none;
+            gap: 1.5rem;
         }
         li {
-            @extend %list-item;
+            padding: 0 rem(5);
+            display: inline-block;
+            text-align: center;
         }
         @content;
     }
     @include medium-media {
-        ul {
+        nav ul {
             padding: rem(4);
-            background-color: rgb(0, 0, 0, 0.1);
+            background-color: rgb(255, 255, 255, 0.1);
         }
     }
 }
 
-@mixin header($bg-color:seagreen, $txt-color:#f1f1f1) {
+@mixin header($bg:#1f1f1f, $txt:#f1f1f1, $accent:#95ff05)  {
+    $hover: color.scale($accent, $lightness: 50%);
     header {
-        background-color: $bg-color;
-        color: $txt-color;
-        height: rem(110);
-        text-align: center;
         width: 100%;
-        position: static;
+        background-color: $bg;
+        color: $txt;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         .header-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-evenly;
             align-items: center;
-            height: 100%;
-            margin: 0 rem(40);
-            @include navigation;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            margin: 0 auto;
+            @include header-navigation;
+            @include anchors($accent,$hover);
+            @content;
         }
-        @content;
     }
     @include medium-media {
-        header {
-            height: rem(150);
-            .header-container  {
-                flex-direction: column;
-                justify-content: center;
-            }
+        header .header-container {
+            flex-direction: column;
+            justify-content: center;
         }
     }
 }

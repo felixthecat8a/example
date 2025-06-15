@@ -1,14 +1,16 @@
+@use 'sass:color';
 @use '../utilities' as *;
 @use '../components' as *;
 
-@mixin footer($bg-color:seagreen, $txt-color:#f1f1f1) {
+@mixin footer($bg:#1F1F1F, $txt:#F1F1F1, $accent:#95FF05) {
+    $hover: color.scale($accent, $lightness: 50%);
     footer {
-        background-color: $bg-color;
-        color: $txt-color;
+        background-color: $bg;
+        color: $txt;
         text-align: center;
         width: 100%;
-        height: rem(60);
         padding: rem(5);
+        @include anchors($accent,$hover);
         @content;
     }
 }
