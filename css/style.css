@@ -16,6 +16,17 @@ body {
   background-color: #333;
   color: #F1F1F1;
 }
+
+@media only screen and (max-width: 48rem) {
+  body header, body main, body footer {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 30rem) {
+  body {
+    width: 30rem;
+  }
+}
 body h1 {
   margin: 0.5rem;
 }
@@ -92,42 +103,7 @@ body main {
   margin: 2rem auto;
   padding: 0 1rem;
 }
-body main a {
-  text-decoration: none;
-  color: #ddd;
-}
-body main a:link, body main a:visited {
-  color: #ddd;
-}
-body main a:hover, body main a:active {
-  color: #eee;
-}
-body main p {
-  font-size: inherit;
-  font-weight: normal;
-  margin: 0.0625rem 0;
-}
-body main form {
-  max-width: 700px;
-  margin: 0 auto;
-}
-body main form fieldset {
-  padding: 5px 25px 15px 25px;
-  border-radius: 5px;
-  border-color: #62aeb2;
-  text-align: center;
-}
-body main form fieldset legend {
-  font-size: x-large;
-  font-weight: bold;
-  text-align: left;
-  color: #62aeb2;
-}
-body main form fieldset label {
-  font-size: large;
-  font-weight: bold;
-}
-body main .file-input-label, body main input[type=date],
+body main input[type=date],
 body main input[type=month],
 body main input[type=week],
 body main input[type=time],
@@ -176,9 +152,9 @@ body main textarea {
 body main a.button-danger, body main button.button-danger {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -195,9 +171,9 @@ body main a.button-danger:active, body main button.button-danger:active {
 body main input[type=reset].button-danger {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -214,9 +190,9 @@ body main input[type=reset].button-danger:active {
 body main input[type=submit].button-danger {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -233,9 +209,9 @@ body main input[type=submit].button-danger:active {
 body main a.button-primary, body main button.button-primary {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -252,9 +228,9 @@ body main a.button-primary:active, body main button.button-primary:active {
 body main input[type=reset].button-primary {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -271,9 +247,9 @@ body main input[type=reset].button-primary:active {
 body main input[type=submit].button-primary {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -290,9 +266,9 @@ body main input[type=submit].button-primary:active {
 body main a.button-secondary, body main button.button-secondary {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -309,9 +285,9 @@ body main a.button-secondary:active, body main button.button-secondary:active {
 body main input[type=reset].button-secondary {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -328,9 +304,9 @@ body main input[type=reset].button-secondary:active {
 body main input[type=submit].button-secondary {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -347,9 +323,9 @@ body main input[type=submit].button-secondary:active {
 body main a.button-success, body main button.button-success {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -366,9 +342,9 @@ body main a.button-success:active, body main button.button-success:active {
 body main input[type=reset].button-success {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -385,9 +361,9 @@ body main input[type=reset].button-success:active {
 body main input[type=submit].button-success {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -404,9 +380,9 @@ body main input[type=submit].button-success:active {
 body main a.button-warning, body main button.button-warning {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -423,9 +399,9 @@ body main a.button-warning:active, body main button.button-warning:active {
 body main input[type=reset].button-warning {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -442,9 +418,9 @@ body main input[type=reset].button-warning:active {
 body main input[type=submit].button-warning {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -461,9 +437,9 @@ body main input[type=submit].button-warning:active {
 body main a.button-info, body main button.button-info {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -480,9 +456,9 @@ body main a.button-info:active, body main button.button-info:active {
 body main input[type=reset].button-info {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -499,9 +475,9 @@ body main input[type=reset].button-info:active {
 body main input[type=submit].button-info {
   display: inline-block;
   cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
   border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
@@ -548,35 +524,25 @@ body main input[type=time],
 body main input[type=datetime-local] {
   border: 1px solid #333;
 }
-body main .file-input-label {
-  position: relative;
-  border: 1px solid #333;
-  display: inline-block;
-  cursor: pointer;
-  color: #F1F1F1;
-  background: linear-gradient(135deg, #5B5, rgb(85, 148.75, 85));
-  border: none;
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
+body main form {
+  max-width: 700px;
+  margin: 0 auto;
 }
-body main .file-input-label:hover {
-  background: rgb(93.5, 190.4, 93.5);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+body main form fieldset {
+  padding: 5px 25px 15px 25px;
+  border-radius: 5px;
+  border-color: #62aeb2;
+  text-align: center;
 }
-body main .file-input-label:active {
-  background: linear-gradient(135deg, rgb(85, 148.75, 85), rgb(85, 110.5, 85));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+body main form fieldset legend {
+  font-size: x-large;
+  font-weight: bold;
+  text-align: left;
+  color: #62aeb2;
 }
-body main .file-input-label input[type=file] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
+body main form fieldset label {
+  font-size: large;
+  font-weight: bold;
 }
 body main meter {
   width: 75%;
@@ -584,6 +550,21 @@ body main meter {
   margin-top: 10px;
   border-radius: 8px;
   appearance: none;
+}
+body main a {
+  text-decoration: none;
+  color: #ddd;
+}
+body main a:link, body main a:visited {
+  color: #ddd;
+}
+body main a:hover, body main a:active {
+  color: #eee;
+}
+body main p {
+  font-size: inherit;
+  font-weight: normal;
+  margin: 0.0625rem 0;
 }
 body main dialog {
   background: #d1d1d1;
@@ -654,25 +635,29 @@ body .project-card {
     width: 30rem;
   }
 }
-body #cat_container {
+#cat_container {
   text-align: center;
 }
-body #catDisplay {
+
+#catDisplay {
   display: flex;
   justify-content: space-evenly;
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
-body #catHeading {
+
+#catHeading {
   color: darkorange;
 }
-body .splide {
+
+.splide {
   margin: auto;
   width: 95%;
 }
-body .weather-display {
-  max-width: 650px;
+
+.weather-display {
+  max-width: 700px;
   margin: auto;
   text-align: center;
   font-weight: bold;
@@ -682,38 +667,38 @@ body .weather-display {
   background-color: #333;
   overflow: hidden;
 }
-body .weather-display .heading-container {
+.weather-display .heading-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-body .weather-display .heading-container .heading-card {
+.weather-display .heading-container .heading-card {
   height: 80px;
   margin: auto;
 }
-body .weather-display .heading-container .heading-card h1 {
+.weather-display .heading-container .heading-card h1 {
   color: mediumseagreen;
   padding: 0;
   margin: 0;
 }
-body .weather-display .heading-container .heading-card h1 a {
+.weather-display .heading-container .heading-card h1 a {
   text-decoration: none;
 }
-body .weather-display .heading-container .heading-card h1 a:link, body .weather-display .heading-container .heading-card h1 a:visited {
+.weather-display .heading-container .heading-card h1 a:link, .weather-display .heading-container .heading-card h1 a:visited {
   color: mediumseagreen;
 }
-body .weather-display .heading-container .heading-card h1 a:hover, body .weather-display .heading-container .heading-card h1 a:active {
+.weather-display .heading-container .heading-card h1 a:hover, .weather-display .heading-container .heading-card h1 a:active {
   color: seagreen;
 }
-body .weather-display #currentDiv {
+.weather-display #currentDiv {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-top: solid thin darkseagreen;
 }
-body .weather-display #currentDiv #currentId {
+.weather-display #currentDiv #currentId {
   background-color: seagreen;
   color: honeydew;
   float: left;
@@ -722,26 +707,26 @@ body .weather-display #currentDiv #currentId {
   word-break: keep-all;
   padding: 4px;
 }
-body .weather-display #currentDiv #nextId {
+.weather-display #currentDiv #nextId {
   background-color: #333;
   color: rgb(190.8659217877, 216.6340782123, 190.8659217877);
   float: right;
   flex: 1;
   height: 100%;
 }
-body .weather-display #alertsId {
+.weather-display #alertsId {
   border-top: solid thin darkseagreen;
   background-color: #8b2e62;
   color: honeydew;
   text-align: center;
 }
-body .weather-display #weekId {
+.weather-display #weekId {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-body .weather-display #weekId .dayId {
+.weather-display #weekId .dayId {
   flex: 1;
   background-color: #333;
   padding: 5px 0;
@@ -749,21 +734,22 @@ body .weather-display #weekId .dayId {
   font-size: smaller;
   font-weight: bold;
 }
-body .weather-display #weekId .dayId .day {
+.weather-display #weekId .dayId .day {
   color: lightgreen;
 }
-body .weather-display #weekId .dayId .hi {
+.weather-display #weekId .dayId .hi {
   color: lightcoral;
 }
-body .weather-display #weekId .dayId .lo {
+.weather-display #weekId .dayId .lo {
   color: lightblue;
 }
-body .weather-display #chartId {
+.weather-display #chartId {
   margin: "auto";
   max-width: "550px";
   background-color: "#333";
 }
-body .spinner {
+
+.spinner {
   width: 20px;
   height: 20px;
   border: 2px solid #999;
@@ -773,6 +759,7 @@ body .spinner {
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -781,7 +768,7 @@ body .spinner {
     transform: rotate(360deg);
   }
 }
-body .cloudLoader {
+.cloudLoader {
   width: 180px;
   height: 140px;
   display: block;
@@ -793,7 +780,7 @@ body .cloudLoader {
   background-repeat: no-repeat;
   background-position: 0px 30px, 30px 0px, 113px 29px, 147px 50px, 23px 60px;
 }
-body .cloudLoader::after {
+.cloudLoader::after {
   content: "";
   position: absolute;
   left: 2px;
@@ -804,6 +791,7 @@ body .cloudLoader::after {
   box-sizing: border-box;
   animation: animateLoader 0.6s linear infinite;
 }
+
 @keyframes animateLoader {
   0% {
     box-shadow: 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF, 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF;
@@ -815,7 +803,7 @@ body .cloudLoader::after {
     box-shadow: 25px 60px rgba(255, 255, 255, 0), 50px 60px rgba(255, 255, 255, 0), 75px 50px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 70px rgba(255, 255, 255, 0), 150px 60px rgba(255, 255, 255, 0), 25px 80px rgba(255, 255, 255, 0), 50px 80px rgba(255, 255, 255, 0), 75px 70px rgba(255, 255, 255, 0), 100px 60px rgba(255, 255, 255, 0), 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
   }
 }
-body #numberGuessingGameContainer {
+#numberGuessingGameContainer {
   text-align: center;
   display: block;
   border: solid medium teal;
@@ -825,8 +813,9 @@ body #numberGuessingGameContainer {
   margin: auto;
   padding: 5px 15px;
 }
+
 @media screen and (max-width: 500px) {
-  body #numberGuessingGameContainer {
+  #numberGuessingGameContainer {
     flex: 100%;
     max-width: 100%;
   }

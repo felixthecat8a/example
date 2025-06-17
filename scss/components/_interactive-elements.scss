@@ -4,10 +4,10 @@
 @mixin button-style($button-color: seagreen) {
     display: inline-block;
     cursor: pointer;
-    color: #F1F1F1;
+    border: none;
+    color: #F1F1F1 !important;
     $button-color-adj: color.adjust($button-color, $blackness: 15%);
     background: linear-gradient(135deg, $button-color, $button-color-adj);
-    border: none;
     box-shadow: 1px 1px #999;
     transition: transform 0.2s ease, box-shadow 0.1s ease;
     @content;
@@ -20,7 +20,6 @@
     &:active {
         $active-color-adj: color.adjust($button-color-adj, $blackness: 15%);
         background: linear-gradient(135deg, $button-color-adj, $active-color-adj);
-
         transform: scale(0.98);
         box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     }
@@ -126,58 +125,11 @@
         @extend %ui-element-box;
         border: 1px solid #333;
     }
-    // Experimental
-    .file-input-label {
-        position: relative;
-        @extend %ui-element-box;
-        border: 1px solid #333;
-        @include button-style(#5B5);
-        input[type="file"] {
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            cursor: pointer;
-            height: 100%;
-            width: 100%;
-        }
-    }
-}
-
-@mixin input-image($image-width: 90px) {
-    input[type="image"] {
-        margin-top: 1rem;
-        max-width: $image-width;
-    }
-}
-
-@mixin anchors($color:#353, $hover:#575) {
-    a {
-        text-decoration: none;
-        color: $color;
-        @content;
-        &:link, &:visited {
-            color: $color;
-        }
-        &:hover, &:active {
-            color: $hover;
-        }
-    }
-}
-
-@mixin meters {
-    meter {
-        width: 75%;
-        height: 16px;
-        margin-top: 10px;
-        border-radius: 8px;
-        appearance: none;
-    }
 }
 
 @mixin forms {
     form {
-        max-width: 700px;
+        max-width: 700px; // Review
         margin: 0 auto;
         fieldset {
             padding: 5px 25px 15px 25px;
@@ -196,6 +148,38 @@
             }
         }
     }
+}
+
+@mixin meters {
+    meter {
+        width: 75%;
+        height: 16px;
+        margin-top: 10px;
+        border-radius: 8px;
+        appearance: none;
+    }
+}
+
+@mixin interactive-elements {
     @include ui-elements;
+    @include forms;
     @include meters;
 }
+
+
+@mixin anchors($color:#353, $hover:#575) {
+    a {
+        text-decoration: none;
+        color: $color;
+        @content;
+        &:link, &:visited {
+            color: $color;
+        }
+        &:hover, &:active {
+            color: $hover;
+        }
+    }
+}
+
+
+
