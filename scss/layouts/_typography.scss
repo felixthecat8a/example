@@ -4,6 +4,8 @@
     body {
         font-family: fonts('segoe');
         line-height: 1.5;
+        font-size: 1.1em;
+        font-weight: 400;
         height: 100%;
         width: 100%;
         background-color: $bg;
@@ -12,9 +14,7 @@
     }
     @include medium-media {
         body {
-            header, main, footer {
-                font-size: 0.8rem;
-            }
+            font-size: 0.9rem;
         }
     }
     @include small-media {

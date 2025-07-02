@@ -39,34 +39,31 @@
         margin-top: 0.5rem;
         margin-inline: 0.5rem;
     }
-    %anchor-buttons {
-        text-decoration: none;
-        @extend %ui-element-box;
-    }
-    select {
-        @extend %ui-element-box;
-        border: 1px solid #333;
-        cursor: pointer;
-    }
-    input[type='number'] {
-        @extend %ui-element-box;
-        border: 1px solid #333;
-        width: 125px;
-    }
+    select,
+    textarea,
+    input[type='number'],
     input[type='text'],
     input[type='url'],
     input[type='password'],
     input[type='email'],
     input[type='tel'],
-    input[type='search'] {
+    input[type='search'],
+    input[type='date'],
+    input[type='month'],
+    input[type='week'],
+    input[type='time'],
+    input[type='datetime-local'] {
         @extend %ui-element-box;
-        border: 1px solid #333;
-        width: fit-content;
+        border: 1px solid #444;
+    }
+    select {
+        cursor: pointer;
     }
     textarea {
-        @extend %ui-element-box;
-        border: 1px solid #333;
         width: 90%;
+    }
+    input[type='number'] {
+        width: 125px;
     }
     $button-defaults: (
         danger: #DC3545,
@@ -77,13 +74,13 @@
         info: #17A2B8
     );
     @each $name, $color in $button-defaults {
-        a.button-#{$name}, button.button-#{$name} {
-            @extend %anchor-buttons;
+        a.button-#{$name} {
+            text-decoration: none;
+            @extend %ui-element-box;
             @include button-style($color);
         }
-        input[type='reset'].button-#{$name} {
-            @include button-style($color);
-        }
+        button.button-#{$name},
+        input[type='reset'].button-#{$name},
         input[type='submit'].button-#{$name} {
             @include button-style($color);
         }
@@ -115,21 +112,12 @@
         inline-size: 50px;
         block-size: 32px;
         box-sizing: border-box;
-        border: 1px solid #333;
-    }
-    input[type='date'],
-    input[type='month'],
-    input[type='week'],
-    input[type='time'],
-    input[type='datetime-local'] {
-        @extend %ui-element-box;
-        border: 1px solid #333;
+        border: 1px solid #444;
     }
 }
 
 @mixin forms {
     form {
-        max-width: 700px; // Review
         margin: 0 auto;
         fieldset {
             padding: 5px 25px 15px 25px;
@@ -150,36 +138,7 @@
     }
 }
 
-@mixin meters {
-    meter {
-        width: 75%;
-        height: 16px;
-        margin-top: 10px;
-        border-radius: 8px;
-        appearance: none;
-    }
-}
-
 @mixin interactive-elements {
     @include ui-elements;
     @include forms;
-    @include meters;
 }
-
-
-@mixin anchors($color:#353, $hover:#575) {
-    a {
-        text-decoration: none;
-        color: $color;
-        @content;
-        &:link, &:visited {
-            color: $color;
-        }
-        &:hover, &:active {
-            color: $hover;
-        }
-    }
-}
-
-
-

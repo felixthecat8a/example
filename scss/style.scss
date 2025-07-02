@@ -12,6 +12,8 @@ body {
     @include header($bg-header,$txt-header,$a-header);
     @include main {
         @include interactive-elements;
+        @include meters;
+        @include spinners;
         @include anchors($a-main,$a-main-hover);
         @include paragraphs;
         @include dialogs();
@@ -37,18 +39,7 @@ body {
         margin-top: 1rem;
     }
 }
-@include medium-media {
-    body {
-        header, main, footer {
-            font-size: 0.8rem;
-        }
-    }
-}
-@include small-media {
-    body {
-        width: breakpoint('sm');
-    }
-}
+
 @include pages.cat-page;
 @include pages.weather-display;
 @include pages.number-guessing-game-page;

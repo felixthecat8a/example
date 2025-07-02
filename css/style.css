@@ -11,6 +11,8 @@ html {
 body {
   font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
   line-height: 1.5;
+  font-size: 1.1em;
+  font-weight: 400;
   height: 100%;
   width: 100%;
   background-color: #333;
@@ -18,8 +20,8 @@ body {
 }
 
 @media only screen and (max-width: 48rem) {
-  body header, body main, body footer {
-    font-size: 0.8rem;
+  body {
+    font-size: 0.9rem;
   }
 }
 @media only screen and (max-width: 30rem) {
@@ -29,21 +31,45 @@ body {
 }
 body h1 {
   margin: 0.5rem;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 body h2 {
   margin: 0.375rem;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 body h3 {
   margin: 0.25rem;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 body h4 {
   margin: 0.125rem;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 body h5 {
   margin: 0.125rem;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 body h6 {
   margin: 0.125rem;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 body header {
   width: 100%;
@@ -98,21 +124,24 @@ body header .header-container a:hover, body header .header-container a:active {
 body main {
   background-color: inherit;
   color: inherit;
-  width: min(49.375rem, 90%);
-  max-width: 960px;
+  width: min(80ch, 90%);
   margin: 2rem auto;
   padding: 0 1rem;
 }
-body main input[type=date],
-body main input[type=month],
-body main input[type=week],
-body main input[type=time],
-body main input[type=datetime-local], body main button, body main input[type=reset], body main input[type=submit], body main textarea, body main input[type=text],
+body main button, body main input[type=reset], body main input[type=submit], body main a.button-info, body main a.button-warning, body main a.button-success, body main a.button-secondary, body main a.button-primary, body main a.button-danger, body main select,
+body main textarea,
+body main input[type=number],
+body main input[type=text],
 body main input[type=url],
 body main input[type=password],
 body main input[type=email],
 body main input[type=tel],
-body main input[type=search], body main input[type=number], body main select, body main a.button-info, body main button.button-info, body main a.button-warning, body main button.button-warning, body main a.button-success, body main button.button-success, body main a.button-secondary, body main button.button-secondary, body main a.button-primary, body main button.button-primary, body main a.button-danger, body main button.button-danger {
+body main input[type=search],
+body main input[type=date],
+body main input[type=month],
+body main input[type=week],
+body main input[type=time],
+body main input[type=datetime-local] {
   box-sizing: border-box;
   border-radius: 0.3125rem;
   outline: none;
@@ -125,31 +154,33 @@ body main input[type=search], body main input[type=number], body main select, bo
   margin-top: 0.5rem;
   margin-inline: 0.5rem;
 }
-body main a.button-info, body main button.button-info, body main a.button-warning, body main button.button-warning, body main a.button-success, body main button.button-success, body main a.button-secondary, body main button.button-secondary, body main a.button-primary, body main button.button-primary, body main a.button-danger, body main button.button-danger {
-  text-decoration: none;
-}
-body main select {
-  border: 1px solid #333;
-  cursor: pointer;
-}
-body main input[type=number] {
-  border: 1px solid #333;
-  width: 125px;
-}
+body main select,
+body main textarea,
+body main input[type=number],
 body main input[type=text],
 body main input[type=url],
 body main input[type=password],
 body main input[type=email],
 body main input[type=tel],
-body main input[type=search] {
-  border: 1px solid #333;
-  width: fit-content;
+body main input[type=search],
+body main input[type=date],
+body main input[type=month],
+body main input[type=week],
+body main input[type=time],
+body main input[type=datetime-local] {
+  border: 1px solid #444;
+}
+body main select {
+  cursor: pointer;
 }
 body main textarea {
-  border: 1px solid #333;
   width: 90%;
 }
-body main a.button-danger, body main button.button-danger {
+body main input[type=number] {
+  width: 125px;
+}
+body main a.button-danger {
+  text-decoration: none;
   display: inline-block;
   cursor: pointer;
   border: none;
@@ -158,35 +189,18 @@ body main a.button-danger, body main button.button-danger {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
-body main a.button-danger:hover, body main button.button-danger:hover {
+body main a.button-danger:hover {
   background: rgb(221.75, 63.1, 78.3);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-danger:active, body main button.button-danger:active {
+body main a.button-danger:active {
   background: linear-gradient(135deg, rgb(181.75, 53, 65.3353293413), rgb(143.5, 53, 61.6706586826));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main input[type=reset].button-danger {
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
-}
-body main input[type=reset].button-danger:hover {
-  background: rgb(221.75, 63.1, 78.3);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main input[type=reset].button-danger:active {
-  background: linear-gradient(135deg, rgb(181.75, 53, 65.3353293413), rgb(143.5, 53, 61.6706586826));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main button.button-danger,
+body main input[type=reset].button-danger,
 body main input[type=submit].button-danger {
   display: inline-block;
   cursor: pointer;
@@ -196,17 +210,22 @@ body main input[type=submit].button-danger {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main button.button-danger:hover,
+body main input[type=reset].button-danger:hover,
 body main input[type=submit].button-danger:hover {
   background: rgb(221.75, 63.1, 78.3);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main button.button-danger:active,
+body main input[type=reset].button-danger:active,
 body main input[type=submit].button-danger:active {
   background: linear-gradient(135deg, rgb(181.75, 53, 65.3353293413), rgb(143.5, 53, 61.6706586826));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-primary, body main button.button-primary {
+body main a.button-primary {
+  text-decoration: none;
   display: inline-block;
   cursor: pointer;
   border: none;
@@ -215,35 +234,18 @@ body main a.button-primary, body main button.button-primary {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
-body main a.button-primary:hover, body main button.button-primary:hover {
+body main a.button-primary:hover {
   background: rgb(12.75, 129.6, 255);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-primary:active, body main button.button-primary:active {
+body main a.button-primary:active {
   background: linear-gradient(135deg, rgb(0, 104.55, 216.75), rgb(0, 86.1, 178.5));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main input[type=reset].button-primary {
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
-}
-body main input[type=reset].button-primary:hover {
-  background: rgb(12.75, 129.6, 255);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main input[type=reset].button-primary:active {
-  background: linear-gradient(135deg, rgb(0, 104.55, 216.75), rgb(0, 86.1, 178.5));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main button.button-primary,
+body main input[type=reset].button-primary,
 body main input[type=submit].button-primary {
   display: inline-block;
   cursor: pointer;
@@ -253,17 +255,22 @@ body main input[type=submit].button-primary {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main button.button-primary:hover,
+body main input[type=reset].button-primary:hover,
 body main input[type=submit].button-primary:hover {
   background: rgb(12.75, 129.6, 255);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main button.button-primary:active,
+body main input[type=reset].button-primary:active,
 body main input[type=submit].button-primary:active {
   background: linear-gradient(135deg, rgb(0, 104.55, 216.75), rgb(0, 86.1, 178.5));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-secondary, body main button.button-secondary {
+body main a.button-secondary {
+  text-decoration: none;
   display: inline-block;
   cursor: pointer;
   border: none;
@@ -272,35 +279,18 @@ body main a.button-secondary, body main button.button-secondary {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
-body main a.button-secondary:hover, body main button.button-secondary:hover {
+body main a.button-secondary:hover {
   background: rgb(114.4197424893, 123.95472103, 132.4302575107);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-secondary:active, body main button.button-secondary:active {
+body main a.button-secondary:active {
   background: linear-gradient(135deg, rgb(99.6923076923, 99.6923076923, 99.6923076923), rgb(86.6889632107, 86.6889632107, 86.6889632107));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main input[type=reset].button-secondary {
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
-}
-body main input[type=reset].button-secondary:hover {
-  background: rgb(114.4197424893, 123.95472103, 132.4302575107);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main input[type=reset].button-secondary:active {
-  background: linear-gradient(135deg, rgb(99.6923076923, 99.6923076923, 99.6923076923), rgb(86.6889632107, 86.6889632107, 86.6889632107));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main button.button-secondary,
+body main input[type=reset].button-secondary,
 body main input[type=submit].button-secondary {
   display: inline-block;
   cursor: pointer;
@@ -310,17 +300,22 @@ body main input[type=submit].button-secondary {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main button.button-secondary:hover,
+body main input[type=reset].button-secondary:hover,
 body main input[type=submit].button-secondary:hover {
   background: rgb(114.4197424893, 123.95472103, 132.4302575107);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main button.button-secondary:active,
+body main input[type=reset].button-secondary:active,
 body main input[type=submit].button-secondary:active {
   background: linear-gradient(135deg, rgb(99.6923076923, 99.6923076923, 99.6923076923), rgb(86.6889632107, 86.6889632107, 86.6889632107));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-success, body main button.button-success {
+body main a.button-success {
+  text-decoration: none;
   display: inline-block;
   cursor: pointer;
   border: none;
@@ -329,35 +324,18 @@ body main a.button-success, body main button.button-success {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
-body main a.button-success:hover, body main button.button-success:hover {
+body main a.button-success:hover {
   background: rgb(42.9275362319, 179.2224637681, 74.05);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-success:active, body main button.button-success:active {
+body main a.button-success:active {
   background: linear-gradient(135deg, rgb(40, 128.75, 60.2657480315), rgb(40, 90.5, 51.531496063));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main input[type=reset].button-success {
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
-}
-body main input[type=reset].button-success:hover {
-  background: rgb(42.9275362319, 179.2224637681, 74.05);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main input[type=reset].button-success:active {
-  background: linear-gradient(135deg, rgb(40, 128.75, 60.2657480315), rgb(40, 90.5, 51.531496063));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main button.button-success,
+body main input[type=reset].button-success,
 body main input[type=submit].button-success {
   display: inline-block;
   cursor: pointer;
@@ -367,17 +345,22 @@ body main input[type=submit].button-success {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main button.button-success:hover,
+body main input[type=reset].button-success:hover,
 body main input[type=submit].button-success:hover {
   background: rgb(42.9275362319, 179.2224637681, 74.05);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main button.button-success:active,
+body main input[type=reset].button-success:active,
 body main input[type=submit].button-success:active {
   background: linear-gradient(135deg, rgb(40, 128.75, 60.2657480315), rgb(40, 90.5, 51.531496063));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-warning, body main button.button-warning {
+body main a.button-warning {
+  text-decoration: none;
   display: inline-block;
   cursor: pointer;
   border: none;
@@ -386,35 +369,18 @@ body main a.button-warning, body main button.button-warning {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
-body main a.button-warning:hover, body main button.button-warning:hover {
+body main a.button-warning:hover {
   background: rgb(228.4, 120.1, 86.85);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-warning:active, body main button.button-warning:active {
+body main a.button-warning:active {
   background: linear-gradient(135deg, rgb(188.75, 104.0151006711, 78), rgb(150.5, 95.0302013423, 78));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main input[type=reset].button-warning {
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
-}
-body main input[type=reset].button-warning:hover {
-  background: rgb(228.4, 120.1, 86.85);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main input[type=reset].button-warning:active {
-  background: linear-gradient(135deg, rgb(188.75, 104.0151006711, 78), rgb(150.5, 95.0302013423, 78));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main button.button-warning,
+body main input[type=reset].button-warning,
 body main input[type=submit].button-warning {
   display: inline-block;
   cursor: pointer;
@@ -424,17 +390,22 @@ body main input[type=submit].button-warning {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main button.button-warning:hover,
+body main input[type=reset].button-warning:hover,
 body main input[type=submit].button-warning:hover {
   background: rgb(228.4, 120.1, 86.85);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main button.button-warning:active,
+body main input[type=reset].button-warning:active,
 body main input[type=submit].button-warning:active {
   background: linear-gradient(135deg, rgb(188.75, 104.0151006711, 78), rgb(150.5, 95.0302013423, 78));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-info, body main button.button-info {
+body main a.button-info {
+  text-decoration: none;
   display: inline-block;
   cursor: pointer;
   border: none;
@@ -443,35 +414,18 @@ body main a.button-info, body main button.button-info {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
-body main a.button-info:hover, body main button.button-info:hover {
+body main a.button-info:hover {
   background: rgb(24.6833333333, 173.8565217391, 197.4666666667);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
-body main a.button-info:active, body main button.button-info:active {
+body main a.button-info:active {
   background: linear-gradient(135deg, rgb(23, 128.9767080745, 145.75), rgb(23, 95.9534161491, 107.5));
   transform: scale(0.98);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main input[type=reset].button-info {
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
-}
-body main input[type=reset].button-info:hover {
-  background: rgb(24.6833333333, 173.8565217391, 197.4666666667);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main input[type=reset].button-info:active {
-  background: linear-gradient(135deg, rgb(23, 128.9767080745, 145.75), rgb(23, 95.9534161491, 107.5));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main button.button-info,
+body main input[type=reset].button-info,
 body main input[type=submit].button-info {
   display: inline-block;
   cursor: pointer;
@@ -481,11 +435,15 @@ body main input[type=submit].button-info {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main button.button-info:hover,
+body main input[type=reset].button-info:hover,
 body main input[type=submit].button-info:hover {
   background: rgb(24.6833333333, 173.8565217391, 197.4666666667);
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main button.button-info:active,
+body main input[type=reset].button-info:active,
 body main input[type=submit].button-info:active {
   background: linear-gradient(135deg, rgb(23, 128.9767080745, 145.75), rgb(23, 95.9534161491, 107.5));
   transform: scale(0.98);
@@ -515,17 +473,9 @@ body main input[type=color] {
   inline-size: 50px;
   block-size: 32px;
   box-sizing: border-box;
-  border: 1px solid #333;
-}
-body main input[type=date],
-body main input[type=month],
-body main input[type=week],
-body main input[type=time],
-body main input[type=datetime-local] {
-  border: 1px solid #333;
+  border: 1px solid #444;
 }
 body main form {
-  max-width: 700px;
   margin: 0 auto;
 }
 body main form fieldset {
@@ -550,6 +500,24 @@ body main meter {
   margin-top: 10px;
   border-radius: 8px;
   appearance: none;
+}
+body main .spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #999;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 body main a {
   text-decoration: none;
@@ -625,16 +593,6 @@ body .project-card {
   margin-top: 1rem;
 }
 
-@media only screen and (max-width: 48rem) {
-  body header, body main, body footer {
-    font-size: 0.8rem;
-  }
-}
-@media only screen and (max-width: 30rem) {
-  body {
-    width: 30rem;
-  }
-}
 #cat_container {
   text-align: center;
 }
@@ -657,7 +615,6 @@ body .project-card {
 }
 
 .weather-display {
-  max-width: 700px;
   margin: auto;
   text-align: center;
   font-weight: bold;
@@ -749,25 +706,6 @@ body .project-card {
   background-color: "#333";
 }
 
-.spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #999;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .cloudLoader {
   width: 180px;
   height: 140px;

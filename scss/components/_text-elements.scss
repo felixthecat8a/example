@@ -3,6 +3,10 @@
 @mixin headings($level, $margin) {
     h#{$level} {
         margin: rem($margin);
+        font-family: inherit;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 0.5em;
         @content;
     }
 }
@@ -38,5 +42,19 @@
         font-weight: normal;
         font-style: italic;
         @content;
+    }
+}
+
+@mixin anchors($color:#353, $hover:#575) {
+    a {
+        text-decoration: none;
+        color: $color;
+        @content;
+        &:link, &:visited {
+            color: $color;
+        }
+        &:hover, &:active {
+            color: $hover;
+        }
     }
 }
