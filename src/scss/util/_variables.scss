@@ -1,29 +1,7 @@
-@use "sass:map";
-@use "sass:string";
-
-@function accent-color($color) {
-    $color-opts: (
-        "green": #95FF05,
-        "blue": #05C7FF,
-        "orange": #FF9F05,
-        "yellow": #FFE705,
-        "pink": #FF4F9F,
-        "purple": #B05CFF,
-    );
-    $color: string.to-lower-case(string.unquote($color));
-    @if map.has-key($color-opts, $color) {
-        @return map.get($color-opts, $color);
-    } @else if string.index($color, "#") == 1 {
-        @return $color;
-    } @else {
-        @error "Unknown color: #{$color}. Try one of: #{map.keys($color-opts)}.";
-    }
-}
-
 // General Theme Tokens
 $color-dark: #1F1F1F;
 $color-light: #F1F1F1;
-$text-grey: #333;
+$color-grey: #333;
 
 // Header/Footer Colors
 $bg-header: seagreen;
@@ -34,9 +12,6 @@ $txt-footer: $color-light;
 $accent-footer: #eee;
 
 // Main Colors
-$bg-main: #333;
+$bg-main: $color-grey;
 $txt-main: $color-light;
-$green-border: #37B501;
-$blue-border: #3489FF;
-$project-card-border: 5px solid $green-border;
-$skills-card-border: 5px solid $blue-border;
+$project-card-border: 5px solid mediumseagreen;
