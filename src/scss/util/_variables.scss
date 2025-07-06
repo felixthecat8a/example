@@ -26,16 +26,16 @@ $color-light: #F1F1F1;
 $text-grey: #333;
 
 // Header/Footer Colors
-$bg-header: $color-dark;
+$bg-header: seagreen;
 $txt-header: $color-light;
-$accent-header: accent-color('green');
-$bg-footer: $color-dark;
+$accent-header: #eee;
+$bg-footer: seagreen;
 $txt-footer: $color-light;
-$accent-footer: accent-color('green');
+$accent-footer: #eee;
 
 // Main Colors
-$bg-main: $color-light;
-$txt-main: $text-grey;
+$bg-main: #333;
+$txt-main: $color-light;
 $green-border: #37B501;
 $blue-border: #3489FF;
 $project-card-border: 5px solid $green-border;

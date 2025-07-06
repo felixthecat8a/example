@@ -1,7 +1,8 @@
 @use 'util' as *;
 @use 'layout' as *;
 @use 'components' as *;
-@use 'theme' as *;
+@use 'pages' as *;
+// @use 'theme' as *;
 
 @include reset;
 @include typography($bg-main, $txt-main);
@@ -13,11 +14,11 @@
         @include main {
             @include ui;
             @include text;
-            @include anchors($color:#353, $hover:#575);
+            @include anchors($color:#cdc, $hover:#efe);
         };
         @include footer($bg-footer,$txt-footer,$accent-footer);
         .project-card, .skills-card {
-            background: rgba(255,255,255,0.9);
+            background: rgba(0,0,0,0.2);
             border-radius: rem(8);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 1rem 2rem;
@@ -33,10 +34,13 @@
         .skills-card {
             border-left: $skills-card-border;
         }
+        @include number-guessing-game-page;
+        @include cat-page;
+        @include weather-display;
     }
 }
 
 @include base;
 
-@include dark-mode-settings;
-@include dark-mode-toggle-checkbox(1rem,#5ad701);
+// @include dark-mode-settings;
+// @include dark-mode-toggle-checkbox(1rem,#5ad701);

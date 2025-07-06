@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 0;
 }
 
 html {
@@ -21,7 +22,7 @@ body {
 
 @media only screen and (max-width: 48rem) {
   body {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 @media only screen and (max-width: 30rem) {
@@ -29,47 +30,29 @@ body {
     width: 30rem;
   }
 }
-body h1 {
-  margin: 0.5rem;
+body h1, body h2, body h3, body h4, body h5, body h6 {
   font-family: inherit;
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 0.5em;
+}
+body h1 {
+  font-size: clamp(2rem, 2rem + (3rem - 2rem) * (100vw - 320px) / (1280px - 320px), 3rem);
 }
 body h2 {
-  margin: 0.375rem;
-  font-family: inherit;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
+  font-size: clamp(1.75rem, 1.75rem + (2.5rem - 1.75rem) * (100vw - 320px) / (1280px - 320px), 2.5rem);
 }
 body h3 {
-  margin: 0.25rem;
-  font-family: inherit;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
+  font-size: clamp(1.5rem, 1.5rem + (2rem - 1.5rem) * (100vw - 320px) / (1280px - 320px), 2rem);
 }
 body h4 {
-  margin: 0.125rem;
-  font-family: inherit;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
+  font-size: clamp(1.25rem, 1.25rem + (1.75rem - 1.25rem) * (100vw - 320px) / (1280px - 320px), 1.75rem);
 }
 body h5 {
-  margin: 0.125rem;
-  font-family: inherit;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
+  font-size: clamp(1.125rem, 1.125rem + (1.5rem - 1.125rem) * (100vw - 320px) / (1280px - 320px), 1.5rem);
 }
 body h6 {
-  margin: 0.125rem;
-  font-family: inherit;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
+  font-size: clamp(1rem, 1rem + (1.25rem - 1rem) * (100vw - 320px) / (1280px - 320px), 1.25rem);
 }
 body header {
   width: 100%;
@@ -107,13 +90,14 @@ body header .header-container nav li {
 }
 body header .header-container a {
   text-decoration: none;
-  color: #ddd;
+  color: #eee;
+  transition: color 0.2s ease;
 }
 body header .header-container a:link, body header .header-container a:visited {
-  color: #ddd;
+  color: #eee;
 }
 body header .header-container a:hover, body header .header-container a:active {
-  color: #eeeeee;
+  color: #eee;
 }
 @media only screen and (max-width: 48rem) {
   body header .header-container {
@@ -128,7 +112,7 @@ body main {
   margin: 2rem auto;
   padding: 0 1rem;
 }
-body main button, body main input[type=reset], body main input[type=submit], body main a.button-info, body main a.button-warning, body main a.button-success, body main a.button-secondary, body main a.button-primary, body main a.button-danger, body main select,
+body main .file-input-label, body main button, body main input[type=reset], body main input[type=submit], body main a.button-info, body main a.button-warning, body main a.button-success, body main a.button-secondary, body main a.button-primary, body main a.button-danger, body main select,
 body main textarea,
 body main input[type=number],
 body main input[type=text],
@@ -142,17 +126,18 @@ body main input[type=month],
 body main input[type=week],
 body main input[type=time],
 body main input[type=datetime-local] {
+  display: inline-block;
   box-sizing: border-box;
   border-radius: 0.3125rem;
   outline: none;
   line-height: inherit;
   font-family: inherit;
-  font-size: 1.1rem;
+  font-size: inherit;
   font-weight: 500;
   text-align: center;
   padding: 0.25rem 0.75rem;
   margin-top: 0.5rem;
-  margin-inline: 0.5rem;
+  margin-inline: 0.25rem;
 }
 body main select,
 body main textarea,
@@ -168,41 +153,24 @@ body main input[type=month],
 body main input[type=week],
 body main input[type=time],
 body main input[type=datetime-local] {
-  border: 1px solid #444;
+  border: 0.0625rem solid #555;
 }
 body main select {
   cursor: pointer;
 }
 body main textarea {
-  width: 90%;
+  width: 95%;
 }
 body main input[type=number] {
-  width: 125px;
+  width: 7.8125rem;
 }
 body main a.button-danger {
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #DC3545, rgb(181.75, 53, 65.3353293413));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
+  text-decoration: none !important;
 }
-body main a.button-danger:hover {
-  background: rgb(221.75, 63.1, 78.3);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main a.button-danger:active {
-  background: linear-gradient(135deg, rgb(181.75, 53, 65.3353293413), rgb(143.5, 53, 61.6706586826));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main a.button-danger,
 body main button.button-danger,
 body main input[type=reset].button-danger,
 body main input[type=submit].button-danger {
-  display: inline-block;
   cursor: pointer;
   border: none;
   color: #F1F1F1 !important;
@@ -210,6 +178,7 @@ body main input[type=submit].button-danger {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main a.button-danger:hover,
 body main button.button-danger:hover,
 body main input[type=reset].button-danger:hover,
 body main input[type=submit].button-danger:hover {
@@ -217,6 +186,7 @@ body main input[type=submit].button-danger:hover {
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main a.button-danger:active,
 body main button.button-danger:active,
 body main input[type=reset].button-danger:active,
 body main input[type=submit].button-danger:active {
@@ -225,29 +195,12 @@ body main input[type=submit].button-danger:active {
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-primary {
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #007BFF, rgb(0, 104.55, 216.75));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
+  text-decoration: none !important;
 }
-body main a.button-primary:hover {
-  background: rgb(12.75, 129.6, 255);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main a.button-primary:active {
-  background: linear-gradient(135deg, rgb(0, 104.55, 216.75), rgb(0, 86.1, 178.5));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main a.button-primary,
 body main button.button-primary,
 body main input[type=reset].button-primary,
 body main input[type=submit].button-primary {
-  display: inline-block;
   cursor: pointer;
   border: none;
   color: #F1F1F1 !important;
@@ -255,6 +208,7 @@ body main input[type=submit].button-primary {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main a.button-primary:hover,
 body main button.button-primary:hover,
 body main input[type=reset].button-primary:hover,
 body main input[type=submit].button-primary:hover {
@@ -262,6 +216,7 @@ body main input[type=submit].button-primary:hover {
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main a.button-primary:active,
 body main button.button-primary:active,
 body main input[type=reset].button-primary:active,
 body main input[type=submit].button-primary:active {
@@ -270,29 +225,12 @@ body main input[type=submit].button-primary:active {
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-secondary {
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #6C757D, rgb(99.6923076923, 99.6923076923, 99.6923076923));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
+  text-decoration: none !important;
 }
-body main a.button-secondary:hover {
-  background: rgb(114.4197424893, 123.95472103, 132.4302575107);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main a.button-secondary:active {
-  background: linear-gradient(135deg, rgb(99.6923076923, 99.6923076923, 99.6923076923), rgb(86.6889632107, 86.6889632107, 86.6889632107));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main a.button-secondary,
 body main button.button-secondary,
 body main input[type=reset].button-secondary,
 body main input[type=submit].button-secondary {
-  display: inline-block;
   cursor: pointer;
   border: none;
   color: #F1F1F1 !important;
@@ -300,6 +238,7 @@ body main input[type=submit].button-secondary {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main a.button-secondary:hover,
 body main button.button-secondary:hover,
 body main input[type=reset].button-secondary:hover,
 body main input[type=submit].button-secondary:hover {
@@ -307,6 +246,7 @@ body main input[type=submit].button-secondary:hover {
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main a.button-secondary:active,
 body main button.button-secondary:active,
 body main input[type=reset].button-secondary:active,
 body main input[type=submit].button-secondary:active {
@@ -315,29 +255,12 @@ body main input[type=submit].button-secondary:active {
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-success {
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #28A745, rgb(40, 128.75, 60.2657480315));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
+  text-decoration: none !important;
 }
-body main a.button-success:hover {
-  background: rgb(42.9275362319, 179.2224637681, 74.05);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main a.button-success:active {
-  background: linear-gradient(135deg, rgb(40, 128.75, 60.2657480315), rgb(40, 90.5, 51.531496063));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main a.button-success,
 body main button.button-success,
 body main input[type=reset].button-success,
 body main input[type=submit].button-success {
-  display: inline-block;
   cursor: pointer;
   border: none;
   color: #F1F1F1 !important;
@@ -345,6 +268,7 @@ body main input[type=submit].button-success {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main a.button-success:hover,
 body main button.button-success:hover,
 body main input[type=reset].button-success:hover,
 body main input[type=submit].button-success:hover {
@@ -352,6 +276,7 @@ body main input[type=submit].button-success:hover {
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main a.button-success:active,
 body main button.button-success:active,
 body main input[type=reset].button-success:active,
 body main input[type=submit].button-success:active {
@@ -360,29 +285,12 @@ body main input[type=submit].button-success:active {
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-warning {
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #E3714E, rgb(188.75, 104.0151006711, 78));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
+  text-decoration: none !important;
 }
-body main a.button-warning:hover {
-  background: rgb(228.4, 120.1, 86.85);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main a.button-warning:active {
-  background: linear-gradient(135deg, rgb(188.75, 104.0151006711, 78), rgb(150.5, 95.0302013423, 78));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main a.button-warning,
 body main button.button-warning,
 body main input[type=reset].button-warning,
 body main input[type=submit].button-warning {
-  display: inline-block;
   cursor: pointer;
   border: none;
   color: #F1F1F1 !important;
@@ -390,6 +298,7 @@ body main input[type=submit].button-warning {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main a.button-warning:hover,
 body main button.button-warning:hover,
 body main input[type=reset].button-warning:hover,
 body main input[type=submit].button-warning:hover {
@@ -397,6 +306,7 @@ body main input[type=submit].button-warning:hover {
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main a.button-warning:active,
 body main button.button-warning:active,
 body main input[type=reset].button-warning:active,
 body main input[type=submit].button-warning:active {
@@ -405,29 +315,12 @@ body main input[type=submit].button-warning:active {
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-info {
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #17A2B8, rgb(23, 128.9767080745, 145.75));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
+  text-decoration: none !important;
 }
-body main a.button-info:hover {
-  background: rgb(24.6833333333, 173.8565217391, 197.4666666667);
-  transform: scale(1.09);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main a.button-info:active {
-  background: linear-gradient(135deg, rgb(23, 128.9767080745, 145.75), rgb(23, 95.9534161491, 107.5));
-  transform: scale(0.98);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
+body main a.button-info,
 body main button.button-info,
 body main input[type=reset].button-info,
 body main input[type=submit].button-info {
-  display: inline-block;
   cursor: pointer;
   border: none;
   color: #F1F1F1 !important;
@@ -435,6 +328,7 @@ body main input[type=submit].button-info {
   box-shadow: 1px 1px #999;
   transition: transform 0.2s ease, box-shadow 0.1s ease;
 }
+body main a.button-info:hover,
 body main button.button-info:hover,
 body main input[type=reset].button-info:hover,
 body main input[type=submit].button-info:hover {
@@ -442,6 +336,7 @@ body main input[type=submit].button-info:hover {
   transform: scale(1.09);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
+body main a.button-info:active,
 body main button.button-info:active,
 body main input[type=reset].button-info:active,
 body main input[type=submit].button-info:active {
@@ -455,10 +350,43 @@ body main button:disabled, body main input[type=reset]:disabled, body main input
   box-shadow: none;
   filter: grayscale(40%);
 }
-body main input[type=range], body main input[type=checkbox], body main input[type=radio], body main input[type=color] {
+body main .file-input-label {
+  position: relative;
+  border: 0.0625rem solid #555;
+  cursor: pointer;
+  border: none;
+  color: #F1F1F1 !important;
+  background: linear-gradient(135deg, rgb(36, 181, 36), rgb(36, 142.75, 36));
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+}
+body main .file-input-label:hover {
+  background: rgb(38.4304147465, 193.2195852535, 38.4304147465);
+  transform: scale(1.09);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+body main .file-input-label:active {
+  background: linear-gradient(135deg, rgb(36, 142.75, 36), rgb(36, 104.5, 36));
+  transform: scale(0.98);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main .file-input-label input[type=file] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+body main input[type=range],
+body main input[type=checkbox],
+body main input[type=radio],
+body main input[type=color] {
   cursor: pointer;
 }
-body main input[type=checkbox], body main input[type=radio] {
+body main input[type=checkbox],
+body main input[type=radio] {
   accent-color: darkcyan;
   width: 1.1rem;
   height: 1.1rem;
@@ -470,102 +398,59 @@ body main input[type=color] {
   appearance: auto;
   -moz-appearance: none;
   -webkit-appearance: none;
-  inline-size: 50px;
-  block-size: 32px;
+  inline-size: 3.125rem;
+  block-size: 2rem;
   box-sizing: border-box;
-  border: 1px solid #444;
+  border: 0.0625rem solid #555;
 }
 body main form {
   margin: 0 auto;
 }
 body main form fieldset {
-  padding: 5px 25px 15px 25px;
-  border-radius: 5px;
-  border-color: #62aeb2;
-  text-align: center;
+  padding: 0.3125rem 1.5625rem;
+  border-radius: 0.3125rem;
+  border: 0.0625rem solid #777;
 }
 body main form fieldset legend {
   font-size: x-large;
   font-weight: bold;
+  font-style: italic;
   text-align: left;
-  color: #62aeb2;
+  padding-inline: 0.3125rem;
 }
 body main form fieldset label {
   font-size: large;
   font-weight: bold;
 }
-body main meter {
-  width: 75%;
-  height: 16px;
-  margin-top: 10px;
-  border-radius: 8px;
-  appearance: none;
+body main p {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0.75rem 0;
 }
-body main .spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #999;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+body main abbr[title] {
+  text-decoration: none !important;
 }
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+body main figcaption {
+  font-size: small;
+  font-weight: normal;
+  font-style: italic;
+}
+body main strong {
+  font-weight: bold;
+}
+body main em {
+  font-style: italic;
 }
 body main a {
   text-decoration: none;
-  color: #ddd;
+  color: #cdc;
+  transition: color 0.2s ease;
 }
 body main a:link, body main a:visited {
-  color: #ddd;
+  color: #cdc;
 }
 body main a:hover, body main a:active {
-  color: #eee;
-}
-body main p {
-  font-size: inherit;
-  font-weight: normal;
-  margin: 0.0625rem 0;
-}
-body main dialog {
-  background: #d1d1d1;
-  margin: auto;
-  padding: 32px 16px;
-  position: fixed;
-}
-body main dialog button.dialog-close {
-  position: absolute;
-  top: 1px;
-  right: 1px;
-}
-body main dialog::backdrop {
-  background: rgba(0, 0, 0, 0.5);
-}
-body main .dialog-card {
-  background-color: #fefefe;
-  color: #1f1f1f;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 1rem 2rem;
-  margin-top: 1rem;
-}
-body main h1 {
-  color: mediumseagreen;
-  text-align: center;
-}
-body main h2 {
-  color: lightseagreen;
-  text-align: center;
-}
-body main h3, body main h4, body main h5, body main h6 {
-  text-align: center;
+  color: #efe;
 }
 body footer {
   background-color: seagreen;
@@ -576,45 +461,66 @@ body footer {
 }
 body footer a {
   text-decoration: none;
-  color: #ddd;
+  color: #eee;
+  transition: color 0.2s ease;
 }
 body footer a:link, body footer a:visited {
-  color: #ddd;
+  color: #eee;
 }
 body footer a:hover, body footer a:active {
-  color: #eeeeee;
+  color: #eee;
 }
-body .project-card {
+body .project-card, body .skills-card {
   background: rgba(0, 0, 0, 0.2);
-  border-left: 5px solid mediumseagreen;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
   margin-top: 1rem;
+  transition: box-shadow 0.3s ease;
 }
-
-#cat_container {
+body .project-card:hover, body .skills-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+body .project-card {
+  border-left: 5px solid #37B501;
+}
+body .skills-card {
+  border-left: 5px solid #3489FF;
+}
+body #numberGuessingGameContainer {
+  text-align: center;
+  display: block;
+  border: solid medium teal;
+  border-radius: 0.5rem;
+  width: 450px;
+  height: fit-content;
+  margin: auto;
+  padding: 5px 15px;
+}
+@media screen and (max-width: 500px) {
+  body #numberGuessingGameContainer {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+body #cat_container {
   text-align: center;
 }
-
-#catDisplay {
+body #catDisplay {
   display: flex;
   justify-content: space-evenly;
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
-
-#catHeading {
+body #catHeading {
   color: darkorange;
 }
-
-.splide {
+body .splide {
   margin: auto;
   width: 95%;
 }
-
-.weather-display {
+body .weather-display {
   margin: auto;
   text-align: center;
   font-weight: bold;
@@ -624,38 +530,38 @@ body .project-card {
   background-color: #333;
   overflow: hidden;
 }
-.weather-display .heading-container {
+body .weather-display .heading-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.weather-display .heading-container .heading-card {
+body .weather-display .heading-container .heading-card {
   height: 80px;
   margin: auto;
 }
-.weather-display .heading-container .heading-card h1 {
+body .weather-display .heading-container .heading-card h1 {
   color: mediumseagreen;
   padding: 0;
   margin: 0;
 }
-.weather-display .heading-container .heading-card h1 a {
+body .weather-display .heading-container .heading-card h1 a {
   text-decoration: none;
 }
-.weather-display .heading-container .heading-card h1 a:link, .weather-display .heading-container .heading-card h1 a:visited {
+body .weather-display .heading-container .heading-card h1 a:link, body .weather-display .heading-container .heading-card h1 a:visited {
   color: mediumseagreen;
 }
-.weather-display .heading-container .heading-card h1 a:hover, .weather-display .heading-container .heading-card h1 a:active {
+body .weather-display .heading-container .heading-card h1 a:hover, body .weather-display .heading-container .heading-card h1 a:active {
   color: seagreen;
 }
-.weather-display #currentDiv {
+body .weather-display #currentDiv {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-top: solid thin darkseagreen;
 }
-.weather-display #currentDiv #currentId {
+body .weather-display #currentDiv #currentId {
   background-color: seagreen;
   color: honeydew;
   float: left;
@@ -664,26 +570,26 @@ body .project-card {
   word-break: keep-all;
   padding: 4px;
 }
-.weather-display #currentDiv #nextId {
+body .weather-display #currentDiv #nextId {
   background-color: #333;
   color: rgb(190.8659217877, 216.6340782123, 190.8659217877);
   float: right;
   flex: 1;
   height: 100%;
 }
-.weather-display #alertsId {
+body .weather-display #alertsId {
   border-top: solid thin darkseagreen;
   background-color: #8b2e62;
   color: honeydew;
   text-align: center;
 }
-.weather-display #weekId {
+body .weather-display #weekId {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.weather-display #weekId .dayId {
+body .weather-display #weekId .dayId {
   flex: 1;
   background-color: #333;
   padding: 5px 0;
@@ -691,22 +597,21 @@ body .project-card {
   font-size: smaller;
   font-weight: bold;
 }
-.weather-display #weekId .dayId .day {
+body .weather-display #weekId .dayId .day {
   color: lightgreen;
 }
-.weather-display #weekId .dayId .hi {
+body .weather-display #weekId .dayId .hi {
   color: lightcoral;
 }
-.weather-display #weekId .dayId .lo {
+body .weather-display #weekId .dayId .lo {
   color: lightblue;
 }
-.weather-display #chartId {
+body .weather-display #chartId {
   margin: "auto";
   max-width: "550px";
   background-color: "#333";
 }
-
-.cloudLoader {
+body .cloudLoader {
   width: 180px;
   height: 140px;
   display: block;
@@ -718,7 +623,7 @@ body .project-card {
   background-repeat: no-repeat;
   background-position: 0px 30px, 30px 0px, 113px 29px, 147px 50px, 23px 60px;
 }
-.cloudLoader::after {
+body .cloudLoader::after {
   content: "";
   position: absolute;
   left: 2px;
@@ -729,7 +634,6 @@ body .project-card {
   box-sizing: border-box;
   animation: animateLoader 0.6s linear infinite;
 }
-
 @keyframes animateLoader {
   0% {
     box-shadow: 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF, 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF;
@@ -741,22 +645,3 @@ body .project-card {
     box-shadow: 25px 60px rgba(255, 255, 255, 0), 50px 60px rgba(255, 255, 255, 0), 75px 50px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 70px rgba(255, 255, 255, 0), 150px 60px rgba(255, 255, 255, 0), 25px 80px rgba(255, 255, 255, 0), 50px 80px rgba(255, 255, 255, 0), 75px 70px rgba(255, 255, 255, 0), 100px 60px rgba(255, 255, 255, 0), 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
   }
 }
-#numberGuessingGameContainer {
-  text-align: center;
-  display: block;
-  border: solid medium teal;
-  border-radius: 0.5rem;
-  width: 450px;
-  height: fit-content;
-  margin: auto;
-  padding: 5px 15px;
-}
-
-@media screen and (max-width: 500px) {
-  #numberGuessingGameContainer {
-    flex: 100%;
-    max-width: 100%;
-  }
-}
-
-/*# sourceMappingURL=style.css.map */
