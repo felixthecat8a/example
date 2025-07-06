@@ -1,0 +1,26 @@
+@mixin spinner($color-spinner: #999) {
+    .spinner {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border: 2px solid $color-spinner ;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        margin-left: 0.5em;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+}
+
+@mixin meters {
+  meter {
+    width: 75%;
+    height: rem(16);
+    margin-top: rem(5);
+    border-radius: rem(5);
+    appearance: none;
+  }
+}

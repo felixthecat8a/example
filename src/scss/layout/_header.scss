@@ -1,0 +1,52 @@
+@use '../util' as *;
+@use '../components' as *;
+
+@mixin header-navigation {
+    nav {
+        font-size: medium;
+        font-weight: 500;
+        ul {
+            list-style: none;
+            gap: 1.5rem;
+        }
+        li {
+            padding: 0 rem(5);
+            display: inline-block;
+        }
+        @content;
+    }
+    @include medium-media {
+        nav ul {
+            padding: rem(4);
+            background-color: rgb(255, 255, 255, 0.1);
+        }
+    }
+}
+
+@mixin header($bg:#1f1f1f, $txt:#f1f1f1, $accent:#95ff05)  {
+    header {
+        width: 100%;
+        background-color: $bg;
+        color: $txt;
+        border-bottom: 2px solid $accent;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .header-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            margin: 0 auto;
+            @include header-navigation;
+            @include anchors($accent,$accent);
+            @content;
+        }
+    }
+    @include medium-media {
+        header .header-container {
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}

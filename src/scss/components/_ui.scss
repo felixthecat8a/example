@@ -1,0 +1,164 @@
+@use 'sass:color';
+@use '../util' as *;
+
+@mixin button-style($button-color) {
+  cursor: pointer;
+  border: none;
+  color: #F1F1F1 !important;
+  $button-color-adj: color.adjust($button-color, $blackness: 15%);
+  background: linear-gradient(135deg, $button-color, $button-color-adj);
+  box-shadow: 1px 1px #999;
+  transition: transform 0.2s ease, box-shadow 0.1s ease;
+  @content;
+  &:hover {
+    $hover-color: color.scale($button-color, $lightness: 5%);
+    background: $hover-color;
+    transform: scale(1.09);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+  &:active {
+    $active-color-adj: color.adjust($button-color-adj, $blackness: 15%);
+    background: linear-gradient(135deg, $button-color-adj, $active-color-adj);
+    transform: scale(0.98);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  }
+}
+
+@mixin ui-elements {
+  $border-gray-line: rem(1) solid #555;
+  %ui-element-box {
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: rem(5);
+    outline: none;
+    line-height: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.25rem 0.75rem;
+    margin-top: 0.5rem;
+    margin-inline: 0.25rem;
+  }
+  select,
+  textarea,
+  input[type='number'],
+  input[type='text'],
+  input[type='url'],
+  input[type='password'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='search'],
+  input[type='date'],
+  input[type='month'],
+  input[type='week'],
+  input[type='time'],
+  input[type='datetime-local'] {
+    @extend %ui-element-box;
+    border: $border-gray-line;
+  }
+  select {
+    cursor: pointer;
+  }
+  textarea {
+    width: 95%;
+  }
+  input[type='number'] {
+    width: rem(125);
+  }
+  $button-defaults: (
+    danger: #DC3545,
+    primary: #007BFF,
+    secondary: #6C757D,
+    success: #28A745,
+    warning: #E3714E,
+    info: #17A2B8
+  );
+  @each $name, $color in $button-defaults {
+    a.button-#{$name} {
+      text-decoration: none !important;
+      @extend %ui-element-box;
+    }
+    a.button-#{$name},
+    button.button-#{$name},
+    input[type='reset'].button-#{$name},
+    input[type='submit'].button-#{$name} {
+      @include button-style($color);
+    }
+  }
+  button,input[type='reset'], input[type='submit'] {
+    @extend %ui-element-box;
+    &:disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+      box-shadow: none;
+      filter: grayscale(40%);
+    }
+  }
+  .file-input-label {
+    position: relative;
+    @extend %ui-element-box;
+    border: $border-gray-line;
+    @include button-style(rgb(36, 181, 36));
+    input[type="file"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+@mixin interactive-inputs {
+  input[type='range'],
+  input[type='checkbox'],
+  input[type='radio'],
+  input[type='color'] {
+    cursor: pointer;
+  }
+  input[type='checkbox'],
+  input[type='radio'] {
+    accent-color: darkcyan;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0.3rem;
+    vertical-align: middle;
+  }
+  input[type='color'] {
+    background: none;
+    appearance: auto;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    inline-size: rem(50);
+    block-size: rem(32);
+    box-sizing: border-box;
+    border: rem(1) solid #555;
+  }
+}
+
+@mixin forms {
+  form {
+    margin: 0 auto;
+    fieldset {
+      padding: rem(5) rem(25);
+      border-radius: rem(5);
+      border: rem(1) solid #777;
+      legend {
+        font-size: x-large;
+        font-weight: bold;
+        font-style: italic;
+        text-align: left;
+        padding-inline: rem(5);
+      }
+    }
+  }
+}
+
+@mixin ui {
+  @include ui-elements;
+  @include interactive-inputs;
+  @include forms;
+}

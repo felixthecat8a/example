@@ -1,0 +1,42 @@
+@use 'util' as *;
+@use 'layout' as *;
+@use 'components' as *;
+@use 'theme' as *;
+
+@include reset;
+@include typography($bg-main, $txt-main);
+
+@mixin base() {
+    body {
+        @include all-headings;
+        @include header($bg-header,$txt-header,$accent-header);
+        @include main {
+            @include ui;
+            @include text;
+            @include anchors($color:#353, $hover:#575);
+        };
+        @include footer($bg-footer,$txt-footer,$accent-footer);
+        .project-card, .skills-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: rem(8);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+            transition: box-shadow 0.3s ease;
+            &:hover {
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            }
+        }
+        .project-card {
+            border-left: $project-card-border;
+        }
+        .skills-card {
+            border-left: $skills-card-border;
+        }
+    }
+}
+
+@include base;
+
+@include dark-mode-settings;
+@include dark-mode-toggle-checkbox(1rem,#5ad701);

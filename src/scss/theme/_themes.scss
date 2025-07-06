@@ -1,0 +1,31 @@
+@use '../util' as*;
+@use '../components' as*;
+@use '../template' as*;
+@use '../layout' as*;
+
+$orange-accent: #FF8C42;
+$orange-card-border: 5px solid $orange-accent;
+
+@mixin color-theme-settings {
+    body.blue-theme {
+        @include header($bg-header,$txt-header,$accent-blue);
+        @include footer($bg-footer,$txt-footer,$accent-blue);
+        .project-card {
+            border-left: $project-card-border-blue-dark;
+        }
+        .skills-card {
+            border-left: $project-card-border-green-dark;
+        }
+    }
+    body.orange-theme {
+        @include header($bg-header,$txt-header,$accent-orange);
+        @include footer($bg-footer,$txt-footer,$accent-orange);
+        .project-card, .skills-card {
+            border-left: $orange-card-border;
+        }
+    }
+}
+
+@mixin color-theme-selector() {
+
+}

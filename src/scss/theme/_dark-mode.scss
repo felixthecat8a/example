@@ -1,0 +1,58 @@
+@use 'sass:color';
+@use '../util' as *;
+@use '../components' as *;
+@use '../layout' as *;
+
+// Dark Mode  Colors
+$bg-main-dark: $text-grey;
+$txt-main-dark: $color-light;
+
+@mixin dark-mode-settings {
+    body.dark-mode {
+        background-color: $bg-main-dark;
+        color: $txt-main-dark;
+        @include main {
+            @include anchors(#DED, #EFE);
+            .project-card, .skills-card {
+                background: rgba(0,0,0,0.2);
+            }
+        };
+    }
+}
+
+@mixin dark-mode-toggle-checkbox($size:0.9rem,$color:#95ef01) {
+    %dark-mode-toggle-text {
+        font-family: fonts('geist');
+        font-size: $size;
+        font-weight: 900;
+        text-align: center;
+    }
+    label.dark-mode-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        cursor: pointer;
+        user-select: none;
+        @extend %dark-mode-toggle-text;
+    }
+    input[type="checkbox"].dark-mode-checkbox {
+        display: none;
+    }
+    #slider {
+        display: inline-block;
+        padding: 3px 6px;
+        background-color: $color;
+        color: #333;
+        border-radius: 20px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, color 0.3s;
+        width: 70px;
+        &:hover {
+            filter: brightness(0.95);
+        }
+    }
+    .dark-mode-toggle input:checked + #slider {
+        background-color: #bbb;
+        color: #222;
+    }
+}

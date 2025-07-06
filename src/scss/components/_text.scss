@@ -1,0 +1,79 @@
+@use '../util' as *;
+
+// Responsive font-size mixin using clamp()
+@mixin fluid-text($minSize, $maxSize, $minVW: 320px, $maxVW: 1280px) {
+  font-size: clamp(
+    #{$minSize},
+    calc(#{$minSize} + (#{$maxSize} - #{$minSize}) * ((100vw - #{$minVW}) / (#{$maxVW} - #{$minVW}))),
+    #{$maxSize}
+  );
+}
+
+@mixin all-headings {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+
+  h1 { @include fluid-text(2rem, 3rem); }
+  h2 { @include fluid-text(1.75rem, 2.5rem); }
+  h3 { @include fluid-text(1.5rem, 2rem); }
+  h4 { @include fluid-text(1.25rem, 1.75rem); }
+  h5 { @include fluid-text(1.125rem, 1.5rem); }
+  h6 { @include fluid-text(1rem, 1.25rem); }
+}
+
+@mixin paragraphs {
+  p {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0.75rem 0;
+    @content;
+  }
+}
+
+@mixin abbreviations {
+  abbr[title] {
+    text-decoration: none !important;
+    @content;
+  }
+}
+
+@mixin figure-captions {
+  figcaption {
+    font-size: small;
+    font-weight: normal;
+    font-style: italic;
+    @content;
+  }
+}
+
+@mixin text {
+  @include paragraphs;
+  @include abbreviations;
+  @include figure-captions;
+  strong {
+    font-weight: bold;
+  }
+  em {
+    font-style: italic;
+  }
+}
+
+@mixin anchors($color:#353, $hover:#797) {
+  a {
+    text-decoration: none;
+    color: $color;
+    transition: color 0.2s ease;
+    @content;
+    &:link, &:visited {
+      color: $color;
+    }
+    &:hover, &:active {
+      text-decoration: underline;
+      color: $hover;
+    }
+  }
+}

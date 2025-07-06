@@ -1,0 +1,25 @@
+@use '../util' as *;
+
+@mixin typography($bg:#F1F1F1, $txt:#333) {
+    body {
+        font-family: fonts('segoe');
+        line-height: 1.5;
+        font-size: 1.1em;
+        font-weight: 400;
+        height: 100%;
+        width: 100%;
+        background-color: $bg;
+        color: $txt;
+        @content;
+    }
+    @include medium-media {
+        body {
+            font-size: 0.8rem;
+        }
+    }
+    @include small-media {
+        body {
+            width: breakpoint('sm');
+        }
+    }
+}

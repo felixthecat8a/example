@@ -1,0 +1,14 @@
+@use '../util' as *;
+@use '../components' as *;
+
+@mixin footer($bg:#1F1F1F, $txt:#F1F1F1, $accent:#95FF05) {
+    footer {
+        background-color: $bg;
+        color: $txt;
+        text-align: center;
+        width: 100%;
+        padding: rem(5);
+        @include anchors($accent,$accent);
+        @content;
+    }
+}
