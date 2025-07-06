@@ -50,4 +50,3 @@ class TheCatAPI {
     }
 }
 module.exports = { TheCatAPI };
-//# sourceMappingURL=cat.js.map

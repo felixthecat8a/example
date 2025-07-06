@@ -403,4 +403,3 @@ async function displayCatSlider() {
     const catDisplay = new CatDisplay('displayDiv', 'apiLink');
     await catDisplay.displayCatSlider();
 }
-//# sourceMappingURL=forecast.js.map

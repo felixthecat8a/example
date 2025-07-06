@@ -26,7 +26,7 @@
     "typescript": "^5.8.2"
   },
   "scripts": {
-    "scripts": "tsc --project ./config/tsconfig.json",
+    "scripts": "tsc --project ./src/config/tsconfig.json",
     "sass": "sass ./src/scss:./dist/css --no-source-map",
     "style": "sass --watch ./src/scss:./build/css",
     "lint": "eslint **/*.js",

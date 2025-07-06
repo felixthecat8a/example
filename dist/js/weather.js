@@ -187,4 +187,3 @@ class WeatherApexCharts {
     }
 }
 module.exports = { NationalWeatherServiceAPI, StatusUtility, WeatherApexCharts };
-//# sourceMappingURL=weather.js.map

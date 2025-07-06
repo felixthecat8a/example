@@ -114,4 +114,3 @@ function getDisplayHTML(img, name) {
         `;
     }
 }
-//# sourceMappingURL=catDisplay.js.map
