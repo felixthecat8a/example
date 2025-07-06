@@ -15,7 +15,7 @@
             @include ui;
             @include text;
             @include anchors($color:#cdc, $hover:#efe);
-            text-align: center;
+            //text-align: center;
         };
         @include footer($bg-footer,$txt-footer,$accent-footer);
         .project-card, .skills-card {
