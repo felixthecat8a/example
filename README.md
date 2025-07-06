@@ -1,4 +1,5 @@
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Ffelixthecat8a.github.io%2Fexample%2F)
+[![Sass](https://img.shields.io/badge/styled_with-Sass-cc6699?style=for-the-badge&logo=sass&logoColor=white)](https://lesscss.org/)
 
 # **Mr. Ochoa's JavaScript & TypeScript Examples**  
 A collection of simple JavaScript and TypeScript projects for learning and fun!
