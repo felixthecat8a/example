@@ -1,5 +1,6 @@
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Ffelixthecat8a.github.io%2Fexample%2F)
 [![Sass](https://img.shields.io/badge/styled_with-Sass-cc6699?logo=sass&logoColor=white)](https://lesscss.org/)
+[![Sass Build](https://github.com/felixthecat8a/example/actions/workflows/build-sass.yml/badge.svg)](https://github.com/felixthecat8a/example/actions/workflows/build-sass.yml)
 
 # **Mr. Ochoa's JavaScript & TypeScript Examples**  
 A collection of simple JavaScript and TypeScript projects for learning and fun!
