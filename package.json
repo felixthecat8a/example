@@ -27,7 +27,7 @@
   },
   "scripts": {
     "scripts": "tsc --project ./src/config/tsconfig.json",
-    "sass": "sass ./src/scss:./dist/css --no-source-map",
+    "build:sass": "sass src/scss:dist/css --no-source-map",
     "style": "sass --watch ./src/scss:./build/css",
     "lint": "eslint **/*.js",
     "format": "prettier --write ts/ && yarn lint"

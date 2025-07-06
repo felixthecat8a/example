@@ -1,4 +1,4 @@
-name: Compile Sass
+name: Compile Sass and Push
 
 on:
   push:
@@ -24,8 +24,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Sass globally
-        run: npm install -g sass
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Clean old CSS files
+        run: rm -rf dist/css/*
 
       - name: Compile Sass
         run: sass src/scss:dist/css --no-source-map
