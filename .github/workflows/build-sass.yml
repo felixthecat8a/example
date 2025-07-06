@@ -1,0 +1,40 @@
+name: Compile Sass
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/scss/**/*.scss'
+  pull_request:
+    paths:
+      - 'src/scss/**/*.scss'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Sass globally
+        run: npm install -g sass
+
+      - name: Compile Sass
+        run: sass src/scss:dist/css --no-source-map
+
+      - name: Commit & Push compiled CSS
+        run: |
+          git config user.name "felixthecat8a"
+          git config user.email "felixthecat8a@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${{ secrets.EXAMPLE_PAT }}@github.com/${{ github.repository }}"
+          git add dist/css
+          git diff --staged --quiet || git commit -m "chore: update compiled CSS [skip ci]"
+          git push origin HEAD:${{ github.ref_name }}
