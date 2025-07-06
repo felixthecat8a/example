@@ -111,6 +111,7 @@ body main {
   width: min(80ch, 90%);
   margin: 2rem auto;
   padding: 0 1rem;
+  text-align: center;
 }
 body main .file-input-label, body main button, body main input[type=reset], body main input[type=submit], body main a.button-info, body main a.button-warning, body main a.button-success, body main a.button-secondary, body main a.button-primary, body main a.button-danger, body main select,
 body main textarea,
@@ -452,6 +453,12 @@ body main a:link, body main a:visited {
 body main a:hover, body main a:active {
   color: #efe;
 }
+body main h1 {
+  color: mediumseagreen;
+}
+body main h2 {
+  color: lightseagreen;
+}
 body footer {
   background-color: seagreen;
   color: #F1F1F1;
@@ -470,7 +477,8 @@ body footer a:link, body footer a:visited {
 body footer a:hover, body footer a:active {
   color: #eee;
 }
-body .project-card, body .skills-card {
+body .project-card {
+  border-left: 5px solid mediumseagreen;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -478,14 +486,8 @@ body .project-card, body .skills-card {
   margin-top: 1rem;
   transition: box-shadow 0.3s ease;
 }
-body .project-card:hover, body .skills-card:hover {
+body .project-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-body .project-card {
-  border-left: 5px solid #37B501;
-}
-body .skills-card {
-  border-left: 5px solid #3489FF;
 }
 body #numberGuessingGameContainer {
   text-align: center;
