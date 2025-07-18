@@ -4,7 +4,7 @@
   main {
     background-color: inherit;
     color: inherit;
-    width: min(80ch, 100% - 2em);
+    width: min(80ch, 100% - 1.1em);
     margin: 2rem auto;
     padding: 0 1rem;
     @content;

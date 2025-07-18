@@ -4,10 +4,9 @@
         display: block;
         border: solid medium teal;
         border-radius: 0.5rem;
-        width: 450px;
-        height: fit-content;
+        width: min(450px, 100%);
         margin: auto;
-        padding: 5px 15px;
+        padding: 10px 15px;
     }
 
     // #numberGuessingGameContainer:hover {

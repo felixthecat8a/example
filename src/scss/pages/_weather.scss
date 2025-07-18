@@ -1,10 +1,10 @@
 @use './loader';
 
 @use 'sass:color';
-$alert-violet: color.complement(seagreen);
-//$light-green-text: lighten(darkseagreen, 15%);
-$light-green-text: color.adjust(darkseagreen, $lightness: 15%);
+$green-bg: seagreen;
+$alert-bg: color.complement(seagreen);
 $green-line: solid thin darkseagreen;
+
 @mixin flex-center($direction: row, $justify: space-between, $align: center) {
   display: flex;
   flex-direction: $direction;
@@ -14,75 +14,74 @@ $green-line: solid thin darkseagreen;
 
 @mixin weather-display {
   .weather-display {
+    background-color: rgba(46, 139, 87, 0.55);
+    color: #353;
+    border: solid thin mediumseagreen;
+    padding: 8px;
     margin: auto;
     text-align: center;
-    font-weight: bold;
-    outline: $green-line;
-    border: $green-line;
-    border-radius: 16px;
-    background-color: #333;
+    font-weight: 500;
+    outline:  none;
+    border-radius: 8px;
     overflow: hidden;
     .heading-container {
       @include flex-center;
       .heading-card {
-        height: 90px;
+        // height: 90px;
         margin: auto;
-        h1 {
-          color: mediumseagreen;
-          padding: 0;
-          margin: 0;
-          a {
-            text-decoration: none;
-            &:link, &:visited { color: mediumseagreen; }
-            &:hover, &:active { color: seagreen; }
-          }
-        }
       }
     }
     #currentDiv {
       @include flex-center;
-      border-top: $green-line;
+      border: $green-line;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 2px;
       #currentId {
-        background-color: seagreen;
-        color: honeydew;
-        float: left;
         flex: 2;
-        height: 100%;
+        background-color: $green-bg;
+        color: honeydew;
+        line-height: 1.4;
+        border-radius: 8px;
+        padding: 8px 4px;
         word-break: keep-all;
-        padding: 4px;
       }
       #nextId {
-        background-color: #333;
-        color: $light-green-text;
-        float: right;
         flex: 1;
-        height: 100%;
+        border-radius: 8px;
+        padding: 2px;
       }
     }
     #alertsId {
-      border-top: $green-line;
-      background-color: $alert-violet;
+      background-color: $alert-bg;
       color: honeydew;
       text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 2px;
     }
     #weekId {
       @include flex-center;
+      padding: 4px 0;
       .dayId {
         flex: 1;
-        background-color: #333;
-        padding: 5px 0;
         border: $green-line;
-        font-size: smaller;
-        font-weight: bold;
-        .day { color: lightgreen; }
-        .hi { color: lightcoral; }
-        .lo { color: lightblue; }
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 3px 0;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin: 2px;
+
+        .day { color: #335; }
+        .hi { color: crimson; }
+        .lo { color: royalblue; }
       }
     }
     #chartId {
-      margin: "auto";
-      max-width: "550px";
-      background-color: "#333";
+      margin: 0.1rem auto;
     }
   }
 
