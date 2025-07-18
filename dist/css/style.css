@@ -538,7 +538,7 @@ body .weather-display .heading-container {
   align-items: center;
 }
 body .weather-display .heading-container .heading-card {
-  height: 80px;
+  height: 90px;
   margin: auto;
 }
 body .weather-display .heading-container .heading-card h1 {

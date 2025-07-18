@@ -15,7 +15,7 @@ Check it out here: **[GitHub Pages Link](https://felixthecat8a.github.io/example
 
 ## Build Automation
 
-[![Sass](https://img.shields.io/badge/styled_with-Sass-cc6699?logo=sass&logoColor=white&style=for-the-badge)](https://lesscss.org/)
+[![Sass](https://img.shields.io/badge/styled_with-Sass-cc6699?logo=sass&logoColor=white&style=for-the-badge)](https://sass-lang.com/)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/felixthecat8a/example/build-sass.yml?style=for-the-badge&logo=github)
 
 - Sass is compiled from `src/scss/` to `dist/css` on push using a GitHub Actions workflow.
