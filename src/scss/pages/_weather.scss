@@ -6,86 +6,86 @@ $alert-violet: color.complement(seagreen);
 $light-green-text: color.adjust(darkseagreen, $lightness: 15%);
 $green-line: solid thin darkseagreen;
 @mixin flex-center($direction: row, $justify: space-between, $align: center) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 @mixin weather-display {
-    .weather-display {
+  .weather-display {
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    outline: $green-line;
+    border: $green-line;
+    border-radius: 16px;
+    background-color: #333;
+    overflow: hidden;
+    .heading-container {
+      @include flex-center;
+      .heading-card {
+        height: 90px;
         margin: auto;
-        text-align: center;
-        font-weight: bold;
-        outline: $green-line;
-        border: $green-line;
-        border-radius: 16px;
-        background-color: #333;
-        overflow: hidden;
-        .heading-container {
-            @include flex-center;
-            .heading-card {
-                height: 90px;
-                margin: auto;
-                h1 {
-                    color: mediumseagreen;
-                    padding: 0;
-                    margin: 0;
-                    a {
-                        text-decoration: none;
-                        &:link, &:visited { color: mediumseagreen; }
-                        &:hover, &:active { color: seagreen; }
-                    }
-                }
-            }
+        h1 {
+          color: mediumseagreen;
+          padding: 0;
+          margin: 0;
+          a {
+            text-decoration: none;
+            &:link, &:visited { color: mediumseagreen; }
+            &:hover, &:active { color: seagreen; }
+          }
         }
-        #currentDiv {
-            @include flex-center;
-            border-top: $green-line;
-            #currentId {
-                background-color: seagreen;
-                color: honeydew;
-                float: left;
-                flex: 2;
-                height: 100%;
-                word-break: keep-all;
-                padding: 4px;
-            }
-            #nextId {
-                background-color: #333;
-                color: $light-green-text;
-                float: right;
-                flex: 1;
-                height: 100%;
-            }
-        }
-        #alertsId {
-            border-top: $green-line;
-            background-color: $alert-violet;
-            color: honeydew;
-            text-align: center;
-        }
-        #weekId {
-            @include flex-center;
-            .dayId {
-                flex: 1;
-                background-color: #333;
-                padding: 5px 0;
-                border: $green-line;
-                font-size: smaller;
-                font-weight: bold;
-                .day { color: lightgreen; }
-                .hi { color: lightcoral; }
-                .lo { color: lightblue; }
-            }
-        }
-        #chartId {
-            margin: "auto";
-            max-width: "550px";
-            background-color: "#333";
-        }
+      }
     }
+    #currentDiv {
+      @include flex-center;
+      border-top: $green-line;
+      #currentId {
+        background-color: seagreen;
+        color: honeydew;
+        float: left;
+        flex: 2;
+        height: 100%;
+        word-break: keep-all;
+        padding: 4px;
+      }
+      #nextId {
+        background-color: #333;
+        color: $light-green-text;
+        float: right;
+        flex: 1;
+        height: 100%;
+      }
+    }
+    #alertsId {
+      border-top: $green-line;
+      background-color: $alert-violet;
+      color: honeydew;
+      text-align: center;
+    }
+    #weekId {
+      @include flex-center;
+      .dayId {
+        flex: 1;
+        background-color: #333;
+        padding: 5px 0;
+        border: $green-line;
+        font-size: smaller;
+        font-weight: bold;
+        .day { color: lightgreen; }
+        .hi { color: lightcoral; }
+        .lo { color: lightblue; }
+      }
+    }
+    #chartId {
+      margin: "auto";
+      max-width: "550px";
+      background-color: "#333";
+    }
+  }
 
-    @include loader.cloud-loader
+  @include loader.cloud-loader
 
 }

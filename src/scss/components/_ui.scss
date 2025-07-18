@@ -5,21 +5,21 @@
   cursor: pointer;
   border: none;
   color: #F1F1F1 !important;
-  $button-color-adj: color.adjust($button-color, $blackness: 15%);
-  background: linear-gradient(135deg, $button-color, $button-color-adj);
+  $bg-gradient: color.adjust($button-color, $blackness: 10%);
+  background: linear-gradient(135deg, $button-color, $bg-gradient);
   box-shadow: 1px 1px #999;
-  transition: transform 0.2s ease, box-shadow 0.1s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
   @content;
   &:hover {
     $hover-color: color.scale($button-color, $lightness: 5%);
     background: $hover-color;
-    transform: scale(1.09);
+    transform: scale(1.05);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   }
   &:active {
-    $active-color-adj: color.adjust($button-color-adj, $blackness: 15%);
-    background: linear-gradient(135deg, $button-color-adj, $active-color-adj);
-    transform: scale(0.98);
+    $active-color-adj: color.adjust($bg-gradient, $blackness: 10%);
+    background: linear-gradient(135deg, $bg-gradient, $active-color-adj);
+    transform: scale(0.99);
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   }
 }
@@ -144,7 +144,7 @@
     fieldset {
       padding: rem(5) rem(25);
       border-radius: rem(5);
-      border: rem(1) solid #777;
+      border: rem(1) solid lightseagreen;
       legend {
         font-size: x-large;
         font-weight: bold;

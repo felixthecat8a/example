@@ -9,7 +9,6 @@
 
 @mixin base() {
   body {
-    @include all-headings;
     @include header($bg-header,$txt-header,$accent-header);
     @include main {
       @include ui;
@@ -26,15 +25,15 @@
     @include footer($bg-footer,$txt-footer,$accent-footer);
     .project-card {
       border-left: $project-card-border;
-        background: rgba(0,0,0,0.2);
-        border-radius: rem(8);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        padding: 1rem 2rem;
-        margin-top: 1rem;
-        transition: box-shadow 0.3s ease;
-        &:hover {
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
+      background: rgba(0,0,0,0.2);
+      border-radius: rem(8);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin: 1em 0;
+      transition: box-shadow 0.3s ease;
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
     }
     @include number-guessing-game-page;
     @include cat-page;

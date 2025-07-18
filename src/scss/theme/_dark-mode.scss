@@ -22,7 +22,7 @@ $txt-main-dark: $color-light;
 
 @mixin dark-mode-toggle-checkbox($size:0.9rem,$color:#95ef01) {
     %dark-mode-toggle-text {
-        font-family: fonts('geist');
+        font-family: fonts('mono');
         font-size: $size;
         font-weight: 900;
         text-align: center;
