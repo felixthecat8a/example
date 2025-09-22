@@ -1,13 +1,18 @@
-# Ignore artifacts:
+# Ignore artifacts
 node_modules
+coverage
 
-# Ignore files:
+# Ignore files
 **/*.html
-**/*.ejs
 **/*.md
+
+# Ignore Config files
 **/*.json
 **/*.yaml
 
-# Ignore all Stylesheets:
+# Ignore Compiled Stylesheets
 **/*.css
-**/*.scss
+
+# Ignore Other
+**/*.pdf
+**/*.zip

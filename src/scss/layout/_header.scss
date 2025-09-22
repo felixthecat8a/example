@@ -23,7 +23,7 @@
   }
 }
 
-@mixin header($bg:#1f1f1f, $txt:#f1f1f1, $accent:#95ff05)  {
+@mixin header($bg: #1f1f1f, $txt: #f1f1f1, $accent: #95ff05) {
   header {
     background-color: $bg;
     color: $txt;
@@ -38,7 +38,7 @@
       padding: 1rem;
       margin: 0 auto;
       @include header-navigation;
-      @include anchors($accent,$accent);
+      @include anchors($accent, $accent);
       @content;
     }
   }

@@ -1,23 +1,23 @@
 @mixin number-guessing-game-page {
+  #numberGuessingGameContainer {
+    text-align: center;
+    display: block;
+    border: solid medium teal;
+    border-radius: 0.5rem;
+    width: min(450px, 100%);
+    margin: auto;
+    padding: 10px 15px;
+  }
+
+  // #numberGuessingGameContainer:hover {
+  //     outline: solid thin teal;
+  //     box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9);
+  // }
+
+  @media screen and (max-width: 500px) {
     #numberGuessingGameContainer {
-        text-align: center;
-        display: block;
-        border: solid medium teal;
-        border-radius: 0.5rem;
-        width: min(450px, 100%);
-        margin: auto;
-        padding: 10px 15px;
+      flex: 100%;
+      max-width: 100%;
     }
-
-    // #numberGuessingGameContainer:hover {
-    //     outline: solid thin teal;
-    //     box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9);
-    // }
-
-    @media screen and (max-width: 500px) {
-        #numberGuessingGameContainer {
-            flex: 100%;
-            max-width: 100%;
-        }
-    }
+  }
 }

@@ -21,7 +21,7 @@ $green-line: solid thin darkseagreen;
     margin: auto;
     text-align: center;
     font-weight: 500;
-    outline:  none;
+    outline: none;
     border-radius: 8px;
     overflow: hidden;
     .heading-container {
@@ -36,7 +36,7 @@ $green-line: solid thin darkseagreen;
       border: $green-line;
       background-color: rgba(255, 255, 255, 0.7);
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin: 2px;
       #currentId {
         flex: 2;
@@ -58,7 +58,7 @@ $green-line: solid thin darkseagreen;
       color: honeydew;
       text-align: center;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin: 2px;
     }
     #weekId {
@@ -72,12 +72,18 @@ $green-line: solid thin darkseagreen;
         font-size: 0.85rem;
         font-weight: 600;
         border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin: 2px;
 
-        .day { color: #335; }
-        .hi { color: crimson; }
-        .lo { color: royalblue; }
+        .day {
+          color: #335;
+        }
+        .hi {
+          color: crimson;
+        }
+        .lo {
+          color: royalblue;
+        }
       }
     }
     #chartId {
@@ -85,6 +91,5 @@ $green-line: solid thin darkseagreen;
     }
   }
 
-  @include loader.cloud-loader
-
+  @include loader.cloud-loader;
 }

@@ -1,61 +1,96 @@
 $loader-size: 180px;
 $loader-width: 50px;
 $loader-height: 75px;
-$loader-color: #FFF;
+$loader-color: #fff;
 
 @mixin cloud-loader {
-    .cloudLoader {
-        width: $loader-size;
-        height: 140px;
-        display: block;
-        margin: 0 auto 20px;
-        position: relative;
-        box-sizing: border-box;
+  .cloudLoader {
+    width: $loader-size;
+    height: 140px;
+    display: block;
+    margin: 0 auto 20px;
+    position: relative;
+    box-sizing: border-box;
 
-        background-image:
-          radial-gradient(circle 25px at 25px 25px, $loader-color 100%, transparent 0),
-          radial-gradient(circle 50px at 50px 50px, $loader-color 100%, transparent 0),
-          radial-gradient(circle 25px at 25px 25px, $loader-color 100%, transparent 0),
-          radial-gradient(circle 15px at 15px 15px, $loader-color 100%, transparent 0),
-          linear-gradient($loader-color 50px, transparent 0);
+    background-image:
+      radial-gradient(circle 25px at 25px 25px, $loader-color 100%, transparent 0),
+      radial-gradient(circle 50px at 50px 50px, $loader-color 100%, transparent 0),
+      radial-gradient(circle 25px at 25px 25px, $loader-color 100%, transparent 0),
+      radial-gradient(circle 15px at 15px 15px, $loader-color 100%, transparent 0),
+      linear-gradient($loader-color 50px, transparent 0);
 
-        background-size: 50px 50px, 100px 75px, 50px 50px, 30px 32px, 136px 20px;
-        background-repeat: no-repeat;
-        background-position: 0px 30px, 30px 0px, 113px 29px, 147px 50px, 23px 60px;
+    background-size:
+      50px 50px,
+      100px 75px,
+      50px 50px,
+      30px 32px,
+      136px 20px;
+    background-repeat: no-repeat;
+    background-position:
+      0px 30px,
+      30px 0px,
+      113px 29px,
+      147px 50px,
+      23px 60px;
 
-        &::after {
-          content: '';
-          position: absolute;
-          left: 2px;
-          top: 65px;
-          width: 2px;
-          height: 6px;
-          color: $loader-color;
-          box-sizing: border-box;
-          animation: animateLoader 0.6s linear infinite;
-        }
-      }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 65px;
+      width: 2px;
+      height: 6px;
+      color: $loader-color;
+      box-sizing: border-box;
+      animation: animateLoader 0.6s linear infinite;
+    }
+  }
 
-      @keyframes animateLoader {
-        0% {
-          box-shadow:
-            25px 0 $loader-color, 50px 0 $loader-color, 75px 0 $loader-color, 100px 0 $loader-color,
-            125px 0 $loader-color, 150px 0 $loader-color, 25px 0 $loader-color, 50px 0 $loader-color,
-            75px 0 $loader-color, 100px 0 $loader-color, 125px 0 $loader-color, 150px 0 $loader-color;
-        }
-        50% {
-          box-shadow:
-            25px 20px $loader-color, 50px 60px rgba(255, 255, 255, 0), 75px 30px rgba(255, 255, 255, 0),
-            100px 70px rgba(255, 255, 255, 0), 125px 40px $loader-color, 150px 60px rgba(255, 255, 255, 0),
-            25px 20px $loader-color, 50px 30px $loader-color, 75px 10px $loader-color, 100px 30px $loader-color,
-            125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
-        }
-        100% {
-          box-shadow:
-            25px 60px rgba(255, 255, 255, 0), 50px 60px rgba(255, 255, 255, 0), 75px 50px rgba(255, 255, 255, 0),
-            100px 70px rgba(255, 255, 255, 0), 125px 70px rgba(255, 255, 255, 0), 150px 60px rgba(255, 255, 255, 0),
-            25px 80px rgba(255, 255, 255, 0), 50px 80px rgba(255, 255, 255, 0), 75px 70px rgba(255, 255, 255, 0),
-            100px 60px rgba(255, 255, 255, 0), 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
-        }
-      }
+  @keyframes animateLoader {
+    0% {
+      box-shadow:
+        25px 0 $loader-color,
+        50px 0 $loader-color,
+        75px 0 $loader-color,
+        100px 0 $loader-color,
+        125px 0 $loader-color,
+        150px 0 $loader-color,
+        25px 0 $loader-color,
+        50px 0 $loader-color,
+        75px 0 $loader-color,
+        100px 0 $loader-color,
+        125px 0 $loader-color,
+        150px 0 $loader-color;
+    }
+    50% {
+      box-shadow:
+        25px 20px $loader-color,
+        50px 60px rgba(255, 255, 255, 0),
+        75px 30px rgba(255, 255, 255, 0),
+        100px 70px rgba(255, 255, 255, 0),
+        125px 40px $loader-color,
+        150px 60px rgba(255, 255, 255, 0),
+        25px 20px $loader-color,
+        50px 30px $loader-color,
+        75px 10px $loader-color,
+        100px 30px $loader-color,
+        125px 30px rgba(255, 255, 255, 0),
+        150px 30px rgba(255, 255, 255, 0);
+    }
+    100% {
+      box-shadow:
+        25px 60px rgba(255, 255, 255, 0),
+        50px 60px rgba(255, 255, 255, 0),
+        75px 50px rgba(255, 255, 255, 0),
+        100px 70px rgba(255, 255, 255, 0),
+        125px 70px rgba(255, 255, 255, 0),
+        150px 60px rgba(255, 255, 255, 0),
+        25px 80px rgba(255, 255, 255, 0),
+        50px 80px rgba(255, 255, 255, 0),
+        75px 70px rgba(255, 255, 255, 0),
+        100px 60px rgba(255, 255, 255, 0),
+        125px 30px rgba(255, 255, 255, 0),
+        150px 30px rgba(255, 255, 255, 0);
+    }
+  }
 }

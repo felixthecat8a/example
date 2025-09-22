@@ -9,11 +9,11 @@
 
 @mixin base() {
   body {
-    @include header($bg-header,$txt-header,$accent-header);
+    @include header($bg-header, $txt-header, $accent-header);
     @include main {
       @include ui;
       @include text;
-      @include anchors($color:#cdc, $hover:#efe);
+      @include anchors($color: #cdc, $hover: #efe);
       text-align: center;
       h1 {
         color: mediumseagreen;
@@ -21,18 +21,18 @@
       h2 {
         color: lightseagreen;
       }
-    };
-    @include footer($bg-footer,$txt-footer,$accent-footer);
+    }
+    @include footer($bg-footer, $txt-footer, $accent-footer);
     .project-card {
       border-inline: 0.15rem solid mediumseagreen;
-      background: rgba(0,0,0,0.15);
+      background: rgba(0, 0, 0, 0.15);
       border-radius: rem(8);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       padding: 1rem;
       margin: 1em 0;
       transition: box-shadow 0.3s ease;
       &:hover {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
     }
     @include number-guessing-game-page;

@@ -22,16 +22,18 @@
   }
 }
 
-@mixin anchors($color:#353, $hover:#797) {
+@mixin anchors($color: #353, $hover: #797) {
   a {
     text-decoration: none;
     color: $color;
     transition: color 0.2s ease;
     @content;
-    &:link, &:visited {
+    &:link,
+    &:visited {
       color: $color;
     }
-    &:hover, &:active {
+    &:hover,
+    &:active {
       color: $hover;
     }
   }
