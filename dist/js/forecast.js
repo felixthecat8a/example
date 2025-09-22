@@ -30,21 +30,21 @@ class WeatherChartJS {
         });
     }
     set7DayData(forecastData) {
-        const Daytime = forecastData.filter((pd) => pd.isDaytime);
-        const NightTime = forecastData.filter((pd) => !pd.isDaytime);
+        const Daytime = forecastData.filter(pd => pd.isDaytime);
+        const NightTime = forecastData.filter(pd => !pd.isDaytime);
         const highDataSet = {
             type: 'line',
             label: 'Highs',
             borderColor: this.line.Red,
             pointRadius: 3,
-            data: Daytime.map((period) => period.temperature),
+            data: Daytime.map(period => period.temperature),
         };
         const lowDataSet = {
             type: 'line',
             label: 'Lows',
             borderColor: this.line.Blue,
             pointRadius: 3,
-            data: NightTime.map((period) => period.temperature),
+            data: NightTime.map(period => period.temperature),
         };
         const roomDataSet = {
             type: 'line',
@@ -59,11 +59,11 @@ class WeatherChartJS {
             label: 'Rain',
             backgroundColor: this.line.Purple,
             barThickness: 15,
-            data: Daytime.map((period) => period.probabilityOfPrecipitation.value),
+            data: Daytime.map(period => period.probabilityOfPrecipitation.value),
             yAxisID: 'y2',
         };
         const datasets = [highDataSet, lowDataSet, roomDataSet, rainDataSet];
-        return { labels: Daytime.map((period) => period.name), datasets: datasets };
+        return { labels: Daytime.map(period => period.name), datasets: datasets };
     }
     set7DayOptions(location) {
         const name = 'Weather Forecast';
@@ -365,6 +365,7 @@ class CatDisplay extends LinkUtility {
         this.displayDIV.innerHTML = `<img src="${image[0].url}" height="auto" width="100%">`;
         const button = document.createElement('button');
         button.textContent = 'New Cat';
+        button.setAttribute("class", "button-warning");
         button.onclick = async () => {
             await this.displayCat();
         };
@@ -373,23 +374,23 @@ class CatDisplay extends LinkUtility {
     async displayCatSlider() {
         const image = await CAT.getCatImageData(5);
         this.displayDIV.innerHTML = `
-        <style>.catImg {height: 350px; width= auto;}</style>
-        <div class="glide">
-            <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
-                    <li class="glide__slide"><img src="${image[0].url}" class="catImg"></li>
-                    <li class="glide__slide"><img src="${image[1].url}" class="catImg"></li>
-                    <li class="glide__slide"><img src="${image[2].url}" class="catImg"></li>
-                    <li class="glide__slide"><img src="${image[3].url}" class="catImg"></li>
-                    <li class="glide__slide"><img src="${image[4].url}" class="catImg"></li>
-                </ul>
-            </div>
-            <div class="glide__arrows" data-glide-el="controls">
-                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
-            </div>
+      <style>.catImg {height: 350px; width= auto;}</style>
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide"><img src="${image[0].url}" class="catImg"></li>
+            <li class="glide__slide"><img src="${image[1].url}" class="catImg"></li>
+            <li class="glide__slide"><img src="${image[2].url}" class="catImg"></li>
+            <li class="glide__slide"><img src="${image[3].url}" class="catImg"></li>
+            <li class="glide__slide"><img src="${image[4].url}" class="catImg"></li>
+          </ul>
         </div>
-        `;
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+        </div>
+      </div>
+      `;
         const options = { autoplay: 3000, hoverpause: false };
         const { Glide } = window;
         new Glide('.glide', options).mount();

@@ -1,10 +1,18 @@
 @use '../util' as *;
 
 @mixin text {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+    margin-bottom: 0.5em;
+  }
   p {
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0.75rem 0;
+    text-wrap: pretty;
   }
   strong {
     font-weight: bold;
@@ -13,12 +21,23 @@
     font-style: italic;
   }
   abbr[title] {
-    text-decoration: none !important;
+    text-decoration: none;
   }
   figcaption {
     font-size: small;
     font-weight: normal;
     font-style: italic;
+  }
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: '';
+    content: none;
   }
 }
 

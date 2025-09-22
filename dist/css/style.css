@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -16,9 +18,14 @@ body {
   font-weight: 400;
   width: max(100%, 30rem);
   background-color: #333;
-  color: #F1F1F1;
+  color: #f1f1f1;
 }
-body h1, body h2, body h3, body h4, body h5, body h6 {
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
   font-family: inherit;
   font-weight: 600;
   line-height: 1.2;
@@ -50,7 +57,7 @@ body h6 {
 }
 body header {
   background-color: seagreen;
-  color: #F1F1F1;
+  color: #f1f1f1;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 body header .header-container {
@@ -58,9 +65,7 @@ body header .header-container {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  gap: 1rem;
   padding: 1rem;
-  margin: 0 auto;
 }
 body header .header-container nav {
   font-size: inherit;
@@ -101,11 +106,12 @@ body main {
   background-color: inherit;
   color: inherit;
   width: min(80ch, 100% - 1.1em);
-  margin: 2rem auto;
-  padding: 0 1rem;
+  margin: 2em auto;
   text-align: center;
 }
-body main .file-input-label, body main button, body main input[type=reset], body main input[type=submit], body main a.button-info, body main a.button-warning, body main a.button-success, body main a.button-secondary, body main a.button-primary, body main a.button-danger, body main select,
+body main .file-input-label, body main button,
+body main input[type=reset],
+body main input[type=submit], body main a.button-info, body main a.button-warning, body main a.button-danger, body main a.button-success, body main a.button-secondary, body main a.button-primary, body main select,
 body main textarea,
 body main input[type=number],
 body main input[type=text],
@@ -156,36 +162,6 @@ body main textarea {
 body main input[type=number] {
   width: 7.8125rem;
 }
-body main a.button-danger {
-  text-decoration: none !important;
-}
-body main a.button-danger,
-body main button.button-danger,
-body main input[type=reset].button-danger,
-body main input[type=submit].button-danger {
-  cursor: pointer;
-  border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #DC3545, rgb(194.5, 53, 66.5568862275));
-  box-shadow: 1px 1px #999;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-body main a.button-danger:hover,
-body main button.button-danger:hover,
-body main input[type=reset].button-danger:hover,
-body main input[type=submit].button-danger:hover {
-  background: rgb(221.75, 63.1, 78.3);
-  transform: scale(1.05);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-body main a.button-danger:active,
-body main button.button-danger:active,
-body main input[type=reset].button-danger:active,
-body main input[type=submit].button-danger:active {
-  background: linear-gradient(135deg, rgb(194.5, 53, 66.5568862275), rgb(169, 53, 64.1137724551));
-  transform: scale(0.99);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
 body main a.button-primary {
   text-decoration: none !important;
 }
@@ -195,9 +171,8 @@ body main input[type=reset].button-primary,
 body main input[type=submit].button-primary {
   cursor: pointer;
   border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #007BFF, rgb(0, 110.7, 229.5));
-  box-shadow: 1px 1px #999;
+  color: #f1f1f1 !important;
+  background: linear-gradient(135deg, #007bff, rgb(0, 110.7, 229.5));
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 body main a.button-primary:hover,
@@ -205,8 +180,8 @@ body main button.button-primary:hover,
 body main input[type=reset].button-primary:hover,
 body main input[type=submit].button-primary:hover {
   background: rgb(12.75, 129.6, 255);
-  transform: scale(1.05);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-primary:active,
 body main button.button-primary:active,
@@ -225,9 +200,8 @@ body main input[type=reset].button-secondary,
 body main input[type=submit].button-secondary {
   cursor: pointer;
   border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #6C757D, rgb(104.5161290323, 104.5161290323, 104.5161290323));
-  box-shadow: 1px 1px #999;
+  color: #f1f1f1 !important;
+  background: linear-gradient(135deg, #6c757d, rgb(104.5161290323, 104.5161290323, 104.5161290323));
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 body main a.button-secondary:hover,
@@ -235,8 +209,8 @@ body main button.button-secondary:hover,
 body main input[type=reset].button-secondary:hover,
 body main input[type=submit].button-secondary:hover {
   background: rgb(114.4197424893, 123.95472103, 132.4302575107);
-  transform: scale(1.05);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-secondary:active,
 body main button.button-secondary:active,
@@ -255,9 +229,8 @@ body main input[type=reset].button-success,
 body main input[type=submit].button-success {
   cursor: pointer;
   border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #28A745, rgb(40, 141.5, 63.1771653543));
-  box-shadow: 1px 1px #999;
+  color: #f1f1f1 !important;
+  background: linear-gradient(135deg, #28a745, rgb(40, 141.5, 63.1771653543));
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 body main a.button-success:hover,
@@ -265,14 +238,43 @@ body main button.button-success:hover,
 body main input[type=reset].button-success:hover,
 body main input[type=submit].button-success:hover {
   background: rgb(42.9275362319, 179.2224637681, 74.05);
-  transform: scale(1.05);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-success:active,
 body main button.button-success:active,
 body main input[type=reset].button-success:active,
 body main input[type=submit].button-success:active {
   background: linear-gradient(135deg, rgb(40, 141.5, 63.1771653543), rgb(40, 116, 57.3543307087));
+  transform: scale(0.99);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-danger {
+  text-decoration: none !important;
+}
+body main a.button-danger,
+body main button.button-danger,
+body main input[type=reset].button-danger,
+body main input[type=submit].button-danger {
+  cursor: pointer;
+  border: none;
+  color: #f1f1f1 !important;
+  background: linear-gradient(135deg, #dc3545, rgb(194.5, 53, 66.5568862275));
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+body main a.button-danger:hover,
+body main button.button-danger:hover,
+body main input[type=reset].button-danger:hover,
+body main input[type=submit].button-danger:hover {
+  background: rgb(221.75, 63.1, 78.3);
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+body main a.button-danger:active,
+body main button.button-danger:active,
+body main input[type=reset].button-danger:active,
+body main input[type=submit].button-danger:active {
+  background: linear-gradient(135deg, rgb(194.5, 53, 66.5568862275), rgb(169, 53, 64.1137724551));
   transform: scale(0.99);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
@@ -285,24 +287,23 @@ body main input[type=reset].button-warning,
 body main input[type=submit].button-warning {
   cursor: pointer;
   border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #E3714E, rgb(201.5, 107.0100671141, 78));
-  box-shadow: 1px 1px #999;
+  color: #f1f1f1 !important;
+  background: linear-gradient(135deg, #dd582f, rgb(195.5, 81.9913793103, 47));
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 body main a.button-warning:hover,
 body main button.button-warning:hover,
 body main input[type=reset].button-warning:hover,
 body main input[type=submit].button-warning:hover {
-  background: rgb(228.4, 120.1, 86.85);
-  transform: scale(1.05);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  background: rgb(222.7, 96.35, 57.4);
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-warning:active,
 body main button.button-warning:active,
 body main input[type=reset].button-warning:active,
 body main input[type=submit].button-warning:active {
-  background: linear-gradient(135deg, rgb(201.5, 107.0100671141, 78), rgb(176, 101.0201342282, 78));
+  background: linear-gradient(135deg, rgb(195.5, 81.9913793103, 47), rgb(170, 75.9827586207, 47));
   transform: scale(0.99);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
@@ -315,9 +316,8 @@ body main input[type=reset].button-info,
 body main input[type=submit].button-info {
   cursor: pointer;
   border: none;
-  color: #F1F1F1 !important;
-  background: linear-gradient(135deg, #17A2B8, rgb(23, 139.9844720497, 158.5));
-  box-shadow: 1px 1px #999;
+  color: #f1f1f1 !important;
+  background: linear-gradient(135deg, #17a2b8, rgb(23, 139.9844720497, 158.5));
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 body main a.button-info:hover,
@@ -325,8 +325,8 @@ body main button.button-info:hover,
 body main input[type=reset].button-info:hover,
 body main input[type=submit].button-info:hover {
   background: rgb(24.6833333333, 173.8565217391, 197.4666666667);
-  transform: scale(1.05);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main a.button-info:active,
 body main button.button-info:active,
@@ -336,7 +336,9 @@ body main input[type=submit].button-info:active {
   transform: scale(0.99);
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-body main button:disabled, body main input[type=reset]:disabled, body main input[type=submit]:disabled {
+body main button:disabled,
+body main input[type=reset]:disabled,
+body main input[type=submit]:disabled {
   opacity: 50%;
   cursor: not-allowed;
   box-shadow: none;
@@ -347,15 +349,14 @@ body main .file-input-label {
   border: 0.0625rem solid #555;
   cursor: pointer;
   border: none;
-  color: #F1F1F1 !important;
+  color: #f1f1f1 !important;
   background: linear-gradient(135deg, rgb(36, 181, 36), rgb(36, 155.5, 36));
-  box-shadow: 1px 1px #999;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 body main .file-input-label:hover {
   background: rgb(38.4304147465, 193.2195852535, 38.4304147465);
-  transform: scale(1.05);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 body main .file-input-label:active {
   background: linear-gradient(135deg, rgb(36, 155.5, 36), #248224);
@@ -415,10 +416,18 @@ body main form fieldset label {
   font-size: large;
   font-weight: bold;
 }
+body main p,
+body main h1,
+body main h2,
+body main h3,
+body main h4,
+body main h5,
+body main h6 {
+  overflow-wrap: break-word;
+  margin-bottom: 0.5em;
+}
 body main p {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0.75rem 0;
+  text-wrap: pretty;
 }
 body main strong {
   font-weight: bold;
@@ -427,12 +436,23 @@ body main em {
   font-style: italic;
 }
 body main abbr[title] {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 body main figcaption {
   font-size: small;
   font-weight: normal;
   font-style: italic;
+}
+body main blockquote,
+body main q {
+  quotes: none;
+}
+body main blockquote:before,
+body main blockquote:after,
+body main q:before,
+body main q:after {
+  content: "";
+  content: none;
 }
 body main a {
   text-decoration: none;
@@ -453,7 +473,7 @@ body main h2 {
 }
 body footer {
   background-color: seagreen;
-  color: #F1F1F1;
+  color: #f1f1f1;
   font-size: inherit;
   text-align: center;
   padding: 0.3125rem 0;
@@ -470,8 +490,8 @@ body footer a:hover, body footer a:active {
   color: #eee;
 }
 body .project-card {
-  border-inline: 0.15rem solid mediumseagreen;
-  background: rgba(0, 0, 0, 0.15);
+  border-inline: 0.1rem solid mediumseagreen;
+  background: rgba(0, 0, 0, 0.11);
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -604,7 +624,7 @@ body .cloudLoader {
   margin: 0 auto 20px;
   position: relative;
   box-sizing: border-box;
-  background-image: radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #FFF 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #FFF 100%, transparent 0), radial-gradient(circle 15px at 15px 15px, #FFF 100%, transparent 0), linear-gradient(#FFF 50px, transparent 0);
+  background-image: radial-gradient(circle 25px at 25px 25px, #fff 100%, transparent 0), radial-gradient(circle 50px at 50px 50px, #fff 100%, transparent 0), radial-gradient(circle 25px at 25px 25px, #fff 100%, transparent 0), radial-gradient(circle 15px at 15px 15px, #fff 100%, transparent 0), linear-gradient(#fff 50px, transparent 0);
   background-size: 50px 50px, 100px 75px, 50px 50px, 30px 32px, 136px 20px;
   background-repeat: no-repeat;
   background-position: 0px 30px, 30px 0px, 113px 29px, 147px 50px, 23px 60px;
@@ -616,16 +636,16 @@ body .cloudLoader::after {
   top: 65px;
   width: 2px;
   height: 6px;
-  color: #FFF;
+  color: #fff;
   box-sizing: border-box;
   animation: animateLoader 0.6s linear infinite;
 }
 @keyframes animateLoader {
   0% {
-    box-shadow: 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF, 25px 0 #FFF, 50px 0 #FFF, 75px 0 #FFF, 100px 0 #FFF, 125px 0 #FFF, 150px 0 #FFF;
+    box-shadow: 25px 0 #fff, 50px 0 #fff, 75px 0 #fff, 100px 0 #fff, 125px 0 #fff, 150px 0 #fff, 25px 0 #fff, 50px 0 #fff, 75px 0 #fff, 100px 0 #fff, 125px 0 #fff, 150px 0 #fff;
   }
   50% {
-    box-shadow: 25px 20px #FFF, 50px 60px rgba(255, 255, 255, 0), 75px 30px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 40px #FFF, 150px 60px rgba(255, 255, 255, 0), 25px 20px #FFF, 50px 30px #FFF, 75px 10px #FFF, 100px 30px #FFF, 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
+    box-shadow: 25px 20px #fff, 50px 60px rgba(255, 255, 255, 0), 75px 30px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 40px #fff, 150px 60px rgba(255, 255, 255, 0), 25px 20px #fff, 50px 30px #fff, 75px 10px #fff, 100px 30px #fff, 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);
   }
   100% {
     box-shadow: 25px 60px rgba(255, 255, 255, 0), 50px 60px rgba(255, 255, 255, 0), 75px 50px rgba(255, 255, 255, 0), 100px 70px rgba(255, 255, 255, 0), 125px 70px rgba(255, 255, 255, 0), 150px 60px rgba(255, 255, 255, 0), 25px 80px rgba(255, 255, 255, 0), 50px 80px rgba(255, 255, 255, 0), 75px 70px rgba(255, 255, 255, 0), 100px 60px rgba(255, 255, 255, 0), 125px 30px rgba(255, 255, 255, 0), 150px 30px rgba(255, 255, 255, 0);

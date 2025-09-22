@@ -415,6 +415,7 @@ class CatDisplay extends LinkUtility {
     this.displayDIV.innerHTML = `<img src="${image[0].url}" height="auto" width="100%">`
     const button = document.createElement('button') as HTMLButtonElement
     button.textContent = 'New Cat'
+    button.setAttribute("class", "button-warning")
     button.onclick = async () => {
       await this.displayCat()
     }

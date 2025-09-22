@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const catSelector = document.getElementById('catSelector');
     catSelector.innerHTML = `
     <select id="catSelect">
-        <optgroup label="Random Cat">
-            <option value="showCat" selected>Show Random Cats</option>
-        </optgroup>
-        <optgroup label="Cat by Breed" id="catBreedOptGroup">
-            <option value="catBreed" id="catBreed" hidden>Choose a Cat Breed</option>
-        </optgroup>
+      <optgroup label="Random Cat">
+        <option value="showCat" selected>Show Random Cats</option>
+      </optgroup>
+      <optgroup label="Cat by Breed" id="catBreedOptGroup">
+        <option value="catBreed" id="catBreed" hidden>Choose a Cat Breed</option>
+      </optgroup>
     </select>
     `;
     try {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 displayRandomCats();
             }
             else {
-                const selectedBreed = breeds.find((breed) => breed.id === catBreedEvent);
+                const selectedBreed = breeds.find(breed => breed.id === catBreedEvent);
                 if (selectedBreed) {
                     displayCatBreed(selectedBreed);
                 }
@@ -46,19 +46,19 @@ async function displayRandomCats() {
     catInfo.innerHTML = '';
     console.log('showing random cats');
     const data = await CatAPI.getCatImageData(4);
-    const catImg = data.map((cat) => cat.url);
-    const imgWidth = data.map((cat) => cat.width);
+    const catImg = data.map(cat => cat.url);
+    const imgWidth = data.map(cat => cat.width);
     console.log(imgWidth);
     catDiv.innerHTML = `
     <section class="splide" aria-label="Splide Cat Images">
-        <div class="splide__track">
-            <ul class="splide__list">
-                <li class="splide__slide"><img src="${catImg[0]}" height="350px" width="auto"></li>
-                <li class="splide__slide"><img src="${catImg[1]}" height="350px" width="auto"></li>
-                <li class="splide__slide"><img src="${catImg[2]}" height="350px" width="auto"></li>
-                <li class="splide__slide"><img src="${catImg[3]}" height="350px" width="auto"></li>
-            </ul>
-        </div>
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide"><img src="${catImg[0]}" height="350px" width="auto"></li>
+          <li class="splide__slide"><img src="${catImg[1]}" height="350px" width="auto"></li>
+          <li class="splide__slide"><img src="${catImg[2]}" height="350px" width="auto"></li>
+          <li class="splide__slide"><img src="${catImg[3]}" height="350px" width="auto"></li>
+        </ul>
+      </div>
     </section>
     `;
     new Splide('.splide').mount();
@@ -89,28 +89,28 @@ function getDisplayHTML(img, name) {
     else if (img.length < 3) {
         console.log(`${name} has less than 3 images`);
         return `
-        <section class="splide" aria-label="Splide Cat Images">
-        <div class="splide__track">
-            <ul class="splide__list">
-                <li class="splide__slide"><img src="${img[0]}" alt="${name}" height='350px' width='auto'></li>
-                <li class="splide__slide"><img src="${img[1]}" alt="${name}" height='350px' width='auto'></li>
-            </ul>
-        </div>
-        </section>
-        `;
+      <section class="splide" aria-label="Splide Cat Images">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide"><img src="${img[0]}" alt="${name}" height='350px' width='auto'></li>
+          <li class="splide__slide"><img src="${img[1]}" alt="${name}" height='350px' width='auto'></li>
+        </ul>
+      </div>
+      </section>
+      `;
     }
     else {
         return `
-        <section class="splide" aria-label="Splide Cat Images">
-        <div class="splide__track">
-            <ul class="splide__list">
-                <li class="splide__slide"><img src="${img[0]}" alt="${name}" height='350px' width='auto'></li>
-                <li class="splide__slide"><img src="${img[1]}" alt="${name}" height='350px' width='auto'></li>
-                <li class="splide__slide"><img src="${img[2]}" alt="${name}" height='350px' width='auto'></li>
-                <li class="splide__slide"><img src="${img[3]}" alt="${name}" height='350px' width='auto'></li>
-            </ul>
-        </div>
-        </section>
-        `;
+      <section class="splide" aria-label="Splide Cat Images">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide"><img src="${img[0]}" alt="${name}" height='350px' width='auto'></li>
+          <li class="splide__slide"><img src="${img[1]}" alt="${name}" height='350px' width='auto'></li>
+          <li class="splide__slide"><img src="${img[2]}" alt="${name}" height='350px' width='auto'></li>
+          <li class="splide__slide"><img src="${img[3]}" alt="${name}" height='350px' width='auto'></li>
+        </ul>
+      </div>
+      </section>
+      `;
     }
 }

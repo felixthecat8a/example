@@ -7,7 +7,6 @@
   color: #f1f1f1 !important;
   $bg-gradient: color.adjust($button-color, $blackness: 10%);
   background: linear-gradient(135deg, $button-color, $bg-gradient);
-  box-shadow: 1px 1px #999;
   transition:
     transform 0.1s ease,
     box-shadow 0.1s ease;
@@ -15,8 +14,8 @@
   &:hover {
     $hover-color: color.scale($button-color, $lightness: 5%);
     background: $hover-color;
-    transform: scale(1.05);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   }
   &:active {
     $active-color-adj: color.adjust($bg-gradient, $blackness: 10%);
@@ -68,11 +67,11 @@
     width: rem(125);
   }
   $button-defaults: (
-    danger: #dc3545,
     primary: #007bff,
     secondary: #6c757d,
     success: #28a745,
-    warning: #e3714e,
+    danger: #dc3545,
+    warning: #dd582f,
     info: #17a2b8,
   );
   @each $name, $color in $button-defaults {

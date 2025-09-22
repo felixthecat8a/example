@@ -71,7 +71,7 @@ class NationalWeatherServiceAPI {
         const data = (await this.fetchData(endpoint));
         const current = data.properties.periods[0];
         const chart = data.properties.periods.slice(1, 25);
-        const temperature = chart.map((period) => period.temperature);
+        const temperature = chart.map(period => period.temperature);
         return {
             date: Weather.formatDate(current.startTime),
             temperature: `${current.temperature}°${current.temperatureUnit}`,
@@ -84,9 +84,9 @@ class NationalWeatherServiceAPI {
                 room: Array(temperature.length).fill(72),
                 min: Math.min(...temperature, 72) - 5,
                 max: Math.max(...temperature, 72) + 5,
-                rain: chart.map((period) => period.probabilityOfPrecipitation.value),
-                time: chart.map((period) => Weather.formatTime(period.endTime)),
-                hum: chart.map((period) => period.relativeHumidity.value | 0),
+                rain: chart.map(period => period.probabilityOfPrecipitation.value),
+                time: chart.map(period => Weather.formatTime(period.endTime)),
+                hum: chart.map(period => period.relativeHumidity.value | 0),
             },
         };
     }
@@ -94,13 +94,13 @@ class NationalWeatherServiceAPI {
         const data = (await this.fetchData(endpoint));
         const forecast = data.properties.periods;
         return {
-            isDaytime: forecast.map((period) => period.isDaytime),
-            name: forecast.map((period) => period.name),
-            temperature: forecast.map((period) => period.temperature),
-            wind: forecast.map((period) => `${period.windSpeed} ${period.windDirection}`),
-            forecast: forecast.map((period) => period.detailedForecast),
-            rain: forecast.map((period) => period.probabilityOfPrecipitation.value | 0),
-            icon: forecast.map((period) => period.icon),
+            isDaytime: forecast.map(period => period.isDaytime),
+            name: forecast.map(period => period.name),
+            temperature: forecast.map(period => period.temperature),
+            wind: forecast.map(period => `${period.windSpeed} ${period.windDirection}`),
+            forecast: forecast.map(period => period.detailedForecast),
+            rain: forecast.map(period => period.probabilityOfPrecipitation.value | 0),
+            icon: forecast.map(period => period.icon),
             chart: forecast,
         };
     }
@@ -127,13 +127,13 @@ class WeatherApexCharts {
         chart.render();
     }
     set7DayOptions(data, locationName) {
-        const Daytime = data.filter((data) => data.isDaytime);
-        const Nighttime = data.filter((data) => !data.isDaytime);
-        const highTemp = Daytime.map((data) => data.temperature);
-        const lowTemp = Nighttime.map((data) => data.temperature);
+        const Daytime = data.filter(data => data.isDaytime);
+        const Nighttime = data.filter(data => !data.isDaytime);
+        const highTemp = Daytime.map(data => data.temperature);
+        const lowTemp = Nighttime.map(data => data.temperature);
         const roomTemp = Array(highTemp.length).fill(72);
-        const rain = Daytime.map((data) => data.probabilityOfPrecipitation.value);
-        const days = Daytime.map((data) => data.name);
+        const rain = Daytime.map(data => data.probabilityOfPrecipitation.value);
+        const days = Daytime.map(data => data.name);
         const highSeries = { name: 'Highs', type: 'line', data: highTemp };
         const lowSeries = { name: 'Lows', type: 'line', data: lowTemp };
         const roomSeries = { name: 'Room', type: 'line', data: roomTemp };
