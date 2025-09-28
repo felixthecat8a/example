@@ -364,7 +364,7 @@ class StatusUtility {
 } //const statusDIV = new StatusUtility('statusDIV')
 /**************************************************************************************************/
 document.addEventListener('DOMContentLoaded', () => {
-  displayWeather(true)
+  displayWeather()
 })
 const apiSELECT = document.getElementById('apiSelect') as HTMLSelectElement
 apiSELECT.addEventListener('change', async (event: Event) => {
@@ -372,7 +372,12 @@ apiSELECT.addEventListener('change', async (event: Event) => {
   const weatherLocation = (event.target as HTMLSelectElement).value
   try {
     switch (weatherLocation) {
-      case 'showWeather':
+      case 'showDefault':
+        statusDIV.setCloudLoading('Locating')
+        await displayWeather(false)
+        statusDIV.clearStatus()
+        break
+      case 'showForecast':
         statusDIV.setCloudLoading('Locating')
         await displayWeather(true)
         statusDIV.clearStatus()
