@@ -1,9 +1,9 @@
-# **Mr. Ochoa's JavaScript Examples**  
+# **Mr. Ochoa's JavaScript Examples**
 A collection of simple JavaScript/TypeScript projects for learning and fun!
 
 ---
 
-## **🚀 Live Demo**
+## &#x1F680; **Live Demo**
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Ffelixthecat8a.github.io%2Fexample%2F&style=for-the-badge&logo=githubpages&logoSize=auto)](https://felixthecat8a.github.io/example/)
 [![Sass](https://img.shields.io/badge/styled_with-Sass-cc6699?logo=sass&logoColor=white&style=for-the-badge)](https://sass-lang.com/)
