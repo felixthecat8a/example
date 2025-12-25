@@ -4,11 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="UTF-8"><meta name="author" content="felixthecat8a">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <title>Simple JavaScript Examples</title>
-  <link rel="stylesheet" href="../dist/css/style.css">
-  <!-- ApexCharts -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
   <!--Glide-->
   <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
@@ -19,14 +15,13 @@
 <body>
   <header>
     <div class="header-container">
-      <h1>Simple JavaScript Projects</h1>
+      <h1><em>Simple</em>JavaScript</h1>
       <nav>
-          <ul>
-            <li><a href="../index.html">&#x1F3E1;<br>Home</a></li>
-            <li><a href="./temperature_page.html">&#x1F326;&#xFE0F;<br>Weather</a></li>
-            <li><a href="./cat_page.html">&#x1F408;<br>Cat</a></li>
-            <li><a href="./code_page.html">&#x1F3AE;<br>Game</a></li>
-          </ul>
+        <ul>
+          <li><a href="index.html">&#x1F3E1;<br>Home</a></li>
+          <li><a href="temperature.html">&#x1F326;&#xFE0F;<br>Weather</a></li>
+          <li><a href="cat.html">&#x1F408;<br>Cat</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -43,7 +38,43 @@
         <p>Enter the temperature in this box, and the conversion will appear in the other box automatically.</p>
       </fieldset>
     </form>
-     <script src="../dist/js/temperature.js"></script>
+    <script>
+      const celsiusVal = document.getElementById('celsiusVal');
+      const fahrenheitVal = document.getElementById('fahrenheitVal');
+      const convert = document.getElementById('convert');
+      celsiusVal.addEventListener('keypress', function (event) {
+          if (event.key === 'Enter') {
+              event.preventDefault();
+              convert.click();
+          }
+      });
+      fahrenheitVal.addEventListener('keypress', function (event) {
+          if (event.key === 'Enter') {
+              event.preventDefault();
+              convert.click();
+          }
+      });
+      convert.addEventListener('click', toFahrenheit);
+      function toFahrenheit() {
+          if (celsiusVal.value) {
+              var fahrenheitOutput = parseFloat(celsiusVal.value) * 1.8 + 32;
+              fahrenheitVal.value = fahrenheitOutput.toFixed(2);
+          }
+          else {
+              fahrenheitVal.value = '';
+          }
+      }
+      fahrenheitVal.addEventListener('input', toCelsius);
+      function toCelsius() {
+          if (fahrenheitVal.value) {
+              var celsiusOutput = (parseFloat(fahrenheitVal.value) - 32) / 1.8;
+              celsiusVal.value = celsiusOutput.toFixed(2);
+          }
+          else {
+              celsiusVal.value = '';
+          }
+      }
+    </script>
     <br>
     <hr>
     <br>
@@ -60,21 +91,21 @@
               <option value="showCat">Show a Cat</option>
               <option value="showCatSlider">Show Five Cats</option>
             </optgroup>
+            <optgroup label="Space">
+              <option value="showSpace">Show APOD</option>
+            </optgroup>
           </select>
         </div>
       </div>
       <span id="displayDiv"></span>
       <div id="statusDiv"></div>
-      <script src="../dist/js/cat.js"></script>
-      <script src="../dist/js/weather.js"></script>
-      <script src="../dist/js/forecast.js"></script>
     </article>
-    <h4>Charts created using <a href="https://www.chartjs.org" target="_blank" rel="noopener noreferrer">Chart.js</a></h4>
-    <h4>Sliders created using <a href="https://glidejs.com/" target="_blank" rel="noopener noreferrer">Glide.js</a></h4>
+    <h5>Charts created using <a href="https://www.chartjs.org" target="_blank" rel="noopener noreferrer">Chart.js</a></h5>
+    <h5>Sliders created using <a href="https://glidejs.com/" target="_blank" rel="noopener noreferrer">Glide.js</a></h5>
   </main>
   <footer>
-    <h5>&copy;2025 felixthecat8a&#x1F408; | <a href="https://github.com/felixthecat8a" target="_blank"  rel="noopener noreferrer">GitHub</a></h5>
-    <h6>temperature_page.html</h6>
+    <h5>&copy;2026 felixthecat8a&#x1F408; | <a href="https://github.com/felixthecat8a" target="_blank"  rel="noopener noreferrer" style="color:Chartreuse;">GitHub</a></h5>
+    <h6>temperature.html</h6>
   </footer>
 </body>
 </html>

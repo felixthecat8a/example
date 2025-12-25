@@ -31,14 +31,14 @@ $green-line: solid thin darkseagreen;
         margin: auto;
       }
     }
-    #currentDiv {
+    #weatherContainer {
       @include flex-center;
       border: $green-line;
       background-color: rgba(255, 255, 255, 0.7);
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin: 2px;
-      #currentId {
+      #weatherDivLeft {
         flex: 2;
         background-color: $green-bg;
         color: honeydew;
@@ -47,7 +47,7 @@ $green-line: solid thin darkseagreen;
         padding: 8px 4px;
         word-break: keep-all;
       }
-      #nextId {
+      #weatherDivRight {
         flex: 1;
         border-radius: 8px;
         padding: 2px;
@@ -61,10 +61,10 @@ $green-line: solid thin darkseagreen;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin: 2px;
     }
-    #weekId {
+    #forecastDiv {
       @include flex-center;
       padding: 4px 0;
-      .dayId {
+      .day-card {
         flex: 1;
         border: $green-line;
         background-color: rgba(255, 255, 255, 0.7);
@@ -75,7 +75,7 @@ $green-line: solid thin darkseagreen;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin: 2px;
 
-        .day {
+        .rain {
           color: #335;
         }
         .hi {

@@ -2,17 +2,12 @@
   #numberGuessingGameContainer {
     text-align: center;
     display: block;
-    border: solid medium teal;
+    border: solid thin teal;
     border-radius: 0.5rem;
     width: min(550px, 100%);
     margin: auto;
     padding: 10px 15px;
   }
-
-  // #numberGuessingGameContainer:hover {
-  //     outline: solid thin teal;
-  //     box-shadow: 0 10px 1em rgba(0, 128, 128, 0.9);
-  // }
 
   @media screen and (max-width: 500px) {
     #numberGuessingGameContainer {

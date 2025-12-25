@@ -1,8 +1,18 @@
+require('../scss/style.scss')
+
 const gameDIV = document.getElementById('numberGuessingGame')
-const gameButton = '<button type="button" onclick="playGame(5)" class="button-info">Click to Play</button>'
-document.addEventListener('DOMContentLoaded', () => {
+const gameButton = '<button type="button" id="startGame" class="button-info">Click to Play</button>'
+
+function setGame(limit) {
   gameDIV.innerHTML = gameButton
+
+  document.getElementById('startGame').addEventListener('click', () => playGame(limit))
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setGame(5)
 })
+
 function playGame(limit) {
   window.animatelo.jackInTheBox('#numberGuessingGameContainer')
   gameDIV.innerHTML = `
@@ -24,32 +34,33 @@ function playGame(limit) {
   console.log(answer)
   let attempts = 0
   attemptMeter.value = 0
-  guessInput.addEventListener('keypress', function (event) {
-      if (event.key === 'Enter') {
-          event.preventDefault()
-          checkButton.click()
-      }
+  guessInput.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      checkButton.click()
+    }
   })
   checkButton.addEventListener('click', () => {
-      if (guessInput.value) {
-          checkNumber(Number(guessInput.value))
-      }
+    if (guessInput.value) {
+      checkNumber(Number(guessInput.value))
+    }
   })
   function checkNumber(guessNumber) {
     attempts++
     attemptMeter.value = attempts
-    if (attempts < limit || guessNumber == answer) {
+    if (guessNumber === answer) {
+      window.animatelo.rubberBand('#heading')
+      const tries = attempts === 1 ? 'try' : 'tries'
+      updateHeading(`${answer} is correct\nin only ${attempts} ${tries}!`, 'gold')
+      disableCheckButton()
+      return
+    }
+    if (attempts < limit) {
+      window.animatelo.shake('#heading')
       if (guessNumber < answer) {
-        window.animatelo.shake('#heading')
-        updateHeading( `Too low. Try again.\nAttempts Left: ${limit - attempts}`, 'cornflowerblue' )
-      } else if (guessNumber > answer) {
-        window.animatelo.shake('#heading')
-        updateHeading( `Too high. Try again.\nAttempts Left: ${limit - attempts}`, 'palevioletred' )
+        updateHeading(`Too low. Try again.\nAttempts Left: ${limit - attempts}`, 'cornflowerblue')
       } else {
-        window.animatelo.rubberBand('#heading')
-        const tries = attempts === 1 ? 'try' : 'tries'
-        updateHeading(`${answer} is correct\nin only ${attempts} ${tries}!`, 'gold')
-        disableCheckButton()
+        updateHeading(`Too high. Try again.\nAttempts Left: ${limit - attempts}`, 'palevioletred')
       }
     } else {
       window.animatelo.flash('#heading')
@@ -65,11 +76,9 @@ function playGame(limit) {
     checkButton.disabled = true
     checkButton.style.opacity = '0.5'
   }
-  playAgainButton.onclick = function () {
-    playGame(7)
-  }
+  playAgainButton.onclick = () => playGame(limit)
   close.addEventListener('click', function () {
     window.animatelo.flip('#numberGuessingGame')
-    gameDIV.innerHTML = gameButton
+    setGame(limit)
   })
 }

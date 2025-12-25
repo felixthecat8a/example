@@ -1,5 +1,10 @@
 // _cat.scss
 @mixin cat-page {
+  .cat-header {
+    background-color: hsl(12, 83%, 46%);
+    color: white;
+  }
+
   #cat_container {
     text-align: center;
   }
