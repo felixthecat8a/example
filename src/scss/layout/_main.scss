@@ -5,7 +5,7 @@
     background-color: inherit;
     color: inherit;
     width: min(80ch, 100% - 1.1em);
-    margin: 2em auto;
+    margin: 1.5em auto;
     @content;
   }
 }

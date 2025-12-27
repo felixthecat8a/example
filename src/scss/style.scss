@@ -15,17 +15,11 @@
       @include text;
       @include anchors($color: #cdc, $hover: #efe);
       text-align: center;
-      h1 {
-        color: mediumseagreen;
-      }
-      h2 {
-        color: lightseagreen;
-      }
     }
     @include footer($bg-footer, $txt-footer, $accent-footer);
     .project-card {
       border: 1px solid seagreen;
-      background: rgba(0, 0, 0, 0.11);
+      background: rgba(0, 0, 0, 0.1);
       border-radius: rem(8);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       padding: 1rem;
@@ -42,6 +36,3 @@
 }
 
 @include base;
-
-// @include dark-mode-settings;
-// @include dark-mode-toggle-checkbox(1rem,#5ad701);

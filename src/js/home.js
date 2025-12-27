@@ -18,7 +18,7 @@ function playGame(limit) {
   gameDIV.innerHTML = `
   <input type="number" id="guess" min="1" max="100" placeholder="Guess">
   <button type="button" id="check" class="button-success">Check</button><br>
-  <h3 id="heading">Guess the number from 1 to 100<br>in ${limit} tries or less.</h3>
+  <h4 id="heading">Guess the number from 1 to 100<br>in ${limit} tries or less.</h4>
   <meter value="0" min="0" high="5" max="${limit}" id="meter"></meter><br>
   <button type="button" id="playAgain" class="button-primary">Play Again?</button>
   <button type="button" id="close" class="button-danger">Close</button>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mr. Ochoa's Example Code</title>
+  <title>Simple JS Examples</title>
 
   <style>
     @media all and (max-width: 768px) {
@@ -36,22 +36,22 @@
     </div>
   </header>
   <main style="text-align: center;">
-    <h1>Hi! I'm Mr. Ochoa, a Technology Teacher.</h1>
-    <h2>Check out these simple JavaScript examples.</h2>
+    <h2 style="color: mediumseagreen;">Hi! I'm Mr. Ochoa, a Technology Teacher.</h2>
+    <h3>Check out these simple JavaScript examples.</h3>
     <article>
       <div class="project-card">
-        <h3>Simple Temperature Conversion Example</h3>
+        <h4 style="color: mediumaquamarine;">Simple Temperature Conversion Example</h4>
         <a href="temperature.html" class="button-info">Click to Interact</a>
       </div>
       <div class="project-card">
-        <h3>Cat Breed Selector Example</h3>
+        <h4 style="color: darkorange;">Cat Breed Selector Example</h4>
         <a href="cat.html" class="button-warning">Click to Interact</a>
       </div>
       <div class="project-card">
-        <section id="numberGuessingGameContainer">
-          <h3>Number Guessing Game</h3>
+        <div id="numberGuessingGameContainer">
+          <h4 style="color: lightseagreen;">Number Guessing Game</h4>
           <div id="numberGuessingGame"></div>
-        </section>
+        </div>
         <br>
         <h5>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h5>
         <button type="button" id="gameButton" class="button-success">Click to View Code</button>
@@ -75,7 +75,7 @@ function playGame() {
     gameDIV.innerHTML = (`
     &lt;input type="number" id="guess" min="1" max="100" placeholder="Guess"&gt;
     &lt;button type="button" id="check"&gt;Check&lt;/button&gt;&lt;br&gt;
-    &lt;h3 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${limit} tries or less.&lt;/h3&gt;
+    &lt;h4 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${limit} tries or less.&lt;/h4&gt;
     &lt;button type="button" id="playAgain"&gt;Play Again?&lt;/button&gt;
     &lt;button type="button" id="close"&gt;Close&lt;/button&gt;
     `);

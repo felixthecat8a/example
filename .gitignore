@@ -1,6 +1,7 @@
 # Node Modules
 node_modules/
 .yarn/
+!dist/
 
 # Logs and debug
 npm-debug.log*

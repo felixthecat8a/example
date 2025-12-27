@@ -50,10 +50,17 @@
     line-height: 1.5;
     font-size: 1.1em;
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
     width: max(100%, 30rem);
     background-color: $bg;
     color: $txt;
     @include all-headings;
+    section {
+      padding: 0.5em 1em;
+      margin-bottom: 1em;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
     @content;
   }
   @include medium-media {
