@@ -12,13 +12,13 @@ module.exports = {
     temperature: path.resolve(__dirname, 'src/js/temperature.js'),
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
     filename: "script/[name].bundle.js",
   },
   devtool: 'inline-source-map',
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'dist')
+      directory: path.resolve(__dirname, 'docs')
     },
     port: 3000,
     open: true,
