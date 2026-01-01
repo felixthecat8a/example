@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple JS Examples</title>
+
+  <style>
+    @media all and (max-width: 768px) {
+      body code {
+          font-size: 0.6rem;
+      }
+    }
+  </style>
+  <!-- Animatelo -->
+  <script src="https://cdn.rawgit.com/web-animations/web-animations-js/2.2.2/web-animations.min.js"></script>
+  <script src="https://cdn.rawgit.com/gibbok/animatelo/1.0.3/dist/animatelo.min.js"></script>
+  <!-- HighlightJS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+  <script>hljs.highlightAll();</script>
+<link rel="icon" href="favicon.ico"><script defer src="script/src_scss_style_scss.bundle.js"></script><script defer src="script/home.bundle.js"></script><link href="style/src_scss_style_scss.css" rel="stylesheet"></head>
+<body>
+  <header>
+    <div class="header-container">
+    <h1><em>Simple</em>JavaScript</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">&#x1F3E1;<br>Home</a></li>
+        <li><a href="temperature.html">&#x1F326;&#xFE0F;<br>Weather</a></li>
+        <li><a href="cat.html">&#x1F408;<br>Cat</a></li>
+      </ul>
+    </nav>
+    </div>
+  </header>
+  <main style="text-align: center;">
+    <h2 style="color: mediumseagreen;">Hi! I'm Mr. Ochoa, a Technology Teacher.</h2>
+    <h3>Check out these simple JavaScript examples.</h3>
+    <article>
+      <div class="project-card">
+        <h4 style="color: mediumaquamarine;">Simple Temperature Conversion Example</h4>
+        <a href="temperature.html" class="button-info">Click to Interact</a>
+      </div>
+      <div class="project-card">
+        <h4 style="color: darkorange;">Cat Breed Selector Example</h4>
+        <a href="cat.html" class="button-warning">Click to Interact</a>
+      </div>
+      <div class="project-card">
+        <div id="numberGuessingGameContainer">
+          <h4 style="color: lightseagreen;">Number Guessing Game</h4>
+          <div id="numberGuessingGame"></div>
+        </div>
+        <br>
+        <h5>Animations by <a href="https://gibbok.github.io/animatelo/" target="_blank" rel="noopener noreferrer">Animatelo</a></h5>
+        <button type="button" id="gameButton" class="button-success">Click to View Code</button>
+
+        <dialog id="gameDialog" >
+          <button type="button" id="closegameDialog" class="button-danger dialog-close">Close</button>
+          <h1>Number Guessing Game Code</h1>
+          <article>
+            <h2>HTML</h2>
+            <pre><code class="language-html" style="text-align: left;">
+              &lt;div id="numberGuessingGame"&gt;&lt;/div&gt;
+            </code></pre>
+            <h2>Javascript</h2>
+            <pre><code class="language-javascript" style="text-align: left;">
+//Number Guessing Game JavaScript Code (minus animations)
+const gameDIV = document.getElementById("numberGuessingGame");
+const gameButton = '&lt;button type="button" onclick="playGame()"&gt;Click to Play&lt;/button&gt;';
+document.addEventListener('DOMContentLoaded', () => { gameDIV.innerHTML = gameButton; });
+function playGame() {
+    const limit = 7;
+    gameDIV.innerHTML = (`
+    &lt;input type="number" id="guess" min="1" max="100" placeholder="Guess"&gt;
+    &lt;button type="button" id="check"&gt;Check&lt;/button&gt;&lt;br&gt;
+    &lt;h4 id="heading"&gt;Guess the number from 1 to 100&lt;br&gt;in ${limit} tries or less.&lt;/h4&gt;
+    &lt;button type="button" id="playAgain"&gt;Play Again?&lt;/button&gt;
+    &lt;button type="button" id="close"&gt;Close&lt;/button&gt;
+    `);
+    const heading = document.getElementById("heading");
+    heading.style.color = 'mediumaquamarine';
+    const guessInput = document.getElementById("guess");
+    const checkButton = document.getElementById("check");
+    const playAgainButton = document.getElementById("playAgain");
+    const close = document.getElementById("close");
+    const answer = (Math.floor(Math.random() * 100) + 1);
+    let attempts = 0;
+    attemptMeter.value = 0;
+    guessInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            checkButton.click();
+        };
+    });
+    checkButton.addEventListener("click", () => {
+        if (guessInput.value) { checkNumber(Number(guessInput.value)) };
+    });
+    function checkNumber(guessNumber) {
+        attempts++;
+        if (attempts &lt; limit || guessNumber == answer) {
+            const leftAttempts = limit - attempts;
+            if (guessNumber &lt; answer) {
+                heading.innerText = `Too low. Try again.\nAttempts Left: ${leftAttempts}`;
+                heading.style.color = 'cornflowerblue';
+            } else if (guessNumber &gt; answer) {
+                heading.innerText = `Too high. Try again.\nAttempts Left: ${leftAttempts}`;
+                heading.style.color = 'palevioletred';
+            } else {
+                const tries = (attempts === 1) ? 'try' : 'tries';
+                heading.innerText = `${answer} is correct\nin only ${attempts} ${tries}!`;
+                heading.style.color = 'gold';
+                disableCheckButton();
+            };
+        } else {
+            heading.innerText = `You've reached the limit.\nThe number was ${answer}.`;
+            heading.style.color = 'orchid';
+            disableCheckButton();
+        };
+    };
+    function disableCheckButton() {
+        checkButton.disabled = true;
+        checkButton.style.opacity = '0.5';
+    };
+    playAgainButton.onclick = function () { playGame() };
+    close.addEventListener("click", () => { gameDIV.innerHTML = gameButton });
+};
+            </code></pre>
+          </article>
+        </dialog>
+
+        <script>
+          const gameButton = document.getElementById('gameButton')
+          const gameDialog = document.getElementById('gameDialog')
+          const closegameDialog = document.getElementById('closegameDialog')
+          gameButton.addEventListener('click', () => {
+            gameDialog.showModal()
+          })
+          closegameDialog.addEventListener('click', () => {
+            gameDialog.close()
+          })
+        </script>
+      </div>
+
+    </article>
+  </main>
+  <footer>
+    <h5>&copy;2026 felixthecat8a&#x1F408; | <a href="https://github.com/felixthecat8a" target="_blank"  rel="noopener noreferrer" style="color:Chartreuse;">GitHub</a></h5>
+    <h6>index.html</h6>
+  </footer>
+</body>
+</html>

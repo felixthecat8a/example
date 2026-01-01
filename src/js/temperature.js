@@ -31,11 +31,6 @@ apiSELECT.addEventListener('change', async event => {
         await displayCatSlider()
         statusDiv.clearStatus()
         break
-      case 'showSpace':
-        statusDiv.setLoading('Loading')
-        await displaySpaceImage()
-        statusDiv.clearStatus()
-        break
       default:
         break
     }
@@ -60,10 +55,4 @@ async function displayCat() {
 async function displayCatSlider() {
   const slider = new RandomCatImageSlider('displayDiv', 'apiLink')
   await slider.display()
-}
-
-const SpaceImageDisplay = require('./libs/spaceLib')
-async function displaySpaceImage() {
-  const space = new SpaceImageDisplay('displayDiv', 'apiLink')
-  await space.setDisplay()
 }

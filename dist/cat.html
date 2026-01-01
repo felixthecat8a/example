@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat App</title>
+
+  <style>
+    @media all and (max-width: 500px) {
+      .splide__slide img {
+        height: 250px;
+        width: auto;
+      }
+    }
+  </style>
+  <!-- Splide.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<link rel="icon" href="favicon.ico"><script defer src="script/src_scss_style_scss.bundle.js"></script><script defer src="script/src_js_libs_catLib_js.bundle.js"></script><script defer src="script/cat.bundle.js"></script><link href="style/src_scss_style_scss.css" rel="stylesheet"></head>
+<body>
+  <header class="cat-header">
+    <div class="header-container">
+      <h1><em>Simple</em>JavaScript</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">&#x1F3E1;<br>Home</a></li>
+          <li><a href="temperature.html">&#x1F326;&#xFE0F;<br>Weather</a></li>
+          <li><a href="cat.html">&#x1F408;<br>Cat</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1 style="color: #e3714e">Cat Image Viewer</h1>
+    <h3 style="color: #fdfdfd;">Select Cat Breed or View Random Cat Images</h3>
+    <section id="cat_container">
+      <div id="catSelector"></div>
+      <div id="catDisplay"></div>
+      <h2 id="catHeading">Random Cats</h2>
+      <p id="catParagraph"></p>
+      <div id="catInfo"></div>
+    </section>
+    <br>
+    <h3>API from <a href="https://thecatapi.com/" target="_blank" rel="noopener noreferrer" style="color:#d24515;">The Cat API</a></h3>
+  </main>
+  <footer>
+    <h5>&copy;2026 felixthecat8a&#x1F408; | <a href="https://github.com/felixthecat8a" target="_blank"  rel="noopener noreferrer" style="color:Chartreuse;">GitHub</a></h5>
+    <h6>cat.html</h6>
+  </footer>
+</body>
+</html>
