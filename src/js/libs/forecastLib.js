@@ -1,5 +1,5 @@
 const LinkUtility = require('../utils/link')
-const WeatherUtility = require('./weather')
+const { GeoLocationUtility, WeatherUtility } = require('./weather')
 
 class NationalWeatherServiceAPI {
   LINK = {
@@ -16,7 +16,7 @@ class NationalWeatherServiceAPI {
     this.point = ''
   }
   async getCoords() {
-    const coords = await WeatherUtility.getCoordinates()
+    const coords = await GeoLocationUtility.getCoordinates()
     return { latitude: coords.latitude, longitude: coords.longitude }
   }
   async fetchData(url) {

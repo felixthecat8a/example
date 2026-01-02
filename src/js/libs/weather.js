@@ -1,4 +1,4 @@
-class WeatherUtility {
+class GeoLocationUtility {
   static async getCoordinates() {
     const options = { enableHighAccuracy: false, timeout: 5000, maximumAge: 0 }
     return new Promise((resolve, reject) => {
@@ -21,6 +21,9 @@ class WeatherUtility {
     }
     return navigator.languages
   }
+}
+
+class WeatherUtility {
   static async fetchData(endpoint) {
     const url = new URL(endpoint)
     const headers = new Headers({ 'User-Agent': 'https://github.com/felixthecat8a' })
@@ -33,13 +36,13 @@ class WeatherUtility {
   static formatDate(dateTime) {
     const date = new Date(dateTime)
     const options = { dateStyle: 'full' }
-    return new Intl.DateTimeFormat(this.getLocales(), options).format(date)
+    return new Intl.DateTimeFormat(GeoLocationUtility.getLocales(), options).format(date)
   }
   static formatTime(dateTime) {
     const date = new Date(dateTime)
     const options = { timeStyle: 'short' }
-    return new Intl.DateTimeFormat(this.getLocales(), options).format(date)
+    return new Intl.DateTimeFormat(GeoLocationUtility.getLocales(), options).format(date)
   }
 }
 
-module.exports = WeatherUtility
+module.exports = { GeoLocationUtility, WeatherUtility }

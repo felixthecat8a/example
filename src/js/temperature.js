@@ -11,25 +11,21 @@ apiSELECT.addEventListener('change', async event => {
   const weatherLocation = event.target.value
   try {
     switch (weatherLocation) {
-      case 'showForecast':
+      case 'showDefault':
         statusDiv.setLoading('Locating')
         await displayWeatherForecast(false)
-        statusDiv.clearStatus()
         break
-      case 'showWeather':
+      case 'showForecast':
         statusDiv.setLoading('Locating')
         await displayWeatherForecast(true)
-        statusDiv.clearStatus()
         break
       case 'showCat':
         statusDiv.setLoading('Meowing')
         await displayCat()
-        statusDiv.clearStatus()
         break
       case 'showCatSlider':
         statusDiv.setLoading('Meowing')
         await displayCatSlider()
-        statusDiv.clearStatus()
         break
       default:
         break
