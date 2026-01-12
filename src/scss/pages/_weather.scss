@@ -92,4 +92,5 @@ $green-line: solid thin darkseagreen;
   }
 
   @include loader.cloud-loader;
+  @include loader.cat-loader;
 }

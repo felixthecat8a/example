@@ -45,4 +45,19 @@ class WeatherUtility {
   }
 }
 
-module.exports = { GeoLocationUtility, WeatherUtility }
+function createLine(content, size) {
+  const div = document.createElement('div')
+  div.style.fontSize = `${size}rem`
+  div.innerHTML = content
+  return div
+}
+
+function createIcon(src, title) {
+  const img = document.createElement('img')
+  img.setAttribute('src', src)
+  img.setAttribute('title', title)
+  img.setAttribute('alt', 'icon')
+  return img
+}
+
+module.exports = { GeoLocationUtility, WeatherUtility, createLine, createIcon }

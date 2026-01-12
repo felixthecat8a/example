@@ -1,5 +1,5 @@
 const LinkUtility = require('../utils/link')
-const { GeoLocationUtility, WeatherUtility } = require('./weather')
+const { GeoLocationUtility, WeatherUtility, createLine, createIcon } = require('./weather')
 
 class NationalWeatherServiceAPI {
   LINK = {
@@ -279,7 +279,6 @@ class WeatherForecastDataDisplay extends LinkUtility {
     this.twentyfourhourChart = new WeatherChartJS('chartTwoDiv')
   }
   async setDisplay(useGeoLocation) {
-    //const coords = await NWS.getCoords()
     let coords = this.FixedCoords
     if (useGeoLocation) {
       coords = (await NWS.getCoords()) || coords
@@ -301,23 +300,18 @@ class WeatherForecastDataDisplay extends LinkUtility {
     fragment.appendChild(createLine(current.humidity, 1))
     this.weatherDivLeft.appendChild(fragment)
     this.twentyfourhourChart.set24HrChart(current.chart)
-    function createLine(content, size) {
-      const div = document.createElement('div')
-      div.style.fontSize = `${size}rem`
-      div.innerHTML = content
-      return div
-    }
   }
   async setForecastAndChart() {
     const data = await NWS.fetchForecastWeather()
-    this.weatherDivRight.innerHTML = `
-      <div style="font-size:1.2rem;">${data.name[0]}</div>
-      <img src="${data.icon[0]}" alt="icon" title="${data.forecast[0]}">
-      <div style="font-size:0.8rem;">${data.temperature[0]}&deg;F</div>
-      <div style="font-size:0.8rem;">${data.wind[0]}</div>
-      <div style="font-size:0.8rem;">${data.rain[0]}% Chance Rain</div>
-      `
-    const fragment = document.createDocumentFragment()
+    const fragment = new DocumentFragment()
+    fragment.appendChild(createLine(data.name[0], 1.2))
+    fragment.appendChild(createIcon(data.icon[0], data.forecast[0]))
+    fragment.appendChild(createLine(`${data.temperature[0]}&deg;F`, 0.8))
+    fragment.appendChild(createLine(data.wind[0], 0.8))
+    fragment.appendChild(createLine(`${data.rain[0]}% Chance Rain`, 0.8))
+    this.weatherDivRight.appendChild(fragment)
+
+    const forecastFragment = document.createDocumentFragment()
     for (let i = 1; i < data.name.length - 1; i++) {
       const isDaytime = data.isDaytime[i]
       if (!isDaytime) {
@@ -333,10 +327,10 @@ class WeatherForecastDataDisplay extends LinkUtility {
           <span class="hi">${data.temperature[i]}&degF</span>
           <span class="lo">${data.temperature[i + 1]}&degF</span>
         `
-        fragment.appendChild(forecastDay)
+        forecastFragment.appendChild(forecastDay)
       }
     }
-    this.weekForecast.appendChild(fragment)
+    this.weekForecast.appendChild(forecastFragment)
     this.sevenDayChart.set7DayChart(data.chart, data.location)
   }
   async setActiveAlerts() {

@@ -94,3 +94,104 @@ $loader-color: #fff;
     }
   }
 }
+
+@mixin cat-loader {
+  .catLoader {
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    width: 120px;
+    height: 120px;
+
+    /* Cat head */
+    .cat {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: #ffb347;
+      border-radius: 50%;
+      top: 20px;
+      left: 20px;
+      animation: bounce 1s infinite ease-in-out;
+    }
+
+    /* Ears */
+    .ear {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid #ffb347;
+      top: -15px;
+    }
+    .ear.left {
+      left: 5px;
+      transform: rotate(-15deg);
+    }
+    .ear.right {
+      right: 5px;
+      transform: rotate(15deg);
+    }
+
+    /* Eyes */
+    .eye {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #333;
+      border-radius: 50%;
+      top: 25px;
+      animation: blink 3s infinite;
+    }
+    .eye.left {
+      left: 20px;
+    }
+    .eye.right {
+      right: 20px;
+    }
+
+    .nose {
+      position: absolute;
+      top: 45px;
+      right: 30px;
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 9px 10px 0 10px;
+      border-color: #333 transparent transparent transparent;
+      transform: rotate(0deg);
+    }
+
+    /* Animations */
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes blink {
+      0%,
+      90%,
+      100% {
+        height: 10px;
+      }
+      95% {
+        height: 2px;
+      }
+    }
+
+    @keyframes wag {
+      0% {
+        transform: rotate(20deg);
+      }
+      100% {
+        transform: rotate(-20deg);
+      }
+    }
+  }
+}
