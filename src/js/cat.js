@@ -1,4 +1,5 @@
 require('../scss/style.scss')
+require('../css/cat.css')
 const { CatBreedImageUtility, getRandomCatImageData } = require('./libs/catLib')
 const breedUtil = new CatBreedImageUtility()
 

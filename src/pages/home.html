@@ -9,7 +9,7 @@
   <style>
     @media all and (max-width: 768px) {
       body code {
-          font-size: 0.6rem;
+        font-size: 0.6rem;
       }
     }
   </style>
@@ -41,12 +41,81 @@
     <article>
       <div class="project-card">
         <h4 style="color: mediumaquamarine;">Simple Temperature Conversion Example</h4>
-        <a href="temperature.html" class="button-info">Click to Interact</a>
+        <button type="button" id="temperatureButton" class="button-info">Click to interact</button>
+
+        <dialog id="temperatureDialog" >
+          <button type="button" id="closetemperatureDialog" class="button-danger dialog-close">Close</button>
+          <form>
+            <fieldset>
+              <legend>Temperature Conversion</legend>
+              <label for="celsiusVal">&degCelsius: </label>
+              <input type="number" id="celsiusVal" placeholder="Celsius" /><button id="convert" type="button" class="button-info">Convert</button>
+              <p>Enter the temperature in this box, and click the convert button.<br>The conversion will appear in the other box.</p>
+              <br>
+              <label fahrenheitVal>&degFahrenheit: </label>
+              <input type="number" id="fahrenheitVal" placeholder="Fahrenheit" />
+              <p>Enter the temperature in this box, and the conversion will appear in the other box automatically.</p>
+            </fieldset>
+          </form>
+          <script>
+            const celsiusVal = document.getElementById('celsiusVal');
+            const fahrenheitVal = document.getElementById('fahrenheitVal');
+            const convert = document.getElementById('convert');
+            celsiusVal.addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    convert.click();
+                }
+            });
+            fahrenheitVal.addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    convert.click();
+                }
+            });
+            convert.addEventListener('click', toFahrenheit);
+            function toFahrenheit() {
+                if (celsiusVal.value) {
+                    var fahrenheitOutput = parseFloat(celsiusVal.value) * 1.8 + 32;
+                    fahrenheitVal.value = fahrenheitOutput.toFixed(2);
+                }
+                else {
+                    fahrenheitVal.value = '';
+                }
+            }
+            fahrenheitVal.addEventListener('input', toCelsius);
+            function toCelsius() {
+                if (fahrenheitVal.value) {
+                    var celsiusOutput = (parseFloat(fahrenheitVal.value) - 32) / 1.8;
+                    celsiusVal.value = celsiusOutput.toFixed(2);
+                }
+                else {
+                    celsiusVal.value = '';
+                }
+            }
+          </script>
+        </dialog>
+
+        <script>
+          const temperatureButton = document.getElementById('temperatureButton')
+          const temperatureDialog = document.getElementById('temperatureDialog')
+          const closetemperatureDialog = document.getElementById('closetemperatureDialog')
+          temperatureButton.addEventListener('click', () => {
+            temperatureDialog.showModal()
+          })
+          closetemperatureDialog.addEventListener('click', () => {
+            temperatureDialog.close()
+          })
+        </script>
+
+        <a href="temperature.html" class="button-success">Go to Weather</a>
       </div>
+
       <div class="project-card">
         <h4 style="color: darkorange;">Cat Breed Selector Example</h4>
         <a href="cat.html" class="button-warning">Click to Interact</a>
       </div>
+
       <div class="project-card">
         <div id="numberGuessingGameContainer">
           <h4 style="color: lightseagreen;">Number Guessing Game</h4>

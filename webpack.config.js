@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const path = require('path')
 
 module.exports = {
@@ -57,17 +57,19 @@ module.exports = {
       chunks: "all",
       minSize: 0,
     },
-    // runtimeChunk: 'single',
     minimizer: [new CssMinimizerPlugin()],
     minimize: true,
   },
   module: {
     rules: [
+      // {
+      //   test: /\.css$/i,
+      //   use: ["style-loader", "css-loader"],
+      // },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          // 'style-loader',
           'css-loader',
           'sass-loader',
         ],

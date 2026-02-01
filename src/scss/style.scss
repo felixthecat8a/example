@@ -2,7 +2,6 @@
 @use 'layout' as *;
 @use 'components' as *;
 @use 'pages' as *;
-// @use 'theme' as *;
 
 @include reset;
 @include typography($bg-main, $txt-main);
@@ -29,8 +28,7 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
     }
-    @include number-guessing-game-page;
-    @include cat-page;
+    @include number-guessing-game;
     @include weather-display;
   }
 }

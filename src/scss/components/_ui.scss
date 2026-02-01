@@ -169,7 +169,7 @@
     background: #333;
     color: #f1f1f1;
     margin: auto;
-    padding: 0.5em;
+    padding: 2.5em 0.5em;
     position: fixed;
     border: 4px solid transparent;
     border-image: linear-gradient(to right, #28a745, #007bff) 1;
@@ -181,12 +181,6 @@
   }
   dialog::backdrop {
     background: rgba(0, 0, 0, 0.5);
-  }
-  .dialog-card {
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1em 2em;
-    margin: 1em auto;
   }
 }
 

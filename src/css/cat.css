@@ -1,0 +1,32 @@
+.cat-header {
+  background-color: hsl(12, 83%, 46%);
+  color: white;
+}
+
+#cat_container {
+  text-align: center;
+}
+
+#catDisplay {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#catHeading {
+  color: darkorange;
+}
+
+.splide {
+  margin: auto;
+  width: 95%;
+}
+
+@media all and (max-width: 500px) {
+  .splide__slide img {
+    height: 250px;
+    width: auto;
+  }
+}
