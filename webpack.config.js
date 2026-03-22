@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     home: path.resolve(__dirname, 'src/js/home.js'),
     cat: path.resolve(__dirname, 'src/js/cat.js'),
-    temperature: path.resolve(__dirname, 'src/js/temperature.js'),
+    weather: path.resolve(__dirname, 'src/js/weather.js'),
   },
   output: {
     path: path.resolve(__dirname, "docs"),
@@ -38,11 +38,11 @@ module.exports = {
       chunks: ['home'],
     }),
     new HtmlWebpackPlugin({
-      title: 'Temperature',
-      filename: 'temperature.html',
-      template: 'src/pages/temperature.html',
+      title: 'Weather',
+      filename: 'weather.html',
+      template: 'src/pages/weather.html',
       favicon: 'src/favicon/favicon.ico',
-      chunks: ['temperature'],
+      chunks: ['weather'],
     }),
     new HtmlWebpackPlugin({
       title: 'Cat',
