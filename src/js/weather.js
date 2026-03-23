@@ -1,4 +1,5 @@
 require('../scss/style.scss')
+require('../css/weather.css')
 const StatusUtility = require('./utils/status')
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,8 +25,7 @@ apiSELECT.addEventListener('change', async event => {
         await displayCat()
         break
       case 'showCatSlider':
-        //statusDiv.setLoading('Loading')
-        statusDiv.loadCat('loading')
+        statusDiv.setLoading('Meowing')
         await displayCatSlider()
         break
       default:

@@ -1,18 +1,3 @@
-@use './loader';
-
-@use 'sass:color';
-$green-bg: seagreen;
-$alert-bg: color.complement(seagreen);
-$green-line: solid thin darkseagreen;
-
-@mixin flex-center($direction: row, $justify: space-between, $align: center) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-}
-
-@mixin weather-display {
   .weather-display {
     background-color: rgba(46, 139, 87, 0.55);
     color: #353;
@@ -25,22 +10,27 @@ $green-line: solid thin darkseagreen;
     border-radius: 8px;
     overflow: hidden;
     .heading-container {
-      @include flex-center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       .heading-card {
-        // height: 90px;
         margin: auto;
       }
     }
     #weatherContainer {
-      @include flex-center;
-      border: $green-line;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border: solid thin darkseagreen;
       background-color: rgba(255, 255, 255, 0.7);
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin: 2px;
       #weatherDivLeft {
         flex: 2;
-        background-color: $green-bg;
+        background-color: seagreen;
         color: honeydew;
         line-height: 1.4;
         border-radius: 8px;
@@ -54,19 +44,22 @@ $green-line: solid thin darkseagreen;
       }
     }
     #alertsId {
-      background-color: $alert-bg;
-      color: honeydew;
+      background-color: #8B2E63;
+      color: snow;
       text-align: center;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin: 2px;
     }
     #forecastDiv {
-      @include flex-center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       padding: 4px 0;
       .day-card {
         flex: 1;
-        border: $green-line;
+        border: solid thin darkseagreen;
         background-color: rgba(255, 255, 255, 0.7);
         padding: 3px 0;
         font-size: 0.85rem;
@@ -74,23 +67,12 @@ $green-line: solid thin darkseagreen;
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin: 2px;
-
-        .rain {
-          color: #335;
-        }
-        .hi {
-          color: crimson;
-        }
-        .lo {
-          color: royalblue;
-        }
+        .rain { color: #335; }
+        .hi { color: crimson; }
+        .lo { color: royalblue; }
       }
     }
     #chartId {
       margin: 0.1rem auto;
     }
   }
-
-  @include loader.cloud-loader;
-  @include loader.cat-loader;
-}

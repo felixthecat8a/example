@@ -36,25 +36,6 @@ class StatusUtility {
     this.statusDIV.appendChild(textNode)
     this.statusDIV.appendChild(spinner)
   }
-  loadCat(message) {
-    this.clearStatus()
-    const textNode = document.createTextNode(message)
-    const spinner = document.createElement('span')
-    spinner.className = 'catLoader'
-    spinner.innerHTML = `
-    <div class="catcontainer">
-      <div class="cat">
-          <div class="ear left"></div>
-          <div class="ear right"></div>
-          <div class="eye left"></div>
-          <div class="eye right"></div>
-          <div class="nose"></div>
-      </div>
-    </div>
-    `
-    this.statusDIV.appendChild(textNode)
-    this.statusDIV.appendChild(spinner)
-  }
 }
 
 module.exports = StatusUtility
