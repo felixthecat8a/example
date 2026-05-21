@@ -15,6 +15,6 @@ Check it out [**here**](https://felixthecat8a.github.io/example/).
 
 ## About Me
 Hi! I'm Felix — an educator with over 18 years of experience teaching mathematics and technology.
-I specialize in hands-on STEM education, robotics, and engineering design.
+I focus on STEM education, robotics, and engineering design.
 
 ---
