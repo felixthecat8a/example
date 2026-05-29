@@ -17,8 +17,8 @@
     }
     @include footer($bg-footer, $txt-footer, $accent-footer);
     .project-card {
-      border: 1px solid seagreen;
-      background: rgba(0, 0, 0, 0.1);
+      // border: 1px solid seagreen;
+      background: rgba(0, 0, 0, 0.2);
       border-radius: rem(8);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       padding: 1rem;
