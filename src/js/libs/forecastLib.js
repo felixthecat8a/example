@@ -312,24 +312,40 @@ class WeatherForecastDataDisplay extends LinkUtility {
     this.weatherDivRight.appendChild(fragment)
 
     const forecastFragment = document.createDocumentFragment()
-    for (let i = 1; i < data.name.length - 1; i++) {
-      const isDaytime = data.isDaytime[i]
-      if (!isDaytime) {
-        continue
-      } else {
-        const forecastDay = document.createElement('div')
-        forecastDay.classList.add('day-card')
-        forecastDay.setAttribute('title', `${data.name[i]}: ${data.forecast[i]}`)
-        forecastDay.innerHTML = `
-          <span class="day">${data.name[i].substring(0, 3)}</span>
-          <span class="rain">${data.rain[i]}%</span>
-          <img src="${data.icon[i]}" alt="icon" height="auto" width="75%">
-          <span class="hi">${data.temperature[i]}&degF</span>
-          <span class="lo">${data.temperature[i + 1]}&degF</span>
-        `
-        forecastFragment.appendChild(forecastDay)
-      }
+
+    for (let i = 1; i < data.name.length; i++) {
+
+    //   const isDaytime = data.isDaytime[i]
+    //   if (!isDaytime) {
+    //     continue
+    //   } else {
+    //     const forecastDay = document.createElement('div')
+    //     forecastDay.classList.add('day-card')
+    //     forecastDay.setAttribute('title', `${data.name[i]}: ${data.forecast[i]}`)
+    //     forecastDay.innerHTML = `
+    //       <span class="day">${data.name[i].substring(0, 3)}</span>
+    //       <span class="rain">${data.rain[i]}%</span>
+    //       <img src="${data.icon[i]}" alt="icon" height="auto" width="75%">
+    //       <span class="hi">${data.temperature[i]}&deg;F</span>
+    //       <span class="lo">${data.temperature[i + 1]}&degF</span>
+    //     `
+
+      if (!data.isDaytime[i]) continue
+      if (i + 1 >= data.temperature.length) break
+      const forecastDay = document.createElement('div')
+      forecastDay.classList.add('forecast-day-card')
+      forecastDay.setAttribute('title', `${data.name[i]}: ${data.forecast[i]}`)
+      forecastDay.innerHTML = `
+        <span class="day">${data.name[i].substring(0, 3)}</span>
+        <span class="rain">${data.rain[i]}%</span>
+        <img src="${data.icon[i]}" alt="icon" width="75%">
+        <span class="hi">${data.temperature[i]}&deg;F</span>
+        <span class="lo">${data.temperature[i + 1] ?? '--'}&deg;F</span>
+      `
+
+      forecastFragment.appendChild(forecastDay)
     }
+    this.weekForecast.innerHTML = ''
     this.weekForecast.appendChild(forecastFragment)
     this.sevenDayChart.set7DayChart(data.chart, data.location)
   }
