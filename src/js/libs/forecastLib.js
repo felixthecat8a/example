@@ -3,7 +3,7 @@ const { GeoLocationUtility, WeatherUtility, createLine, createIcon } = require('
 
 class NationalWeatherServiceAPI {
   LINK = {
-    title: 'National Weather Service',
+    title: 'National Weather Service Data',
     target: 'https://www.weather.gov',
   }
   API_URL = 'https://api.weather.gov'
