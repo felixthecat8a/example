@@ -1,7 +1,6 @@
 @use 'util' as *;
 @use 'layout' as *;
 @use 'components' as *;
-@use 'pages' as *;
 
 @include reset;
 @include typography($bg-main, $txt-main);
@@ -17,7 +16,6 @@
     }
     @include footer($bg-footer, $txt-footer, $accent-footer);
     .project-card {
-      // border: 1px solid seagreen;
       background: rgba(0, 0, 0, 0.2);
       border-radius: rem(8);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -28,7 +26,6 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
     }
-    @include number-guessing-game;
     @include cloud-loader;
   }
 }

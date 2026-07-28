@@ -1,4 +1,5 @@
 require('../scss/style.scss')
+require('../css/game.css')
 
 const gameDIV = document.getElementById('numberGuessingGame')
 const gameButton = '<button type="button" id="startGame" class="button-info">Click to Play</button>'
