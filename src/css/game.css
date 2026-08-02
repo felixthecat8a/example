@@ -1,16 +1,24 @@
-  #numberGuessingGameContainer {
-    text-align: center;
-    display: block;
-    border: solid thin teal;
-    border-radius: 0.5rem;
-    width: min(550px, 100%);
-    margin: auto;
-    padding: 10px 15px;
-  }
+#numberGuessingGameContainer {
+  text-align: center;
+  display: block;
+  border: solid thin teal;
+  border-radius: 0.5rem;
+  width: min(550px, 100%);
+  margin: auto;
+  padding: 10px 15px;
+}
 
-  @media screen and (max-width: 500px) {
-    #numberGuessingGameContainer {
-      flex: 100%;
-      max-width: 100%;
-    }
+meter {
+  width: 75%;
+  height: rem(16);
+  margin-top: rem(5);
+  border-radius: rem(5);
+  appearance: none;
+}
+
+@media screen and (max-width: 500px) {
+  #numberGuessingGameContainer {
+    flex: 100%;
+    max-width: 100%;
   }
+}
