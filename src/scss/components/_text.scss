@@ -1,46 +1,5 @@
 @use '../util' as *;
 
-@mixin text {
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    overflow-wrap: break-word;
-    margin-bottom: 0.5em;
-  }
-  p {
-    text-wrap: pretty;
-  }
-  strong {
-    font-weight: bold;
-  }
-  em {
-    font-style: italic;
-  }
-  abbr[title] {
-    text-decoration: none;
-  }
-  figcaption {
-    font-size: small;
-    font-weight: normal;
-    font-style: italic;
-  }
-  blockquote,
-  q {
-    quotes: none;
-  }
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: '';
-    content: none;
-  }
-}
-
 @mixin anchors($color: #353, $hover: #797) {
   a {
     text-decoration: none;

@@ -34,6 +34,37 @@
       font-weight: 600;
       line-height: 1.2;
       margin-bottom: 0.5em;
+      overflow-wrap: break-word;
+    }
+    p {
+      text-wrap: pretty;
+      overflow-wrap: break-word;
+      margin-bottom: 0.5em;
+    }
+    strong {
+      font-weight: bold;
+    }
+    em {
+      font-style: italic;
+    }
+    abbr[title] {
+      text-decoration: none;
+    }
+    figcaption {
+      font-size: small;
+      font-weight: normal;
+      font-style: italic;
+    }
+    blockquote,
+    q {
+      quotes: none;
+    }
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: '';
+      content: none;
     }
     section {
       padding: 0.5em 1em;

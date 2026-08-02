@@ -10,7 +10,6 @@
     @include header($bg-header, $txt-header, $accent-header);
     @include main {
       @include ui;
-      @include text;
       @include anchors($color: #cdc, $hover: #efe);
       text-align: center;
     }
