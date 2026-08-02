@@ -1,78 +1,168 @@
-  .weather-display {
-    background-color: rgba(46, 139, 87, 0.55);
-    color: #353;
-    border: solid thin mediumseagreen;
-    padding: 8px;
-    margin: auto;
-    text-align: center;
-    font-weight: 500;
-    outline: none;
-    border-radius: 8px;
-    overflow: hidden;
-    .heading-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      .heading-card {
-        margin: auto;
-      }
-    }
-    #weatherContainer {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      border: solid thin darkseagreen;
-      background-color: rgba(255, 255, 255, 0.7);
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      margin: 2px;
-      #weatherDivLeft {
-        flex: 2;
-        background-color: seagreen;
-        color: honeydew;
-        line-height: 1.4;
-        border-radius: 8px;
-        padding: 8px 4px;
-        word-break: keep-all;
-      }
-      #weatherDivRight {
-        flex: 1;
-        border-radius: 8px;
-        padding: 2px;
-      }
-    }
-    #alertsId {
-      background-color: #8B2E63;
-      color: snow;
-      text-align: center;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      margin: 2px;
-    }
-    #forecastDiv {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4px 0;
-      .forecast-day-card {
-        flex: 1;
-        border: solid thin darkseagreen;
-        background-color: rgba(255, 255, 255, 0.7);
-        padding: 3px 0;
-        font-size: 0.85rem;
-        font-weight: 600;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        margin: 2px;
-        .rain { color: #335; }
-        .hi { color: crimson; }
-        .lo { color: royalblue; }
-      }
-    }
-    #chartId {
-      margin: 0.1rem auto;
+.weather-display {
+  background-color: rgba(46, 139, 87, 0.55);
+  color: #353;
+  border: solid thin mediumseagreen;
+  padding: 8px;
+  margin: auto;
+  text-align: center;
+  font-weight: 500;
+  outline: none;
+  border-radius: 8px;
+  overflow: hidden;
+  .heading-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .heading-card {
+      margin: auto;
     }
   }
+  #weatherContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: solid thin darkseagreen;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 2px;
+    #weatherDivLeft {
+      flex: 2;
+      background-color: seagreen;
+      color: honeydew;
+      line-height: 1.4;
+      border-radius: 8px;
+      padding: 8px 4px;
+      word-break: keep-all;
+    }
+    #weatherDivRight {
+      flex: 1;
+      border-radius: 8px;
+      padding: 2px;
+    }
+  }
+  #alertsId {
+    background-color: #8B2E63;
+    color: snow;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 2px;
+  }
+  #forecastDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    .forecast-day-card {
+      flex: 1;
+      border: solid thin darkseagreen;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 3px 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin: 2px;
+      .rain { color: #335; }
+      .hi { color: crimson; }
+      .lo { color: royalblue; }
+    }
+  }
+  #chartId {
+    margin: 0.1rem auto;
+  }
+}
+
+.cloudLoader {
+  width: 180px;
+  height: 140px;
+  display: block;
+  margin: 0 auto 20px;
+  position: relative;
+  box-sizing: border-box;
+
+  background-image:
+    radial-gradient(circle 25px at 25px 25px, #fff 100%, transparent 0),
+    radial-gradient(circle 50px at 50px 50px, #fff 100%, transparent 0),
+    radial-gradient(circle 25px at 25px 25px, #fff 100%, transparent 0),
+    radial-gradient(circle 15px at 15px 15px, #fff 100%, transparent 0),
+    linear-gradient(#fff 50px, transparent 0);
+
+  background-size:
+    50px 50px,
+    100px 75px,
+    50px 50px,
+    30px 32px,
+    136px 20px;
+  background-repeat: no-repeat;
+  background-position:
+    0px 30px,
+    30px 0px,
+    113px 29px,
+    147px 50px,
+    23px 60px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 65px;
+    width: 2px;
+    height: 6px;
+    color: #fff;
+    box-sizing: border-box;
+    animation: animateLoader 0.6s linear infinite;
+  }
+}
+
+@keyframes animateLoader {
+  0% {
+    box-shadow:
+      25px 0 #fff,
+      50px 0 #fff,
+      75px 0 #fff,
+      100px 0 #fff,
+      125px 0 #fff,
+      150px 0 #fff,
+      25px 0 #fff,
+      50px 0 #fff,
+      75px 0 #fff,
+      100px 0 #fff,
+      125px 0 #fff,
+      150px 0 #fff;
+  }
+  50% {
+    box-shadow:
+      25px 20px #fff,
+      50px 60px rgba(255, 255, 255, 0),
+      75px 30px rgba(255, 255, 255, 0),
+      100px 70px rgba(255, 255, 255, 0),
+      125px 40px #fff,
+      150px 60px rgba(255, 255, 255, 0),
+      25px 20px #fff,
+      50px 30px #fff,
+      75px 10px #fff,
+      100px 30px #fff,
+      125px 30px rgba(255, 255, 255, 0),
+      150px 30px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow:
+      25px 60px rgba(255, 255, 255, 0),
+      50px 60px rgba(255, 255, 255, 0),
+      75px 50px rgba(255, 255, 255, 0),
+      100px 70px rgba(255, 255, 255, 0),
+      125px 70px rgba(255, 255, 255, 0),
+      150px 60px rgba(255, 255, 255, 0),
+      25px 80px rgba(255, 255, 255, 0),
+      50px 80px rgba(255, 255, 255, 0),
+      75px 70px rgba(255, 255, 255, 0),
+      100px 60px rgba(255, 255, 255, 0),
+      125px 30px rgba(255, 255, 255, 0),
+      150px 30px rgba(255, 255, 255, 0);
+  }
+}
