@@ -49,7 +49,6 @@ async function displayRandomCats() {
   const data = await getRandomCatImageData(4)
   const catImg = data.map(cat => cat.url)
   const imgWidth = data.map(cat => cat.width)
-  console.log(imgWidth)
   catDiv.innerHTML = `
   <section class="splide" aria-label="Splide Cat Images">
     <div class="splide__track">

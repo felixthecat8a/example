@@ -8,7 +8,7 @@ class TheCatAPI {
   }
   static async fetchCatBreeds() {
     const request = new Request(`${this.CAT_API.BASE_URL}/breeds`)
-    const response = await fetch(request)
+    const response = await fetch(request, { headers: { 'x-api-key': this.CAT_API.KEY } })
     if (!response.ok) {
       throw new Error(`${response.status} Breed Options Not Found!`)
     }
