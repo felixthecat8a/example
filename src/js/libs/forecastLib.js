@@ -338,7 +338,7 @@ class WeatherForecastDataDisplay extends LinkUtility {
       forecastDay.innerHTML = `
         <span class="day">${data.name[i].substring(0, 3)}</span>
         <span class="rain">${data.rain[i]}%</span>
-        <img src="${data.icon[i]}" alt="icon" width="75%">
+        <img src="${data.icon[i]}" alt="icon" width="75%"><br>
         <span class="hi">${data.temperature[i]}&deg;F</span>
         <span class="lo">${data.temperature[i + 1] ?? '--'}&deg;F</span>
       `
